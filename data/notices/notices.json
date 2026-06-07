@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "title": "Semester Registration Notice",
+    "category": "Academic",
+    "date": "2026-07-15",
+    "content": "Students are required to complete semester registration before the specified deadline. Failure to register may result in loss of course enrollment."
+  },
+  {
+    "id": 2,
+    "title": "Mid Semester Examination Schedule Released",
+    "category": "Examination",
+    "date": "2026-08-01",
+    "content": "The mid-semester examination schedule has been published. Students are advised to check their respective department notice boards."
+  },
+  {
+    "id": 3,
+    "title": "Hostel Fee Payment Reminder",
+    "category": "Hostel",
+    "date": "2026-08-05",
+    "content": "All hostel residents must clear pending hostel dues before the due date to avoid penalties."
+  },
+  {
+    "id": 4,
+    "title": "Library Timing Extension",
+    "category": "Library",
+    "date": "2026-08-10",
+    "content": "Library operating hours have been extended during examination preparation period."
+  },
+  {
+    "id": 5,
+    "title": "Hackathon Registration Open",
+    "category": "Event",
+    "date": "2026-08-12",
+    "content": "Registrations are now open for the annual campus hackathon. Interested students can apply online."
+  },
+  {
+    "id": 6,
+    "title": "Placement Training Session",
+    "category": "Placement",
+    "date": "2026-08-15",
+    "content": "A placement preparation workshop covering aptitude and interview skills will be conducted."
+  },
+  {
+    "id": 7,
+    "title": "ERP Maintenance Window",
+    "category": "IT Services",
+    "date": "2026-08-18",
+    "content": "ERP services may be unavailable due to scheduled maintenance."
+  },
+  {
+    "id": 8,
+    "title": "Club Recruitment Drive",
+    "category": "Student Activities",
+    "date": "2026-08-20",
+    "content": "Various student clubs are inviting applications from interested students."
+  },
+  {
+    "id": 9,
+    "title": "Sports Tournament Registration",
+    "category": "Sports",
+    "date": "2026-08-22",
+    "content": "Registrations for the inter-hostel sports tournament have begun."
+  },
+  {
+    "id": 10,
+    "title": "Scholarship Application Notice",
+    "category": "Scholarship",
+    "date": "2026-08-25",
+    "content": "Eligible students can submit scholarship applications through the academic office."
+  },
+  {
+    "id": 11,
+    "title": "Attendance Shortage Notification",
+    "category": "Academic",
+    "date": "2026-09-01",
+    "content": "Students with attendance below the required threshold are advised to contact their department."
+  },
+  {
+    "id": 12,
+    "title": "Technical Fest Announcement",
+    "category": "Event",
+    "date": "2026-09-04",
+    "content": "The annual technical fest will feature competitions, workshops, and guest lectures."
+  },
+  {
+    "id": 13,
+    "title": "Minor Project Evaluation Schedule",
+    "category": "Academic",
+    "date": "2026-09-15",
+    "content": "Minor project evaluations will be conducted department-wise as per schedule."
+  },
+  {
+    "id": 14,
+    "title": "Medical Camp on Campus",
+    "category": "Health",
+    "date": "2026-09-18",
+    "content": "A free health check-up camp will be organized for students and staff."
+  },
+  {
+    "id": 15,
+    "title": "Workshop on Artificial Intelligence",
+    "category": "Workshop",
+    "date": "2026-09-20",
+    "content": "An introductory workshop on AI and Generative AI will be conducted by industry experts."
+  },
+  {
+    "id": 16,
+    "title": "End Semester Examination Notice",
+    "category": "Examination",
+    "date": "2026-11-10",
+    "content": "Students are advised to complete all academic requirements before the commencement of end semester examinations."
+  },
+  {
+    "id": 17,
+    "title": "Make-Up Examination Registration",
+    "category": "Examination",
+    "date": "2026-12-09",
+    "content": "Registration for make-up examinations is open for eligible students."
+  },
+  {
+    "id": 18,
+    "title": "Winter Internship Opportunity",
+    "category": "Placement",
+    "date": "2026-12-15",
+    "content": "Applications are invited for winter internship opportunities across various organizations."
+  },
+  {
+    "id": 19,
+    "title": "Campus WiFi Upgrade",
+    "category": "IT Services",
+    "date": "2026-12-20",
+    "content": "Network infrastructure upgrades are being carried out to improve internet performance."
+  },
+  {
+    "id": 20,
+    "title": "Semester Result Declaration",
+    "category": "Academic",
+    "date": "2026-12-24",
+    "content": "Semester examination results will be published through the ERP portal."
+  }
+]

@@ -1,0 +1,100 @@
+{
+  "Main Gate": {
+    "type": "landmark",
+    "lat": null,
+    "lng": null,
+    "description": "Main entrance of BIT Mesra"
+  },
+
+  "Central Library": {
+    "type": "library",
+    "lat": null,
+    "lng": null,
+    "description": "Central Library"
+  },
+
+  "Administrative Building": {
+    "type": "administration",
+    "lat": null,
+    "lng": null,
+    "description": "Institute administration offices"
+  },
+
+  "Computer Science Department": {
+    "type": "department",
+    "lat": null,
+    "lng": null,
+    "description": "Department of Computer Science and Engineering"
+  },
+
+  "Electronics and Communication Engineering Department": {
+    "type": "department",
+    "lat": null,
+    "lng": null,
+    "description": "ECE Department"
+  },
+
+  "Mechanical Engineering Department": {
+    "type": "department",
+    "lat": null,
+    "lng": null,
+    "description": "Mechanical Engineering Department"
+  },
+
+  "Civil Engineering Department": {
+    "type": "department",
+    "lat": null,
+    "lng": null,
+    "description": "Civil Engineering Department"
+  },
+
+  "Electrical and Electronics Engineering Department": {
+    "type": "department",
+    "lat": null,
+    "lng": null,
+    "description": "EEE Department"
+  },
+
+  "LH-1": {
+    "type": "academic",
+    "lat": null,
+    "lng": null,
+    "description": "Lecture Hall-1"
+  },
+
+  "LH-2": {
+    "type": "academic",
+    "lat": null,
+    "lng": null,
+    "description": "Lecture Hall-2"
+  },
+
+  "LH-3": {
+    "type": "academic",
+    "lat": null,
+    "lng": null,
+    "description": "Lecture Hall-3"
+  },
+
+  "LH-4": {
+    "type": "academic",
+    "lat": null,
+    "lng": null,
+    "description": "Lecture Hall-4"
+  },
+
+
+  "Dispensary": {
+    "type": "healthcare",
+    "lat": null,
+    "lng": null,
+    "description": "Campus medical facility"
+  },
+
+  "Placement Cell": {
+    "type": "career",
+    "lat": null,
+    "lng": null,
+    "description": "Training and Placement Division"
+  }
+}

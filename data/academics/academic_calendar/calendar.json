@@ -1,0 +1,32 @@
+[
+  {
+    "event": "End Semester Examination",
+    "start_date": "2026-11-17",
+    "end_date": "2026-11-25"
+  },
+  {
+    "event": "Make-Up Examination Registration",
+    "start_date": "2026-12-09",
+    "end_date": "2026-12-11"
+  },
+  {
+    "event": "Quiz1",
+    "start_date": "2026-08-24",
+    "end_date": "2026-08-31"
+  },
+  {
+    "event": "Class commencement",
+    "start_date": "2026-07-21",
+    "end_date": "2026-12-18"
+  },
+  {
+    "event": "Mid Semester Examination",
+    "start_date": "2026-10-12",
+    "end_date": "2026-10-19"
+  },
+  {
+    "event": "Quiz2",
+    "start_date": "2026-11-07",
+    "end_date": "2026-11-14"
+  }
+]   

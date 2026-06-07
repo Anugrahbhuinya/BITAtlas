@@ -1,0 +1,51 @@
+{
+  "Hostel 1": {
+    "type": "boys_hostel",
+    "lat": null,
+    "lng": null,
+    "capacity": null,
+    "description": ""
+  },
+  "Hostel 2": {
+    "type": "boys_hostel",
+    "lat": null,
+    "lng": null,
+    "capacity": null,
+    "description": ""
+  },
+  "Hostel 3": {
+    "type": "boys_hostel",
+    "lat": null,
+    "lng": null,
+    "capacity": null,
+    "description": ""
+  },
+  "Hostel 4": {
+    "type": "boys_hostel",
+    "lat": null,
+    "lng": null,
+    "capacity": null,
+    "description": ""
+  },
+  "Hostel 5": {
+    "type": "boys_hostel",
+    "lat": null,
+    "lng": null,
+    "capacity": null,
+    "description": ""
+  },
+  "Hostel 6": {
+    "type": "girls_hostel",
+    "lat": null,
+    "lng": null,
+    "capacity": null,
+    "description": ""
+  },
+  "Hostel 7": {
+    "type": "girls_hostel",
+    "lat": null,
+    "lng": null,
+    "capacity": null,
+    "description": ""
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "Central Library": {
+    "category": "library",
+    "lat": null,
+    "lng": null,
+    "opening_time": "08:00",
+    "closing_time": "22:00"
+  },
+
+  "Dispensary": {
+    "category": "healthcare",
+    "lat": null,
+    "lng": null
+  },
+
+  "Placement Cell": {
+    "category": "career",
+    "lat": null,
+    "lng": null
+  },
+
+  "ATM": {
+    "category": "banking",
+    "lat": null,
+    "lng": null
+  },
+
+  "Sports Complex": {
+    "category": "sports",
+    "lat": null,
+    "lng": null
+  },
+
+  "Main Cafeteria": {
+    "category": "food",
+    "lat": null,
+    "lng": null
+  }
+}

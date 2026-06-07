@@ -1,0 +1,31 @@
+{
+  "CSE": {
+    "name": "Computer Science and Engineering",
+    "head": "",
+    "office": ""
+  },
+
+  "ECE": {
+    "name": "Electronics and Communication Engineering",
+    "head": "",
+    "office": ""
+  },
+
+  "EEE": {
+    "name": "Electrical and Electronics Engineering",
+    "head": "",
+    "office": ""
+  },
+
+  "ME": {
+    "name": "Mechanical Engineering",
+    "head": "",
+    "office": ""
+  },
+
+  "CE": {
+    "name": "Civil Engineering",
+    "head": "",
+    "office": ""
+  }
+}
