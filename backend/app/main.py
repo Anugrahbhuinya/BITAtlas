@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from app.routes.chat import router
 
 app = FastAPI(
@@ -14,6 +15,46 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    errors = exc.errors()
+    # Check if there is a json_invalid error
+    for error in errors:
+        if error.get("type") == "json_invalid":
+            return JSONResponse(
+                status_code=400,
+                content={
+                    "type": "error",
+                    "answer": f"JSON decode error: {error.get('msg', 'Invalid JSON payload')}"
+                }
+            )
+    
+    # Check if a required field is missing
+    missing_fields = []
+    for error in errors:
+        if error.get("type") == "missing":
+            loc = error.get("loc", [])
+            field_name = loc[-1] if loc else "body"
+            missing_fields.append(str(field_name))
+            
+    if missing_fields:
+        return JSONResponse(
+            status_code=400,
+            content={
+                "type": "error",
+                "answer": f"Missing required field(s): {', '.join(missing_fields)}"
+            }
+        )
+
+    # General validation error
+    return JSONResponse(
+        status_code=400,
+        content={
+            "type": "error",
+            "answer": f"Validation Error: {errors[0].get('msg', 'Invalid request')}"
+        }
+    )
 
 app.include_router(router)
 
