@@ -1,4 +1,4 @@
-from rapidfuzz import fuzz
+from rapidfuzz import fuzz, utils
 from app.utils.loader import load_json
 
 # Load all datasets
@@ -20,8 +20,7 @@ def universal_search(query: str):
     # FAQs
     for faq in faqs:
         score = fuzz.token_set_ratio(
-            query,
-            faq["question"].lower()
+            query, faq["question"].lower(), processor=utils.default_process
         )
 
         candidates.append({
@@ -33,8 +32,7 @@ def universal_search(query: str):
     # Buildings
     for name, info in buildings.items():
         score = fuzz.token_set_ratio(
-            query,
-            name.lower()
+            query, name.lower(), processor=utils.default_process
         )
 
         candidates.append({
@@ -46,8 +44,7 @@ def universal_search(query: str):
     # Facilities
     for name, info in facilities.items():
         score = fuzz.token_set_ratio(
-            query,
-            name.lower()
+            query, name.lower(), processor=utils.default_process
         )
 
         desc = f"{name}"
@@ -66,8 +63,7 @@ def universal_search(query: str):
     # Hostels
     for name, info in hostels.items():
         score = fuzz.token_set_ratio(
-            query,
-            name.lower()
+            query, name.lower(), processor=utils.default_process
         )
 
         candidates.append({
@@ -80,8 +76,12 @@ def universal_search(query: str):
     for code, info in departments.items():
         name = info.get("name", code)
         score = max(
-            fuzz.token_set_ratio(query, name.lower()),
-            fuzz.token_set_ratio(query, code.lower())
+            fuzz.token_set_ratio(
+                query, name.lower(), processor=utils.default_process
+            ),
+            fuzz.token_set_ratio(
+                query, code.lower(), processor=utils.default_process
+            ),
         )
 
         desc = f"Department of {name}"
@@ -104,8 +104,7 @@ def universal_search(query: str):
     # Clubs
     for name, info in clubs.items():
         score = fuzz.token_set_ratio(
-            query,
-            name.lower()
+            query, name.lower(), processor=utils.default_process
         )
 
         desc = info.get("description") or name
@@ -128,8 +127,7 @@ def universal_search(query: str):
     # Calendar
     for event in calendar:
         score = fuzz.token_set_ratio(
-            query,
-            event["event"].lower()
+            query, event["event"].lower(), processor=utils.default_process
         )
 
         start = event.get("start_date")

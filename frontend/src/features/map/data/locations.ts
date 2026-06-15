@@ -10,7 +10,7 @@ export const locations: CampusLocation[] = [
   {
     id: 1,
     name: "CAT Hall",
-    description: "Central Lecture Hall",
+    description: "CAT Hall",
     lat: 23.416,
     lng: 85.439,
   },

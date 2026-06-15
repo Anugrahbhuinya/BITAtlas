@@ -17,7 +17,7 @@ const locationMapping: Record<string, string> = {
   "cat hall": "CAT Hall",
   "central lecture hall": "CAT Hall",
   "central library": "Library",
-  "library": "Library",
+  library: "Library",
   "administrative building": "Main Building",
   "main building": "Main Building",
   "administrative block": "Main Building",
@@ -40,7 +40,9 @@ function MessageBubble({
     message.text.toLowerCase().includes(key),
   );
 
-  const detectedLocation = detectedKey ? locationMapping[detectedKey] : undefined;
+  const detectedLocation = detectedKey
+    ? locationMapping[detectedKey]
+    : undefined;
 
   const handleOpenMap = () => {
     if (!detectedLocation) return;

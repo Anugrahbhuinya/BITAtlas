@@ -37,4 +37,4 @@ def chat(request: ChatRequest):
             "answer": f"Internal Server Error: {str(e)}"
         }
 
-# Trigger reload for buildings.json update
+# Trigger reload for buildings.json and rapidfuzz processor update
