@@ -3,3 +3,5 @@ uvicorn
 rapidfuzz
 python-dotenv
 pydantic
+motor
+dnspython

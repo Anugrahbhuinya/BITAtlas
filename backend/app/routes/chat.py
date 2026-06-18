@@ -1,12 +1,13 @@
 from fastapi import APIRouter
 from app.models.schemas import ChatRequest
 from app.services.universal_search import universal_search
+from app.services.history_service import add_message_to_history
 
 router = APIRouter()
 
 
 @router.post("/chat")
-def chat(request: ChatRequest):
+async def chat(request: ChatRequest):
 
     try:
 
@@ -18,17 +19,25 @@ def chat(request: ChatRequest):
                 "answer": "Please enter a valid question."
             }
 
+        # Save user message to history
+        if request.sessionId:
+            await add_message_to_history(request.sessionId, "user", query)
+
         result = universal_search(query)
 
-        if result:
-            return result
+        if not result:
+            result = {
+                "type": "fallback",
+                "answer": (
+                    "Sorry, I couldn't find any information related to your query."
+                )
+            }
 
-        return {
-            "type": "fallback",
-            "answer": (
-                "Sorry, I couldn't find any information related to your query."
-            )
-        }
+        # Save bot response to history
+        if request.sessionId and "answer" in result:
+            await add_message_to_history(request.sessionId, "assistant", result["answer"])
+
+        return result
 
     except Exception as e:
 

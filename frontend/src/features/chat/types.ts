@@ -5,6 +5,7 @@ export interface ChatMessage {
 
 export interface ChatRequest {
   message: string;
+  sessionId?: string;
 }
 
 export interface ChatResponse {
@@ -14,4 +15,14 @@ export interface ChatResponse {
   event?: string;
   start_date?: string;
   end_date?: string;
+}
+
+export interface HistoryMessage {
+  role: "user" | "assistant";
+  content: string;
+}
+
+export interface HistoryResponse {
+  sessionId: string;
+  messages: HistoryMessage[];
 }

@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from app.routes.chat import router
+from app.routes.history import router as history_router
 
 app = FastAPI(
     title="BIT Mesra AI Assistant"
@@ -57,6 +58,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     )
 
 app.include_router(router)
+app.include_router(history_router)
 
 @app.get("/")
 def root():
