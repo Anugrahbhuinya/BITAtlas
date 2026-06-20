@@ -1,51 +1,58 @@
-{
-  "Hostel 1": {
-    "type": "boys_hostel",
-    "lat": null,
-    "lng": null,
-    "capacity": null,
-    "description": ""
+[
+  {
+    "id": 1,
+    "name": "Aryabhatta Hostel",
+    "gender": "Male",
+    "description": "Exclusively for first-year undergraduate students, offering triple-sharing rooms to promote peer interaction. Features a spacious mess hall, common recreation room with a TV, outdoor badminton court, and 24/7 security guard patrol.",
+    "capacity": 450
   },
-  "Hostel 2": {
-    "type": "boys_hostel",
-    "lat": null,
-    "lng": null,
-    "capacity": null,
-    "description": ""
+  {
+    "id": 2,
+    "name": "Raman Hostel",
+    "gender": "Male",
+    "description": "Accommodates second and third-year B.Tech students in double-sharing rooms. Includes an indoor table tennis table, fully functional mess serving vegetarian and non-vegetarian food, and high-speed Wi-Fi router connectivity on each corridor.",
+    "capacity": 380
   },
-  "Hostel 3": {
-    "type": "boys_hostel",
-    "lat": null,
-    "lng": null,
-    "capacity": null,
-    "description": ""
+  {
+    "id": 3,
+    "name": "CV Raman Hostel",
+    "gender": "Male",
+    "description": "A hostel for senior students and postgraduates offering single and double rooms. Equipped with a small gymnasium area, library reading corner, volleyball court, and automated washing machines for student convenience.",
+    "capacity": 350
   },
-  "Hostel 4": {
-    "type": "boys_hostel",
-    "lat": null,
-    "lng": null,
-    "capacity": null,
-    "description": ""
+  {
+    "id": 4,
+    "name": "Vivekananda Hostel",
+    "gender": "Male",
+    "description": "Houses final year undergraduate students and PhD scholars in single-occupancy rooms. It features a quiet study hall, mess hall with special menu days, and an outdoor courtyard for evening recreation.",
+    "capacity": 400
   },
-  "Hostel 5": {
-    "type": "boys_hostel",
-    "lat": null,
-    "lng": null,
-    "capacity": null,
-    "description": ""
+  {
+    "id": 5,
+    "name": "Gargi Hostel",
+    "gender": "Female",
+    "description": "The primary hostel for first and second-year female students. Features double and triple-sharing rooms, a tight security network, beauty parlor service corner, indoor sports facility, and a hygienic mess offering nutritious meals.",
+    "capacity": 350
   },
-  "Hostel 6": {
-    "type": "girls_hostel",
-    "lat": null,
-    "lng": null,
-    "capacity": null,
-    "description": ""
+  {
+    "id": 6,
+    "name": "Sarojini Hostel",
+    "gender": "Female",
+    "description": "Accommodates senior undergraduate and postgraduate female students in single and double rooms. It contains a garden courtyard, common lounge, library space, and automatic washing machine facilities.",
+    "capacity": 300
   },
-  "Hostel 7": {
-    "type": "girls_hostel",
-    "lat": null,
-    "lng": null,
-    "capacity": null,
-    "description": ""
+  {
+    "id": 7,
+    "name": "New Girls Hostel",
+    "gender": "Female",
+    "description": "A modern multi-storey hostel building for female students with premium single-sharing rooms, elevators, and modern bathrooms. Includes a gym room, juice bar counter, and study rooms on each floor.",
+    "capacity": 500
+  },
+  {
+    "id": 8,
+    "name": "International Students Hostel",
+    "gender": "Co-ed (Separate Wings)",
+    "description": "Specially designed for international students, NRI students, and exchange scholars. It offers air-conditioned single rooms, attached kitchenettes, dining area serving diverse cuisines, and laundry service.",
+    "capacity": 150
   }
-}
+]

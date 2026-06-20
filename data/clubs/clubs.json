@@ -1,19 +1,72 @@
-{
-  "IEEE": {
-    "description": "",
-    "contact": "",
-    "meeting_place": ""
+[
+  {
+    "id": 1,
+    "name": "Developer Student Club",
+    "category": "Technical",
+    "description": "Fosters mobile app, web development, and cloud computing skills using Google Technologies and modern tech stacks. Conducts open-source contributions and community software projects.",
+    "activities": ["Annual Hackathon (DevHack)", "Android Development Workshops", "Cloud Jam Study Groups", "Industry Tech Expert Talks"]
   },
-
-  "Coding Club": {
-    "description": "",
-    "contact": "",
-    "meeting_place": ""
+  {
+    "id": 2,
+    "name": "Robotics Club",
+    "category": "Technical",
+    "description": "Dedicated to robot designing, hardware prototyping, microcontrollers, embedded systems, drone making, and industrial automation algorithms.",
+    "activities": ["RoboWar Championships", "Autonomous Drone Racing", "Arduino and Raspberry Pi Bootcamps", "School Outreach Workshops"]
   },
-
-  "Robotics Club": {
-    "description": "",
-    "contact": "",
-    "meeting_place": ""
+  {
+    "id": 3,
+    "name": "Coding Club",
+    "category": "Technical",
+    "description": "Cultivates competitive programming culture, algorithmic problem-solving speed, and coding optimization. Promotes success in platforms like Codeforces and ICPC.",
+    "activities": ["Weekly Coding Contests", "Data Structures & Algorithms Lectures", "Code-A-Thon Fest", "ICPCC Preparation Seminars"]
+  },
+  {
+    "id": 4,
+    "name": "AI and Data Science Club",
+    "category": "Technical",
+    "description": "Explores deep learning networks, data analytical visual tools, machine learning pipelines, Kaggle challenges, and ethical artificial intelligence implementations.",
+    "activities": ["Data Science Bootcamp", "NLP and Computer Vision Projects", "Kaggle Competitions Hub", "AI Ethics Panel Discussions"]
+  },
+  {
+    "id": 5,
+    "name": "Entrepreneurship Cell",
+    "category": "Entrepreneurship",
+    "description": "Nurtures entrepreneurial mindsets, startup ideation, prototype funding access, business model creation, and intellectual property/patent filings.",
+    "activities": ["E-Summit", "Pitching Competitions (B-Plan)", "Startup Internship Fair", "Incubation Center Tours and Mentorship"]
+  },
+  {
+    "id": 6,
+    "name": "Literary Club",
+    "category": "Cultural",
+    "description": "The center for creative writing, debate, elocution, poetry slams, drama, playwriting, and critical book reviewing discussions.",
+    "activities": ["Annual Inter-Hostel Debates", "Poetry Slam Evenings", "Creative Writing Competitions", "BIT Publications Editing Board"]
+  },
+  {
+    "id": 7,
+    "name": "Music Club",
+    "category": "Cultural",
+    "description": "Brings together campus musicians, vocalists, and instrumentalists. Supports classical Indian music, fusion, metal, rock, and acoustic bands.",
+    "activities": ["Unplugged Acoustic Nights", "Battle of the Bands", "Vocal Training and Instrumental Workshops", "Cultural Fest Performances"]
+  },
+  {
+    "id": 8,
+    "name": "Dance Club",
+    "category": "Cultural",
+    "description": "Trains students in street dance, hip-hop, classical Indian dance forms, and contemporary styles. Represents the college at national youth fests.",
+    "activities": ["Dance Auditions & Showcases", "Choreography Workshops", "Street Play and Dance Fests", "Annual Cultural Fest Opening Acts"]
+  },
+  {
+    "id": 9,
+    "name": "Photography Club",
+    "category": "Cultural",
+    "description": "Explores digital photography skills, DSLR manual shooting modes, photo editing software, and short filmmaking.",
+    "activities": ["Campus Photo Walk Sessions", "Online Photography Exhibitions", "Videography & Editing Workshops", "Fest Coverage Teams"]
+  },
+  {
+    "id": 10,
+    "name": "Sports Club",
+    "category": "Sports",
+    "description": "Organizes tournaments, fitness challenges, coaching camps, and promotes athletic excellence in team and individual sports.",
+    "activities": ["Inter-Hostel Sports Tournaments", "Marathons & Athletics Meets", "Cricket and Football Leagues", "Self-Defense Bootcamps"]
   }
-}
+]

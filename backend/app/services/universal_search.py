@@ -30,7 +30,8 @@ def universal_search(query: str):
         })
 
     # Buildings
-    for name, info in buildings.items():
+    for b in buildings:
+        name = b.get("name", "")
         score = fuzz.token_set_ratio(
             query, name.lower(), processor=utils.default_process
         )
@@ -38,21 +39,20 @@ def universal_search(query: str):
         candidates.append({
             "type": "location",
             "score": score,
-            "answer": info.get("description") or f"{name} ({info.get('type', 'building')})"
+            "answer": b.get("description") or f"{name} ({b.get('category', 'building')})"
         })
 
     # Facilities
-    for name, info in facilities.items():
+    for f in facilities:
+        name = f.get("name", "")
         score = fuzz.token_set_ratio(
             query, name.lower(), processor=utils.default_process
         )
 
-        desc = f"{name}"
-        category = info.get("category")
-        if category:
-            desc += f" ({category})"
-        if "opening_time" in info and "closing_time" in info:
-            desc += f" [Open: {info['opening_time']} - {info['closing_time']}]"
+        desc = f.get("description") or name
+        timings = f.get("timings")
+        if timings:
+            desc += f" [Timings: {timings}]"
 
         candidates.append({
             "type": "facility",
@@ -61,7 +61,8 @@ def universal_search(query: str):
         })
 
     # Hostels
-    for name, info in hostels.items():
+    for h in hostels:
+        name = h.get("name", "")
         score = fuzz.token_set_ratio(
             query, name.lower(), processor=utils.default_process
         )
@@ -69,59 +70,54 @@ def universal_search(query: str):
         candidates.append({
             "type": "hostel",
             "score": score,
-            "answer": info.get("description") or f"{name} ({info.get('type', 'hostel').replace('_', ' ')})"
+            "answer": h.get("description") or f"{name} ({h.get('gender', 'hostel')})"
         })
 
     # Departments
-    for code, info in departments.items():
-        name = info.get("name", code)
+    for d in departments:
+        name = d.get("name", "")
+        desc = d.get("description", "")
+        building = d.get("building", "")
+        programs = d.get("programs", [])
+        
+        # We also extract acronym (e.g. CSE) to match acronym searches
+        words = name.split()
+        acronym = "".join(w[0] for w in words if w[0].isupper())
+
         score = max(
             fuzz.token_set_ratio(
                 query, name.lower(), processor=utils.default_process
             ),
             fuzz.token_set_ratio(
-                query, code.lower(), processor=utils.default_process
+                query, acronym.lower(), processor=utils.default_process
             ),
         )
 
-        desc = f"Department of {name}"
-        head = info.get("head")
-        office = info.get("office")
-        extra = []
-        if head:
-            extra.append(f"Head: {head}")
-        if office:
-            extra.append(f"Office: {office}")
-        if extra:
-            desc += f" ({', '.join(extra)})"
+        full_desc = f"Department of {name}: {desc} (Located in {building}). Programs: {', '.join(programs)}"
 
         candidates.append({
             "type": "department",
             "score": score,
-            "answer": desc
+            "answer": full_desc
         })
 
     # Clubs
-    for name, info in clubs.items():
+    for c in clubs:
+        name = c.get("name", "")
+        category = c.get("category", "")
+        desc = c.get("description", "")
+        activities = c.get("activities", [])
+        
         score = fuzz.token_set_ratio(
             query, name.lower(), processor=utils.default_process
         )
 
-        desc = info.get("description") or name
-        contact = info.get("contact")
-        place = info.get("meeting_place")
-        extra = []
-        if contact:
-            extra.append(f"Contact: {contact}")
-        if place:
-            extra.append(f"Meeting Place: {place}")
-        if extra:
-            desc += f" ({', '.join(extra)})"
+        full_desc = f"{name} ({category}): {desc} Activities: {', '.join(activities)}"
 
         candidates.append({
             "type": "club",
             "score": score,
-            "answer": desc
+            "answer": full_desc
         })
 
     # Calendar

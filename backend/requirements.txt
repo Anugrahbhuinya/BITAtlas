@@ -5,3 +5,7 @@ python-dotenv
 pydantic
 motor
 dnspython
+langchain-core
+langchain-text-splitters
+langchain-chroma
+langchain-huggingface

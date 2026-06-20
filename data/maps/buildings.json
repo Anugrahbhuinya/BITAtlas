@@ -1,107 +1,107 @@
-{
-  "Main Gate": {
-    "type": "landmark",
-    "lat": null,
-    "lng": null,
-    "description": "Main entrance of BIT Mesra"
+[
+  {
+    "id": 1,
+    "name": "Central Library",
+    "description": "The digital library houses over 100,000 volumes, academic journals, and a spacious quiet reading zone. It features electronic search database terminals and serves as the primary study space for students and researchers.",
+    "location": "Located adjacent to the Main Administrative Building, opposite the Lecture Hall Complex.",
+    "category": "Academic"
   },
-
-  "Central Library": {
-    "type": "library",
-    "lat": 23.415,
-    "lng": 85.44,
-    "description": "Central Library"
+  {
+    "id": 2,
+    "name": "Main Administrative Building",
+    "description": "This iconic building hosts executive offices including the Vice Chancellor's office, the Registrar's office, and academic finance branches. All administrative affairs, ERP management, and registration validations are conducted here.",
+    "location": "Situated at the central core of the campus, directly facing the main entrance boulevard.",
+    "category": "Administrative"
   },
-
-  "Administrative Building": {
-    "type": "administration",
-    "lat": 23.4142,
-    "lng": 85.4388,
-    "description": "Institute administration offices"
+  {
+    "id": 3,
+    "name": "University Auditorium",
+    "description": "A state-of-the-art facility with a seating capacity of 2,500 people, equipped with modern acoustic and lighting systems. It hosts major cultural festivals, convocation ceremonies, national conferences, and guest lectures.",
+    "location": "Located near the Student Activity Center, accessible from the main ring road.",
+    "category": "Student Services"
   },
-
-  "CAT Hall": {
-    "type": "academic",
-    "lat": 23.416,
-    "lng": 85.439,
-    "description": "CAT Hall"
+  {
+    "id": 4,
+    "name": "Lecture Hall Complex",
+    "description": "A multi-storey complex consisting of smart classrooms, halls (LH-1 to LH-4), and modern audio-visual learning aids. It serves as the primary venue for first and second-year undergraduate common courses and exams.",
+    "location": "Situated opposite the Central Library, near the CSE Department.",
+    "category": "Academic"
   },
-
-  "Computer Science Department": {
-    "type": "department",
-    "lat": null,
-    "lng": null,
-    "description": "Department of Computer Science and Engineering"
+  {
+    "id": 5,
+    "name": "Department of Computer Science and Engineering",
+    "description": "Hosts computer programming labs, AI laboratories, academic faculty chambers, and high-performance computing centers. It conducts cutting-edge research in networks, algorithms, and cybersecurity.",
+    "location": "Located adjacent to the Lecture Hall Complex and near the central courtyard.",
+    "category": "Academic"
   },
-
-  "Electronics and Communication Engineering Department": {
-    "type": "department",
-    "lat": null,
-    "lng": null,
-    "description": "ECE Department"
+  {
+    "id": 6,
+    "name": "Department of Artificial Intelligence and Machine Learning",
+    "description": "A newly established academic department with specialized labs for deep learning, natural language processing, and computer vision. It is equipped with dedicated GPU-accelerated computing nodes.",
+    "location": "Housed on the second floor of the Research and Innovation Center wing.",
+    "category": "Academic"
   },
-
-  "Mechanical Engineering Department": {
-    "type": "department",
-    "lat": null,
-    "lng": null,
-    "description": "Mechanical Engineering Department"
+  {
+    "id": 7,
+    "name": "Department of Electronics and Communication Engineering",
+    "description": "Features labs dedicated to VLSI design, digital signal processing, microwave engineering, and communication systems. It is one of the oldest departments with extensive research funding.",
+    "location": "Situated in the Eastern Wing of the main academic block.",
+    "category": "Academic"
   },
-
-  "Civil Engineering Department": {
-    "type": "department",
-    "lat": null,
-    "lng": null,
-    "description": "Civil Engineering Department"
+  {
+    "id": 8,
+    "name": "Department of Mechanical Engineering",
+    "description": "Contains heavy machineries, fluid mechanics labs, thermal engineering centers, and workshop facilities for manufacturing practices. It is active in automobile modeling and material science studies.",
+    "location": "Located in the workshop area near the back gate of the academic campus.",
+    "category": "Academic"
   },
-
-  "Electrical and Electronics Engineering Department": {
-    "type": "department",
-    "lat": null,
-    "lng": null,
-    "description": "EEE Department"
+  {
+    "id": 9,
+    "name": "Department of Electrical Engineering",
+    "description": "Equipped with power systems laboratories, electrical machine simulation setups, control system desks, and renewable energy research modules. It focuses on grid integration and electric vehicle charging research.",
+    "location": "Situated in the Western Wing of the main academic block, adjacent to the ECE Department.",
+    "category": "Academic"
   },
-
-  "LH-1": {
-    "type": "academic",
-    "lat": null,
-    "lng": null,
-    "description": "Lecture Hall-1"
+  {
+    "id": 10,
+    "name": "Department of Civil Engineering",
+    "description": "Houses structural testing facilities, concrete design labs, surveying equipment, and environmental engineering testing kits. The department does consultation work for regional infrastructure projects.",
+    "location": "Located near the Mechanical workshop area in the southern block.",
+    "category": "Academic"
   },
-
-  "LH-2": {
-    "type": "academic",
-    "lat": null,
-    "lng": null,
-    "description": "Lecture Hall-2"
+  {
+    "id": 11,
+    "name": "Department of Biotechnology",
+    "description": "Equipped with advanced tissue culture, microbiology, molecular biology, and genomic sequencing apparatus. It provides hands-on training and works on biomedical research and bioremediation projects.",
+    "location": "Located near the Research and Innovation Center, towards the campus nursery.",
+    "category": "Academic"
   },
-
-  "LH-3": {
-    "type": "academic",
-    "lat": null,
-    "lng": null,
-    "description": "Lecture Hall-3"
+  {
+    "id": 12,
+    "name": "Research and Innovation Center",
+    "description": "A premium research hub built to foster industry collaboration, startups, and intellectual property development. It features advanced analytical instruments and collaborative workspaces.",
+    "location": "Positioned between the Biotechnology Department and the Main Administrative Building.",
+    "category": "Research"
   },
-
-  "LH-4": {
-    "type": "academic",
-    "lat": null,
-    "lng": null,
-    "description": "Lecture Hall-4"
+  {
+    "id": 13,
+    "name": "Student Activity Center",
+    "description": "The nerve center of student life, hosting office chambers for student clubs, a common lounge, creative studios, and cafeteria corners. It is where club orientations, meetings, and jam sessions take place.",
+    "location": "Located near the sports ground, behind the University Auditorium.",
+    "category": "Student Services"
   },
-
-
-  "Dispensary": {
-    "type": "healthcare",
-    "lat": null,
-    "lng": null,
-    "description": "Campus medical facility"
+  {
+    "id": 14,
+    "name": "Sports Complex",
+    "description": "Comprises a cricket stadium, athletic track, football ground, basketball court, and tennis setups. It is the primary venue for the annual sports meet, inter-college events, and daily fitness routines.",
+    "location": "Located at the far northern edge of the campus, close to the hostel zone.",
+    "category": "Sports"
   },
-
-  "Placement Cell": {
-    "type": "career",
-    "lat": null,
-    "lng": null,
-    "description": "Training and Placement Division"
+  {
+    "id": 15,
+    "name": "Guest House",
+    "description": "Features premium suites, meeting halls, and dining facilities for visiting dignitaries, alumni, recruiters, and parents. It offers accommodation in a green, peaceful setting with room service.",
+    "location": "Situated near the Main Gate entry, nestled in a quiet green zone.",
+    "category": "Administrative"
   }
-}
+]

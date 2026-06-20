@@ -1,39 +1,72 @@
-{
-  "Central Library": {
-    "category": "library",
-    "lat": null,
-    "lng": null,
-    "opening_time": "08:00",
-    "closing_time": "22:00"
+[
+  {
+    "id": 1,
+    "name": "Medical Unit",
+    "description": "Provides 24/7 basic medical services, pharmacy access, patient beds, and emergency ambulance transport. Qualified doctors are available for general consultations and first-aid treatment for students and staff.",
+    "location": "Located near Hostel 1 and the staff quarters, along the medical road.",
+    "timings": "Open 24 hours daily (Emergency services); General OPD: 9:00 AM - 1:00 PM and 4:00 PM - 7:00 PM"
   },
-
-  "Dispensary": {
-    "category": "healthcare",
-    "lat": null,
-    "lng": null
+  {
+    "id": 2,
+    "name": "Central Cafeteria",
+    "description": "Offers hot meals, regional Indian snacks, beverages, and dessert choices at subsidized rates. Features a large seating hall accommodating up to 300 students, popular for group discussions and casual dining.",
+    "location": "Located behind the Main Administrative Building, near the Lecture Hall Complex.",
+    "timings": "8:00 AM - 9:30 PM (Closed on Sundays)"
   },
-
-  "Placement Cell": {
-    "category": "career",
-    "lat": null,
-    "lng": null
+  {
+    "id": 3,
+    "name": "Nescafe Outlet",
+    "description": "A popular student hangout spot serving hot/cold coffee, maggi noodles, iced teas, and quick bites. Known for late-night student discussions and group study sessions.",
+    "location": "Situated in the courtyard between the CSE Department and the Central Library.",
+    "timings": "9:00 AM - 11:30 PM daily"
   },
-
-  "ATM": {
-    "category": "banking",
-    "lat": null,
-    "lng": null
+  {
+    "id": 4,
+    "name": "SBI Bank Branch",
+    "description": "Full-service branch of State Bank of India offering student accounts, education loan applications, fee payment processing, and general banking services.",
+    "location": "Located near the Administrative Building annex, opposite the Guest House road.",
+    "timings": "10:00 AM - 4:00 PM (Monday to Saturday, closed on 2nd & 4th Saturdays)"
   },
-
-  "Sports Complex": {
-    "category": "sports",
-    "lat": null,
-    "lng": null
+  {
+    "id": 5,
+    "name": "SBI ATM",
+    "description": "Two 24/7 cash dispensing machines with support for cash withdrawal, balance inquiries, and PIN changes. Accessible to all students and staff.",
+    "location": "Situated right next to the SBI Bank Branch building near the main road.",
+    "timings": "Open 24 hours daily"
   },
-
-  "Main Cafeteria": {
-    "category": "food",
-    "lat": null,
-    "lng": null
+  {
+    "id": 6,
+    "name": "Placement and Training Cell",
+    "description": "Coordinates campus recruitment drives, company presentations, and mock interview prep. It contains presentation halls, group discussion chambers, and interview cabins for visiting recruiters.",
+    "location": "Housed on the first floor of the Main Administrative Building, Wing B.",
+    "timings": "9:00 AM - 6:00 PM (Monday to Saturday)"
+  },
+  {
+    "id": 7,
+    "name": "Campus Gymnasium",
+    "description": "Equipped with treadmills, weightlifting machines, dumbbells, and cardiovascular trainers. Experienced trainers are on duty to guide students with workouts and general fitness advice.",
+    "location": "Located inside the Main Sports Complex building, adjacent to the basketball court.",
+    "timings": "6:00 AM - 9:00 AM & 5:00 PM - 8:30 PM (Closed on Sundays)"
+  },
+  {
+    "id": 8,
+    "name": "Indoor Sports Hall",
+    "description": "Features multiple high-quality badminton courts, table tennis tables, carrom boards, and chess corners. It hosts inter-hostel and annual state-level tournaments.",
+    "location": "Located inside the Sports Complex near the main stadium entrance.",
+    "timings": "4:00 PM - 9:00 PM daily"
+  },
+  {
+    "id": 9,
+    "name": "Student Store",
+    "description": "Sells textbooks, engineering drawing boards, reference materials, mattresses, pillows, buckets, and essential toiletries. Ideal for first-year hostel settlers.",
+    "location": "Situated in the shopping arcade near the staff colony gate.",
+    "timings": "10:00 AM - 8:00 PM (Closed on Tuesdays)"
+  },
+  {
+    "id": 10,
+    "name": "Stationery and Xerox Center",
+    "description": "Provides high-speed photocopying, thesis binding, printing, and general stationery sales like notebooks, calculators, charts, and laboratory record files.",
+    "location": "Located adjacent to the Central Library entrance.",
+    "timings": "8:30 AM - 8:00 PM (Monday to Saturday)"
   }
-}
+]

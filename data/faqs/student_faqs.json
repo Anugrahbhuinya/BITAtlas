@@ -1,111 +1,502 @@
 [
-  {"id":1,"question":"How do I reset my ERP password?","answer":"TODO"},
-  {"id":2,"question":"How do I register for a semester?","answer":"TODO"},
-  {"id":3,"question":"How do I pay semester fees?","answer":"TODO"},
-  {"id":4,"question":"Where can I find my timetable?","answer":"TODO"},
-  {"id":5,"question":"How do I view my grades?","answer":"TODO"},
-  {"id":6,"question":"How is CGPA calculated?","answer":"TODO"},
-  {"id":7,"question":"How do I apply for re-evaluation?","answer":"TODO"},
-  {"id":8,"question":"How do I apply for make-up examinations?","answer":"TODO"},
-  {"id":9,"question":"What is the minimum attendance requirement?","answer":"TODO"},
-  {"id":10,"question":"How can I check my attendance?","answer":"TODO"},
-
-  {"id":11,"question":"How do I download my admit card?","answer":"TODO"},
-  {"id":12,"question":"How do I obtain a bonafide certificate?","answer":"TODO"},
-  {"id":13,"question":"How do I get my transcript?","answer":"TODO"},
-  {"id":14,"question":"How do I apply for migration certificate?","answer":"TODO"},
-  {"id":15,"question":"How do I apply for degree certificate?","answer":"TODO"},
-  {"id":16,"question":"How do I update my contact details?","answer":"TODO"},
-  {"id":17,"question":"How do I access the academic calendar?","answer":"TODO"},
-  {"id":18,"question":"What is the process for course registration?","answer":"TODO"},
-  {"id":19,"question":"How do I add or drop a course?","answer":"TODO"},
-  {"id":20,"question":"How do I register for backlog courses?","answer":"TODO"},
-
-  {"id":21,"question":"How do I apply for hostel accommodation?","answer":"TODO"},
-  {"id":22,"question":"How do I change my hostel room?","answer":"TODO"},
-  {"id":23,"question":"What are the hostel rules?","answer":"TODO"},
-  {"id":24,"question":"What are hostel entry timings?","answer":"TODO"},
-  {"id":25,"question":"How do I report hostel maintenance issues?","answer":"TODO"},
-  {"id":26,"question":"Where is the hostel office located?","answer":"TODO"},
-  {"id":27,"question":"How do I pay hostel fees?","answer":"TODO"},
-  {"id":28,"question":"Can I stay in the hostel during vacations?","answer":"TODO"},
-  {"id":29,"question":"How do I apply for a hostel leave?","answer":"TODO"},
-  {"id":30,"question":"How do I report a hostel complaint?","answer":"TODO"},
-
-  {"id":31,"question":"Where is the Central Library located?","answer":"TODO"},
-  {"id":32,"question":"What are the library timings?","answer":"TODO"},
-  {"id":33,"question":"How do I issue books from the library?","answer":"TODO"},
-  {"id":34,"question":"What is the book return policy?","answer":"TODO"},
-  {"id":35,"question":"How do I access digital library resources?","answer":"TODO"},
-  {"id":36,"question":"How do I reserve a book?","answer":"TODO"},
-  {"id":37,"question":"What are the library fine rules?","answer":"TODO"},
-  {"id":38,"question":"Can I access journals online?","answer":"TODO"},
-  {"id":39,"question":"How do I renew a borrowed book?","answer":"TODO"},
-  {"id":40,"question":"Are study rooms available in the library?","answer":"TODO"},
-
-  {"id":41,"question":"Where is the medical unit located?","answer":"TODO"},
-  {"id":42,"question":"What are the medical unit timings?","answer":"TODO"},
-  {"id":43,"question":"How do I get emergency medical assistance?","answer":"TODO"},
-  {"id":44,"question":"Is ambulance service available on campus?","answer":"TODO"},
-  {"id":45,"question":"How do I contact campus security?","answer":"TODO"},
-  {"id":46,"question":"What should I do in case of an emergency?","answer":"TODO"},
-  {"id":47,"question":"Where is the nearest ATM on campus?","answer":"TODO"},
-  {"id":48,"question":"Where can I buy stationery items?","answer":"TODO"},
-  {"id":49,"question":"Where can I get photocopies done?","answer":"TODO"},
-  {"id":50,"question":"Where can I find drinking water facilities?","answer":"TODO"},
-
-  {"id":51,"question":"Where is the Computer Science Department?","answer":"TODO"},
-  {"id":52,"question":"Where is the Electronics Department?","answer":"TODO"},
-  {"id":53,"question":"Where is the Mechanical Department?","answer":"TODO"},
-  {"id":54,"question":"Where is the Civil Department?","answer":"TODO"},
-  {"id":55,"question":"Where is the Electrical Department?","answer":"TODO"},
-  {"id":56,"question":"Where is LH1 located?","answer":"TODO"},
-  {"id":57,"question":"Where is LH2 located?","answer":"TODO"},
-  {"id":58,"question":"Where is LH3 located?","answer":"TODO"},
-  {"id":59,"question":"How do I reach the library from the hostel?","answer":"TODO"},
-  {"id":60,"question":"How do I reach the academic building from the main gate?","answer":"TODO"},
-
-  {"id":61,"question":"How do I connect to campus WiFi?","answer":"TODO"},
-  {"id":62,"question":"How do I reset my WiFi password?","answer":"TODO"},
-  {"id":63,"question":"How do I report internet issues?","answer":"TODO"},
-  {"id":64,"question":"How do I access college email services?","answer":"TODO"},
-  {"id":65,"question":"What software resources are available to students?","answer":"TODO"},
-  {"id":66,"question":"How do I access virtual labs?","answer":"TODO"},
-  {"id":67,"question":"How do I use the ERP portal?","answer":"TODO"},
-  {"id":68,"question":"How do I update my ERP profile?","answer":"TODO"},
-  {"id":69,"question":"How do I view examination results on ERP?","answer":"TODO"},
-  {"id":70,"question":"How do I download fee receipts?","answer":"TODO"},
-
-  {"id":71,"question":"How do I apply for internships?","answer":"TODO"},
-  {"id":72,"question":"Where is the placement cell located?","answer":"TODO"},
-  {"id":73,"question":"How do I register for placement drives?","answer":"TODO"},
-  {"id":74,"question":"How do I prepare for campus placements?","answer":"TODO"},
-  {"id":75,"question":"What are the placement eligibility criteria?","answer":"TODO"},
-  {"id":76,"question":"How do I create a resume for placements?","answer":"TODO"},
-  {"id":77,"question":"How do I participate in mock interviews?","answer":"TODO"},
-  {"id":78,"question":"How do I apply for industrial training?","answer":"TODO"},
-  {"id":79,"question":"How do I access placement notices?","answer":"TODO"},
-  {"id":80,"question":"How do I update my placement profile?","answer":"TODO"},
-
-  {"id":81,"question":"How do I join a student club?","answer":"TODO"},
-  {"id":82,"question":"What technical clubs are available?","answer":"TODO"},
-  {"id":83,"question":"What cultural clubs are available?","answer":"TODO"},
-  {"id":84,"question":"How do I participate in college events?","answer":"TODO"},
-  {"id":85,"question":"How do I register for hackathons?","answer":"TODO"},
-  {"id":86,"question":"How do I volunteer for college festivals?","answer":"TODO"},
-  {"id":87,"question":"How do I join the coding club?","answer":"TODO"},
-  {"id":88,"question":"How do I join the robotics club?","answer":"TODO"},
-  {"id":89,"question":"How do I become a club coordinator?","answer":"TODO"},
-  {"id":90,"question":"How do I get updates about campus events?","answer":"TODO"},
-
-  {"id":91,"question":"How do I apply for scholarships?","answer":"TODO"},
-  {"id":92,"question":"What scholarships are available for students?","answer":"TODO"},
-  {"id":93,"question":"How do I apply for educational loans?","answer":"TODO"},
-  {"id":94,"question":"How do I check my fee payment status?","answer":"TODO"},
-  {"id":95,"question":"How do I request a fee payment extension?","answer":"TODO"},
-  {"id":96,"question":"How do I report ragging incidents?","answer":"TODO"},
-  {"id":97,"question":"How do I contact the anti-ragging committee?","answer":"TODO"},
-  {"id":98,"question":"How do I submit student grievances?","answer":"TODO"},
-  {"id":99,"question":"How do I contact student affairs?","answer":"TODO"},
-  {"id":100,"question":"Where can I find important notices and announcements?","answer":"TODO"}
+  {
+    "id": 1,
+    "question": "How do I reset my ERP portal password?",
+    "answer": "To reset your ERP portal password, visit the Main Administrative Building's IT support desk or use the 'Forgot Password' option on the ERP login screen. You will receive a password reset link on your registered BIT Mesra institutional email address. If the link fails to arrive, contact the ERP helpdesk with your Roll Number and registration slip."
+  },
+  {
+    "id": 2,
+    "question": "What is the process for semester registration at BIT Mesra?",
+    "answer": "Semester registration is done online via the ERP portal at the start of each semester. Students must pay their semester tuition fees, clear any outstanding hostel mess dues, and then select their core and elective courses. Once submitted online, the physical registration slip must be verified by the respective academic advisor and HoD."
+  },
+  {
+    "id": 3,
+    "question": "What is the minimum attendance requirement to write examinations?",
+    "answer": "Students at BIT Mesra are required to maintain a minimum of 75% attendance in each registered course to be eligible to sit for the mid-semester and end-semester examinations. Medical leave or official duty leave for representing the college in sports or cultural events can be claimed by submitting valid proofs within one week of returning to class, which can grant up to 10% relaxation."
+  },
+  {
+    "id": 4,
+    "question": "How can I check my daily attendance records?",
+    "answer": "Daily attendance is updated by individual course professors on the ERP portal. You can view your real-time attendance percentage under the 'Academic Status' tab on your ERP student dashboard. Any discrepancies should be discussed immediately with the respective course instructor before the final attendance locking deadline."
+  },
+  {
+    "id": 5,
+    "question": "What is the structure of the academic evaluation at BIT Mesra?",
+    "answer": "The academic evaluation is divided into continuous internal assessments and formal examinations. Typically, it includes Quizzes/Assignments (20%), Mid-Semester Exam (30%), and the final End-Semester Exam (50%). Lab courses are evaluated based on regular experiments, laboratory journals, viva-voce, and end-semester practical exams."
+  },
+  {
+    "id": 6,
+    "question": "How is the CGPA calculated at the end of a semester?",
+    "answer": "CGPA (Cumulative Grade Point Average) is calculated as the weighted average of the grade points secured in all courses registered since entry. SGPA is first calculated by multiplying the course credits by the grade points earned, summing them, and dividing by total credits. CGPA represents the sum of all credit-grade-point products divided by the cumulative credits of all semesters."
+  },
+  {
+    "id": 7,
+    "question": "How do I apply for paper re-evaluation or script viewing?",
+    "answer": "Students can apply for end-semester answer script viewing or re-evaluation by submitting an application form at the Examination Section in the Main Administrative Building. A nominal fee per paper must be paid at the SBI bank branch or via ERP. The processed schedules for script viewings are announced on the examination board."
+  },
+  {
+    "id": 8,
+    "question": "What is the rule for makeup or supplementary examinations?",
+    "answer": "Makeup examinations are conducted for students who missed their regular end-semester exams due to genuine medical emergencies or representing the institute in official competitions. Applications with supporting documents must be submitted to the Dean of Academic Affairs within three days of the missed exam. Supplementary exams are held during the summer break for students with backlog papers."
+  },
+  {
+    "id": 9,
+    "question": "How do I clear a backlog course at BIT Mesra?",
+    "answer": "To clear a backlog course, you must register for it during the backlog registration window, usually open during regular semesters or the summer term. Students can either opt for a regular class run if their timetable permits or take the examination directly as per the academic regulations. Registrations must be approved by the Department Head."
+  },
+  {
+    "id": 10,
+    "question": "What are the rules regarding deregistration from a course?",
+    "answer": "If a student's attendance falls below the minimum required threshold of 75% and they do not have valid approved leaves, they are deregistered from the course. This results in an 'F' grade or 'Shortage of Attendance' (D-grade/NC) status. The student must repeat the entire course during a subsequent semester or summer term."
+  },
+  {
+    "id": 11,
+    "question": "Where can I obtain my official academic transcript?",
+    "answer": "Official transcripts can be requested from the Academic Section located in the Main Administrative Building. You need to submit a written request form along with photocopies of all your semester grade cards and the receipt of the transcript processing fee paid online. Transcripts are usually prepared and sealed within 7 to 10 working days."
+  },
+  {
+    "id": 12,
+    "question": "How do I apply for a Bonafide Certificate?",
+    "answer": "You can apply for a Bonafide Certificate online through your ERP portal or by submitting a manual application to the student section office in the Main Administrative Building. The certificate is typically used for educational loans, passport applications, and regional scholarship submissions. It is issued within 3 working days after verification of college registration status."
+  },
+  {
+    "id": 13,
+    "question": "How can I change my branch or engineering stream after the first year?",
+    "answer": "Branch sliding or branch change is allowed at the end of the second semester based on academic performance. It is strictly determined by CGPA merit, availability of vacant seats in the target department, and satisfying minimum CGPA criteria (usually 8.5 or above). Applications are invited by the Academic Office after the release of second-semester results."
+  },
+  {
+    "id": 14,
+    "question": "Is it possible to take a semester drop due to medical reasons?",
+    "answer": "Yes, a student can request a semester drop on medical grounds by submitting a formal application accompanied by a certificate from the BIT Mesra Medical Unit officer. The application must be routed through the department HoD to the Dean of Academic Affairs. Tuition fees may be adjusted for the next semester depending on the timing of the request."
+  },
+  {
+    "id": 15,
+    "question": "What is the procedure to apply for a duplicate grade card?",
+    "answer": "In case of lost or damaged grade cards, you must file a First Information Report (FIR) at the nearest police station. Submit a formal application to the Controller of Examinations along with the copy of the FIR, an affidavit explaining the loss, and the duplicate document fee receipt. The duplicate grade card will be marked as 'Duplicate' and issued within two weeks."
+  },
+  {
+    "id": 16,
+    "question": "What electives are offered under the Open Elective system?",
+    "answer": "Open Electives at BIT Mesra allow students to explore subjects outside their core department, such as digital marketing, environmental sciences, operations research, and advanced management concepts. The list of open electives is updated on the ERP portal before course registration begins. All choices are subject to seat caps and prerequisites."
+  },
+  {
+    "id": 17,
+    "question": "What is the maximum duration allowed to complete a B.Tech program?",
+    "answer": "The standard duration of the B.Tech program is four academic years (eight semesters). However, as per academic guidelines, students are allowed a maximum of six years (twelve semesters) to clear all backlog courses and satisfy credit requirements to obtain their degree. Failure to complete all courses within this timeframe results in registration cancellation."
+  },
+  {
+    "id": 18,
+    "question": "How can I access digital journals and research papers from the library?",
+    "answer": "The Central Library provides remote access to e-resources, journals, and databases like IEEE Xplore, ScienceDirect, and Springer via institutional logins. Students can configure virtual private network (VPN) access or use the library's OpenAthens portal credentials. Details on access configuration are available at the library's digital reference desk."
+  },
+  {
+    "id": 19,
+    "question": "How do I register for a Minor or Specialization degree?",
+    "answer": "Minor degree programs are offered in departments like CSE, AIML, and Finance for students maintaining a CGPA above a defined limit (usually 7.5). Registration for minor courses starts from the third or fourth semester via ERP, requiring additional credit workloads. Successful completion of these credits results in a Minor designation on your graduation certificate."
+  },
+  {
+    "id": 20,
+    "question": "Where can I find the academic calendar for the current session?",
+    "answer": "The academic calendar is published on the official BIT Mesra website and notice boards before the start of each semester. It specifies dates for course registration, mid-semester exams, student festivals, end-semester exams, and semester breaks. Students are advised to plan travel and internships according to this schedule."
+  },
+  {
+    "id": 21,
+    "question": "What are the hostel room allocation rules for freshers?",
+    "answer": "Hostel room allocation for first-year students is conducted during the physical admission rounds at the campus. Rooms are allocated randomly or on a first-come, first-served basis in double or triple-sharing formats (e.g., at Aryabhatta Hostel). Students must show their physical fee receipt and register their details at the hostel office warden desk."
+  },
+  {
+    "id": 22,
+    "question": "Can I change my allocated hostel room or room partner?",
+    "answer": "Room changes are generally not permitted during the ongoing semester to maintain security records. However, in cases of extreme medical issues or genuine disputes, a student can submit a written representation signed by both roommates to the Chief Warden. If approved, the room transfer is coordinated by the hostel office caretakers."
+  },
+  {
+    "id": 23,
+    "question": "What are the in-out timings and curfew rules for hostels?",
+    "answer": "The curfew time for all hostels at BIT Mesra is 10:00 PM for safety and discipline reasons. Students must record their exit and entry times in the register kept at the gate with the security guards. Late entries beyond the curfew without prior permission from the hostel warden can attract fines or warning letters."
+  },
+  {
+    "id": 24,
+    "question": "How is the hostel mess fee collected and managed?",
+    "answer": "Hostel mess fees are collected in advance at the start of each academic semester along with the general institute fees. The mess operates on a cooperative model managed by student mess committees under warden supervision. Mess rebates are provided if a student is officially absent from the mess for more than 5 consecutive days with prior leave application approval."
+  },
+  {
+    "id": 25,
+    "question": "What should I do if my hostel room requires maintenance or repairs?",
+    "answer": "For maintenance tasks such as plumbing failures, broken furniture, or electrical issues, students can record their complaints in the maintenance register at the hostel guard desk. Alternatively, you can file an online complaint ticket through the student portal. Caretakers inspect and resolve issues within 24 to 48 hours."
+  },
+  {
+    "id": 26,
+    "question": "Are private electrical appliances like coolers or heaters allowed in rooms?",
+    "answer": "No, heavy electrical appliances such as personal refrigerators, room heaters, induction stoves, and air coolers are strictly prohibited in hostel rooms due to safety concerns and electricity load limits. Students found using unauthorized high-power appliances are subject to appliance confiscation and disciplinary fines."
+  },
+  {
+    "id": 27,
+    "question": "What are the rules regarding hosting guests or parents in the hostel?",
+    "answer": "Day guests of the same gender are allowed in hostel common rooms but are strictly barred from entering student residential corridors. Overnight stay of guests or parents in student rooms is not permitted under any circumstances. Parents visiting the campus can book guest accommodation in the institute Guest House by submitting a request in advance."
+  },
+  {
+    "id": 28,
+    "question": "What is the procedure to apply for hostel leave?",
+    "answer": "To leave the campus overnight or during breaks, students must submit a physical leave application signed by their hostel warden. The leave request must also be confirmed by parents via a phone call or email verification. Students must sign the movement register at the gate when leaving and returning."
+  },
+  {
+    "id": 29,
+    "question": "What facilities are provided in the common recreation rooms of hostels?",
+    "answer": "Each hostel features a common recreation room equipped with a television, newspapers, table tennis setups, carrom boards, and chess sets. Some hostels also maintain a basic reading corner and an indoor gymnasium with weights. These spaces are managed by student representatives under warden oversight."
+  },
+  {
+    "id": 30,
+    "question": "What is the penalty for ragging or disciplinary violations in hostels?",
+    "answer": "BIT Mesra maintains a strict zero-tolerance policy towards ragging and disciplinary breaches. Any student found guilty of participating in, abetting, or organizing ragging activities will be immediately suspended or expelled from the institute. Incident reports are forwarded to the Anti-Ragging Committee and local law enforcement."
+  },
+  {
+    "id": 31,
+    "question": "Is internet access provided in hostels, and how do I connect?",
+    "answer": "Yes, high-speed internet is available across all hostel rooms through Wi-Fi routers and ethernet LAN ports. Students can connect using their institutional login ID and password. Daily usage policies and firewalls are managed by the campus IT services department to ensure academic focus."
+  },
+  {
+    "id": 32,
+    "question": "What are the timings of the hostel mess services?",
+    "answer": "The typical mess schedule is: Breakfast from 7:30 AM to 9:00 AM, Lunch from 12:30 PM to 2:00 PM, High Tea from 5:00 PM to 6:00 PM, and Dinner from 8:00 PM to 9:30 PM. Mess committees review the menu monthly to maintain food quality and variety."
+  },
+  {
+    "id": 33,
+    "question": "Can I opt out of the hostel mess and use external catering?",
+    "answer": "All hostel residents are required to join the cooperative mess by default; opting out is not allowed except on serious medical grounds certified by the institutional medical officer. This ensures uniform dining operations and hygienic standards for all residents."
+  },
+  {
+    "id": 34,
+    "question": "How are single rooms allocated in senior hostels?",
+    "answer": "Single room occupancy is reserved for final-year students, postgraduate scholars, and PhD candidates. The room allocation is performed based on CGPA merit and clear academic records during the hostel allotment round at the end of the third year. Applications are coordinated by the Dean of Student Affairs."
+  },
+  {
+    "id": 35,
+    "question": "Are there laundry facilities available in the hostels?",
+    "answer": "Yes, hostels are equipped with semi-automatic or automatic washing machines in designated washing rooms, managed by student house committees. Some hostels also have external dry-cleaning and ironing services visiting on specific days of the week, paid directly by students."
+  },
+  {
+    "id": 36,
+    "question": "What safety measures are in place at the hostels?",
+    "answer": "Hostels are secured with 24/7 security guards stationed at entrances, CCTV cameras monitoring corridors and common areas, and high boundary walls. Visitors are strictly checked at gate points, and security patrols are active across the campus campus overnight."
+  },
+  {
+    "id": 37,
+    "question": "What is the procedure to clear mess dues when leaving the hostel?",
+    "answer": "When vacating the hostel permanently, students must obtain a 'No Dues Certificate' from the hostel office. The hostel warden and mess committee verify that all room fixtures are intact and that there are no pending mess payments. The signed slip is then submitted to the main finance section."
+  },
+  {
+    "id": 38,
+    "question": "Are pets allowed in the hostel rooms?",
+    "answer": "No, keeping pets of any kind (including dogs, cats, or birds) is strictly prohibited in the hostel blocks for hygiene, sanitation, and safety reasons. Feeding stray animals inside hostel premises is also discouraged to avoid vector-borne diseases and security risks."
+  },
+  {
+    "id": 39,
+    "question": "What should I do in case of a medical emergency inside the hostel at night?",
+    "answer": "In case of a medical emergency during late-night hours, immediately contact your hostel caretaker, security guard, or student wing representative. The hostel office will coordinate with the BIT Mesra Medical Unit to arrange the campus ambulance, which is available 24/7 for transportation."
+  },
+  {
+    "id": 40,
+    "question": "Is water purification and power backup available in the hostels?",
+    "answer": "Yes, commercial-grade water purifiers (RO systems) and water coolers are installed on each floor. The campus is equipped with high-power generators that provide electricity backup for fans, lights, and water supply during general power outages."
+  },
+  {
+    "id": 41,
+    "question": "What are the membership rules and timings for the Central Library?",
+    "answer": "All registered students are automatic members of the Central Library. You must carry your institutional smart ID card to enter the library and borrow books (B.Tech students can borrow up to 4 books for 14 days). The library is open from 8:00 AM to 10:00 PM on weekdays, with extended hours during examinations."
+  },
+  {
+    "id": 42,
+    "question": "How do I get treatment or report sick at the Campus Medical Unit?",
+    "answer": "Walk into the Medical Unit with your student ID card for general consultation and medicine dispensation. For specialist consultations, refer to the weekly doctor schedules posted at the entrance. In serious cases, doctors refer students to associated hospital systems in Ranchi city."
+  },
+  {
+    "id": 43,
+    "question": "What sports facilities are open to students on campus?",
+    "answer": "Students have access to the main sports field, running track, outdoor basketball courts, tennis courts, and volleyball setups. The gymnasium and indoor badminton halls are open during scheduled morning and evening hours. Equipment can be issued from the Sports Office against your student ID card."
+  },
+  {
+    "id": 44,
+    "question": "What public transport options connect the BIT Mesra campus to Ranchi?",
+    "answer": "The institute operates regular bus services connecting the campus to Ranchi railway station and major spots in the city on weekends and holidays. Additionally, auto-rickshaws and cabs are available outside the Main Gate for local travel. Bus route timings are posted on the administrative notice board."
+  },
+  {
+    "id": 45,
+    "question": "Where can I purchase daily necessities, groceries, and academic supplies?",
+    "answer": "The campus shopping arcade houses the Student Store, stationery outlets, and small grocery shops. Here you can buy books, toiletries, laboratory uniforms, fresh fruits, and snacks. Payment terminals support UPI and cash transactions."
+  },
+  {
+    "id": 46,
+    "question": "What are the rules regarding vehicle usage by students inside the campus?",
+    "answer": "Undergraduate students residing in campus hostels are strictly prohibited from keeping motorized two-wheelers or four-wheelers on campus. Bicycles are allowed and encouraged for environment-friendly transit. Day scholars must obtain a vehicle parking pass from the security office."
+  },
+  {
+    "id": 47,
+    "question": "Where are the banking services and ATMs located on campus?",
+    "answer": "A full-fledged SBI branch with safe deposit vaults and general banking support is situated near the Guest House road. Two 24-hour SBI ATMs are located outside the branch gate for cash withdrawals."
+  },
+  {
+    "id": 48,
+    "question": "Are there guest house booking facilities for students' families?",
+    "answer": "Yes, students can book rooms in the institute Guest House for parents or relatives. Requests must be sent in advance to the Guest House manager via email or physical application, and bookings are subject to room availability."
+  },
+  {
+    "id": 49,
+    "question": "What dining options are available other than the hostel mess?",
+    "answer": "The Central Cafeteria, Nescafe outlet, juice stalls, and several student food kiosks inside the shopping arcade offer dining alternatives. They serve north/south Indian dishes, sandwiches, rolls, and beverages at nominal prices."
+  },
+  {
+    "id": 50,
+    "question": "How do I report a security issue or theft on campus?",
+    "answer": "Report security issues immediately to the Central Security Office located in the Administrative Building or contact campus security guards. For lost items, log a complain entry in the register with descriptions and roll details."
+  },
+  {
+    "id": 51,
+    "question": "Is there a postal and courier service office on campus?",
+    "answer": "Yes, a sub-post office of India Post is located in the commercial zone of the campus, offering speed-post, registered letters, and parcel services. Most major private couriers (like DHL, BlueDart) deliver to the main security gate point."
+  },
+  {
+    "id": 52,
+    "question": "What is the campus dress code for academic classes?",
+    "answer": "While there is no formal uniform for general theory classes, students are expected to dress modestly and professionally. For engineering workshops and science laboratories, students must wear protective lab coats and closed-toe leather shoes for safety."
+  },
+  {
+    "id": 53,
+    "question": "How do I book academic auditorium facilities for club events?",
+    "answer": "To book the University Auditorium or Seminar Halls, club coordinators must submit an application form signed by the club faculty advisor to the Dean of Student Affairs. Once approved, the venue booking is registered in the estate office database."
+  },
+  {
+    "id": 54,
+    "question": "Does the campus have high-speed Wi-Fi in public spaces?",
+    "answer": "Yes, public Wi-Fi access covers academic blocks, the Central Library, and the Student Activity Center. Students can connect to the network using their campus network credentials on mobile devices and laptops."
+  },
+  {
+    "id": 55,
+    "question": "Are there printing facilities inside the Central Library?",
+    "answer": "Yes, the digital library section offers black-and-white printing and scanning services for academic materials. Payment is collected on a per-page basis by the library attendants."
+  },
+  {
+    "id": 56,
+    "question": "How can I obtain a physical duplicate library card?",
+    "answer": "If you lose your library card/student ID, file a report at the library counter, pay the duplicate card fee at the accounts counter, and submit the application. A new card is issued within 3 working days."
+  },
+  {
+    "id": 57,
+    "question": "What is the penalty for late return of library books?",
+    "answer": "A fine of Rs. 2 per book per day is charged for delays beyond the 14-day borrowing limit. Fines must be cleared before the semester examination registration window opens."
+  },
+  {
+    "id": 58,
+    "question": "Is the campus handicap accessible?",
+    "answer": "Major buildings like the Administrative Building, Lecture Hall Complex, and Central Library are equipped with wheelchair ramps and elevators. The campus is working to improve accessibility features in older hostel blocks."
+  },
+  {
+    "id": 59,
+    "question": "What should I do if I lose my personal belongings on campus?",
+    "answer": "Lost items should be reported to the Security Office and posted in the student group channels. Found items are held at the security reception in the Administrative Building for claiming with proof of ownership."
+  },
+  {
+    "id": 60,
+    "question": "Are there recycling and environment conservation systems on campus?",
+    "answer": "Yes, the campus has active waste-segregation policies, rainwater harvesting plants, and solar panels installed on rooftops. Single-use plastic is banned in cafeteria zones to promote eco-friendliness."
+  },
+  {
+    "id": 61,
+    "question": "Who is eligible to participate in the campus placement process?",
+    "answer": "Students entering their final year of undergraduate or postgraduate programs who meet the minimum CGPA and backlog criteria set by individual recruiting companies are eligible. Registration on the Placement Portal is mandatory to participate."
+  },
+  {
+    "id": 62,
+    "question": "How does the Placement Cell coordinate student recruitments?",
+    "answer": "The Placement Cell invites core engineering, IT, and consulting firms for campus selection drives. It manages presentation schedules, online technical tests, group discussion rounds, and personal interviews conducted physically or virtually."
+  },
+  {
+    "id": 63,
+    "question": "What is the average package and placement rate for B.Tech CSE?",
+    "answer": "The B.Tech CSE branch consistently records placement rates above 90% each year. The average CTC ranges from 11-15 LPA, with top tier tech giants offering packages exceeding 40 LPA. Detailed placement statistics are published on the website."
+  },
+  {
+    "id": 64,
+    "question": "Does the institute assist in securing summer internships?",
+    "answer": "Yes, the Training and Placement Cell facilitates recruitment drives for summer internships for third-year students. Students also get internship opportunities through industry collaborations, research projects, and platforms like Internshala."
+  },
+  {
+    "id": 65,
+    "question": "What is the 'One Student, One Job' policy at BIT Mesra?",
+    "answer": "To ensure equal placement opportunities, once a student secures a job offer above a certain salary threshold, they are debarred from appearing in further recruitment drives. Exceptions are allowed for dream packages that offer significantly higher CTCs."
+  },
+  {
+    "id": 66,
+    "question": "Are there preparation workshops for technical and HR interviews?",
+    "answer": "Yes, the Placement Cell, in collaboration with clubs like the Coding Club and E-Cell, organizes mock tests, coding practice challenges, resume-building sessions, and HR interview seminars. These events are scheduled during the pre-final semesters."
+  },
+  {
+    "id": 67,
+    "question": "How do I register on the official Placement Portal?",
+    "answer": "Eligible students receive registration invitation links on their institutional email IDs before placement season starts. You must fill in your academic scores, upload a verified resume, and agree to the placement code of conduct."
+  },
+  {
+    "id": 68,
+    "question": "Can I opt out of campus placements to pursue higher education?",
+    "answer": "Yes, students planning to pursue GATE, CAT, GRE, or civil service exams can choose to opt out of the placement process by submitting an official declaration form, allowing the placement cell to focus on active job seekers."
+  },
+  {
+    "id": 69,
+    "question": "What documents must I carry during campus interview drives?",
+    "answer": "Carry multiple physical copies of your updated resume, passport-sized photographs, your student ID card, and original semester grade sheets alongside high school certificates. Keep a digital folder of these documents ready for quick access."
+  },
+  {
+    "id": 70,
+    "question": "What are the consequences of violating the placement code of conduct?",
+    "answer": "Violations like missing scheduled interviews, falsifying resume details, or misbehaving with company recruiters result in immediate suspension from the placement portal. Serious cases are referred to the disciplinary committee."
+  },
+  {
+    "id": 71,
+    "question": "Does BIT Mesra support startup incubation and entrepreneurship?",
+    "answer": "Yes, the institute has an active Entrepreneurship Cell (E-Cell) and an Incubation Center that provides office space, mentoring, legal support, and seed funding access to student-led startup ideas."
+  },
+  {
+    "id": 72,
+    "question": "Can I do a long-term internship in my final semester?",
+    "answer": "Yes, final-semester students are allowed to undertake full-semester internships in industries, subject to HoD approval. Students must submit monthly progress reports and return for evaluation at the end of the term."
+  },
+  {
+    "id": 73,
+    "question": "Do companies offer pre-placement offers (PPOs) after summer internships?",
+    "answer": "Yes, students who perform exceptionally well during their third-year summer internships are often offered Pre-Placement Offers (PPOs) by their respective companies. PPOs must be reported to the placement cell immediately."
+  },
+  {
+    "id": 74,
+    "question": "Are there research internships available within the departments?",
+    "answer": "Yes, students can work on funded research projects under the guidance of BIT faculty during summer/winter breaks. Successful completion of such projects can lead to research publications and recommendation letters."
+  },
+  {
+    "id": 75,
+    "question": "How do I write an academic resume for placements?",
+    "answer": "A standard resume should highlight your CGPA, core technical skills, academic projects, research papers, internship experiences, and club leadership roles. Resume templates and reviews are provided by placement coordinators."
+  },
+  {
+    "id": 76,
+    "question": "What industries visit BIT Mesra for mechanical and civil core roles?",
+    "answer": "Top core companies like Tata Motors, Tata Steel, L&T, JSW Steel, Cummins, and public sector undertakings (PSUs) visit the campus for core engineering placements. They recruit students through written technical tests and interviews."
+  },
+  {
+    "id": 77,
+    "question": "Is there a CGPA cutoff for placement registration?",
+    "answer": "While the institute allows all students to register, most premium companies mandate a minimum CGPA of 6.0, 7.0, or 8.0 to sit for their recruitment processes. Maintaining a high CGPA is recommended to maximize options."
+  },
+  {
+    "id": 78,
+    "question": "Does the placement cell coordinate with alumni for job referrals?",
+    "answer": "Yes, the Placement Cell maintains close ties with the BIT Mesra Alumni Association. Alumni working in various corporate sectors frequently share job referrals, off-campus drive notices, and mentorship advice."
+  },
+  {
+    "id": 79,
+    "question": "What is the structure of the campus placement team?",
+    "answer": "The team is headed by a Placement Director and supported by faculty representatives from each department. Student placement coordinators are also selected to assist in daily logistics and communications during the placement season."
+  },
+  {
+    "id": 80,
+    "question": "Does the institute provide training for placement aptitude tests?",
+    "answer": "Yes, the training cell organizes structured workshops on quantitative aptitude, logical reasoning, verbal ability, and coding foundations. These classes are scheduled prior to the arrival of recruiting companies."
+  },
+  {
+    "id": 81,
+    "question": "How can I join a student club at BIT Mesra?",
+    "answer": "Clubs host recruitment drives and auditions during the first few weeks of the autumn semester. Freshers can register for club selections by filling out online forms and attending orientations, interviews, or practical tests at the Student Activity Center."
+  },
+  {
+    "id": 82,
+    "question": "What is 'BITOTSAV' and when is it celebrated?",
+    "answer": "BITOTSAV is the annual national-level socio-cultural festival of BIT Mesra, celebrated in the spring semester (usually February/March). It features celebrity concerts, band performances, street plays, dance battles, and literary contests, attracting participants from across India."
+  },
+  {
+    "id": 83,
+    "question": "What technical festivals are organized on campus?",
+    "answer": "The major technical fest is 'Pantheon,' held during the autumn semester. It is organized by the student clubs and features coding hackathons, robotics competitions, drone racing, science exhibitions, and guest lectures from space and tech leaders."
+  },
+  {
+    "id": 84,
+    "question": "Are there scholarships available for merit students?",
+    "answer": "Yes, BIT Mesra offers merit scholarships based on JEE Main ranks and semester GPAs. Students can also apply for state scholarships (like e-Kalyan) and private trust schemes. Application notifications and details are posted on the Administrative Building board."
+  },
+  {
+    "id": 85,
+    "question": "How do I start a new student club or interest group?",
+    "answer": "To form a new club, you must draft a proposal detailing the club's constitution, objectives, planned activities, and list of founding members. Secure a faculty member to act as the advisor and submit the proposal to the Dean of Student Affairs for formal review and approval."
+  },
+  {
+    "id": 86,
+    "question": "What activities are conducted at the Student Activity Center?",
+    "answer": "The Student Activity Center (SAC) houses offices for various technical, cultural, and sports clubs. It hosts club meetings, project builds, script readings, drama rehearsals, and indoor table game sessions. It is the hub of student-led projects."
+  },
+  {
+    "id": 87,
+    "question": "How can I publish my write-ups in the campus magazine?",
+    "answer": "The student editorial board invites submissions (essays, short stories, poems, caricatures) for the campus newsletter and annual magazine. You can email your work to the Literary Club editor team or submit it during open invite windows."
+  },
+  {
+    "id": 88,
+    "question": "Are there community service opportunities on campus?",
+    "answer": "Yes, the National Service Scheme (NSS) unit and the youth service club organize regular blood donation camps, clean-up drives, adult literacy campaigns in nearby villages, and tree plantation events. Active volunteers receive certificates."
+  },
+  {
+    "id": 89,
+    "question": "What is the annual sports meet, and how do I participate?",
+    "answer": "The annual sports meet is the premier athletic event on campus, featuring inter-hostel and inter-branch track-and-field events, football, cricket, and basketball tournaments. Registrations open through the Sports Club and physical education department."
+  },
+  {
+    "id": 90,
+    "question": "Are student trips or industrial tours organized by the college?",
+    "answer": "Yes, academic departments organize curriculum-related industrial tours and visits to manufacturing plants, power grids, or research labs for third-year students. These trips are accompanied by faculty and require parental consent."
+  },
+  {
+    "id": 91,
+    "question": "How do I apply for the e-Kalyan state scholarship?",
+    "answer": "Students from Jharkhand belonging to SC, ST, or OBC categories can apply on the e-Kalyan portal. You must upload documents like income certificate, caste certificate, fee structure, and bonafide certificate issued by the BIT academic section."
+  },
+  {
+    "id": 92,
+    "question": "What is the role of the Student Council at BIT Mesra?",
+    "answer": "The Student Council acts as a bridge between the student community and the institute administration. It represents student grievances regarding hostel facilities, academics, and mess food, and helps organize major campus fests."
+  },
+  {
+    "id": 93,
+    "question": "Are there hobby clubs for astronomy or gaming?",
+    "answer": "Yes, there are active informal interest groups for astronomy sky-watching and gaming tournaments. These groups coordinate activities under technical clubs, using equipment like telescopes during clear night skies."
+  },
+  {
+    "id": 94,
+    "question": "What is the 'Vajra' sports fest?",
+    "answer": "Vajra is the annual inter-college sports festival of BIT Mesra, where universities from all over eastern India compete in football, basketball, volleyball, table tennis, and athletics. It is hosted at the main sports complex."
+  },
+  {
+    "id": 95,
+    "question": "How can I join the college band or music crew?",
+    "answer": "The Music Club hosts music auditions at the Student Activity Center during the start of the session. Students are evaluated on vocal ability or skill with instruments like drums, guitars, keyboards, or classical instruments."
+  },
+  {
+    "id": 96,
+    "question": "Are there coding hackathons hosted for beginners?",
+    "answer": "Yes, clubs like the Coding Club and Developer Student Club host entry-level hackathons and workshops specifically for first-year students to introduce them to collaborative coding, version control, and problem solving."
+  },
+  {
+    "id": 97,
+    "question": "Does the institute provide funding for national project competitions?",
+    "answer": "Yes, team representations participating in national-level technical competitions (like Robocon, Smart India Hackathon, or SAE BAJA) can apply for financial grants from the Research and Innovation Center to fund prototype materials and travel."
+  },
+  {
+    "id": 98,
+    "question": "How do I contact the anti-ragging helpline on campus?",
+    "answer": "The contact numbers of anti-ragging squad members, hostel wardens, and national anti-ragging helpline details are posted across all hostel lobbies, academic wings, and the institute website. You can report incidents confidentially."
+  },
+  {
+    "id": 99,
+    "question": "What is the student grievance cell and how does it work?",
+    "answer": "The student grievance cell handles complaints regarding academic grading, harassment, or infrastructure issues. Students can submit written grievances to the cell coordinator, which are investigated by a faculty committee."
+  },
+  {
+    "id": 100,
+    "question": "Where can I find student notices about events and club activities?",
+    "answer": "Student-related announcements are posted on notice boards at the Student Activity Center, the Central Library, hostel entrances, and through official student communication channels and social media handles run by the clubs."
+  }
 ]

@@ -10,49 +10,48 @@ def get_all_locations():
     locations = []
     
     # 1. Parse buildings
-    for name, info in buildings.items():
+    for b in buildings:
+        name = b.get("name", "")
         locations.append({
             "name": name,
-            "description": info.get("description") or f"{name} ({info.get('type', 'building')})"
+            "description": b.get("description") or f"{name} ({b.get('category', 'building')})"
         })
         
     # 2. Parse hostels
-    for name, info in hostels.items():
+    for h in hostels:
+        name = h.get("name", "")
         locations.append({
             "name": name,
-            "description": info.get("description") or f"{name} ({info.get('type', 'hostel').replace('_', ' ')})"
+            "description": h.get("description") or f"{name} ({h.get('gender', 'hostel')})"
         })
         
     # 3. Parse facilities
-    for name, info in facilities.items():
-        desc = f"{name}"
-        category = info.get("category")
-        if category:
-            desc += f" ({category})"
-        if "opening_time" in info and "closing_time" in info:
-            desc += f" [Open: {info['opening_time']} - {info['closing_time']}]"
+    for f in facilities:
+        name = f.get("name", "")
+        desc = f.get("description") or name
+        timings = f.get("timings")
+        if timings:
+            desc += f" [Timings: {timings}]"
         locations.append({
             "name": name,
             "description": desc
         })
         
     # 4. Parse departments
-    for code, info in departments.items():
-        name = info.get("name", code)
-        desc = f"Department of {name}"
-        head = info.get("head")
-        office = info.get("office")
-        extra = []
-        if head:
-            extra.append(f"Head: {head}")
-        if office:
-            extra.append(f"Office: {office}")
-        if extra:
-            desc += f" ({', '.join(extra)})"
+    for d in departments:
+        name = d.get("name", "")
+        desc = d.get("description", "")
+        building = d.get("building", "")
+        full_desc = f"Department of {name}: {desc} (Located in {building})"
+        
+        # Simple acronym code generation (e.g. Computer Science and Engineering -> CSE)
+        words = name.split()
+        code = "".join(w[0] for w in words if w[0].isupper())
+        
         locations.append({
             "name": name,
             "code": code,
-            "description": desc
+            "description": full_desc
         })
         
     return locations
