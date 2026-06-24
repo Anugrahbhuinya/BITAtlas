@@ -14,6 +14,19 @@ def query_rag(question: str):
         k=5
     )
 
+    retrieved_docs = [doc.page_content for doc, score in results] if results else []
+
+    print("\n========== RAG SERVICE ==========")
+    print(f"Retrieved Documents:\n{len(results)}")
+    if results:
+        best_doc, best_score = results[0]
+        print(f"Best Score:\n{best_score}")
+        print(f"Best Source:\n{best_doc.metadata.get('source', 'unknown')}")
+    else:
+        print("Best Score:\nNone")
+        print("Best Source:\nNone")
+    print("=================================\n")
+
     if not results:
         return None
 
@@ -60,7 +73,8 @@ def query_rag(question: str):
                     f"End Date: {end_date}"
                 ),
                 "confidence": float(best_score),
-                "source": source
+                "source": source,
+                "documents": retrieved_docs
             }
         else:
             calendar_answers = []
@@ -82,7 +96,8 @@ def query_rag(question: str):
             return {
                 "answer": combined_answer,
                 "confidence": float(best_score),
-                "source": source
+                "source": source,
+                "documents": retrieved_docs
             }
 
     # ==================================================
@@ -110,7 +125,8 @@ def query_rag(question: str):
         return {
             "answer": combined_answer,
             "confidence": float(best_score),
-            "source": source
+            "source": source,
+            "documents": retrieved_docs
         }
 
     # ==================================================
@@ -124,7 +140,8 @@ def query_rag(question: str):
                 f"{best_doc.page_content}"
             ),
             "confidence": float(best_score),
-            "source": source
+            "source": source,
+            "documents": retrieved_docs
         }
 
     # ==================================================
@@ -138,7 +155,8 @@ def query_rag(question: str):
                 f"{best_doc.page_content}"
             ),
             "confidence": float(best_score),
-            "source": source
+            "source": source,
+            "documents": retrieved_docs
         }
 
     # ==================================================
@@ -152,7 +170,8 @@ def query_rag(question: str):
                 f"{best_doc.page_content}"
             ),
             "confidence": float(best_score),
-            "source": source
+            "source": source,
+            "documents": retrieved_docs
         }
 
     # ==================================================
@@ -166,7 +185,8 @@ def query_rag(question: str):
                 f"{best_doc.page_content}"
             ),
             "confidence": float(best_score),
-            "source": source
+            "source": source,
+            "documents": retrieved_docs
         }
 
     # ==================================================
@@ -187,7 +207,8 @@ def query_rag(question: str):
                 f"{combined_answer}"
             ),
             "confidence": float(best_score),
-            "source": source
+            "source": source,
+            "documents": retrieved_docs
         }
 
     # ==================================================
@@ -220,7 +241,8 @@ def query_rag(question: str):
         return {
             "answer": answer,
             "confidence": float(best_score),
-            "source": source
+            "source": source,
+            "documents": retrieved_docs
         }
 
     # ==================================================
@@ -230,5 +252,6 @@ def query_rag(question: str):
     return {
         "answer": best_doc.page_content,
         "confidence": float(best_score),
-        "source": source
+        "source": source,
+        "documents": retrieved_docs
     }
