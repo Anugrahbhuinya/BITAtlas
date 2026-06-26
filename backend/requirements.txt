@@ -9,3 +9,5 @@ langchain-core
 langchain-text-splitters
 langchain-chroma
 langchain-huggingface
+pyjwt
+bcrypt
