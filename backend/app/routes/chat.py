@@ -68,6 +68,7 @@ async def chat(request: ChatRequest):
             
             # Gemini Context: top 7 chunks if reasoning query, else top 3 chunks
             context = ""
+            chunks = []
             if rag_result and "documents" in rag_result:
                 reasoning = is_reasoning_query(query)
                 limit = 7 if reasoning else 3
@@ -92,15 +93,21 @@ async def chat(request: ChatRequest):
             # Build prompt
             prompt = build_prompt(question=query, context=context, history=history_text)
 
-            # Generate response
-            gemini_raw = generate_response(prompt)
+            # Generate response with Direct RAG fallback on API failure
+            try:
+                gemini_raw = generate_response(prompt)
+                answer = clean_gemini_response(gemini_raw)
+                result_type = "gemini"
+            except Exception as gemini_exc:
+                logger.error(f"Gemini API failure, executing local Direct RAG extraction fallback: {gemini_exc}", exc_info=True)
+                from app.services.rag.rag_service import extract_fallback_answer
+                answer = extract_fallback_answer(query, chunks)
+                result_type = "rag_fallback"
 
-            # Format/clean response
-            answer = clean_gemini_response(gemini_raw)
             gemini_time = time.time() - gemini_start
 
             result = {
-                "type": "gemini",
+                "type": result_type,
                 "answer": answer
             }
         else:

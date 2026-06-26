@@ -1,3 +1,4 @@
+import re
 from app.services.rag.retriever import retrieve_with_scores
 from app.utils.loader import load_json
 
@@ -14,7 +15,23 @@ def query_rag(question: str):
         k=5
     )
 
-    retrieved_docs = [doc.page_content for doc, score in results] if results else []
+    retrieved_docs = []
+    if results:
+        for doc, score in results:
+            source_name = (
+                doc.metadata.get("filename") or
+                doc.metadata.get("name") or
+                doc.metadata.get("title") or
+                doc.metadata.get("event") or
+                doc.metadata.get("question") or
+                doc.metadata.get("source", "unknown")
+            )
+            page_num = doc.metadata.get("page")
+            citation = f"[Source: {source_name}"
+            if page_num:
+                citation += f", Page: {page_num}"
+            citation += "]"
+            retrieved_docs.append(f"{citation}\n{doc.page_content}")
 
     print("\n========== RAG SERVICE ==========")
     print(f"Retrieved Documents:\n{len(results)}")
@@ -31,10 +48,6 @@ def query_rag(question: str):
         return None
 
     best_doc, best_score = results[0]
-
-    # Lower score = better match
-    if best_score > SIMILARITY_THRESHOLD:
-        return None
 
     source = best_doc.metadata.get(
         "source",
@@ -255,3 +268,91 @@ def query_rag(question: str):
         "source": source,
         "documents": retrieved_docs
     }
+
+
+def extract_fallback_answer(query: str, retrieved_docs: List[str] if 'List' in globals() else list) -> str:
+    """
+    Parses and extracts a clean direct answer from retrieved document chunks.
+    Used as a high-quality fallback when the Gemini API is rate-limited or down.
+    """
+    if not retrieved_docs:
+        return "I could not find that information in the BIT Mesra knowledge base."
+        
+    query_lower = query.lower()
+    query_clean = re.sub(r'[^\w\s]', ' ', query_lower)
+    query_words = set(query_clean.split())
+    stop_words = {
+        "what", "is", "the", "are", "of", "in", "to", "for", "a", "an", "this", 
+        "that", "it", "they", "them", "where", "how", "who", "when", "which", 
+        "on", "at", "by", "from", "with", "listed", "listed in", "on campus", "resume"
+    }
+    meaningful_words = query_words - stop_words
+    if not meaningful_words:
+        meaningful_words = query_words
+        
+    best_sentences = []
+    best_source_header = ""
+    max_overlap = -1
+    
+    # Parse retrieved docs (formatted as "[Source: filename, Page: page]\ncontent")
+    for doc_text in retrieved_docs:
+        header = ""
+        content = doc_text
+        if doc_text.startswith("[Source:"):
+            end_idx = doc_text.find("]")
+            if end_idx != -1:
+                header = doc_text[:end_idx + 1]
+                content = doc_text[end_idx + 1:].strip()
+                
+        # Split content into sentences or lines
+        sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+|\n', content) if s.strip()]
+        
+        for sent in sentences:
+            sent_lower = sent.lower()
+            sent_clean = re.sub(r'[^\w\s]', ' ', sent_lower)
+            sent_words = set(sent_clean.split())
+            overlap = len(meaningful_words.intersection(sent_words))
+            
+            # Additional score weight if sentence contains decimals/numbers when querying stats
+            if overlap > 0:
+                if any(term in query_lower for term in ["cgpa", "gpa", "score", "percentage", "marks", "grade"]):
+                    if re.search(r'\b\d\.\d+\b|\b\d/\d\b|\b\d{2,3}\b', sent):
+                        overlap += 1
+                
+                if overlap > max_overlap:
+                    max_overlap = overlap
+                    best_sentences = [sent]
+                    best_source_header = header
+                elif overlap == max_overlap:
+                    best_sentences.append(sent)
+                    
+    if max_overlap > 0 and best_sentences:
+        unique_sentences = []
+        for s in best_sentences:
+            if s not in unique_sentences:
+                unique_sentences.append(s)
+        joined_sentences = " ".join(unique_sentences[:2])
+        
+        source_citation = ""
+        if best_source_header:
+            source_citation = f"According to {best_source_header.replace('[Source: ', '').replace(']', '')}:\n"
+            
+        return f"{source_citation}{joined_sentences}"
+        
+    # If no specific sentence has overlap, return a clean snippet of the top document
+    first_doc = retrieved_docs[0]
+    header = ""
+    content = first_doc
+    if first_doc.startswith("[Source:"):
+        end_idx = first_doc.find("]")
+        if end_idx != -1:
+            header = first_doc[:end_idx + 1]
+            content = first_doc[end_idx + 1:].strip()
+            
+    source_citation = ""
+    if header:
+        source_citation = f"According to {header.replace('[Source: ', '').replace(']', '')}:\n"
+        
+    lines = [line.strip() for line in content.split('\n') if line.strip()]
+    snippet = " ".join(lines[:3])
+    return f"{source_citation}{snippet}"

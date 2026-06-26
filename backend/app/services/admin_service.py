@@ -104,6 +104,20 @@ async def get_dashboard_stats() -> dict:
                         "created": created
                     })
 
+    # Fetch dynamic documents from MongoDB
+    try:
+        cursor = db.indexed_documents.find({})
+        async for doc in cursor:
+            knowledge_sources += 1
+            documents_list.append({
+                "filename": doc["filename"],
+                "type": doc["type"],
+                "size": doc["size_bytes"],
+                "created": doc.get("created") or doc.get("updated") or datetime.now(timezone.utc)
+            })
+    except Exception as e:
+        print(f"Error fetching dynamic docs for dashboard stats: {e}")
+
     # Add virtual documents to mock data if empty
     if len(documents_list) == 0:
         documents_list = [
@@ -276,7 +290,23 @@ async def get_documents() -> list:
                     })
                     counter += 1
 
-    # Seed list with standard files if none found in directory scan
+    # Fetch dynamic documents from MongoDB
+    db = get_database()
+    try:
+        cursor = db.indexed_documents.find({})
+        async for doc in cursor:
+            documents_list.append({
+                "id": doc["id"],
+                "filename": doc["filename"],
+                "type": doc["type"],
+                "status": doc.get("status", "Indexed"),
+                "created": doc.get("created") or doc.get("updated") or datetime.now(timezone.utc),
+                "size_bytes": doc["size_bytes"]
+            })
+    except Exception as e:
+        print(f"Error fetching dynamic docs from MongoDB: {e}")
+
+    # Seed list with standard files if none found in directory scan and database
     if not documents_list:
         documents_list = [
             {

@@ -64,6 +64,21 @@ def should_use_gemini(query: str, rag_result: dict | None) -> bool:
                 matched_keyword = f"conversational pronoun '{pronoun}'"
                 break
             
+    # Check for dynamic document presence in the retrieved results
+    if rag_result:
+        source = rag_result.get("source")
+        legacy_sources = ["faq", "calendar", "notice", "building", "facility", "hostel", "department", "club"]
+        if source not in legacy_sources:
+            logger.info(f"Routing to Gemini: Dynamic source '{source}' requires LLM synthesis")
+            return True
+            
+        # Check if any retrieved document chunk belongs to a dynamic source
+        from app.services.rag.retriever import get_last_retrieval_sources
+        for src in get_last_retrieval_sources():
+            if src not in legacy_sources:
+                logger.info(f"Routing to Gemini: Context contains dynamic document source '{src}'")
+                return True
+
     decision = True
     if matched_keyword:
         decision = True

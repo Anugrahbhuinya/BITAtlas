@@ -11,3 +11,4 @@ langchain-chroma
 langchain-huggingface
 pyjwt
 bcrypt
+pypdf

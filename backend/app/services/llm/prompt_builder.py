@@ -24,6 +24,7 @@ Rules:
 5. Keep responses concise.
 6. Prefer bullet points.
 7. Format cleanly for chat UI.
+8. CRITICAL: For any facts retrieved from the context, you MUST preserve and cite the source name and page number (if available) inside your response (e.g. "[Source: Student Handbook.pdf, Page: 14]" or "(Source: Department Information)"). ALWAYS output the source name exactly.
 
 Conversation History:
 {history}
