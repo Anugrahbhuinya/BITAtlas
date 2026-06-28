@@ -1,7 +1,9 @@
 import { Volume2, VolumeX, MapPinned, Bot } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import type { ChatMessage } from "../types";
 import { useMapStore } from "../../map/store/useMapStore";
+import Markdown from "../../../shared/components/Markdown";
 
 interface Props {
   message: ChatMessage;
@@ -46,10 +48,15 @@ export const MessageBubble = ({
   };
 
   return (
-    <div className={`flex flex-col mb-4 ${isUser ? "items-end" : "items-start"}`}>
+    <motion.div 
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className={`flex flex-col mb-6 ${isUser ? "items-end" : "items-start"}`}
+    >
       {/* Bot Message Header */}
       {!isUser && (
-        <div className="flex items-center gap-2 mb-1.5 px-1 select-none">
+        <div className="flex items-center gap-2 mb-2 px-1 select-none">
           <div className="w-5 h-5 rounded bg-surface-container border border-outline-variant flex items-center justify-center">
             <Bot size={11} className="text-primary" />
           </div>
@@ -60,22 +67,24 @@ export const MessageBubble = ({
       )}
 
       {/* Bubble Container */}
-      <div className={`flex items-center gap-3 w-full ${isUser ? "justify-end" : "justify-start"}`}>
+      <div className={`flex items-start gap-3 w-full ${isUser ? "justify-end" : "justify-start"}`}>
         <div
           className={`
-            px-5 py-3
+            px-5 py-3.5
             rounded-2xl
-            max-w-[85%]
+            max-w-[90%]
+            md:max-w-[850px]
             break-words
             text-xs
             leading-relaxed
+            shadow-sm
             ${isUser 
               ? "bg-transparent border border-outline-variant text-primary font-semibold" 
               : "bg-surface-container border border-outline-variant text-on-surface"
             }
           `}
         >
-          <div>{message.text}</div>
+          <Markdown text={message.text} />
 
           {/* Map Redirect Trigger */}
           {!isUser && detectedLocation && (
@@ -100,6 +109,7 @@ export const MessageBubble = ({
               transition-all
               duration-150
               cursor-pointer
+              mt-1.5
               ${
                 isSpeaking
                   ? "bg-red-500/10 border-red-500/20 text-red-400 hover:bg-red-500/20 scale-105"
@@ -112,7 +122,7 @@ export const MessageBubble = ({
           </button>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -2,6 +2,7 @@ import {
   GraduationCap, TrendingUp, BookOpen, Clock, AlertCircle, ArrowRight
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export const AcademicsPage = () => {
   const activeCourses = [
@@ -97,8 +98,14 @@ export const AcademicsPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {activeCourses.map((course) => (
-                <div key={course.code} className="matte-card rounded-2xl p-6 group cursor-pointer flex flex-col justify-between h-[160px]">
+              {activeCourses.map((course, idx) => (
+                <motion.div 
+                  key={course.code} 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2, delay: idx * 0.05 }}
+                  className="matte-card rounded-2xl p-6 group cursor-pointer flex flex-col justify-between h-[160px]"
+                >
                   <div className="flex justify-between items-start">
                     <div className="bg-secondary-container p-2 rounded-xl border border-outline-variant">
                       <BookOpen size={16} className="text-primary" />
@@ -114,7 +121,7 @@ export const AcademicsPage = () => {
                   <div className="flex items-center justify-between pt-2 border-t border-outline-variant/30 text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">
                     <span>{course.nextClass}</span>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </section>

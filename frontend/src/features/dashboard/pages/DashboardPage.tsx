@@ -32,75 +32,77 @@ export const DashboardPage = () => {
 
   return (
     <div className="h-full overflow-y-auto custom-scrollbar bg-background">
-      <div className="max-w-[1200px] mx-auto px-6 py-8 space-y-8 text-on-surface font-sans">
+      <div className="max-w-[1200px] mx-auto px-6 py-10 space-y-10 text-on-surface font-sans">
         {/* Hero Greeting */}
-        <section className="mb-6">
+        <section className="mb-2">
           <h2 className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">
             {greeting}, {getFirstName(currentUser?.name)} 👋
           </h2>
-          <p className="text-on-surface-variant mt-1.5 text-sm md:text-base">
-            Your personalized AI campus assistant.
+          <p className="text-on-surface-variant mt-2 text-xs md:text-sm uppercase tracking-wider font-bold opacity-60">
+            Welcome to the BIT Mesra AI student workspace.
           </p>
         </section>
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        {/* Bento Grid Layout - Increased whitespace with gap-8 */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           
-          {/* Today's Schedule */}
-          <div className="md:col-span-8 matte-card rounded-2xl p-6 flex flex-col min-h-[320px]">
-            <div className="flex justify-between items-center mb-6 border-b border-outline-variant/30 pb-3">
-              <div className="flex items-center gap-3">
-                <CalendarRange className="w-5 h-5 text-primary" />
-                <h3 className="text-base font-bold text-primary">Today's Schedule</h3>
-              </div>
-              <span className="text-xs text-on-surface-variant font-medium">Monday, Oct 23</span>
-            </div>
-
-            <div className="space-y-4 flex-1">
-              <div className="flex items-center gap-4 p-4 bg-surface-container rounded-xl border border-transparent hover:border-outline-variant transition-all duration-150">
-                <div className="text-center min-w-[60px]">
-                  <span className="block text-xs font-bold text-on-surface">09:00</span>
-                  <span className="block text-[10px] text-on-surface-variant font-semibold">AM</span>
+          {/* Today's Schedule (Styled Timeline Card) */}
+          <div className="md:col-span-8 border border-outline-variant/40 bg-surface-container-low rounded-2xl p-8 flex flex-col justify-between min-h-[360px]">
+            <div>
+              <div className="flex justify-between items-center mb-6 border-b border-outline-variant/30 pb-4">
+                <div className="flex items-center gap-3">
+                  <CalendarRange className="w-5 h-5 text-primary" />
+                  <h3 className="text-sm font-extrabold text-primary uppercase tracking-wider">Today's Schedule</h3>
                 </div>
-                <div className="w-1 h-10 bg-primary rounded-full"></div>
-                <div className="flex-1">
-                  <h4 className="text-sm font-bold text-primary">Machine Learning (L-302)</h4>
-                  <p className="text-xs text-on-surface-variant">Prof. K. Sharma &bull; 50 mins left</p>
-                </div>
+                <span className="text-[10px] text-on-surface-variant font-mono-code font-bold uppercase tracking-wider">Monday, Oct 23</span>
               </div>
 
-              <div className="flex items-center gap-4 p-4 bg-surface-container/50 rounded-xl">
-                <div className="text-center min-w-[60px]">
-                  <span className="block text-xs font-bold text-on-surface">11:30</span>
-                  <span className="block text-[10px] text-on-surface-variant font-semibold">AM</span>
+              <div className="relative border-l border-outline-variant/40 pl-6 ml-3 space-y-6">
+                {/* Active class */}
+                <div className="relative">
+                  <div className="absolute -left-[30px] top-1.5 w-3 h-3 rounded-full bg-primary ring-4 ring-primary/20"></div>
+                  <div className="flex flex-col md:flex-row md:items-center gap-2 justify-between">
+                    <div>
+                      <h4 className="text-xs font-bold text-primary uppercase tracking-wider">Machine Learning (L-302)</h4>
+                      <p className="text-[11px] text-on-surface-variant mt-0.5">Prof. K. Sharma &bull; 50 mins left</p>
+                    </div>
+                    <span className="text-[9px] font-mono bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold uppercase tracking-wider self-start md:self-auto">Now</span>
+                  </div>
                 </div>
-                <div className="w-1 h-10 bg-outline-variant rounded-full"></div>
-                <div className="flex-1">
-                  <h4 className="text-sm font-bold text-primary">Data Structures Lab</h4>
-                  <p className="text-xs text-on-surface-variant">Dept. IT &bull; Lab 4</p>
-                </div>
-              </div>
 
-              <div className="flex items-center gap-4 p-4 bg-surface-container/50 rounded-xl opacity-60">
-                <div className="text-center min-w-[60px]">
-                  <span className="block text-xs font-bold text-on-surface">02:30</span>
-                  <span className="block text-[10px] text-on-surface-variant font-semibold">PM</span>
+                {/* Upcoming class */}
+                <div className="relative">
+                  <div className="absolute -left-[30px] top-1.5 w-3 h-3 rounded-full bg-outline-variant"></div>
+                  <div className="flex flex-col md:flex-row md:items-center gap-2 justify-between">
+                    <div>
+                      <h4 className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Data Structures Lab</h4>
+                      <p className="text-[11px] text-on-surface-variant mt-0.5">Dept. IT &bull; Lab 4</p>
+                    </div>
+                    <span className="text-[9px] font-mono-code text-on-surface-variant uppercase font-medium">11:30 AM</span>
+                  </div>
                 </div>
-                <div className="w-1 h-10 bg-outline-variant rounded-full"></div>
-                <div className="flex-1">
-                  <h4 className="text-sm font-bold text-primary">Minor Project Review</h4>
-                  <p className="text-xs text-on-surface-variant">Seminar Hall 1</p>
+
+                {/* Later class */}
+                <div className="relative opacity-60">
+                  <div className="absolute -left-[30px] top-1.5 w-3 h-3 rounded-full bg-outline-variant/60"></div>
+                  <div className="flex flex-col md:flex-row md:items-center gap-2 justify-between">
+                    <div>
+                      <h4 className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Minor Project Review</h4>
+                      <p className="text-[11px] text-on-surface-variant mt-0.5">Seminar Hall 1</p>
+                    </div>
+                    <span className="text-[9px] font-mono-code text-on-surface-variant uppercase font-medium">02:30 PM</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Quick AI Actions */}
-          <div className="md:col-span-4 matte-card rounded-2xl p-6 flex flex-col justify-between">
+          {/* Quick AI Actions (Clean Pill Button Card) */}
+          <div className="md:col-span-4 matte-card rounded-2xl p-8 flex flex-col justify-between min-h-[360px]">
             <div>
-              <div className="flex items-center gap-3 mb-6 border-b border-outline-variant/30 pb-3">
+              <div className="flex items-center gap-3 mb-6 border-b border-outline-variant/30 pb-4">
                 <Bolt className="w-5 h-5 text-primary" />
-                <h3 className="text-base font-bold text-primary">Quick Actions</h3>
+                <h3 className="text-sm font-extrabold text-primary uppercase tracking-wider">Quick Actions</h3>
               </div>
               <div className="space-y-3">
                 {[
@@ -112,99 +114,109 @@ export const DashboardPage = () => {
                   <button
                     key={act}
                     onClick={() => handleQuickAction(act)}
-                    className="w-full flex items-center justify-between p-4 bg-surface-container hover:bg-primary text-primary hover:text-background rounded-xl transition-all duration-150 group cursor-pointer border border-transparent hover:border-outline-variant"
+                    className="w-full flex items-center justify-between px-4 py-3 bg-surface-container hover:bg-primary text-primary hover:text-background rounded-xl transition-all duration-150 group cursor-pointer border border-transparent hover:border-outline-variant"
                   >
-                    <span className="text-xs font-bold uppercase tracking-wider">{act}</span>
-                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider">{act}</span>
+                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
                   </button>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Unread Notices */}
-          <div className="md:col-span-5 matte-card rounded-2xl p-6 flex flex-col justify-between">
+          {/* Unread Notices Feed Card */}
+          <div className="md:col-span-5 border border-outline-variant/40 bg-surface-container-low rounded-2xl p-8 flex flex-col justify-between">
             <div>
-              <div className="flex justify-between items-center mb-6 border-b border-outline-variant/30 pb-3">
+              <div className="flex justify-between items-center mb-6 border-b border-outline-variant/30 pb-4">
                 <div className="flex items-center gap-3">
                   <AlertCircle className="w-5 h-5 text-primary" />
-                  <h3 className="text-base font-bold text-primary">Unread Notices</h3>
+                  <h3 className="text-sm font-extrabold text-primary uppercase tracking-wider">Notices Feed</h3>
                 </div>
-                <span className="bg-primary text-background text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">3 NEW</span>
+                <span className="bg-primary text-background text-[9px] px-2 py-0.5 rounded font-extrabold uppercase tracking-wider">3 New</span>
               </div>
 
-              <div className="space-y-4">
-                <Link to="/notices" className="block group">
-                  <p className="text-[10px] text-on-surface-variant mb-1 font-mono-code">Office of Registrar &bull; 2h ago</p>
+              <div className="space-y-6">
+                <Link to="/notices" className="block group space-y-1.5">
+                  <div className="flex items-center gap-2 text-[9px] text-on-surface-variant font-mono-code font-bold uppercase tracking-wider">
+                    <span>Office of Registrar</span>
+                    <span>&bull;</span>
+                    <span>2h ago</span>
+                  </div>
                   <h4 className="text-xs font-bold text-primary group-hover:underline leading-snug">Re-registration for Winter Semester 2024</h4>
-                  <div className="divider mt-4"></div>
                 </Link>
                 
-                <Link to="/notices" className="block group">
-                  <p className="text-[10px] text-on-surface-variant mb-1 font-mono-code">Hostel Committee &bull; 5h ago</p>
+                <Link to="/notices" className="block group space-y-1.5">
+                  <div className="flex items-center gap-2 text-[9px] text-on-surface-variant font-mono-code font-bold uppercase tracking-wider">
+                    <span>Hostel Committee</span>
+                    <span>&bull;</span>
+                    <span>5h ago</span>
+                  </div>
                   <h4 className="text-xs font-bold text-primary group-hover:underline leading-snug">Maintenance schedule: Hostel 10 & 11</h4>
-                  <div className="divider mt-4"></div>
                 </Link>
 
-                <Link to="/notices" className="block group">
-                  <p className="text-[10px] text-on-surface-variant mb-1 font-mono-code">T&P Cell &bull; Yesterday</p>
+                <Link to="/notices" className="block group space-y-1.5">
+                  <div className="flex items-center gap-2 text-[9px] text-on-surface-variant font-mono-code font-bold uppercase tracking-wider">
+                    <span>T&P Cell</span>
+                    <span>&bull;</span>
+                    <span>Yesterday</span>
+                  </div>
                   <h4 className="text-xs font-bold text-primary group-hover:underline leading-snug">Internship Drive: Google Cloud (2025 batch)</h4>
                 </Link>
               </div>
             </div>
           </div>
 
-          {/* Academic Calendar */}
-          <div className="md:col-span-4 matte-card rounded-2xl p-6">
-            <div className="flex items-center gap-3 mb-6 border-b border-outline-variant/30 pb-3">
+          {/* Academic Calendar highlights */}
+          <div className="md:col-span-4 matte-card rounded-2xl p-8">
+            <div className="flex items-center gap-3 mb-6 border-b border-outline-variant/30 pb-4">
               <Clock className="w-5 h-5 text-primary" />
-              <h3 className="text-base font-bold text-primary">Calendar</h3>
+              <h3 className="text-sm font-extrabold text-primary uppercase tracking-wider">Key Dates</h3>
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-6">
               <div className="flex gap-4 items-center">
-                <div className="flex flex-col items-center justify-center w-12 h-12 bg-surface-container rounded-lg border border-outline-variant shrink-0">
-                  <span className="text-[9px] text-on-surface-variant uppercase font-bold leading-none">Nov</span>
-                  <span className="text-base font-bold text-primary leading-none mt-1">05</span>
+                <div className="flex flex-col items-center justify-center w-12 h-12 bg-surface-container rounded-lg border border-outline-variant shrink-0 select-none">
+                  <span className="text-[9px] text-on-surface-variant uppercase font-extrabold leading-none">Nov</span>
+                  <span className="text-sm font-extrabold text-primary leading-none mt-1">05</span>
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-primary leading-tight">Mid-Sem Exams Start</h4>
-                  <p className="text-[10px] text-on-surface-variant mt-0.5">Major Academic Event</p>
+                  <h4 className="text-xs font-bold text-primary leading-tight uppercase tracking-wide">Mid-Sem Start</h4>
+                  <p className="text-[10px] text-on-surface-variant mt-0.5 font-medium">Major Academic Event</p>
                 </div>
               </div>
 
               <div className="flex gap-4 items-center">
-                <div className="flex flex-col items-center justify-center w-12 h-12 bg-surface-container rounded-lg border border-outline-variant shrink-0">
-                  <span className="text-[9px] text-on-surface-variant uppercase font-bold leading-none">Nov</span>
-                  <span className="text-base font-bold text-primary leading-none mt-1">12</span>
+                <div className="flex flex-col items-center justify-center w-12 h-12 bg-surface-container rounded-lg border border-outline-variant shrink-0 select-none">
+                  <span className="text-[9px] text-on-surface-variant uppercase font-extrabold leading-none">Nov</span>
+                  <span className="text-sm font-extrabold text-primary leading-none mt-1">12</span>
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-primary leading-tight">Diwali Break Begins</h4>
-                  <p className="text-[10px] text-on-surface-variant mt-0.5">University Closed</p>
+                  <h4 className="text-xs font-bold text-primary leading-tight uppercase tracking-wide">Diwali Break</h4>
+                  <p className="text-[10px] text-on-surface-variant mt-0.5 font-medium">University Closed</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Upcoming Events */}
-          <div className="md:col-span-3 matte-card rounded-2xl overflow-hidden group flex flex-col justify-between">
-            <div className="h-28 w-full bg-surface-container relative shrink-0">
+          {/* Upcoming Events (Image Banner Card) */}
+          <div className="md:col-span-3 border border-outline-variant/40 bg-surface-container-low rounded-2xl overflow-hidden group flex flex-col justify-between">
+            <div className="h-28 w-full bg-surface-container relative shrink-0 select-none">
               <div 
                 className="absolute inset-0 bg-cover bg-center" 
                 style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6jyadCZR1GKdeUoRfOjlvm72Bk2GeRQOuF71hOSO8zMsn14XRRXhTSLG9YsNz3vZVYBwfmxSXPMXOhETm1Qi2HfQJ8ehYPi43gwKD0an1BSh6Jru28pQ4x9KkN1PYdpK141vLNLt3mxsG-kAW9gVrx5lKpGMF7Uyr9uaLK6LdR-nNJnmnI7Bg--dtZhW_9elaxs5Nw-4keF6xKRxlS9pIVtagOs6pBCtE4ltX57co2tbZfceZZ620')" }}
               ></div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#18181B] to-transparent"></div>
             </div>
-            <div className="p-4 flex-1 flex flex-col justify-between">
+            <div className="p-5 flex-1 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-1.5 mb-1 text-[10px] font-bold text-primary uppercase tracking-wider">
+                <div className="flex items-center gap-1.5 mb-1.5 text-[9px] font-extrabold text-primary uppercase tracking-wider select-none">
                   <Sparkles size={10} />
                   <span>Bitotsav '24</span>
                 </div>
-                <h4 className="text-xs font-bold text-primary mb-1 leading-tight">Volunteer Meetup</h4>
-                <p className="text-[10px] text-on-surface-variant mb-4">CAT Hall &bull; 05:30 PM</p>
+                <h4 className="text-xs font-bold text-primary mb-1 leading-tight uppercase tracking-wide">Volunteer Meetup</h4>
+                <p className="text-[10px] text-on-surface-variant mb-4 font-mono-code">CAT Hall &bull; 05:30 PM</p>
               </div>
-              <button className="w-full py-2 border border-outline-variant hover:border-primary rounded-lg text-[10px] font-bold text-primary uppercase tracking-wider hover:bg-surface-variant transition-colors cursor-pointer active:scale-[0.98]">
+              <button className="w-full py-2 border border-outline-variant hover:border-primary rounded-lg text-[9px] font-extrabold text-primary uppercase tracking-wider hover:bg-surface-variant transition-colors cursor-pointer active:scale-[0.98]">
                 I'm Interested
               </button>
             </div>

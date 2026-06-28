@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Search, ChevronLeft, ChevronRight, ArrowRight, Calendar, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export const NoticesPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -119,8 +120,11 @@ export const NoticesPage = () => {
         <section className="grid grid-cols-1 gap-4 pb-12">
           {filteredNotices.length > 0 ? (
             filteredNotices.map((notice, idx) => (
-              <div
+              <motion.div
                 key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, delay: Math.min(idx * 0.05, 0.4) }}
                 className="matte-card p-6 rounded-2xl flex flex-col md:flex-row md:items-start gap-6 cursor-pointer group"
               >
                 <div className="flex-1 space-y-3">
@@ -148,7 +152,7 @@ export const NoticesPage = () => {
                     </div>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))
           ) : (
             <div className="text-center py-12 border border-dashed border-outline-variant rounded-2xl bg-surface-container/20">

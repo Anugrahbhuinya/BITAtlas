@@ -5,36 +5,51 @@ import {
   Map, Settings, LogOut, Plus 
 } from "lucide-react";
 
-const navItems = [
+const navSections = [
   {
-    label: "Dashboard",
-    icon: LayoutDashboard,
-    path: "/",
+    title: "MAIN",
+    items: [
+      {
+        label: "Dashboard",
+        icon: LayoutDashboard,
+        path: "/",
+      },
+      {
+        label: "AI Assistant",
+        icon: Bot,
+        path: "/chat",
+      },
+    ],
   },
   {
-    label: "AI Assistant",
-    icon: Bot,
-    path: "/chat",
+    title: "ACADEMICS",
+    items: [
+      {
+        label: "Academics",
+        icon: GraduationCap,
+        path: "/academics",
+      },
+      {
+        label: "Campus Map",
+        icon: Map,
+        path: "/map",
+      },
+      {
+        label: "Notices",
+        icon: Bell,
+        path: "/notices",
+      },
+    ],
   },
   {
-    label: "Notices",
-    icon: Bell,
-    path: "/notices",
-  },
-  {
-    label: "Academics",
-    icon: GraduationCap,
-    path: "/academics",
-  },
-  {
-    label: "Campus Map",
-    icon: Map,
-    path: "/map",
-  },
-  {
-    label: "Settings",
-    icon: Settings,
-    path: "/settings",
+    title: "ACCOUNT",
+    items: [
+      {
+        label: "Settings",
+        icon: Settings,
+        path: "/settings",
+      },
+    ],
   },
 ];
 
@@ -74,7 +89,7 @@ export const Sidebar = () => {
       <div className="px-4 mb-6">
         <button 
           onClick={handleNewChat}
-          className="w-full flex items-center justify-center gap-2 py-3 bg-primary hover:bg-primary/90 text-background rounded-xl font-bold transition-all active:scale-[0.98] cursor-pointer shadow-md"
+          className="w-full flex items-center justify-center gap-2 py-3 bg-primary hover:bg-primary/95 text-background rounded-xl font-bold transition-all active:scale-[0.98] cursor-pointer shadow-md"
         >
           <Plus size={16} />
           <span className="text-xs font-bold uppercase tracking-wider">New Chat</span>
@@ -82,35 +97,44 @@ export const Sidebar = () => {
       </div>
 
       {/* Navigation Links */}
-      <nav className="flex-1 space-y-0.5 px-2 overflow-y-auto custom-scrollbar">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          return (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition-colors duration-150 ${
-                  isActive
-                    ? "bg-secondary-container text-primary border-l-2 border-primary"
-                    : "text-on-surface-variant hover:text-primary hover:bg-surface-variant"
-                }`
-              }
-            >
-              <Icon size={18} className="shrink-0" />
-              <span>{item.label}</span>
-            </NavLink>
-          );
-        })}
+      <nav className="flex-1 space-y-6 px-2 overflow-y-auto custom-scrollbar">
+        {navSections.map((section) => (
+          <div key={section.title} className="space-y-2">
+            <span className="px-4 text-[9px] font-extrabold tracking-widest text-on-surface-variant/40 uppercase block select-none">
+              {section.title}
+            </span>
+            <div className="space-y-0.5">
+              {section.items.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-150 relative group ${
+                        isActive
+                          ? "bg-surface-container-high text-primary border-l-2 border-primary"
+                          : "text-on-surface-variant hover:text-primary hover:bg-surface-container/60"
+                      }`
+                    }
+                  >
+                    <Icon size={14} className="shrink-0 transition-transform group-hover:scale-105" />
+                    <span>{item.label}</span>
+                  </NavLink>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </nav>
 
       {/* Logout Action at Bottom */}
       <div className="px-2 mt-auto pt-4 border-t border-outline-variant/30">
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-red-400 hover:bg-red-500/10 rounded-lg text-sm font-semibold transition-colors cursor-pointer"
+          className="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-red-400 hover:bg-red-500/10 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
         >
-          <LogOut size={18} className="shrink-0" />
+          <LogOut size={14} className="shrink-0" />
           <span>Logout</span>
         </button>
       </div>

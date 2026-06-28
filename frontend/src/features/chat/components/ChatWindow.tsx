@@ -114,7 +114,7 @@ export const ChatWindow = () => {
               ))}
 
               {loading && (
-                <div className="flex flex-col items-start gap-2">
+                <div className="flex flex-col items-start gap-2 animate-in fade-in duration-200">
                   <div className="flex items-center gap-2 mb-1">
                     <div className="w-5 h-5 rounded bg-surface-container flex items-center justify-center border border-outline-variant">
                       <Bot size={12} className="text-primary" />
@@ -123,8 +123,12 @@ export const ChatWindow = () => {
                       BIT AI Assistant
                     </span>
                   </div>
-                  <div className="bg-surface-container border border-outline-variant px-5 py-3 rounded-2xl max-w-[85%] text-xs text-on-surface-variant animate-pulse font-medium">
-                    Thinking...
+                  <div className="bg-surface-container border border-outline-variant px-5 py-3.5 rounded-2xl text-on-surface-variant font-medium">
+                    <div className="flex items-center gap-1.5 py-1 px-1">
+                      <span className="w-1.5 h-1.5 bg-primary/75 rounded-full animate-bounce [animation-duration:1s]" style={{ animationDelay: "0ms" }}></span>
+                      <span className="w-1.5 h-1.5 bg-primary/75 rounded-full animate-bounce [animation-duration:1s]" style={{ animationDelay: "150ms" }}></span>
+                      <span className="w-1.5 h-1.5 bg-primary/75 rounded-full animate-bounce [animation-duration:1s]" style={{ animationDelay: "300ms" }}></span>
+                    </div>
                   </div>
                 </div>
               )}
