@@ -76,60 +76,49 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 p-4 font-sans text-slate-100 overflow-y-auto py-12 relative">
-      {/* Background ambient glows */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
-
+    <div className="min-h-screen w-screen flex items-center justify-center bg-background p-4 font-sans text-on-surface select-text overflow-y-auto py-12">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="w-full max-w-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 shadow-2xl relative"
+        transition={{ duration: 0.3 }}
+        className="w-full max-w-2xl matte-card rounded-2xl p-8"
       >
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex p-3 bg-blue-600/10 rounded-2xl text-blue-400 mb-4 border border-blue-500/20">
-            <UserPlus className="w-8 h-8" />
+        <div className="text-center mb-8 select-none">
+          <div className="inline-flex p-3 bg-surface-container border border-outline-variant rounded-xl text-primary mb-4">
+            <UserPlus className="w-6 h-6 text-primary" />
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-xl font-bold uppercase tracking-wider text-primary">
             Student Registration
           </h2>
-          <p className="text-slate-400 mt-2 text-sm">
+          <p className="text-on-surface-variant mt-1.5 text-xs">
             Create your account to access the AI Portal
           </p>
         </div>
 
         {/* Error notification */}
         {formError && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-start gap-3 text-red-400 text-sm"
-          >
-            <ShieldAlert className="w-5 h-5 shrink-0 mt-0.5" />
+          <div className="mb-6 p-3 bg-red-500/10 border border-red-500/20 rounded-xl flex items-start gap-2.5 text-red-400 text-xs font-semibold">
+            <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5" />
             <span>{formError}</span>
-          </motion.div>
+          </div>
         )}
 
         {/* Success notification */}
         {successMsg && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="mb-6 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-start gap-3 text-emerald-400 text-sm"
-          >
-            <CheckCircle className="w-5 h-5 shrink-0 mt-0.5" />
+          <div className="mb-6 p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-start gap-2.5 text-emerald-400 text-xs font-semibold">
+            <CheckCircle className="w-4 h-4 shrink-0 mt-0.5" />
             <span>{successMsg}</span>
-          </motion.div>
+          </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* Grid Layout for Fields */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
             {/* Full Name */}
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">
                 Full Name
               </label>
               <input
@@ -138,13 +127,13 @@ export const RegisterPage = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="w-full px-4 py-3 bg-slate-950/50 border border-slate-800 focus:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-slate-100 placeholder:text-slate-600 text-sm"
+                className="w-full px-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface placeholder:text-on-surface-variant/20 text-xs font-semibold"
               />
             </div>
 
             {/* Roll Number */}
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">
                 Roll Number
               </label>
               <input
@@ -153,13 +142,13 @@ export const RegisterPage = () => {
                 value={rollNumber}
                 onChange={(e) => setRollNumber(e.target.value)}
                 required
-                className="w-full px-4 py-3 bg-slate-950/50 border border-slate-800 focus:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-slate-100 placeholder:text-slate-600 text-sm"
+                className="w-full px-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface placeholder:text-on-surface-variant/20 text-xs font-semibold"
               />
             </div>
 
             {/* Email */}
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">
                 Email Address
               </label>
               <input
@@ -168,13 +157,13 @@ export const RegisterPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 bg-slate-950/50 border border-slate-800 focus:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-slate-100 placeholder:text-slate-600 text-sm"
+                className="w-full px-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface placeholder:text-on-surface-variant/20 text-xs font-semibold"
               />
             </div>
 
             {/* Password */}
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">
                 Password
               </label>
               <input
@@ -183,13 +172,13 @@ export const RegisterPage = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full px-4 py-3 bg-slate-950/50 border border-slate-800 focus:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-slate-100 placeholder:text-slate-600 text-sm"
+                className="w-full px-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface placeholder:text-on-surface-variant/20 text-xs font-semibold"
               />
             </div>
 
             {/* Department */}
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">
                 Department
               </label>
               <input
@@ -198,13 +187,13 @@ export const RegisterPage = () => {
                 value={department}
                 onChange={(e) => setDepartment(e.target.value)}
                 required
-                className="w-full px-4 py-3 bg-slate-950/50 border border-slate-800 focus:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-slate-100 placeholder:text-slate-600 text-sm"
+                className="w-full px-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface placeholder:text-on-surface-variant/20 text-xs font-semibold"
               />
             </div>
 
             {/* Program */}
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">
                 Program
               </label>
               <input
@@ -213,48 +202,48 @@ export const RegisterPage = () => {
                 value={program}
                 onChange={(e) => setProgram(e.target.value)}
                 required
-                className="w-full px-4 py-3 bg-slate-950/50 border border-slate-800 focus:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-slate-100 placeholder:text-slate-600 text-sm"
+                className="w-full px-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface placeholder:text-on-surface-variant/20 text-xs font-semibold"
               />
             </div>
 
             {/* Year & Semester Grid */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">
                   Year
                 </label>
                 <select
                   value={year}
                   onChange={(e) => setYear(Number(e.target.value))}
-                  className="w-full px-4 py-3 bg-slate-950/50 border border-slate-800 focus:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-slate-100 text-sm"
+                  className="w-full px-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface text-xs font-semibold cursor-pointer"
                 >
-                  <option value={1} className="bg-slate-900">1st Year</option>
-                  <option value={2} className="bg-slate-900">2nd Year</option>
-                  <option value={3} className="bg-slate-900">3rd Year</option>
-                  <option value={4} className="bg-slate-900">4th Year</option>
-                  <option value={5} className="bg-slate-900">5th Year</option>
+                  <option value={1}>1st Year</option>
+                  <option value={2}>2nd Year</option>
+                  <option value={3}>3rd Year</option>
+                  <option value={4}>4th Year</option>
+                  <option value={5}>5th Year</option>
                 </select>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">
                   Semester
                 </label>
                 <select
                   value={semester}
                   onChange={(e) => setSemester(Number(e.target.value))}
-                  className="w-full px-4 py-3 bg-slate-950/50 border border-slate-800 focus:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-slate-100 text-sm"
+                  className="w-full px-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface text-xs font-semibold cursor-pointer"
                 >
                   {[...Array(10)].map((_, i) => (
-                    <option key={i+1} value={i+1} className="bg-slate-900">Sem {i+1}</option>
+                    <option key={i+1} value={i+1}>Sem {i+1}</option>
                   ))}
                 </select>
               </div>
             </div>
 
             {/* Section */}
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">
                 Section
               </label>
               <input
@@ -263,35 +252,36 @@ export const RegisterPage = () => {
                 value={section}
                 onChange={(e) => setSection(e.target.value)}
                 required
-                className="w-full px-4 py-3 bg-slate-950/50 border border-slate-800 focus:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-slate-100 placeholder:text-slate-600 text-sm"
+                className="w-full px-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface placeholder:text-on-surface-variant/20 text-xs font-semibold"
               />
             </div>
+
           </div>
 
           {/* Submit button */}
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 px-6 mt-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold rounded-2xl transition-all shadow-lg shadow-blue-500/10 active:scale-98 flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
+            className="w-full py-3.5 px-5 mt-6 bg-primary text-background font-bold text-xs uppercase tracking-wider rounded-xl transition-all active:scale-[0.98] flex items-center justify-center gap-1.5 group cursor-pointer disabled:opacity-50 disabled:pointer-events-none select-none shadow-md"
           >
             {isSubmitting ? (
-              <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
+              <div className="animate-spin rounded-full h-4 w-4 border-2 border-background border-t-transparent"></div>
             ) : (
               <>
                 <span>Register Account</span>
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </>
             )}
           </button>
         </form>
 
         {/* Footer info */}
-        <div className="mt-8 text-center border-t border-slate-900/60 pt-6">
-          <p className="text-sm text-slate-400">
+        <div className="mt-8 text-center border-t border-outline-variant/30 pt-6 select-none">
+          <p className="text-xs text-on-surface-variant">
             Already have an account?{" "}
             <Link
               to="/login"
-              className="text-blue-400 hover:text-blue-300 font-semibold transition-colors"
+              className="text-primary hover:underline font-bold uppercase tracking-wider ml-1"
             >
               Login here
             </Link>

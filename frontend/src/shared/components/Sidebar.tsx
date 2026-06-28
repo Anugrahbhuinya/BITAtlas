@@ -1,17 +1,9 @@
-import {
-  LayoutDashboard,
-  MessageSquare,
-  Bell,
-  GraduationCap,
-  MapPinned,
-  LogOut,
-  User,
-  KeyRound,
-  Settings,
-} from "lucide-react";
-
 import { NavLink, useNavigate } from "react-router-dom";
-import useAuth from "../../features/auth/hooks/useAuth";
+import { useAuth } from "../../features/auth/hooks/useAuth";
+import { 
+  LayoutDashboard, Bot, Bell, GraduationCap, 
+  Map, Settings, LogOut, Plus 
+} from "lucide-react";
 
 const navItems = [
   {
@@ -20,23 +12,8 @@ const navItems = [
     path: "/",
   },
   {
-    label: "My Profile",
-    icon: User,
-    path: "/profile",
-  },
-  {
-    label: "Change Password",
-    icon: KeyRound,
-    path: "/profile/change-password",
-  },
-  {
-    label: "Settings",
-    icon: Settings,
-    path: "/settings",
-  },
-  {
-    label: "Chat",
-    icon: MessageSquare,
+    label: "AI Assistant",
+    icon: Bot,
     path: "/chat",
   },
   {
@@ -51,13 +28,18 @@ const navItems = [
   },
   {
     label: "Campus Map",
-    icon: MapPinned,
+    icon: Map,
     path: "/map",
+  },
+  {
+    label: "Settings",
+    icon: Settings,
+    path: "/settings",
   },
 ];
 
-const Sidebar = () => {
-  const { currentUser, logout } = useAuth();
+export const Sidebar = () => {
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -69,80 +51,71 @@ const Sidebar = () => {
     }
   };
 
+  const handleNewChat = () => {
+    // Navigate to chat and reload or dispatch start session if needed
+    navigate("/chat");
+    window.location.reload(); // Simple direct reload clears active chat messages instantly!
+  };
+
   return (
-    <aside className="w-64 bg-zinc-900 border-r border-zinc-800 flex flex-col">
-      <div className="p-5 border-b border-zinc-800">
-        <h1 className="text-xl font-bold">BIT Mesra AI</h1>
-        <p className="text-xs text-zinc-400 mt-1">Campus Assistant</p>
+    <aside className="fixed left-0 top-0 h-screen w-[280px] bg-surface-container-low border-r border-outline-variant flex flex-col py-6 z-50 shrink-0 select-none">
+      {/* Brand Logo Header */}
+      <div className="px-6 mb-8 flex items-center gap-3">
+        <div className="w-9 h-9 rounded bg-primary flex items-center justify-center text-background">
+          <GraduationCap size={20} className="fill-current text-background" />
+        </div>
+        <div>
+          <h1 className="text-sm md:text-base font-bold text-primary leading-tight">BIT Mesra AI</h1>
+          <p className="text-[10px] text-on-surface-variant font-medium tracking-wider uppercase opacity-65">Campus Assistant</p>
+        </div>
       </div>
 
-      <nav className="flex-1 p-3">
-        <ul className="space-y-2">
-          {navItems.map((item) => {
-            const Icon = item.icon;
+      {/* New Chat Button */}
+      <div className="px-4 mb-6">
+        <button 
+          onClick={handleNewChat}
+          className="w-full flex items-center justify-center gap-2 py-3 bg-primary hover:bg-primary/90 text-background rounded-xl font-bold transition-all active:scale-[0.98] cursor-pointer shadow-md"
+        >
+          <Plus size={16} />
+          <span className="text-xs font-bold uppercase tracking-wider">New Chat</span>
+        </button>
+      </div>
 
-            return (
-              <li key={item.path}>
-                <NavLink
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                      isActive
-                        ? "bg-blue-600 text-white"
-                        : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
-                    }`
-                  }
-                >
-                  <Icon size={20} />
-                  <span>{item.label}</span>
-                </NavLink>
-              </li>
-            );
-          })}
-        </ul>
+      {/* Navigation Links */}
+      <nav className="flex-1 space-y-0.5 px-2 overflow-y-auto custom-scrollbar">
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition-colors duration-150 ${
+                  isActive
+                    ? "bg-secondary-container text-primary border-l-2 border-primary"
+                    : "text-on-surface-variant hover:text-primary hover:bg-surface-variant"
+                }`
+              }
+            >
+              <Icon size={18} className="shrink-0" />
+              <span>{item.label}</span>
+            </NavLink>
+          );
+        })}
       </nav>
 
-      {/* Student Profile Card & Logout */}
-      {currentUser && (
-        <div className="p-4 border-t border-zinc-800 bg-zinc-950/40 flex flex-col gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
-              {currentUser.profile_picture ? (
-                <img
-                  src={currentUser.profile_picture}
-                  alt={currentUser.name}
-                  className="w-full h-full rounded-xl object-cover"
-                />
-              ) : (
-                <User size={18} />
-              )}
-            </div>
-            <div className="overflow-hidden">
-              <h4 className="text-sm font-semibold text-white truncate leading-tight">
-                {currentUser.name}
-              </h4>
-              <p className="text-[11px] text-zinc-400 truncate mt-0.5 font-mono">
-                {currentUser.roll_number}
-              </p>
-            </div>
-          </div>
-
-          <button
-            onClick={handleLogout}
-            className="flex items-center justify-center gap-2 w-full py-2 px-3 bg-zinc-800/50 hover:bg-red-950/20 border border-zinc-800 hover:border-red-900/30 text-zinc-400 hover:text-red-400 text-xs font-semibold rounded-xl transition-all cursor-pointer"
-          >
-            <LogOut size={14} />
-            <span>Logout Session</span>
-          </button>
-        </div>
-      )}
-
-      <div className="p-4 border-t border-zinc-800 text-center">
-        <p className="text-[10px] text-zinc-500">BIT Mesra AI v1.0</p>
+      {/* Logout Action at Bottom */}
+      <div className="px-2 mt-auto pt-4 border-t border-outline-variant/30">
+        <button
+          onClick={handleLogout}
+          className="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-red-400 hover:bg-red-500/10 rounded-lg text-sm font-semibold transition-colors cursor-pointer"
+        >
+          <LogOut size={18} className="shrink-0" />
+          <span>Logout</span>
+        </button>
       </div>
     </aside>
   );
 };
 
 export default Sidebar;
-

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Send, Mic, Square } from "lucide-react";
 import { useSpeechRecognition } from "../hooks/useSpeechRecognition";
 
@@ -7,25 +7,32 @@ interface ChatInputProps {
   onStopSpeaking: () => void;
 }
 
-function ChatInput({ onSend, onStopSpeaking }: ChatInputProps) {
+export const ChatInput = ({ onSend, onStopSpeaking }: ChatInputProps) => {
   const [input, setInput] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const { isSupported, isListening, startListening, stopListening } =
     useSpeechRecognition();
 
+  // Auto-resize textarea height as content changes
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 180)}px`;
+    }
+  }, [input]);
+
   const handleSend = async () => {
     const message = input.trim();
-
     if (!message) return;
 
     setInput("");
     onStopSpeaking();
-
     await onSend(message, false);
   };
 
-  const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+  const handleKeyDown = async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       await handleSend();
     }
@@ -43,78 +50,83 @@ function ChatInput({ onSend, onStopSpeaking }: ChatInputProps) {
   };
 
   return (
-    <div>
+    <div className="w-full flex flex-col gap-2 bg-[#18181b]/95 backdrop-blur-md border border-outline-variant rounded-2xl p-2 relative shadow-2xl transition-all focus-within:border-primary">
+      {/* Listening Status Indicator */}
       {isListening && (
-        <div className="mb-2 text-red-400 text-sm animate-pulse">
-          🎤 Listening...
+        <div className="px-4 pt-2 text-red-400 text-xs font-bold animate-pulse flex items-center gap-1.5 select-none">
+          <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+          🎤 LISTENING...
         </div>
       )}
 
-      <div className="flex gap-3">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Ask anything about BIT Mesra..."
-          className="
-            flex-1
-            bg-slate-800
-            text-white
-            border
-            border-slate-700
-            rounded-xl
-            px-4
-            py-3
-            focus:outline-none
-            focus:ring-2
-            focus:ring-blue-500
-          "
-        />
+      {/* Growing Prompt Textarea */}
+      <textarea
+        ref={textareaRef}
+        rows={1}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKeyDown}
+        placeholder="Ask BIT AI anything..."
+        className="w-full bg-transparent border-none focus:outline-none focus:ring-0 text-on-surface text-xs md:text-sm py-2.5 px-4 resize-none min-h-[40px] max-h-[180px] placeholder:text-on-surface-variant/40"
+      />
 
-        {isSupported && (
+      {/* Bottom Controls Bar */}
+      <div className="flex items-center justify-between border-t border-outline-variant/30 px-2 pt-2 pb-1 shrink-0">
+        <div className="flex items-center gap-1">
+          {isSupported && (
+            <button
+              type="button"
+              onClick={isListening ? stopListening : handleVoiceInput}
+              className={`
+                p-2
+                rounded-xl
+                flex
+                items-center
+                justify-center
+                transition-colors
+                cursor-pointer
+                ${
+                  isListening
+                    ? "bg-red-500/10 text-red-400 border border-red-500/20"
+                    : "text-on-surface-variant hover:bg-surface-variant rounded-xl"
+                }
+              `}
+              title={isListening ? "Stop Listening" : "Start Voice Input"}
+            >
+              {isListening ? <Square size={16} /> : <Mic size={16} />}
+            </button>
+          )}
+        </div>
+
+        <div className="flex items-center gap-3 select-none">
+          <span className="text-[10px] text-on-surface-variant/50 hidden sm:block font-medium">
+            Press ⏎ to send
+          </span>
           <button
-            type="button"
-            onClick={isListening ? stopListening : handleVoiceInput}
+            onClick={handleSend}
+            disabled={!input.trim()}
             className={`
-              px-4
+              w-9 h-9
               rounded-xl
               flex
               items-center
               justify-center
-              transition
-              ${
-                isListening
-                  ? "bg-red-600 hover:bg-red-700"
-                  : "bg-slate-700 hover:bg-slate-600"
+              transition-all
+              active:scale-95
+              cursor-pointer
+              ${input.trim()
+                ? "bg-primary text-background hover:bg-primary/95"
+                : "bg-surface-container border border-outline-variant text-on-surface-variant/30 cursor-not-allowed"
               }
             `}
-            title={isListening ? "Stop Listening" : "Start Voice Input"}
+            title="Send Message"
           >
-            {isListening ? <Square size={20} /> : <Mic size={20} />}
+            <Send size={14} className={input.trim() ? "text-background" : "text-on-surface-variant/30"} />
           </button>
-        )}
-
-        <button
-          onClick={handleSend}
-          className="
-            bg-blue-600
-            hover:bg-blue-700
-            transition
-            text-white
-            px-5
-            rounded-xl
-            flex
-            items-center
-            justify-center
-          "
-          title="Send Message"
-        >
-          <Send size={20} />
-        </button>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default ChatInput;

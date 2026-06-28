@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Lock, ArrowRight, ShieldAlert } from "lucide-react";
+import { Mail, Lock, ArrowRight, ShieldAlert, GraduationCap } from "lucide-react";
 import useAuth from "../hooks/useAuth";
 
 export const LoginPage = () => {
@@ -38,87 +38,79 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 p-4 font-sans text-slate-100 overflow-hidden relative">
-      {/* Background ambient glows */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
-
+    <div className="min-h-screen w-screen flex items-center justify-center bg-background p-4 font-sans text-on-surface select-text overflow-y-auto">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="w-full max-w-md bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 shadow-2xl relative"
+        transition={{ duration: 0.3 }}
+        className="w-full max-w-md matte-card rounded-2xl p-8"
       >
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex p-3 bg-blue-600/10 rounded-2xl text-blue-400 mb-4 border border-blue-500/20">
-            <Lock className="w-8 h-8" />
+        {/* Brand Header */}
+        <div className="text-center mb-8 select-none">
+          <div className="inline-flex p-3 bg-surface-container border border-outline-variant rounded-xl text-primary mb-4">
+            <GraduationCap className="w-6 h-6 text-primary" />
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-xl font-bold uppercase tracking-wider text-primary">
             Student Login
           </h2>
-          <p className="text-slate-400 mt-2 text-sm">
+          <p className="text-on-surface-variant mt-1.5 text-xs">
             Access the BIT Mesra AI Campus Assistant
           </p>
         </div>
 
         {/* Error notification */}
         {formError && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-start gap-3 text-red-400 text-sm"
-          >
-            <ShieldAlert className="w-5 h-5 shrink-0 mt-0.5" />
+          <div className="mb-6 p-3 bg-red-500/10 border border-red-500/20 rounded-xl flex items-start gap-2.5 text-red-400 text-xs font-semibold">
+            <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5" />
             <span>{formError}</span>
-          </motion.div>
+          </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email field */}
-          <div className="space-y-2">
-            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-on-surface-variant/50" />
               <input
                 type="email"
                 placeholder="student@bitmesra.ac.in"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-800 focus:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-slate-100 placeholder:text-slate-600 text-sm"
+                className="w-full pl-11 pr-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface placeholder:text-on-surface-variant/20 text-xs font-semibold"
               />
             </div>
           </div>
 
           {/* Password field */}
-          <div className="space-y-2">
-            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block">
               Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-on-surface-variant/50" />
               <input
                 type="password"
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-800 focus:border-blue-500 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all text-slate-100 placeholder:text-slate-600 text-sm"
+                className="w-full pl-11 pr-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface placeholder:text-on-surface-variant/20 text-xs font-semibold"
               />
             </div>
           </div>
 
-          {/* Options */}
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center gap-2 cursor-pointer select-none text-slate-400 hover:text-slate-300">
+          {/* Remember session checkbox */}
+          <div className="flex items-center justify-between text-xs py-2 select-none">
+            <label className="flex items-center gap-2 cursor-pointer text-on-surface-variant hover:text-primary">
               <input
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                className="w-4 h-4 accent-blue-600 bg-slate-950 border-slate-800 rounded focus:ring-blue-500/20"
+                className="w-4 h-4 accent-primary bg-surface-container border-outline-variant rounded focus:ring-0 cursor-pointer"
               />
               <span>Remember session</span>
             </label>
@@ -128,26 +120,26 @@ export const LoginPage = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold rounded-2xl transition-all shadow-lg shadow-blue-500/10 active:scale-98 flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-50 disabled:pointer-events-none"
+            className="w-full py-3.5 px-5 mt-4 bg-primary text-background font-bold text-xs uppercase tracking-wider rounded-xl transition-all active:scale-[0.98] flex items-center justify-center gap-1.5 group cursor-pointer disabled:opacity-50 disabled:pointer-events-none select-none shadow-md"
           >
             {isSubmitting ? (
-              <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
+              <div className="animate-spin rounded-full h-4 w-4 border-2 border-background border-t-transparent"></div>
             ) : (
               <>
                 <span>Login</span>
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </>
             )}
           </button>
         </form>
 
         {/* Footer info */}
-        <div className="mt-8 text-center border-t border-slate-900/60 pt-6">
-          <p className="text-sm text-slate-400">
+        <div className="mt-8 text-center border-t border-outline-variant/30 pt-6 select-none">
+          <p className="text-xs text-on-surface-variant">
             Don't have an account?{" "}
             <Link
               to="/register"
-              className="text-blue-400 hover:text-blue-300 font-semibold transition-colors"
+              className="text-primary hover:underline font-bold uppercase tracking-wider ml-1"
             >
               Register here
             </Link>
