@@ -370,14 +370,18 @@ export const ProfilePage = () => {
             </div>
           </div>
 
-          {/* Key Change Password Button */}
-          <div className="flex justify-end select-none">
-            <Link 
-              to="/profile/change-password"
-              className="px-4 py-2 bg-surface-container border border-outline-variant hover:border-primary text-primary text-[10px] font-bold uppercase tracking-wider rounded-xl transition-colors cursor-pointer"
-            >
-              Change Account Password
-            </Link>
+          {/* Security details card */}
+          <div className="matte-card rounded-2xl p-6">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-4 pb-3 border-b border-outline-variant/30 select-none">Security Settings</h2>
+            <p className="text-[11px] text-on-surface-variant mb-4">Manage your student portal authentication credentials.</p>
+            <div className="flex select-none">
+              <Link 
+                to="/profile/change-password"
+                className="px-4 py-2.5 bg-surface-container border border-outline-variant hover:border-primary text-primary text-[10px] font-bold uppercase tracking-wider rounded-xl transition-colors cursor-pointer"
+              >
+                Change Account Password
+              </Link>
+            </div>
           </div>
 
         </div>

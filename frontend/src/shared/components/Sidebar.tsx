@@ -2,55 +2,46 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../features/auth/hooks/useAuth";
 import { 
   LayoutDashboard, Bot, Bell, GraduationCap, 
-  Map, Settings, LogOut, Plus 
+  Map, User, LogOut, Plus 
 } from "lucide-react";
 
-const navSections = [
-  {
-    title: "MAIN",
-    items: [
-      {
-        label: "Dashboard",
-        icon: LayoutDashboard,
-        path: "/",
-      },
-      {
-        label: "AI Assistant",
-        icon: Bot,
-        path: "/chat",
-      },
-    ],
-  },
-  {
-    title: "ACADEMICS",
-    items: [
-      {
-        label: "Academics",
-        icon: GraduationCap,
-        path: "/academics",
-      },
-      {
-        label: "Campus Map",
-        icon: Map,
-        path: "/map",
-      },
-      {
-        label: "Notices",
-        icon: Bell,
-        path: "/notices",
-      },
-    ],
-  },
-  {
-    title: "ACCOUNT",
-    items: [
-      {
-        label: "Settings",
-        icon: Settings,
-        path: "/settings",
-      },
-    ],
-  },
+const navGroups = [
+  [
+    {
+      label: "Dashboard",
+      icon: LayoutDashboard,
+      path: "/",
+    },
+    {
+      label: "AI Assistant",
+      icon: Bot,
+      path: "/chat",
+    },
+  ],
+  [
+    {
+      label: "Academics",
+      icon: GraduationCap,
+      path: "/academics",
+    },
+    {
+      label: "Campus Map",
+      icon: Map,
+      path: "/map",
+    },
+    {
+      label: "Notices",
+      icon: Bell,
+      path: "/notices",
+    },
+  ],
+  [
+    {
+      label: "Profile",
+      icon: User,
+      path: "/profile",
+    },
+  ],
 ];
 
 export const Sidebar = () => {
@@ -97,14 +88,12 @@ export const Sidebar = () => {
       </div>
 
       {/* Navigation Links */}
-      <nav className="flex-1 space-y-6 px-2 overflow-y-auto custom-scrollbar">
-        {navSections.map((section) => (
-          <div key={section.title} className="space-y-2">
-            <span className="px-4 text-[9px] font-extrabold tracking-widest text-on-surface-variant/40 uppercase block select-none">
-              {section.title}
-            </span>
+      <nav className="flex-1 space-y-4 px-2 overflow-y-auto custom-scrollbar">
+        {navGroups.map((group, groupIdx) => (
+          <div key={groupIdx} className="space-y-1">
+            {groupIdx > 0 && <div className="border-t border-outline-variant/20 my-3 mx-4" />}
             <div className="space-y-0.5">
-              {section.items.map((item) => {
+              {group.map((item) => {
                 const Icon = item.icon;
                 return (
                   <NavLink

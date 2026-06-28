@@ -20,8 +20,6 @@ import { ChangePasswordPage } from "./features/student/pages/ChangePasswordPage"
 
 // Student Preferences Imports
 import { PreferencesProvider } from "./features/preferences/context/PreferencesContext";
-import { SettingsPage } from "./features/preferences/pages/SettingsPage";
-import { StudentHomeRedirect } from "./features/preferences/components/StudentHomeRedirect";
 
 // Admin Portal Imports
 import { AdminLoginPage } from "./features/admin/pages/AdminLoginPage";
@@ -49,14 +47,13 @@ function App() {
             {/* User Portal Protected under MainLayout and ProtectedRoute */}
             <Route element={<ProtectedRoute />}>
               <Route element={<MainLayout />}>
-                <Route path="/" element={<StudentHomeRedirect />} />
+                <Route path="/" element={<DashboardPage />} />
                 <Route path="/chat" element={<ChatPage />} />
                 <Route path="/notices" element={<NoticesPage />} />
                 <Route path="/academics" element={<AcademicsPage />} />
                 <Route path="/map" element={<MapPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/profile/change-password" element={<ChangePasswordPage />} />
-                <Route path="/settings" element={<SettingsPage />} />
               </Route>
             </Route>
 
