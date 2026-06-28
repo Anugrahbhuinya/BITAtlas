@@ -55,7 +55,8 @@ export const ChangePasswordPage = () => {
   };
 
   return (
-    <div className="max-w-[600px] mx-auto px-6 py-8 space-y-8 text-on-surface font-sans select-text">
+    <div className="h-full overflow-y-auto custom-scrollbar bg-background">
+      <div className="max-w-[600px] mx-auto px-6 py-8 space-y-8 text-on-surface font-sans select-text">
       
       {/* Back button */}
       <div className="mb-4 select-none">
@@ -158,6 +159,7 @@ export const ChangePasswordPage = () => {
           </button>
         </form>
       </motion.div>
+      </div>
     </div>
   );
 };

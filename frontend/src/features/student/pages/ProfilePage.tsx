@@ -141,7 +141,8 @@ export const ProfilePage = () => {
   }
 
   return (
-    <div className="max-w-[1000px] mx-auto px-6 py-8 space-y-8 text-on-surface font-sans select-text">
+    <div className="h-full overflow-y-auto custom-scrollbar bg-background">
+      <div className="max-w-[1000px] mx-auto px-6 py-8 space-y-8 text-on-surface font-sans select-text">
       
       {/* Header Area */}
       <header className="border-b border-outline-variant/30 pb-6">
@@ -381,6 +382,7 @@ export const ProfilePage = () => {
 
         </div>
       </div>
+    </div>
     </div>
   );
 };

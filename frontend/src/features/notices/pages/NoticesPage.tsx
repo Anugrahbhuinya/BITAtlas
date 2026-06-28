@@ -70,112 +70,114 @@ export const NoticesPage = () => {
   };
 
   return (
-    <div className="max-w-[1000px] mx-auto px-6 py-8 space-y-8 text-on-surface font-sans select-text">
-      {/* Search & Filters Section */}
-      <section className="space-y-6">
-        <div className="relative group">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors w-5 h-5" />
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search notices by keyword, department, or event..."
-            className="w-full h-14 pl-12 pr-4 bg-surface-container border border-outline-variant rounded-xl focus:outline-none focus:border-primary text-sm transition-all placeholder:text-on-surface-variant/40"
-          />
-        </div>
-
-        {/* Categories Chips */}
-        <div className="flex flex-wrap gap-3 select-none">
-          {categories.map((cat) => {
-            const isActive = activeCategory === cat;
-            return (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`
-                  px-5 py-2
-                  rounded-full
-                  text-xs
-                  font-bold
-                  uppercase
-                  tracking-wider
-                  transition-colors
-                  cursor-pointer
-                  ${isActive
-                    ? "bg-primary text-background"
-                    : "border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary"
-                  }
-                `}
-              >
-                {cat}
-              </button>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Notices Card Grid */}
-      <section className="grid grid-cols-1 gap-4 pb-12">
-        {filteredNotices.length > 0 ? (
-          filteredNotices.map((notice, idx) => (
-            <div
-              key={idx}
-              className="matte-card p-6 rounded-2xl flex flex-col md:flex-row md:items-start gap-6 cursor-pointer group"
-            >
-              <div className="flex-1 space-y-3">
-                <div className="flex items-center gap-3">
-                  <span className={`px-2 py-0.5 text-[9px] font-extrabold tracking-wider uppercase rounded-sm ${getTagStyles(notice.category)}`}>
-                    {notice.category}
-                  </span>
-                  <span className="text-[10px] text-on-surface-variant font-mono-code font-medium">
-                    {notice.date}
-                  </span>
-                </div>
-                <h3 className="text-base md:text-lg font-bold text-primary leading-snug group-hover:text-primary transition-colors">
-                  {notice.title}
-                </h3>
-                <p className="text-xs text-on-surface-variant leading-relaxed line-clamp-2 max-w-[720px]">
-                  {notice.desc}
-                </p>
-              </div>
-
-              <div className="hidden md:flex flex-col items-end justify-between self-stretch shrink-0">
-                <ArrowRight className="text-on-surface-variant group-hover:text-primary group-hover:translate-x-1 transition-all w-5 h-5" />
-                {notice.timeLeft && (
-                  <div className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-amber-500">
-                    <span>{notice.timeLeft}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          ))
-        ) : (
-          <div className="text-center py-12 border border-dashed border-outline-variant rounded-2xl bg-surface-container/20">
-            <p className="text-sm text-on-surface-variant font-medium">No announcements found matching the criteria.</p>
+    <div className="h-full overflow-y-auto custom-scrollbar bg-background">
+      <div className="max-w-[1000px] mx-auto px-6 py-8 space-y-8 text-on-surface font-sans select-text">
+        {/* Search & Filters Section */}
+        <section className="space-y-6">
+          <div className="relative group">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors w-5 h-5" />
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search notices by keyword, department, or event..."
+              className="w-full h-14 pl-12 pr-4 bg-surface-container border border-outline-variant rounded-xl focus:outline-none focus:border-primary text-sm transition-all placeholder:text-on-surface-variant/40"
+            />
           </div>
-        )}
-      </section>
 
-      {/* Pagination Footer */}
-      <footer className="h-14 px-6 border-t border-outline-variant/30 flex items-center justify-between bg-surface-container-lowest rounded-xl">
-        <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">
-          Showing {filteredNotices.length} of {noticesData.length} notices
-        </span>
-        <div className="flex gap-2">
-          <button 
-            disabled 
-            className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant/40 text-on-surface-variant disabled:opacity-30 cursor-not-allowed"
-          >
-            <ChevronLeft size={16} />
-          </button>
-          <button 
-            disabled={filteredNotices.length === 0}
-            className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-colors cursor-pointer"
-          >
-            <ChevronRight size={16} />
-          </button>
-        </div>
-      </footer>
+          {/* Categories Chips */}
+          <div className="flex flex-wrap gap-3 select-none">
+            {categories.map((cat) => {
+              const isActive = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`
+                    px-5 py-2
+                    rounded-full
+                    text-xs
+                    font-bold
+                    uppercase
+                    tracking-wider
+                    transition-colors
+                    cursor-pointer
+                    ${isActive
+                      ? "bg-primary text-background"
+                      : "border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary"
+                    }
+                  `}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Notices Card Grid */}
+        <section className="grid grid-cols-1 gap-4 pb-12">
+          {filteredNotices.length > 0 ? (
+            filteredNotices.map((notice, idx) => (
+              <div
+                key={idx}
+                className="matte-card p-6 rounded-2xl flex flex-col md:flex-row md:items-start gap-6 cursor-pointer group"
+              >
+                <div className="flex-1 space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className={`px-2 py-0.5 text-[9px] font-extrabold tracking-wider uppercase rounded-sm ${getTagStyles(notice.category)}`}>
+                      {notice.category}
+                    </span>
+                    <span className="text-[10px] text-on-surface-variant font-mono-code font-medium">
+                      {notice.date}
+                    </span>
+                  </div>
+                  <h3 className="text-base md:text-lg font-bold text-primary leading-snug group-hover:text-primary transition-colors">
+                    {notice.title}
+                  </h3>
+                  <p className="text-xs text-on-surface-variant leading-relaxed line-clamp-2 max-w-[720px]">
+                    {notice.desc}
+                  </p>
+                </div>
+
+                <div className="hidden md:flex flex-col items-end justify-between self-stretch shrink-0">
+                  <ArrowRight className="text-on-surface-variant group-hover:text-primary group-hover:translate-x-1 transition-all w-5 h-5" />
+                  {notice.timeLeft && (
+                    <div className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-amber-500">
+                      <span>{notice.timeLeft}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="text-center py-12 border border-dashed border-outline-variant rounded-2xl bg-surface-container/20">
+              <p className="text-sm text-on-surface-variant font-medium">No announcements found matching the criteria.</p>
+            </div>
+          )}
+        </section>
+
+        {/* Pagination Footer */}
+        <footer className="h-14 px-6 border-t border-outline-variant/30 flex items-center justify-between bg-surface-container-lowest rounded-xl">
+          <span className="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">
+            Showing {filteredNotices.length} of {noticesData.length} notices
+          </span>
+          <div className="flex gap-2">
+            <button 
+              disabled 
+              className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant/40 text-on-surface-variant disabled:opacity-30 cursor-not-allowed"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button 
+              disabled={filteredNotices.length === 0}
+              className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-colors cursor-pointer"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 };

@@ -24,7 +24,7 @@ export const ChatWindow = () => {
     bottomRef.current?.scrollIntoView({
       behavior: "smooth",
     });
-  }, [messages]);
+  }, [messages, loading]);
 
   // Handle auto-seeding of dashboard quick prompts
   useEffect(() => {
@@ -40,10 +40,10 @@ export const ChatWindow = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-4rem)] flex flex-col bg-background min-h-0 relative select-text">
+    <div className="h-full flex flex-col bg-background min-h-0 relative select-text">
       {/* Dynamic Main Chat Scroll Area */}
-      <div className="flex-1 overflow-y-auto custom-scrollbar px-4 py-6 pb-32">
-        <div className="max-w-[800px] mx-auto w-full">
+      <div className="flex-1 overflow-y-auto custom-scrollbar px-4 py-6">
+        <div className="max-w-[800px] mx-auto w-full pb-6">
           {messages.length === 0 ? (
             /* Welcome / Empty State */
             <div className="text-center py-12 animate-in fade-in duration-300">
@@ -135,9 +135,9 @@ export const ChatWindow = () => {
         </div>
       </div>
 
-      {/* Floating Prompt Bar Container */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 pointer-events-none z-30">
-        <div className="max-w-[800px] mx-auto w-full pointer-events-auto">
+      {/* Sticky/Static Composer at the bottom in the normal document flow */}
+      <div className="w-full border-t border-outline-variant/30 bg-background/95 backdrop-blur px-6 py-4 shrink-0 z-30">
+        <div className="max-w-[800px] mx-auto w-full">
           <ChatInput 
             onSend={sendChatMessage} 
             onStopSpeaking={stopSpeaking} 
