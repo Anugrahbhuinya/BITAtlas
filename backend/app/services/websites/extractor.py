@@ -1,6 +1,7 @@
 import logging
 import os
 import uuid
+from typing import List, Tuple
 from bs4 import BeautifulSoup, Comment
 
 logger = logging.getLogger("website_extractor")
@@ -99,7 +100,7 @@ def extract_clean_text(html_content: str) -> str:
         if not has_ancestor:
             top_containers.append(c)
 
-    raw_lines = []
+    raw_lines: List[Tuple[str, str]] = []
     if top_containers:
         logger.info(f"Found {len(top_containers)} top-level semantic containers. Extracting.")
         for container in top_containers:

@@ -1,0 +1,555 @@
+[
+  {
+    "id": "osm_100026",
+    "type": "Road",
+    "name": "int_ee_mech",
+    "coordinates": {
+      "latitude": 23.4125,
+      "longitude": 85.4364
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "int_ee_mech"
+      }
+    }
+  },
+  {
+    "id": "osm_100018",
+    "type": "Road",
+    "name": "h4",
+    "coordinates": {
+      "latitude": 23.4205,
+      "longitude": 85.4435
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h4"
+      }
+    }
+  },
+  {
+    "id": "osm_100024",
+    "type": "Road",
+    "name": "int_lhc_cse",
+    "coordinates": {
+      "latitude": 23.4158,
+      "longitude": 85.439
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "int_lhc_cse"
+      }
+    }
+  },
+  {
+    "id": "osm_100011",
+    "type": "Road",
+    "name": "ric",
+    "coordinates": {
+      "latitude": 23.4132,
+      "longitude": 85.4402
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "ric"
+      }
+    }
+  },
+  {
+    "id": "osm_100008",
+    "type": "Road",
+    "name": "mech",
+    "coordinates": {
+      "latitude": 23.411,
+      "longitude": 85.436
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "mech"
+      }
+    }
+  },
+  {
+    "id": "osm_100012",
+    "type": "Road",
+    "name": "sac",
+    "coordinates": {
+      "latitude": 23.4115,
+      "longitude": 85.4418
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "sac"
+      }
+    }
+  },
+  {
+    "id": "osm_100027",
+    "type": "Road",
+    "name": "int_audi_ric",
+    "coordinates": {
+      "latitude": 23.4126,
+      "longitude": 85.4406
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "int_audi_ric"
+      }
+    }
+  },
+  {
+    "id": "osm_100019",
+    "type": "Road",
+    "name": "h5",
+    "coordinates": {
+      "latitude": 23.406,
+      "longitude": 85.439
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h5"
+      }
+    }
+  },
+  {
+    "id": "osm_100014",
+    "type": "Road",
+    "name": "guest",
+    "coordinates": {
+      "latitude": 23.4095,
+      "longitude": 85.4435
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "guest"
+      }
+    }
+  },
+  {
+    "id": "osm_100010",
+    "type": "Road",
+    "name": "biotech",
+    "coordinates": {
+      "latitude": 23.4125,
+      "longitude": 85.443
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "biotech"
+      }
+    }
+  },
+  {
+    "id": "osm_100003",
+    "type": "Road",
+    "name": "audi",
+    "coordinates": {
+      "latitude": 23.412,
+      "longitude": 85.441
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "audi"
+      }
+    }
+  },
+  {
+    "id": "osm_100021",
+    "type": "Road",
+    "name": "h7",
+    "coordinates": {
+      "latitude": 23.405,
+      "longitude": 85.437
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h7"
+      }
+    }
+  },
+  {
+    "id": "osm_100002",
+    "type": "Road",
+    "name": "library",
+    "coordinates": {
+      "latitude": 23.415,
+      "longitude": 85.44
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "library"
+      }
+    }
+  },
+  {
+    "id": "osm_100030",
+    "type": "Road",
+    "name": "int_hostels_south",
+    "coordinates": {
+      "latitude": 23.4065,
+      "longitude": 85.4385
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "int_hostels_south"
+      }
+    }
+  },
+  {
+    "id": "osm_100017",
+    "type": "Road",
+    "name": "h3",
+    "coordinates": {
+      "latitude": 23.42,
+      "longitude": 85.4425
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h3"
+      }
+    }
+  },
+  {
+    "id": "osm_100004",
+    "type": "Road",
+    "name": "lhc",
+    "coordinates": {
+      "latitude": 23.4155,
+      "longitude": 85.4395
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "lhc"
+      }
+    }
+  },
+  {
+    "id": "osm_100015",
+    "type": "Road",
+    "name": "h1",
+    "coordinates": {
+      "latitude": 23.419,
+      "longitude": 85.4405
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h1"
+      }
+    }
+  },
+  {
+    "id": "osm_100028",
+    "type": "Road",
+    "name": "int_sac_biotech",
+    "coordinates": {
+      "latitude": 23.412,
+      "longitude": 85.4424
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "int_sac_biotech"
+      }
+    }
+  },
+  {
+    "id": "osm_100007",
+    "type": "Road",
+    "name": "ece",
+    "coordinates": {
+      "latitude": 23.4148,
+      "longitude": 85.4372
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "ece"
+      }
+    }
+  },
+  {
+    "id": "osm_100009",
+    "type": "Road",
+    "name": "ee",
+    "coordinates": {
+      "latitude": 23.414,
+      "longitude": 85.4368
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "ee"
+      }
+    }
+  },
+  {
+    "id": "osm_100001",
+    "type": "Road",
+    "name": "admin",
+    "coordinates": {
+      "latitude": 23.4142,
+      "longitude": 85.4388
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "admin"
+      }
+    }
+  },
+  {
+    "id": "osm_100025",
+    "type": "Road",
+    "name": "int_admin_ece",
+    "coordinates": {
+      "latitude": 23.4145,
+      "longitude": 85.438
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "int_admin_ece"
+      }
+    }
+  },
+  {
+    "id": "osm_100005",
+    "type": "Road",
+    "name": "cse",
+    "coordinates": {
+      "latitude": 23.4162,
+      "longitude": 85.4385
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "cse"
+      }
+    }
+  },
+  {
+    "id": "osm_100013",
+    "type": "Road",
+    "name": "sports",
+    "coordinates": {
+      "latitude": 23.418,
+      "longitude": 85.442
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "sports"
+      }
+    }
+  },
+  {
+    "id": "osm_100022",
+    "type": "Road",
+    "name": "h8",
+    "coordinates": {
+      "latitude": 23.407,
+      "longitude": 85.44
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h8"
+      }
+    }
+  },
+  {
+    "id": "osm_100029",
+    "type": "Road",
+    "name": "int_hostels_north",
+    "coordinates": {
+      "latitude": 23.4185,
+      "longitude": 85.441
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "int_hostels_north"
+      }
+    }
+  },
+  {
+    "id": "osm_100023",
+    "type": "Road",
+    "name": "int_main_library",
+    "coordinates": {
+      "latitude": 23.4145,
+      "longitude": 85.4395
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "int_main_library"
+      }
+    }
+  },
+  {
+    "id": "osm_100016",
+    "type": "Road",
+    "name": "h2",
+    "coordinates": {
+      "latitude": 23.4195,
+      "longitude": 85.4415
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h2"
+      }
+    }
+  },
+  {
+    "id": "osm_100020",
+    "type": "Road",
+    "name": "h6",
+    "coordinates": {
+      "latitude": 23.4055,
+      "longitude": 85.438
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h6"
+      }
+    }
+  },
+  {
+    "id": "b_1",
+    "type": "Building",
+    "name": "Main Building",
+    "coordinates": {
+      "latitude": 23.4129,
+      "longitude": 85.4407
+    },
+    "metadata": {
+      "building_code": "MAIN",
+      "category": "Academic",
+      "departments": [
+        "CSE",
+        "ECE"
+      ],
+      "address": ""
+    }
+  },
+  {
+    "id": "entr_b_1_0",
+    "type": "Entrance",
+    "name": "MAIN - Main Entrance",
+    "coordinates": {
+      "latitude": 23.413,
+      "longitude": 85.4408
+    },
+    "metadata": {
+      "parent_building_id": "b_1"
+    }
+  },
+  {
+    "id": "b_2",
+    "type": "Hostel",
+    "name": "Hostel 1",
+    "coordinates": {
+      "latitude": 23.414,
+      "longitude": 85.442
+    },
+    "metadata": {
+      "building_code": "H1",
+      "category": "Residential",
+      "departments": [],
+      "address": ""
+    }
+  },
+  {
+    "id": "entr_b_2_0",
+    "type": "Entrance",
+    "name": "H1 - Main Entrance",
+    "coordinates": {
+      "latitude": 23.414,
+      "longitude": 85.442
+    },
+    "metadata": {
+      "parent_building_id": "b_2"
+    }
+  },
+  {
+    "id": "r_101",
+    "type": "Room",
+    "name": "201 - CSE Lab 1",
+    "coordinates": {
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    "metadata": {
+      "room_number": "201",
+      "building_id": "b_1",
+      "floor": 2,
+      "room_type": "Lab",
+      "capacity": 50
+    }
+  },
+  {
+    "id": "r_102",
+    "type": "Room",
+    "name": "101 - CSE HOD Office",
+    "coordinates": {
+      "latitude": 0.0,
+      "longitude": 0.0
+    },
+    "metadata": {
+      "room_number": "101",
+      "building_id": "b_1",
+      "floor": 1,
+      "room_type": "Office",
+      "capacity": 5
+    }
+  },
+  {
+    "id": "f_1",
+    "type": "Facility",
+    "name": "Central ATM",
+    "coordinates": {
+      "latitude": 23.4128,
+      "longitude": 85.4405
+    },
+    "metadata": {
+      "category": "ATM",
+      "timing": null,
+      "services": [
+        "Withdrawal"
+      ]
+    }
+  },
+  {
+    "id": "l_1",
+    "type": "Landmark",
+    "name": "Clock Tower Plaza",
+    "coordinates": {
+      "latitude": 23.4125,
+      "longitude": 85.44
+    },
+    "metadata": {
+      "category": "Plaza",
+      "description": "Historical campus clock tower"
+    }
+  }
+]

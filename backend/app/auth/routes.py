@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, Request, status, HTTPException
+from app.security.rate_limit.rate_limiter import rate_limit_auth
 from app.core.database import get_database
 
 from app.student.schemas import StudentRegisterRequest, StudentResponse
@@ -23,7 +24,7 @@ def get_student_repo() -> StudentRepository:
 def get_refresh_repo() -> RefreshTokenRepository:
     return RefreshTokenRepository(get_database())
 
-@router.post("/register", response_model=StudentResponse, status_code=status.HTTP_201_CREATED)
+@router.post("/register", response_model=StudentResponse, status_code=status.HTTP_201_CREATED, dependencies=[Depends(rate_limit_auth)])
 async def register(
     request_data: StudentRegisterRequest,
     student_repo: StudentRepository = Depends(get_student_repo)
@@ -34,7 +35,7 @@ async def register(
     service = RegistrationService(student_repo)
     return await service.register_student(request_data)
 
-@router.post("/login", response_model=LoginResponse)
+@router.post("/login", response_model=LoginResponse, dependencies=[Depends(rate_limit_auth)])
 async def login(
     request: Request,
     login_data: StudentLoginRequest,
@@ -72,7 +73,7 @@ async def logout(
         )
     return {"status": "success", "message": "Session logged out successfully"}
 
-@router.post("/refresh", response_model=TokenRefreshResponse)
+@router.post("/refresh", response_model=TokenRefreshResponse, dependencies=[Depends(rate_limit_auth)])
 async def refresh(
     request: Request,
     refresh_data: TokenRefreshRequest,

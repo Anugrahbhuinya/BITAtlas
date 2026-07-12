@@ -34,7 +34,11 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
     else:
         expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     
-    to_encode.update({"exp": expire})
+    to_encode.update({
+        "exp": expire,
+        "role": to_encode.get("role", "admin"),
+        "type": to_encode.get("type", "access")
+    })
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
@@ -44,19 +48,43 @@ async def get_current_admin(credentials: HTTPAuthorizationCredentials = Depends(
     """
     token = credentials.credentials
     try:
+        # Decode and run basic signature and expiration validations
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        
         username: str = payload.get("sub")
+        role: str = payload.get("role", "admin")
+        token_type: str = payload.get("type", "access")
+        
         if username is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Token is missing sub claim",
                 headers={"WWW-Authenticate": "Bearer"},
             )
+            
+        if token_type != "access":
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid token type",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+            
+        if role not in ["admin", "superadmin"]:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Access forbidden: Admin permissions required",
+            )
+            
         return username
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token has expired",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
     except jwt.PyJWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Could not validate credentials",
             headers={"WWW-Authenticate": "Bearer"},
         )
-

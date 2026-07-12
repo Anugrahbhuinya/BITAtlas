@@ -5,7 +5,11 @@ from fastapi.responses import StreamingResponse
 from typing import List
 from app.core.database import get_database
 from app.core.auth import verify_password, create_access_token, get_current_admin
-from app.core.rate_limiter import upload_rate_limiter
+from app.security.rate_limit.rate_limiter import (
+    rate_limit_admin,
+    rate_limit_upload,
+    rate_limit_auth
+)
 from app.services.rag.dynamic_indexer import (
     index_pdf_generator,
     delete_indexed_document,
@@ -34,10 +38,11 @@ logger = logging.getLogger("admin_routes")
 
 router = APIRouter(
     prefix="/api/admin",
-    tags=["Admin Portal"]
+    tags=["Admin Portal"],
+    dependencies=[Depends(rate_limit_admin)]
 )
 
-@router.post("/login", response_model=TokenResponse)
+@router.post("/login", response_model=TokenResponse, dependencies=[Depends(rate_limit_auth)])
 async def login(login_data: AdminLoginRequest, request: Request):
     db = get_database()
     username = login_data.username
@@ -51,7 +56,7 @@ async def login(login_data: AdminLoginRequest, request: Request):
         await log_admin_activity(
             action="Admin Login Failed",
             username=username,
-            details={"ip_address": request.client.host, "reason": "Invalid credentials"}
+            details={"ip_address": request.client.host if request.client else "Unknown", "reason": "Invalid credentials"}
         )
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -66,7 +71,7 @@ async def login(login_data: AdminLoginRequest, request: Request):
     await log_admin_activity(
         action="Admin Login",
         username=username,
-        details={"ip_address": request.client.host}
+        details={"ip_address": request.client.host if request.client else "Unknown"}
     )
 
     return TokenResponse(
@@ -109,7 +114,7 @@ async def get_settings(current_user: str = Depends(get_current_admin)):
     settings = get_admin_settings()
     return AdminSettingsResponse(**settings)
 
-@router.post("/documents/upload")
+@router.post("/documents/upload", dependencies=[Depends(rate_limit_upload)])
 async def upload_document(
     request: Request,
     file: UploadFile = File(...),
@@ -120,10 +125,8 @@ async def upload_document(
     Upload and index a PDF document. Rate-limited to protect server resources.
     Streams progress statuses back to the client.
     """
-    # Protect with rate limiter
-    upload_rate_limiter.check_rate_limit(request.client.host)
     
-    if not file.filename.endswith(".pdf"):
+    if not file.filename or not file.filename.endswith(".pdf"):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Only PDF files are supported."
@@ -159,7 +162,7 @@ async def delete_document(
         )
     return {"status": "success", "message": "Document and associated vectors deleted successfully."}
 
-@router.post("/documents/{doc_id}/reindex")
+@router.post("/documents/{doc_id}/reindex", dependencies=[Depends(rate_limit_upload)])
 async def reindex_document(
     doc_id: str,
     current_user: str = Depends(get_current_admin)

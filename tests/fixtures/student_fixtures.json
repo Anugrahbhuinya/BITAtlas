@@ -1,0 +1,64 @@
+{
+  "students": [
+    {
+      "_id": "student_test_id",
+      "email": "test.student@bitmesra.ac.in",
+      "roll_number": "BTECH/99999/23",
+      "name": "Test Student",
+      "password_hash": "$2b$12$testpasswordhashfakesecure12345678901234",
+      "department": "Computer Science",
+      "program": "B.Tech",
+      "year": 3,
+      "semester": 6,
+      "section": "A",
+      "role": "student",
+      "cgpa": "8.5",
+      "attendance": "85%"
+    }
+  ],
+  "attendance_records": [
+    {
+      "_id": "att_rec_1",
+      "student_id": "student_test_id",
+      "subject_id": "CS301",
+      "subject_name": "Database Management Systems",
+      "total_conducted": 20,
+      "total_attended": 18
+    },
+    {
+      "_id": "att_rec_2",
+      "student_id": "student_test_id",
+      "subject_id": "CS302",
+      "subject_name": "Compiler Design",
+      "total_conducted": 20,
+      "total_attended": 13
+    }
+  ],
+  "timetables": [
+    {
+      "_id": "tt_1",
+      "student_id": "student_test_id",
+      "semester": 6,
+      "classes": [
+        {
+          "id": "class_1",
+          "subject": "Database Management Systems",
+          "faculty": "Dr. A. Sen",
+          "day": "Monday",
+          "start_time": "09:00",
+          "end_time": "09:55",
+          "room": "LHC-101"
+        },
+        {
+          "id": "class_2",
+          "subject": "Compiler Design",
+          "faculty": "Dr. P. Roy",
+          "day": "Monday",
+          "start_time": "10:00",
+          "end_time": "10:55",
+          "room": "LHC-102"
+        }
+      ]
+    }
+  ]
+}

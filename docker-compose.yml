@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: bit_mesra_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - bit_mesra_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../docker/backend/Dockerfile
+    container_name: bit_mesra_backend
+    ports:
+      - "8001:8001"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/bit_mesra_ai_agent
+      - MONGO_DB=bit_mesra_ai_agent
+      - DEBUG=True
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=gemini-2.5-flash
+      - JWT_SECRET=your-super-secret-jwt-signing-key-here
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=120
+    depends_on:
+      - mongodb
+    volumes:
+      - ./backend:/app
+      - backend_uploads:/app/uploads
+      - backend_chromadb:/app/chroma_db
+    networks:
+      - bit_mesra_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../docker/frontend/Dockerfile
+    container_name: bit_mesra_frontend
+    ports:
+      - "5180:5180"
+    environment:
+      - VITE_API_URL=http://localhost:8001
+      - VITE_WS_URL=ws://localhost:8001
+      - VITE_ENV=development
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - bit_mesra_network
+
+volumes:
+  mongo_data:
+  backend_uploads:
+  backend_chromadb:
+
+networks:
+  bit_mesra_network:
+    driver: bridge

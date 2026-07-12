@@ -17,11 +17,16 @@ from app.context.timetable_context_provider import TimetableContextProvider
 from app.context.attendance_context_provider import AttendanceContextProvider
 from app.context.planner_context_provider import PlannerContextProvider
 from app.context.calendar_context_provider import CalendarContextProvider
+from app.navigation.ai.context_provider import NavigationContextProvider
 from app.services.academic_context_service import AcademicContextService
 
-async def get_academic_prompt_context(student_id: str, student_data: Optional[Dict[str, Any]] = None) -> str:
+async def get_academic_prompt_context(
+    student_id: str,
+    student_data: Optional[Dict[str, Any]] = None,
+    nav_data: Optional[Dict[str, Any]] = None
+) -> str:
     """
-    Generates structured academic context for the student to inject into the LLM prompt.
+    Generates structured academic and navigation context for the student to inject into the LLM prompt.
     """
     if not student_id:
         return ""
@@ -41,7 +46,8 @@ async def get_academic_prompt_context(student_id: str, student_data: Optional[Di
             TimetableContextProvider(timetable_repo),
             AttendanceContextProvider(attendance_repo),
             PlannerContextProvider(planner_repo),
-            CalendarContextProvider()
+            CalendarContextProvider(),
+            NavigationContextProvider(db, nav_data)
         )
 
         ctx = await service.get_academic_context(student_id, student_data)

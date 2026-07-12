@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="AntigravityOSMImporter">
+  <node id="100001" lat="23.4142" lon="85.4388">
+    <tag k="name" v="admin"/>
+  </node>
+  <node id="100002" lat="23.415" lon="85.44">
+    <tag k="name" v="library"/>
+  </node>
+  <node id="100003" lat="23.412" lon="85.441">
+    <tag k="name" v="audi"/>
+  </node>
+  <node id="100004" lat="23.4155" lon="85.4395">
+    <tag k="name" v="lhc"/>
+  </node>
+  <node id="100005" lat="23.4162" lon="85.4385">
+    <tag k="name" v="cse"/>
+  </node>
+  <node id="100006" lat="23.4135" lon="85.4392">
+    <tag k="name" v="aiml"/>
+  </node>
+  <node id="100007" lat="23.4148" lon="85.4372">
+    <tag k="name" v="ece"/>
+  </node>
+  <node id="100008" lat="23.411" lon="85.436">
+    <tag k="name" v="mech"/>
+  </node>
+  <node id="100009" lat="23.414" lon="85.4368">
+    <tag k="name" v="ee"/>
+  </node>
+  <node id="100010" lat="23.4125" lon="85.443">
+    <tag k="name" v="biotech"/>
+  </node>
+  <node id="100011" lat="23.4132" lon="85.4402">
+    <tag k="name" v="ric"/>
+  </node>
+  <node id="100012" lat="23.4115" lon="85.4418">
+    <tag k="name" v="sac"/>
+  </node>
+  <node id="100013" lat="23.418" lon="85.442">
+    <tag k="name" v="sports"/>
+  </node>
+  <node id="100014" lat="23.4095" lon="85.4435">
+    <tag k="name" v="guest"/>
+  </node>
+  <node id="100015" lat="23.419" lon="85.4405">
+    <tag k="name" v="h1"/>
+  </node>
+  <node id="100016" lat="23.4195" lon="85.4415">
+    <tag k="name" v="h2"/>
+  </node>
+  <node id="100017" lat="23.42" lon="85.4425">
+    <tag k="name" v="h3"/>
+  </node>
+  <node id="100018" lat="23.4205" lon="85.4435">
+    <tag k="name" v="h4"/>
+  </node>
+  <node id="100019" lat="23.406" lon="85.439">
+    <tag k="name" v="h5"/>
+  </node>
+  <node id="100020" lat="23.4055" lon="85.438">
+    <tag k="name" v="h6"/>
+  </node>
+  <node id="100021" lat="23.405" lon="85.437">
+    <tag k="name" v="h7"/>
+  </node>
+  <node id="100022" lat="23.407" lon="85.44">
+    <tag k="name" v="h8"/>
+  </node>
+  <node id="100023" lat="23.4145" lon="85.4395">
+    <tag k="name" v="int_main_library"/>
+  </node>
+  <node id="100024" lat="23.4158" lon="85.439">
+    <tag k="name" v="int_lhc_cse"/>
+  </node>
+  <node id="100025" lat="23.4145" lon="85.438">
+    <tag k="name" v="int_admin_ece"/>
+  </node>
+  <node id="100026" lat="23.4125" lon="85.4364">
+    <tag k="name" v="int_ee_mech"/>
+  </node>
+  <node id="100027" lat="23.4126" lon="85.4406">
+    <tag k="name" v="int_audi_ric"/>
+  </node>
+  <node id="100028" lat="23.412" lon="85.4424">
+    <tag k="name" v="int_sac_biotech"/>
+  </node>
+  <node id="100029" lat="23.4185" lon="85.441">
+    <tag k="name" v="int_hostels_north"/>
+  </node>
+  <node id="100030" lat="23.4065" lon="85.4385">
+    <tag k="name" v="int_hostels_south"/>
+  </node>
+
+  <way id="500001">
+    <tag k="name" v="Main Avenue North"/>
+    <tag k="highway" v="footway"/>
+    <nd ref="100018"/>
+    <nd ref="100017"/>
+    <nd ref="100016"/>
+    <nd ref="100015"/>
+    <nd ref="100029"/>
+    <nd ref="100024"/>
+    <nd ref="100023"/>
+    <nd ref="100027"/>
+    <nd ref="100028"/>
+    <nd ref="100010"/>
+  </way>
+  <way id="500002">
+    <tag k="name" v="Main Avenue South"/>
+    <tag k="highway" v="footway"/>
+    <nd ref="100030"/>
+    <nd ref="100022"/>
+    <nd ref="100019"/>
+    <nd ref="100020"/>
+    <nd ref="100021"/>
+  </way>
+  <way id="500003">
+    <tag k="name" v="North-South Connector"/>
+    <tag k="highway" v="footway"/>
+    <nd ref="100029"/>
+    <nd ref="100005"/>
+    <nd ref="100024"/>
+    <nd ref="100004"/>
+    <nd ref="100002"/>
+    <nd ref="100023"/>
+    <nd ref="100001"/>
+    <nd ref="100025"/>
+    <nd ref="100009"/>
+    <nd ref="100026"/>
+    <nd ref="100008"/>
+  </way>
+  <way id="500004">
+    <tag k="name" v="East Loop"/>
+    <tag k="highway" v="footway"/>
+    <nd ref="100002"/>
+    <nd ref="100027"/>
+    <nd ref="100003"/>
+    <nd ref="100011"/>
+    <nd ref="100012"/>
+    <nd ref="100028"/>
+    <nd ref="100014"/>
+    <nd ref="100013"/>
+  </way>
+  <way id="500005">
+    <tag k="name" v="West Link"/>
+    <tag k="highway" v="footway"/>
+    <nd ref="100025"/>
+    <nd ref="100007"/>
+  </way>
+  <way id="500006">
+    <tag k="name" v="South Loop Connector"/>
+    <tag k="highway" v="footway"/>
+    <nd ref="100027"/>
+    <nd ref="100030"/>
+  </way>
+
+</osm>

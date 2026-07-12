@@ -1,151 +1,222 @@
 import logging
+import re
+from typing import Optional, List
+from pydantic import BaseModel
 
 logger = logging.getLogger("intent_router")
 
-GEMINI_KEYWORDS = [
-    "compare",
-    "comparison",
-    "difference",
-    "different",
-    "pros and cons",
-    "advantages",
-    "disadvantages",
-    "recommend",
-    "recommendation",
-    "which is better",
-    "better option",
-    "best hostel",
-    "best department",
-    "best club",
-    "best",
-    "summarize",
-    "summary",
-    "overview",
-    "explain",
-    "guide",
-    "advice",
-    "suggest",
-    "help me choose",
-    "first-year",
-    "joining",
-    "know before",
+from app.core.config import ROUTING_CONFIDENCE_THRESHOLD
+GEMINI_THRESHOLD = ROUTING_CONFIDENCE_THRESHOLD
+
+# Centralized Routing Table (one source of truth)
+ROUTING_TABLE = {
+    "Greeting": "Local Response",
+    "Campus Information": "Hybrid RAG",
+    "Notice Retrieval": "Hybrid RAG",
+    "Academic Calendar": "Calendar Service",
+    "Navigation": "Navigation Engine",
+    "Student Workspace": "Workspace Service",
+    "Uploaded Document QA": "Hybrid RAG",
+    "Website QA": "Website Knowledge",
+    "Programming Help": "Gemini",
+    "General Academic Concept": "Gemini",
+    "AI / ML Concept": "Gemini",
+    "Engineering Concept": "Gemini",
+    "Reasoning": "Gemini",
+    "Comparison": "Gemini",
+    "Summarization": "Gemini",
+    "Explanation": "Gemini",
+    "Conversation Follow-up": "Conversation Memory",
+    "Unknown": "Hybrid Strategy"
+}
+
+class RoutingDecision(BaseModel):
+    intent: str
+    primary_service: str
+    fallback_service: str
+    confidence: float
+    reason: str
+    requires_rag: bool
+    requires_gemini: bool
+    requires_navigation: bool
+    requires_workspace: bool
+    requires_conversation_memory: bool
+
+def is_greeting(query: str) -> bool:
+    query_lower = query.lower().strip().replace("?", "").replace(".", "").replace("!", "")
+    greetings = {
+        "hello", "hi", "hey", "good morning", "good afternoon", "good evening", 
+        "who are you", "what is your name", "greet", "greetings", "yo"
+    }
+    words = query_lower.split()
+    if not words:
+        return False
+    if words[0] in greetings and len(words) <= 3:
+        return True
+    return query_lower in greetings
+
+def classify_intent(query: str, history: list | None = None) -> str:
+    query_clean = query.strip()
+    query_lower = query_clean.lower()
     
-    # Academic Intents (Timetable, Attendance, Planner, Map)
-    "timetable",
-    "class",
-    "lecture",
-    "schedule",
-    "classroom",
-    "room",
-    "teach",
-    "professor",
-    "faculty",
-    "skip",
-    "bunk",
-    "attendance",
-    "leave",
-    "percentage",
-    "exam",
-    "quiz",
-    "test",
-    "task",
-    "todo",
-    "study plan",
-    "revision",
-    "planner",
-    "dashboard",
-    "study today",
-    "busiest day",
-    "lightest day"
-]
+    # 1. Greeting
+    if is_greeting(query_lower):
+        return "Greeting"
+        
+    # 2. Conversation Follow-up
+    if history:
+        for pronoun in ["its", "it", "they", "them", "this", "that"]:
+            pattern = r"\b" + re.escape(pronoun) + r"\b"
+            if re.search(pattern, query_lower):
+                if len(query_lower.split()) < 8:
+                    return "Conversation Follow-up"
 
-GEMINI_THRESHOLD = 0.45
+    # 3. Summarization
+    if any(k in query_lower for k in ["summarize", "summary", "overview", "tl;dr", "short version", "synopsis"]):
+        if any(k in query_lower for k in ["pdf", "document", "file", "uploaded"]):
+            return "Uploaded Document QA"
+        return "Summarization"
 
-import re
+    # 4. Comparison
+    if any(k in query_lower for k in ["compare", "comparison", "vs", "versus", "difference between", "different between", "pros and cons", "advantages", "disadvantages"]):
+        return "Comparison"
+
+    # 5. Explanation
+    if any(k in query_lower for k in ["explain", "explanation", "what is the meaning of", "clarify", "define", "what is a", "what is an"]):
+        if any(k in query_lower for k in ["cnn", "resnet", "neural network", "deep learning", "machine learning", "gradient descent", "transformer", "backpropagation", "tcp", "udp", "list", "tuple", "vector", "matrix", "dsa", "dbms", "normalization", "sql", "java", "python", "c++", "data structures", "algorithms"]):
+            pass
+        else:
+            return "Explanation"
+
+    # 6. Navigation
+    if any(k in query_lower for k in ["route", "where is", "how to get", "walking", "distance", "location", "landmark", "leave for", "departure", "take me to", "take me back", "reach", "how far", "on the way", "map", "directions", "hostel 5", "library"]):
+        return "Navigation"
+
+    # 7. Academic Calendar
+    if any(k in query_lower for k in ["calendar", "holiday", "when is end sem", "end sem", "start semester", "mid sem", "session start", "exam dates", "vacation"]):
+        return "Academic Calendar"
+
+    # 8. Notice Retrieval
+    if any(k in query_lower for k in ["notice", "circular", "announcement", "latest notice", "examination notice"]):
+        return "Notice Retrieval"
+
+    # 9. Student Workspace (Assignments, notes, timetable, reminders, etc.)
+    if any(k in query_lower for k in ["assignment", "assignments", "task", "todo", "planner", "deadline", "schedule today", "my workspace", "my assignments", "my courses", "my timetable", "my notes", "my reminders", "my uploaded"]):
+        if any(k in query_lower for k in ["pdf", "pdfs", "document", "uploaded"]):
+            return "Uploaded Document QA"
+        return "Student Workspace"
+
+    # 10. Uploaded Document QA
+    if any(k in query_lower for k in ["pdf", "pdfs", "document", "uploaded file", "paper", "handbook"]):
+        return "Uploaded Document QA"
+
+    # 11. Website QA
+    if any(k in query_lower for k in ["website", "site info", "page content", "webpage"]):
+        return "Website QA"
+
+    # 12. AI / ML Concept
+    ai_keywords = [
+        "cnn", "resnet", "neural network", "deep learning", "machine learning", 
+        "gradient descent", "transformer", "backpropagation", "supervised learning", 
+        "unsupervised learning", "overfitting", "underfitting", "nlp", "llm", 
+        "loss function", "activation function", "weights", "biases", "epochs"
+    ]
+    if any(k in query_lower for k in ai_keywords):
+        return "AI / ML Concept"
+
+    # 13. Programming Help
+    prog_keywords = [
+        "python", "java", "c++", "list vs tuple", "list", "tuple", "loop", 
+        "function", "variable", "syntax", "compile", "debug", "array", 
+        "pointer", "recursion", "object oriented", "inheritance", "polymorphism"
+    ]
+    if any(k in query_lower for k in prog_keywords):
+        return "Programming Help"
+
+    # 14. Engineering Concept
+    eng_keywords = [
+        "tcp", "udp", "dbms", "normalization", "dsa", "data structures", 
+        "algorithms", "operating system", "computer networks", "sql", 
+        "binary search", "sorting", "hash table"
+    ]
+    if any(k in query_lower for k in eng_keywords):
+        return "Engineering Concept"
+
+    # 15. Reasoning
+    if any(k in query_lower for k in ["why", "how does", "logic", "prove", "math", "derive", "solve"]):
+        return "Reasoning"
+
+    # 16. General Academic Concept
+    academic_keywords = [
+        "semester", "credits", "cgpa", "gpa", "course registration", 
+        "degree", "department", "probation"
+    ]
+    if any(k in query_lower for k in academic_keywords):
+        return "General Academic Concept"
+
+    # 17. Campus Information
+    campus_keywords = [
+        "hostel", "mess", "canteen", "library", "timings", "placement", 
+        "fees", "hostel fee", "admission", "bit mesra", "deans", "clubs", 
+        "sports", "gym", "dispensary", "placement office", "dean office",
+        "scholarship", "scholarships", "buildings", "campus map", "campus facilities"
+    ]
+    if any(k in query_lower for k in campus_keywords):
+        return "Campus Information"
+
+    return "Unknown"
+
+def make_routing_decision(query: str, rag_result: dict | None = None, history: list | None = None) -> RoutingDecision:
+    intent = classify_intent(query, history)
+    primary_service = ROUTING_TABLE.get(intent, "Gemini")
+    
+    # Defaults
+    fallback_service = "Gemini" if primary_service != "Gemini" else "Direct RAG Fallback"
+    confidence = 1.0
+    reason = f"Intent '{intent}' mapped to service '{primary_service}'"
+    
+    # Check RAG confidence override if primary is RAG
+    if primary_service in ["Hybrid RAG", "Website Knowledge", "Hybrid Strategy", "Calendar Service", "Workspace Service"]:
+        if rag_result:
+            # Check if there are valid documents retrieved
+            docs = rag_result.get("documents", [])
+            if not docs:
+                primary_service = "Gemini"
+                reason = "No relevant documents found in knowledge base, falling back to Gemini"
+            else:
+                confidence = rag_result.get("confidence", 1.0)
+                # Lower score = better confidence (Chroma distance)
+                if confidence >= GEMINI_THRESHOLD:
+                    primary_service = "Gemini"
+                    reason = f"RAG confidence {confidence:.4f} is weak, falling back to Gemini"
+        else:
+            primary_service = "Gemini"
+            reason = "No RAG result available, falling back to Gemini"
+            
+    # Gating and flag resolution
+    requires_rag = (primary_service in ["Hybrid RAG", "Website Knowledge", "Hybrid Strategy", "Calendar Service", "Workspace Service"])
+    requires_gemini = (primary_service == "Gemini")
+    requires_navigation = (intent == "Navigation")
+    requires_workspace = (intent in ["Student Workspace", "Student Dashboard"])
+    requires_conversation_memory = (intent == "Conversation Follow-up")
+    
+    return RoutingDecision(
+        intent=intent,
+        primary_service=primary_service,
+        fallback_service=fallback_service,
+        confidence=confidence,
+        reason=reason,
+        requires_rag=requires_rag,
+        requires_gemini=requires_gemini,
+        requires_navigation=requires_navigation,
+        requires_workspace=requires_workspace,
+        requires_conversation_memory=requires_conversation_memory
+    )
 
 def should_use_gemini(query: str, rag_result: dict | None) -> bool:
     """
     Decides whether to route the query to Gemini or use the direct RAG response.
     Returns True if Gemini should be used, False if RAG should be used directly.
     """
-    if not query:
-        print("\n========== INTENT ROUTER ==========")
-        print("Query: [Empty Query]")
-        print("Matched intent keyword: None")
-        print("Final decision: Gemini")
-        return True
-        
-    query_lower = query.lower()
-    matched_keyword = None
-    
-    # Case 1: Intent requires Gemini (query contains specific keywords)
-    for kw in GEMINI_KEYWORDS:
-        if kw in query_lower:
-            matched_keyword = kw
-            break
-            
-    # Conversational follow-up detection:
-    if not matched_keyword:
-        for pronoun in ["its", "it", "they", "them", "this", "that"]:
-            pattern = r"\b" + re.escape(pronoun) + r"\b"
-            if re.search(pattern, query_lower):
-                matched_keyword = f"conversational pronoun '{pronoun}'"
-                break
-            
-    # Check for dynamic document presence in the retrieved results
-    if rag_result:
-        source = rag_result.get("source")
-        legacy_sources = ["faq", "calendar", "notice", "building", "facility", "hostel", "department", "club"]
-        if source not in legacy_sources:
-            logger.info(f"Routing to Gemini: Dynamic source '{source}' requires LLM synthesis")
-            return True
-            
-        # Check if any retrieved document chunk belongs to a dynamic source
-        from app.services.rag.retriever import get_last_retrieval_sources
-        for src in get_last_retrieval_sources():
-            if src not in legacy_sources:
-                logger.info(f"Routing to Gemini: Context contains dynamic document source '{src}'")
-                return True
-
-    decision = True
-    if matched_keyword:
-        decision = True
-    elif rag_result is None:
-        decision = True
-    else:
-        confidence = rag_result.get("confidence")
-        if confidence is None:
-            decision = True
-        elif confidence < GEMINI_THRESHOLD:
-            decision = False
-        else:
-            decision = True
-            
-    print("\n========== INTENT ROUTER ==========")
-    print(f"Query: {query}")
-    print(f"Matched intent keyword: {matched_keyword}")
-    print(f"Final decision: {'Gemini' if decision else 'Direct RAG'}")
-    
-    if matched_keyword:
-        logger.info(f"Routing to Gemini: Query matched intent keyword/pronoun '{matched_keyword}'")
-        return True
-        
-    # Case 4: rag_result is None
-    if rag_result is None:
-        logger.info("Routing to Gemini: No RAG result found")
-        return True
-        
-    confidence = rag_result.get("confidence")
-    if confidence is None:
-        logger.info("Routing to Gemini: RAG result exists but confidence is missing")
-        return True
-        
-    # Remember: Lower score = better confidence
-    # Case 2: rag_result exists and confidence < GEMINI_THRESHOLD -> Direct RAG
-    if confidence < GEMINI_THRESHOLD:
-        logger.info(f"Routing to RAG directly: RAG confidence {confidence:.4f} is strong/better than threshold {GEMINI_THRESHOLD}")
-        return False
-        
-    # Case 3: rag_result exists and confidence >= GEMINI_THRESHOLD -> Gemini
-    logger.info(f"Routing to Gemini: RAG confidence {confidence:.4f} is weak/worse than or equal to threshold {GEMINI_THRESHOLD}")
-    return True
+    decision = make_routing_decision(query, rag_result)
+    return decision.requires_gemini

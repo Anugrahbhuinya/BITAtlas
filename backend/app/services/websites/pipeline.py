@@ -1,4 +1,5 @@
 import hashlib
+from typing import Any
 import logging
 from datetime import datetime, timezone
 from urllib.parse import urlparse
@@ -16,7 +17,7 @@ from langchain_core.documents import Document
 
 logger = logging.getLogger("website_pipeline")
 
-async def run_pipeline(url: str, created_by: str = "admin", overwrite_id: str = None) -> dict:
+async def run_pipeline(url: str, created_by: str = "admin", overwrite_id: str | None = None) -> dict:
     """
     Runs the full ingestion pipeline for a single website:
     URL Validation → Crawling/Scraping → Content Extraction → Metadata Parsing →
@@ -51,7 +52,7 @@ async def run_pipeline(url: str, created_by: str = "admin", overwrite_id: str = 
     normalized_content_hash = hashlib.sha256(norm_text.encode("utf-8")).hexdigest()
     
     # Exclude current overwrite ID if reindexing to avoid self-collision
-    dup_query = {"content_hash": content_hash}
+    dup_query: dict[str, Any] = {"content_hash": content_hash}
     if overwrite_id:
         dup_query["_id"] = {"$ne": overwrite_id}
         

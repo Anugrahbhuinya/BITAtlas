@@ -7,9 +7,13 @@ import {
 import type { ChatMessage } from "../types";
 import { useTextToSpeech } from "./useTextToSpeech";
 import { getSessionId } from "../utils/session";
+import { useNavigationAIStore } from "../../navigation/store/useNavigationAIStore";
 
 export const useChat = () => {
   const { speak, stopSpeaking, speakingText } = useTextToSpeech();
+  const navLocationId = useNavigationAIStore((s) => s.currentLocationNodeId);
+  const navDestId = useNavigationAIStore((s) => s.currentDestinationNodeId);
+  const navAccessibility = useNavigationAIStore((s) => s.accessibilityMode);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       sender: "bot",
@@ -32,6 +36,9 @@ export const useChat = () => {
             sender:
               msg.role === "assistant" ? ("bot" as const) : ("user" as const),
             text: msg.content,
+            messageType: msg.messageType,
+            metadata: msg.metadata,
+            navigation_context: msg.metadata?.navigation_context,
           }));
 
           setMessages([
@@ -79,11 +86,18 @@ export const useChat = () => {
     try {
       setLoading(true);
 
-      const response = await sendMessage(text, sessionId);
+      const response = await sendMessage(text, sessionId, {
+        currentLocationNodeId: navLocationId || undefined,
+        currentDestinationNodeId: navDestId || undefined,
+        accessibilityMode: navAccessibility || undefined,
+      });
 
       const botMessage: ChatMessage = {
         sender: "bot",
         text: response.answer,
+        navigation_context: response.navigation_context,
+        messageType: response.navigation_context ? "navigation" : "text",
+        diagnostics: response.diagnostics,
       };
 
       setMessages((prev) => [...prev, botMessage]);

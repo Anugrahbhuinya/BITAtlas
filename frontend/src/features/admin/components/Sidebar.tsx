@@ -15,6 +15,9 @@ import {
   Shield,
   History,
   Users,
+  Map,
+  Edit,
+  Search,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -37,9 +40,34 @@ export const Sidebar = ({ onMobileClose }: SidebarProps) => {
       path: "/admin/students",
     },
     {
+      label: "Campus Map",
+      icon: Map,
+      path: "/admin/navigation",
+    },
+    {
       label: "Knowledge Base",
       icon: Database,
       path: "/admin/knowledge-base",
+    },
+    {
+      label: "KMS Search",
+      icon: Search,
+      path: "/admin/knowledge/search",
+    },
+    {
+      label: "KMS Editor",
+      icon: Edit,
+      path: "/admin/knowledge/editor",
+    },
+    {
+      label: "KMS Drafts",
+      icon: FileText,
+      path: "/admin/knowledge/drafts",
+    },
+    {
+      label: "KMS Stats",
+      icon: BarChart3,
+      path: "/admin/knowledge/stats",
     },
     {
       label: "Documents",

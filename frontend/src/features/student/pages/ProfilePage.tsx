@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { API_BASE_URL } from "../../../config";
 import { 
   User, Mail, GraduationCap, Calendar, 
   Hash, BookOpen, UserCheck, Edit2, Camera, 
@@ -163,7 +164,7 @@ export const ProfilePage = () => {
             <div className="w-28 h-28 rounded-full overflow-hidden border border-outline-variant bg-surface-container flex items-center justify-center text-on-surface-variant">
               {profile.profile_picture ? (
                 <img 
-                  src={`http://localhost:8000${profile.profile_picture}`} 
+                  src={`${API_BASE_URL}${profile.profile_picture}`} 
                   alt={profile.name} 
                   className="w-full h-full object-cover"
                 />

@@ -1,13 +1,15 @@
 from datetime import datetime, timezone
 from app.core.database import get_database
 
-async def add_message_to_history(session_id: str, role: str, content: str):
+async def add_message_to_history(session_id: str, role: str, content: str, message_type: str = "text", metadata: dict | None = None):
     if not session_id:
         return
     db = get_database()
     message = {
         "role": role,
         "content": content,
+        "messageType": message_type,
+        "metadata": metadata,
         "timestamp": datetime.now(timezone.utc)
     }
     print(f"MongoDB Saving -> {role.capitalize()} Message: '{content[:60]}...'")

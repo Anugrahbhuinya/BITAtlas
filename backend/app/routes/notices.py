@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from services.notice_service import (
+from app.services.notice_service import (
     get_all_notices,
     get_latest_notices,
     get_notices_by_category,

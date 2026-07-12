@@ -1,4 +1,5 @@
 import { Outlet, useLocation, Link } from "react-router-dom";
+import { API_BASE_URL } from "../../config";
 import Sidebar from "../../shared/components/Sidebar";
 import { useAuth } from "../../features/auth/hooks/useAuth";
 import usePreferences from "../../features/preferences/hooks/usePreferences";
@@ -113,7 +114,7 @@ export function MainLayout() {
               >
                 {currentUser.profile_picture ? (
                   <img 
-                    src={`http://localhost:8000${currentUser.profile_picture}`} 
+                    src={`${API_BASE_URL}${currentUser.profile_picture}`} 
                     alt={currentUser.name} 
                     className="w-full h-full object-cover"
                   />

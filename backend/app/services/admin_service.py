@@ -47,7 +47,7 @@ async def seed_admin_user():
     except Exception as e:
         print(f"ADMIN PORTAL ERROR: Failed to seed admin user: {str(e)}")
 
-async def log_admin_activity(action: str, username: str, details: dict = None):
+async def log_admin_activity(action: str, username: str, details: dict | None = None):
     """
     Inserts a log entry into the `activity_logs` collection.
     """
@@ -131,6 +131,20 @@ async def get_dashboard_stats() -> dict:
             })
     except Exception as e:
         print(f"Error fetching dynamic websites for dashboard stats: {e}")
+
+    # Fetch dynamic KMS knowledge items from MongoDB
+    try:
+        cursor = db.knowledge_items.find({})
+        async for doc in cursor:
+            knowledge_sources += 1
+            documents_list.append({
+                "filename": doc["title"],
+                "type": doc.get("source_type", "manual"),
+                "size": len(doc.get("content", "").encode("utf-8")),
+                "created": doc.get("updated_at") or doc.get("created_at") or datetime.now(timezone.utc)
+            })
+    except Exception as e:
+        print(f"Error fetching KMS knowledge items for dashboard stats: {e}")
 
     # Add virtual documents to mock data if empty
     if len(documents_list) == 0:
@@ -319,6 +333,21 @@ async def get_documents() -> list:
             })
     except Exception as e:
         print(f"Error fetching dynamic docs from MongoDB: {e}")
+
+    # Fetch dynamic KMS knowledge items from MongoDB
+    try:
+        cursor = db.knowledge_items.find({})
+        async for doc in cursor:
+            documents_list.append({
+                "id": str(doc["_id"]),
+                "filename": doc["title"],
+                "type": doc.get("source_type", "manual"),
+                "status": doc.get("status", "draft").capitalize(),
+                "created": doc.get("updated_at") or doc.get("created_at") or datetime.now(timezone.utc),
+                "size_bytes": len(doc.get("content", "").encode("utf-8"))
+            })
+    except Exception as e:
+        print(f"Error fetching KMS knowledge items: {e}")
 
     # Seed list with standard files if none found in directory scan and database
     if not documents_list:

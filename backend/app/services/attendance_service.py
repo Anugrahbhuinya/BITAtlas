@@ -340,6 +340,11 @@ class AttendanceService:
 
         # 6. Recalculate totals
         updated_record = await self.recalculate_record_totals(record["_id"])
+        if not updated_record:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Failed to recalculate totals after logging attendance."
+            )
         return updated_record
 
     async def update_log(self, student_id: str, log_id: str, payload: AttendanceLogUpdateRequest) -> Dict[str, Any]:
@@ -397,6 +402,11 @@ class AttendanceService:
 
         # Recalculate totals
         updated_record = await self.recalculate_record_totals(record["_id"])
+        if not updated_record:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Failed to recalculate totals after updating attendance."
+            )
         return updated_record
 
     async def delete_log(self, student_id: str, log_id: str) -> Dict[str, Any]:
@@ -421,6 +431,11 @@ class AttendanceService:
 
         # Recalculate totals
         updated_record = await self.recalculate_record_totals(record["_id"])
+        if not updated_record:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Failed to recalculate totals after deleting attendance."
+            )
         return updated_record
 
     async def get_analytics(self, student_id: str) -> Dict[str, Any]:

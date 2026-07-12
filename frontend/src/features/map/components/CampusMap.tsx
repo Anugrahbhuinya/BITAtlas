@@ -1,76 +1,118 @@
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+// src/features/map/components/CampusMap.tsx
 
-import { useEffect } from "react";
-
-import L from "leaflet";
-
+import React from "react";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-import { locations } from "../data/locations";
-import { useMapStore } from "../store/useMapStore";
+import { CampusMapLayer } from "../../navigation/components/CampusMapLayer";
+import { MapContextMenu } from "../../navigation/components/MapContextMenu";
+import type { Building, Facility, Landmark, GraphNode } from "../../navigation/types";
 
-// Fix marker icons in Vite
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
+interface CampusMapProps {
+  buildings: Building[];
+  landmarks: Landmark[];
+  facilities: Facility[];
+  allNodes: GraphNode[];
+  showBuildings: boolean;
+  showLandmarks: boolean;
+  showFacilities: boolean;
+  selectedEntity: any;
+  selectedEntityType: "building" | "room" | "facility" | "landmark" | null;
+  onEntityClick: (entity: any, type: "building" | "facility" | "landmark") => void;
+  onResetViewRef?: React.MutableRefObject<(() => void) | null>;
+  routePath?: [number, number][];
+  showRouteLayer?: boolean;
+  zoomToRouteTrigger?: number;
+  onHoverEntity?: (entity: any, type: "building" | "facility" | "landmark" | null) => void;
 
-delete (L.Icon.Default.prototype as { _getIconUrl?: unknown })._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: markerIcon2x,
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-});
+  // Context Menu Callbacks
+  onSetStart: (id: string, name: string) => void;
+  onSetDestination: (id: string, name: string) => void;
+  onViewDetails: (entity: any, type: "building" | "facility" | "landmark") => void;
+  onAddFavorite: (entity: any) => void;
+}
 
 const CENTER: [number, number] = [23.4129, 85.4407];
+const ZOOM = 16;
 
-function FocusLocation() {
-  const map = useMap();
+// Ref-based controller to allow resetting view from parent toolbar
+function MapController({ onResetViewRef }: { onResetViewRef?: React.MutableRefObject<(() => void) | null> }) {
+  const map = React.useRef(null);
+  const leafletMap = useMap();
 
-  const selectedLocation = useMapStore((state) => state.selectedLocation);
-
-  useEffect(() => {
-    if (!selectedLocation) return;
-
-    const location = locations.find((loc) => loc.name === selectedLocation);
-
-    if (!location) return;
-
-    map.flyTo([location.lat, location.lng], 18, {
-      duration: 2,
-    });
-  }, [selectedLocation, map]);
+  React.useEffect(() => {
+    if (onResetViewRef) {
+      onResetViewRef.current = () => {
+        leafletMap.setView(CENTER, ZOOM, { animate: true });
+      };
+    }
+  }, [leafletMap, onResetViewRef]);
 
   return null;
 }
 
-function CampusMap() {
+export const CampusMap: React.FC<CampusMapProps> = ({
+  buildings,
+  landmarks,
+  facilities,
+  allNodes,
+  showBuildings,
+  showLandmarks,
+  showFacilities,
+  selectedEntity,
+  selectedEntityType,
+  onEntityClick,
+  onResetViewRef,
+  routePath,
+  showRouteLayer = true,
+  zoomToRouteTrigger = 0,
+  onSetStart,
+  onSetDestination,
+  onViewDetails,
+  onAddFavorite,
+  onHoverEntity
+}) => {
   return (
     <MapContainer
       center={CENTER}
-      zoom={16}
-      className="h-full w-full rounded-xl"
+      zoom={ZOOM}
+      className="h-full w-full rounded-xl z-0"
     >
       <TileLayer
-        attribution="&copy; OpenStreetMap contributors"
+        attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      <FocusLocation />
+      <MapController onResetViewRef={onResetViewRef} />
 
-      {locations.map((location) => (
-        <Marker key={location.id} position={[location.lat, location.lng]}>
-          <Popup>
-            <div className="min-w-[180px]">
-              <h3 className="font-bold text-lg">{location.name}</h3>
+      <MapContextMenu
+        buildings={buildings}
+        facilities={facilities}
+        landmarks={landmarks}
+        allNodes={allNodes}
+        onSetStart={onSetStart}
+        onSetDestination={onSetDestination}
+        onViewDetails={onViewDetails}
+        onAddFavorite={onAddFavorite}
+      />
 
-              <p>{location.description}</p>
-            </div>
-          </Popup>
-        </Marker>
-      ))}
+      <CampusMapLayer
+        buildings={buildings}
+        landmarks={landmarks}
+        facilities={facilities}
+        showBuildings={showBuildings}
+        showLandmarks={showLandmarks}
+        showFacilities={showFacilities}
+        selectedEntity={selectedEntity}
+        selectedEntityType={selectedEntityType}
+        onEntityClick={onEntityClick}
+        routePath={routePath}
+        showRouteLayer={showRouteLayer}
+        zoomToRouteTrigger={zoomToRouteTrigger}
+        onHoverEntity={onHoverEntity}
+      />
     </MapContainer>
   );
-}
+};
 
 export default CampusMap;

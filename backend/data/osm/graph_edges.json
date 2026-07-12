@@ -1,0 +1,1502 @@
+[
+  {
+    "source": "osm_100018",
+    "destination": "osm_100017",
+    "relationship": "WALKWAY",
+    "distance": 116.2,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4205,
+          85.4435
+        ],
+        [
+          23.42,
+          85.4425
+        ]
+      ],
+      "time_seconds": 89.38323876816932
+    }
+  },
+  {
+    "source": "osm_100017",
+    "destination": "osm_100018",
+    "relationship": "WALKWAY",
+    "distance": 116.2,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.42,
+          85.4425
+        ],
+        [
+          23.4205,
+          85.4435
+        ]
+      ],
+      "time_seconds": 89.38323876816932
+    }
+  },
+  {
+    "source": "osm_100017",
+    "destination": "osm_100016",
+    "relationship": "WALKWAY",
+    "distance": 116.2,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.42,
+          85.4425
+        ],
+        [
+          23.4195,
+          85.4415
+        ]
+      ],
+      "time_seconds": 89.38349928504697
+    }
+  },
+  {
+    "source": "osm_100016",
+    "destination": "osm_100017",
+    "relationship": "WALKWAY",
+    "distance": 116.2,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4195,
+          85.4415
+        ],
+        [
+          23.42,
+          85.4425
+        ]
+      ],
+      "time_seconds": 89.38349928504697
+    }
+  },
+  {
+    "source": "osm_100016",
+    "destination": "osm_100015",
+    "relationship": "WALKWAY",
+    "distance": 116.2,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4195,
+          85.4415
+        ],
+        [
+          23.419,
+          85.4405
+        ]
+      ],
+      "time_seconds": 89.38375979856947
+    }
+  },
+  {
+    "source": "osm_100015",
+    "destination": "osm_100016",
+    "relationship": "WALKWAY",
+    "distance": 116.2,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.419,
+          85.4405
+        ],
+        [
+          23.4195,
+          85.4415
+        ]
+      ],
+      "time_seconds": 89.38375979856947
+    }
+  },
+  {
+    "source": "osm_100015",
+    "destination": "osm_100029",
+    "relationship": "WALKWAY",
+    "distance": 75.46,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.419,
+          85.4405
+        ],
+        [
+          23.4185,
+          85.441
+        ]
+      ],
+      "time_seconds": 58.04443054273165
+    }
+  },
+  {
+    "source": "osm_100029",
+    "destination": "osm_100015",
+    "relationship": "WALKWAY",
+    "distance": 75.46,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4185,
+          85.441
+        ],
+        [
+          23.419,
+          85.4405
+        ]
+      ],
+      "time_seconds": 58.04443054273165
+    }
+  },
+  {
+    "source": "osm_100029",
+    "destination": "osm_100024",
+    "relationship": "WALKWAY",
+    "distance": 363.02,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4185,
+          85.441
+        ],
+        [
+          23.4158,
+          85.439
+        ]
+      ],
+      "time_seconds": 279.24408623794864
+    }
+  },
+  {
+    "source": "osm_100024",
+    "destination": "osm_100029",
+    "relationship": "WALKWAY",
+    "distance": 363.02,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4158,
+          85.439
+        ],
+        [
+          23.4185,
+          85.441
+        ]
+      ],
+      "time_seconds": 279.24408623794864
+    }
+  },
+  {
+    "source": "osm_100024",
+    "destination": "osm_100023",
+    "relationship": "WALKWAY",
+    "distance": 153.29,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4158,
+          85.439
+        ],
+        [
+          23.4145,
+          85.4395
+        ]
+      ],
+      "time_seconds": 117.91739165829166
+    }
+  },
+  {
+    "source": "osm_100023",
+    "destination": "osm_100024",
+    "relationship": "WALKWAY",
+    "distance": 153.29,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4145,
+          85.4395
+        ],
+        [
+          23.4158,
+          85.439
+        ]
+      ],
+      "time_seconds": 117.91739165829166
+    }
+  },
+  {
+    "source": "osm_100023",
+    "destination": "osm_100027",
+    "relationship": "WALKWAY",
+    "distance": 239.24,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4145,
+          85.4395
+        ],
+        [
+          23.4126,
+          85.4406
+        ]
+      ],
+      "time_seconds": 184.02740689058336
+    }
+  },
+  {
+    "source": "osm_100027",
+    "destination": "osm_100023",
+    "relationship": "WALKWAY",
+    "distance": 239.24,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4126,
+          85.4406
+        ],
+        [
+          23.4145,
+          85.4395
+        ]
+      ],
+      "time_seconds": 184.02740689058336
+    }
+  },
+  {
+    "source": "osm_100027",
+    "destination": "osm_100028",
+    "relationship": "WALKWAY",
+    "distance": 195.41,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4126,
+          85.4406
+        ],
+        [
+          23.412,
+          85.4424
+        ]
+      ],
+      "time_seconds": 150.31854138282029
+    }
+  },
+  {
+    "source": "osm_100028",
+    "destination": "osm_100027",
+    "relationship": "WALKWAY",
+    "distance": 195.41,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.412,
+          85.4424
+        ],
+        [
+          23.4126,
+          85.4406
+        ]
+      ],
+      "time_seconds": 150.31854138282029
+    }
+  },
+  {
+    "source": "osm_100028",
+    "destination": "osm_100010",
+    "relationship": "WALKWAY",
+    "distance": 82.7,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.412,
+          85.4424
+        ],
+        [
+          23.4125,
+          85.443
+        ]
+      ],
+      "time_seconds": 63.61623031503358
+    }
+  },
+  {
+    "source": "osm_100010",
+    "destination": "osm_100028",
+    "relationship": "WALKWAY",
+    "distance": 82.7,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue North",
+      "geometry": [
+        [
+          23.4125,
+          85.443
+        ],
+        [
+          23.412,
+          85.4424
+        ]
+      ],
+      "time_seconds": 63.61623031503358
+    }
+  },
+  {
+    "source": "osm_100030",
+    "destination": "osm_100022",
+    "relationship": "WALKWAY",
+    "distance": 162.85,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue South",
+      "geometry": [
+        [
+          23.4065,
+          85.4385
+        ],
+        [
+          23.407,
+          85.44
+        ]
+      ],
+      "time_seconds": 125.27009214757
+    }
+  },
+  {
+    "source": "osm_100022",
+    "destination": "osm_100030",
+    "relationship": "WALKWAY",
+    "distance": 162.85,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue South",
+      "geometry": [
+        [
+          23.407,
+          85.44
+        ],
+        [
+          23.4065,
+          85.4385
+        ]
+      ],
+      "time_seconds": 125.27009214757
+    }
+  },
+  {
+    "source": "osm_100022",
+    "destination": "osm_100019",
+    "relationship": "WALKWAY",
+    "distance": 150.92,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue South",
+      "geometry": [
+        [
+          23.407,
+          85.44
+        ],
+        [
+          23.406,
+          85.439
+        ]
+      ],
+      "time_seconds": 116.0937741830227
+    }
+  },
+  {
+    "source": "osm_100019",
+    "destination": "osm_100022",
+    "relationship": "WALKWAY",
+    "distance": 150.92,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue South",
+      "geometry": [
+        [
+          23.406,
+          85.439
+        ],
+        [
+          23.407,
+          85.44
+        ]
+      ],
+      "time_seconds": 116.0937741830227
+    }
+  },
+  {
+    "source": "osm_100019",
+    "destination": "osm_100020",
+    "relationship": "WALKWAY",
+    "distance": 116.21,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue South",
+      "geometry": [
+        [
+          23.406,
+          85.439
+        ],
+        [
+          23.4055,
+          85.438
+        ]
+      ],
+      "time_seconds": 89.39079174129084
+    }
+  },
+  {
+    "source": "osm_100020",
+    "destination": "osm_100019",
+    "relationship": "WALKWAY",
+    "distance": 116.21,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue South",
+      "geometry": [
+        [
+          23.4055,
+          85.438
+        ],
+        [
+          23.406,
+          85.439
+        ]
+      ],
+      "time_seconds": 89.39079174129084
+    }
+  },
+  {
+    "source": "osm_100020",
+    "destination": "osm_100021",
+    "relationship": "WALKWAY",
+    "distance": 116.21,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue South",
+      "geometry": [
+        [
+          23.4055,
+          85.438
+        ],
+        [
+          23.405,
+          85.437
+        ]
+      ],
+      "time_seconds": 89.39105211429572
+    }
+  },
+  {
+    "source": "osm_100021",
+    "destination": "osm_100020",
+    "relationship": "WALKWAY",
+    "distance": 116.21,
+    "accessibility": true,
+    "metadata": {
+      "name": "Main Avenue South",
+      "geometry": [
+        [
+          23.405,
+          85.437
+        ],
+        [
+          23.4055,
+          85.438
+        ]
+      ],
+      "time_seconds": 89.39105211429572
+    }
+  },
+  {
+    "source": "osm_100029",
+    "destination": "osm_100005",
+    "relationship": "WALKWAY",
+    "distance": 361.22,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4185,
+          85.441
+        ],
+        [
+          23.4162,
+          85.4385
+        ]
+      ],
+      "time_seconds": 277.8600340607192
+    }
+  },
+  {
+    "source": "osm_100005",
+    "destination": "osm_100029",
+    "relationship": "WALKWAY",
+    "distance": 361.22,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4162,
+          85.4385
+        ],
+        [
+          23.4185,
+          85.441
+        ]
+      ],
+      "time_seconds": 277.8600340607192
+    }
+  },
+  {
+    "source": "osm_100005",
+    "destination": "osm_100024",
+    "relationship": "WALKWAY",
+    "distance": 67.68,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4162,
+          85.4385
+        ],
+        [
+          23.4158,
+          85.439
+        ]
+      ],
+      "time_seconds": 52.06501203274937
+    }
+  },
+  {
+    "source": "osm_100024",
+    "destination": "osm_100005",
+    "relationship": "WALKWAY",
+    "distance": 67.68,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4158,
+          85.439
+        ],
+        [
+          23.4162,
+          85.4385
+        ]
+      ],
+      "time_seconds": 52.06501203274937
+    }
+  },
+  {
+    "source": "osm_100024",
+    "destination": "osm_100004",
+    "relationship": "WALKWAY",
+    "distance": 60.96,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4158,
+          85.439
+        ],
+        [
+          23.4155,
+          85.4395
+        ]
+      ],
+      "time_seconds": 46.88968300928674
+    }
+  },
+  {
+    "source": "osm_100004",
+    "destination": "osm_100024",
+    "relationship": "WALKWAY",
+    "distance": 60.96,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4155,
+          85.4395
+        ],
+        [
+          23.4158,
+          85.439
+        ]
+      ],
+      "time_seconds": 46.88968300928674
+    }
+  },
+  {
+    "source": "osm_100004",
+    "destination": "osm_100002",
+    "relationship": "WALKWAY",
+    "distance": 75.46,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4155,
+          85.4395
+        ],
+        [
+          23.415,
+          85.44
+        ]
+      ],
+      "time_seconds": 58.04513252530046
+    }
+  },
+  {
+    "source": "osm_100002",
+    "destination": "osm_100004",
+    "relationship": "WALKWAY",
+    "distance": 75.46,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.415,
+          85.44
+        ],
+        [
+          23.4155,
+          85.4395
+        ]
+      ],
+      "time_seconds": 58.04513252530046
+    }
+  },
+  {
+    "source": "osm_100002",
+    "destination": "osm_100023",
+    "relationship": "WALKWAY",
+    "distance": 75.46,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.415,
+          85.44
+        ],
+        [
+          23.4145,
+          85.4395
+        ]
+      ],
+      "time_seconds": 58.04523280100891
+    }
+  },
+  {
+    "source": "osm_100023",
+    "destination": "osm_100002",
+    "relationship": "WALKWAY",
+    "distance": 75.46,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4145,
+          85.4395
+        ],
+        [
+          23.415,
+          85.44
+        ]
+      ],
+      "time_seconds": 58.04523280100891
+    }
+  },
+  {
+    "source": "osm_100023",
+    "destination": "osm_100001",
+    "relationship": "WALKWAY",
+    "distance": 78.83,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4145,
+          85.4395
+        ],
+        [
+          23.4142,
+          85.4388
+        ]
+      ],
+      "time_seconds": 60.640597641206526
+    }
+  },
+  {
+    "source": "osm_100001",
+    "destination": "osm_100023",
+    "relationship": "WALKWAY",
+    "distance": 78.83,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4142,
+          85.4388
+        ],
+        [
+          23.4145,
+          85.4395
+        ]
+      ],
+      "time_seconds": 60.640597641206526
+    }
+  },
+  {
+    "source": "osm_100001",
+    "destination": "osm_100025",
+    "relationship": "WALKWAY",
+    "distance": 88.18,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4142,
+          85.4388
+        ],
+        [
+          23.4145,
+          85.438
+        ]
+      ],
+      "time_seconds": 67.83371568835568
+    }
+  },
+  {
+    "source": "osm_100025",
+    "destination": "osm_100001",
+    "relationship": "WALKWAY",
+    "distance": 88.18,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4145,
+          85.438
+        ],
+        [
+          23.4142,
+          85.4388
+        ]
+      ],
+      "time_seconds": 67.83371568835568
+    }
+  },
+  {
+    "source": "osm_100025",
+    "destination": "osm_100009",
+    "relationship": "WALKWAY",
+    "distance": 134.48,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4145,
+          85.438
+        ],
+        [
+          23.414,
+          85.4368
+        ]
+      ],
+      "time_seconds": 103.4442374479087
+    }
+  },
+  {
+    "source": "osm_100009",
+    "destination": "osm_100025",
+    "relationship": "WALKWAY",
+    "distance": 134.48,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.414,
+          85.4368
+        ],
+        [
+          23.4145,
+          85.438
+        ]
+      ],
+      "time_seconds": 103.4442374479087
+    }
+  },
+  {
+    "source": "osm_100009",
+    "destination": "osm_100026",
+    "relationship": "WALKWAY",
+    "distance": 171.71,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.414,
+          85.4368
+        ],
+        [
+          23.4125,
+          85.4364
+        ]
+      ],
+      "time_seconds": 132.08753826356175
+    }
+  },
+  {
+    "source": "osm_100026",
+    "destination": "osm_100009",
+    "relationship": "WALKWAY",
+    "distance": 171.71,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4125,
+          85.4364
+        ],
+        [
+          23.414,
+          85.4368
+        ]
+      ],
+      "time_seconds": 132.08753826356175
+    }
+  },
+  {
+    "source": "osm_100026",
+    "destination": "osm_100008",
+    "relationship": "WALKWAY",
+    "distance": 171.71,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.4125,
+          85.4364
+        ],
+        [
+          23.411,
+          85.436
+        ]
+      ],
+      "time_seconds": 132.08762286282456
+    }
+  },
+  {
+    "source": "osm_100008",
+    "destination": "osm_100026",
+    "relationship": "WALKWAY",
+    "distance": 171.71,
+    "accessibility": true,
+    "metadata": {
+      "name": "North-South Connector",
+      "geometry": [
+        [
+          23.411,
+          85.436
+        ],
+        [
+          23.4125,
+          85.4364
+        ]
+      ],
+      "time_seconds": 132.08762286282456
+    }
+  },
+  {
+    "source": "osm_100002",
+    "destination": "osm_100027",
+    "relationship": "WALKWAY",
+    "distance": 273.8,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.415,
+          85.44
+        ],
+        [
+          23.4126,
+          85.4406
+        ]
+      ],
+      "time_seconds": 210.61580822096843
+    }
+  },
+  {
+    "source": "osm_100027",
+    "destination": "osm_100002",
+    "relationship": "WALKWAY",
+    "distance": 273.8,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.4126,
+          85.4406
+        ],
+        [
+          23.415,
+          85.44
+        ]
+      ],
+      "time_seconds": 210.61580822096843
+    }
+  },
+  {
+    "source": "osm_100027",
+    "destination": "osm_100003",
+    "relationship": "WALKWAY",
+    "distance": 78.21,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.4126,
+          85.4406
+        ],
+        [
+          23.412,
+          85.441
+        ]
+      ],
+      "time_seconds": 60.16301232845773
+    }
+  },
+  {
+    "source": "osm_100003",
+    "destination": "osm_100027",
+    "relationship": "WALKWAY",
+    "distance": 78.21,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.412,
+          85.441
+        ],
+        [
+          23.4126,
+          85.4406
+        ]
+      ],
+      "time_seconds": 60.16301232845773
+    }
+  },
+  {
+    "source": "osm_100003",
+    "destination": "osm_100011",
+    "relationship": "WALKWAY",
+    "distance": 156.42,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.412,
+          85.441
+        ],
+        [
+          23.4132,
+          85.4402
+        ]
+      ],
+      "time_seconds": 120.32595036112502
+    }
+  },
+  {
+    "source": "osm_100011",
+    "destination": "osm_100003",
+    "relationship": "WALKWAY",
+    "distance": 156.42,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.4132,
+          85.4402
+        ],
+        [
+          23.412,
+          85.441
+        ]
+      ],
+      "time_seconds": 120.32595036112502
+    }
+  },
+  {
+    "source": "osm_100011",
+    "destination": "osm_100012",
+    "relationship": "WALKWAY",
+    "distance": 249.78,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.4132,
+          85.4402
+        ],
+        [
+          23.4115,
+          85.4418
+        ]
+      ],
+      "time_seconds": 192.135409256819
+    }
+  },
+  {
+    "source": "osm_100012",
+    "destination": "osm_100011",
+    "relationship": "WALKWAY",
+    "distance": 249.78,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.4115,
+          85.4418
+        ],
+        [
+          23.4132,
+          85.4402
+        ]
+      ],
+      "time_seconds": 192.135409256819
+    }
+  },
+  {
+    "source": "osm_100012",
+    "destination": "osm_100028",
+    "relationship": "WALKWAY",
+    "distance": 82.7,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.4115,
+          85.4418
+        ],
+        [
+          23.412,
+          85.4424
+        ]
+      ],
+      "time_seconds": 63.61636205464673
+    }
+  },
+  {
+    "source": "osm_100028",
+    "destination": "osm_100012",
+    "relationship": "WALKWAY",
+    "distance": 82.7,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.412,
+          85.4424
+        ],
+        [
+          23.4115,
+          85.4418
+        ]
+      ],
+      "time_seconds": 63.61636205464673
+    }
+  },
+  {
+    "source": "osm_100028",
+    "destination": "osm_100014",
+    "relationship": "WALKWAY",
+    "distance": 299.79,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.412,
+          85.4424
+        ],
+        [
+          23.4095,
+          85.4435
+        ]
+      ],
+      "time_seconds": 230.61020451111966
+    }
+  },
+  {
+    "source": "osm_100014",
+    "destination": "osm_100028",
+    "relationship": "WALKWAY",
+    "distance": 299.79,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.4095,
+          85.4435
+        ],
+        [
+          23.412,
+          85.4424
+        ]
+      ],
+      "time_seconds": 230.61020451111966
+    }
+  },
+  {
+    "source": "osm_100014",
+    "destination": "osm_100013",
+    "relationship": "WALKWAY",
+    "distance": 957.47,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.4095,
+          85.4435
+        ],
+        [
+          23.418,
+          85.442
+        ]
+      ],
+      "time_seconds": 736.5152444278131
+    }
+  },
+  {
+    "source": "osm_100013",
+    "destination": "osm_100014",
+    "relationship": "WALKWAY",
+    "distance": 957.47,
+    "accessibility": true,
+    "metadata": {
+      "name": "East Loop",
+      "geometry": [
+        [
+          23.418,
+          85.442
+        ],
+        [
+          23.4095,
+          85.4435
+        ]
+      ],
+      "time_seconds": 736.5152444278131
+    }
+  },
+  {
+    "source": "osm_100025",
+    "destination": "osm_100007",
+    "relationship": "WALKWAY",
+    "distance": 88.18,
+    "accessibility": true,
+    "metadata": {
+      "name": "West Link",
+      "geometry": [
+        [
+          23.4145,
+          85.438
+        ],
+        [
+          23.4148,
+          85.4372
+        ]
+      ],
+      "time_seconds": 67.83358389248276
+    }
+  },
+  {
+    "source": "osm_100007",
+    "destination": "osm_100025",
+    "relationship": "WALKWAY",
+    "distance": 88.18,
+    "accessibility": true,
+    "metadata": {
+      "name": "West Link",
+      "geometry": [
+        [
+          23.4148,
+          85.4372
+        ],
+        [
+          23.4145,
+          85.438
+        ]
+      ],
+      "time_seconds": 67.83358389248276
+    }
+  },
+  {
+    "source": "osm_100027",
+    "destination": "osm_100030",
+    "relationship": "WALKWAY",
+    "distance": 711.33,
+    "accessibility": true,
+    "metadata": {
+      "name": "South Loop Connector",
+      "geometry": [
+        [
+          23.4126,
+          85.4406
+        ],
+        [
+          23.4065,
+          85.4385
+        ]
+      ],
+      "time_seconds": 547.1798261050568
+    }
+  },
+  {
+    "source": "osm_100030",
+    "destination": "osm_100027",
+    "relationship": "WALKWAY",
+    "distance": 711.33,
+    "accessibility": true,
+    "metadata": {
+      "name": "South Loop Connector",
+      "geometry": [
+        [
+          23.4065,
+          85.4385
+        ],
+        [
+          23.4126,
+          85.4406
+        ]
+      ],
+      "time_seconds": 547.1798261050568
+    }
+  },
+  {
+    "source": "b_1",
+    "destination": "entr_b_1_0",
+    "relationship": "HAS_ENTRANCE",
+    "distance": 5.0,
+    "accessibility": true,
+    "metadata": {}
+  },
+  {
+    "source": "entr_b_1_0",
+    "destination": "b_1",
+    "relationship": "CONNECTS_TO",
+    "distance": 5.0,
+    "accessibility": true,
+    "metadata": {}
+  },
+  {
+    "source": "entr_b_1_0",
+    "destination": "osm_100027",
+    "relationship": "CONNECTS_TO",
+    "distance": 48.94,
+    "accessibility": true,
+    "metadata": {
+      "notes": "Entrance link to nearest OSM walkway"
+    }
+  },
+  {
+    "source": "osm_100027",
+    "destination": "entr_b_1_0",
+    "relationship": "CONNECTS_TO",
+    "distance": 48.94,
+    "accessibility": true,
+    "metadata": {
+      "notes": "Road connector to MAIN - Main Entrance"
+    }
+  },
+  {
+    "source": "b_2",
+    "destination": "entr_b_2_0",
+    "relationship": "HAS_ENTRANCE",
+    "distance": 5.0,
+    "accessibility": false,
+    "metadata": {}
+  },
+  {
+    "source": "entr_b_2_0",
+    "destination": "b_2",
+    "relationship": "CONNECTS_TO",
+    "distance": 5.0,
+    "accessibility": false,
+    "metadata": {}
+  },
+  {
+    "source": "entr_b_2_0",
+    "destination": "osm_100010",
+    "relationship": "CONNECTS_TO",
+    "distance": 195.53,
+    "accessibility": true,
+    "metadata": {
+      "notes": "Entrance link to nearest OSM walkway"
+    }
+  },
+  {
+    "source": "osm_100010",
+    "destination": "entr_b_2_0",
+    "relationship": "CONNECTS_TO",
+    "distance": 195.53,
+    "accessibility": true,
+    "metadata": {
+      "notes": "Road connector to H1 - Main Entrance"
+    }
+  },
+  {
+    "source": "b_1",
+    "destination": "r_101",
+    "relationship": "CONTAINS",
+    "distance": null,
+    "accessibility": true,
+    "metadata": {}
+  },
+  {
+    "source": "r_101",
+    "destination": "b_1",
+    "relationship": "LOCATED_IN",
+    "distance": null,
+    "accessibility": true,
+    "metadata": {}
+  },
+  {
+    "source": "b_1",
+    "destination": "r_102",
+    "relationship": "CONTAINS",
+    "distance": null,
+    "accessibility": true,
+    "metadata": {}
+  },
+  {
+    "source": "r_102",
+    "destination": "b_1",
+    "relationship": "LOCATED_IN",
+    "distance": null,
+    "accessibility": true,
+    "metadata": {}
+  },
+  {
+    "source": "f_1",
+    "destination": "osm_100027",
+    "relationship": "CONNECTS_TO",
+    "distance": 24.47,
+    "accessibility": true,
+    "metadata": {}
+  },
+  {
+    "source": "osm_100027",
+    "destination": "f_1",
+    "relationship": "CONNECTS_TO",
+    "distance": 24.47,
+    "accessibility": true,
+    "metadata": {}
+  },
+  {
+    "source": "l_1",
+    "destination": "osm_100027",
+    "relationship": "CONNECTS_TO",
+    "distance": 62.23,
+    "accessibility": true,
+    "metadata": {}
+  },
+  {
+    "source": "osm_100027",
+    "destination": "l_1",
+    "relationship": "CONNECTS_TO",
+    "distance": 62.23,
+    "accessibility": true,
+    "metadata": {}
+  },
+  {
+    "source": "r_102",
+    "destination": "r_101",
+    "relationship": "FLOOR_CONNECTION",
+    "distance": 4.0,
+    "accessibility": false,
+    "metadata": {
+      "notes": "Stairs connecting floor 1 to 2"
+    }
+  },
+  {
+    "source": "r_101",
+    "destination": "r_102",
+    "relationship": "FLOOR_CONNECTION",
+    "distance": 4.0,
+    "accessibility": false,
+    "metadata": {
+      "notes": "Stairs connecting floor 2 to 1"
+    }
+  }
+]

@@ -39,9 +39,22 @@ class JWTService:
         return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 
     @staticmethod
-    def decode_token(token: str) -> Dict[str, Any]:
+    def decode_token(token: str, expected_type: str = "access") -> Dict[str, Any]:
         """
         Decodes a JWT and validates signature/expiration.
+        Checks for missing claims (sub, role, type) and type match.
         """
         # pyjwt will raise ExpiredSignatureError or PyJWTError automatically
-        return jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        
+        if not payload.get("sub"):
+            raise jwt.PyJWTError("Token is missing subject claim")
+        if not payload.get("role"):
+            raise jwt.PyJWTError("Token is missing role claim")
+            
+        # Verify type matching
+        token_type = payload.get("type", "access")
+        if token_type != expected_type:
+            raise jwt.PyJWTError(f"Invalid token type: expected {expected_type}, got {token_type}")
+            
+        return payload

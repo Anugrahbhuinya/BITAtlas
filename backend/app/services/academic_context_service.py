@@ -16,7 +16,8 @@ class AcademicContextService:
         timetable_provider: TimetableContextProvider,
         attendance_provider: AttendanceContextProvider,
         planner_provider: PlannerContextProvider,
-        calendar_provider: CalendarContextProvider
+        calendar_provider: CalendarContextProvider,
+        navigation_provider: Optional[Any] = None
     ):
         self.student_provider = student_provider
         self.academic_provider = academic_provider
@@ -24,6 +25,7 @@ class AcademicContextService:
         self.attendance_provider = attendance_provider
         self.planner_provider = planner_provider
         self.calendar_provider = calendar_provider
+        self.navigation_provider = navigation_provider
 
     async def get_academic_context(self, student_id: str, student_data: Optional[Dict[str, Any]]) -> Dict[str, Any]:
         """Asynchronously aggregates academic contexts from all modular providers."""
@@ -53,13 +55,30 @@ class AcademicContextService:
                 return default_val
             return r
 
+        timetable_ctx = resolve_result(2, {})
+        attendance_ctx = resolve_result(3, {})
+        planner_ctx = resolve_result(4, {})
+
+        nav_ctx = {}
+        if self.navigation_provider:
+            try:
+                nav_ctx = await self.navigation_provider.get_context(
+                    student_id=student_id,
+                    timetable_context=timetable_ctx,
+                    attendance_context=attendance_ctx,
+                    planner_context=planner_ctx
+                )
+            except Exception as e:
+                print(f"Error in navigation context provider: {e}")
+
         return {
             "student": resolve_result(0, {}),
             "workspace": resolve_result(1, {}),
-            "timetable": resolve_result(2, {}),
-            "attendance": resolve_result(3, {}),
-            "planner": resolve_result(4, {}),
-            "calendar": resolve_result(5, {})
+            "timetable": timetable_ctx,
+            "attendance": attendance_ctx,
+            "planner": planner_ctx,
+            "calendar": resolve_result(5, {}),
+            "navigation": nav_ctx
         }
 
     def format_context_to_string(self, ctx: Dict[str, Any]) -> str:
@@ -163,12 +182,62 @@ class AcademicContextService:
 
         # 5. Calendar Info
         cal = ctx.get("calendar", {})
-        milestones = cal.get("upcoming_academic_calendar_milestones", [])
+        milestones = cal.get("upcoming_academic_calendar_commencements", [])
+        if not milestones:
+            milestones = cal.get("upcoming_academic_calendar_milestones", [])
+            
         if milestones:
             lines.append("### Academic Calendar Commencement & Events")
             for m in milestones:
                 end_str = f" to {m['end_date']}" if m['end_date'] != m['start_date'] else ""
                 lines.append(f"- {m['event']}: {m['start_date']}{end_str}")
+            lines.append("")
+
+        # 6. Navigation and Campus AI Context
+        nav = ctx.get("navigation", {})
+        if nav:
+            lines.append("### Student Navigation & Campus Context")
+            
+            # Location
+            curr_bldg = nav.get("current_building")
+            if curr_bldg:
+                lines.append(f"- **Current Location**: Housed at {curr_bldg['name']}")
+            
+            # Routing
+            routing = nav.get("routing")
+            if routing:
+                lines.append(f"- **Active Route**: From '{routing['start']}' to '{routing['destination']}' ({routing['distance_meters']}m, approx. {routing['walking_time_minutes']} mins walking, Type: {routing['route_type']}, Wheelchair Accessible: {routing['accessible']})")
+
+            # Departure Advisor
+            advisor = nav.get("departure_advisor")
+            if advisor and advisor.get("advisable"):
+                lines.append(f"- **Next Class Departure**: Starts at {advisor['class_start']}. Walk time: {advisor['walking_minutes']} mins. Recommended Leave Time: {advisor['recommended_departure_time']} ({advisor['recommendation']})")
+
+            # Insights
+            insights = nav.get("campus_insights", {})
+            if insights:
+                lines.append("- **Campus Spatial Answers**:")
+                for k, v in insights.items():
+                    lines.append(f"  - {k}: {v}")
+
+            # Nearby Services
+            nearby = nav.get("nearby_services", {})
+            if nearby and any(nearby.values()):
+                lines.append("- **Nearby Services (Sorted by Distance)**:")
+                for service_type, places in nearby.items():
+                    if places:
+                        place_strs = [f"{p['name']} ({p['distance_meters']}m)" for p in places]
+                        lines.append(f"  - **{service_type.capitalize()}**: {', '.join(place_strs)}")
+
+            # Contextual AI Actions / Suggestions
+            reasoning = nav.get("reasoning", {})
+            if reasoning:
+                lines.append(f"- **AI Directive**: {reasoning.get('directive')}")
+                alerts = reasoning.get("alerts", [])
+                if alerts:
+                    lines.append("- **Critical Alerts**:")
+                    for a in alerts:
+                        lines.append(f"  - {a}")
             lines.append("")
 
         return "\n".join(lines)

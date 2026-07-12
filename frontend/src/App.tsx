@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import BackendStatusGuard from "./shared/components/BackendStatusGuard";
 
 import MainLayout from "./app/layouts/MainLayout";
 
@@ -19,6 +20,7 @@ import {
   TaskDetailsPage
 } from "./features/academics";
 import MapPage from "./features/map/pages/MapPage";
+import NavigationPage from "./features/navigation/pages/NavigationPage";
 
 // Student Auth Imports
 import { AuthProvider } from "./features/auth/context/AuthContext";
@@ -45,10 +47,17 @@ import { AdminActivityPage } from "./features/admin/pages/AdminActivityPage";
 import { AdminSettingsPage } from "./features/admin/pages/AdminSettingsPage";
 import { AdminCrawlHistoryPage } from "./features/admin/pages/AdminCrawlHistoryPage";
 import { AdminStudentsPage } from "./features/admin/pages/AdminStudentsPage";
+import { AdminKnowledgeEditorPage } from "./features/admin/pages/AdminKnowledgeEditorPage";
+import { AdminKnowledgeSearchPage } from "./features/admin/pages/AdminKnowledgeSearchPage";
+import { AdminKnowledgeStatsPage } from "./features/admin/pages/AdminKnowledgeStatsPage";
+import { AdminVersionHistoryPage } from "./features/admin/pages/AdminVersionHistoryPage";
+import { AdminDraftsPage } from "./features/admin/pages/AdminDraftsPage";
+import { AdminNavigationPage } from "./features/navigation/pages/AdminNavigationPage";
 
 function App() {
   return (
-    <AuthProvider>
+    <BackendStatusGuard>
+      <AuthProvider>
       <PreferencesProvider>
         <BrowserRouter>
           <Routes>
@@ -75,6 +84,7 @@ function App() {
                   <Route path="planner/task/:taskId" element={<TaskDetailsPage />} />
                 </Route>
                 <Route path="/map" element={<MapPage />} />
+                <Route path="/navigation" element={<NavigationPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/profile/change-password" element={<ChangePasswordPage />} />
               </Route>
@@ -95,11 +105,19 @@ function App() {
             <Route path="/admin/knowledge-base" element={<AdminKnowledgePage />} />
             <Route path="/admin/activity" element={<AdminActivityPage />} />
             <Route path="/admin/settings" element={<AdminSettingsPage />} />
+            <Route path="/admin/navigation" element={<AdminNavigationPage />} />
+            <Route path="/admin/knowledge/editor" element={<AdminKnowledgeEditorPage />} />
+            <Route path="/admin/knowledge/editor/:id" element={<AdminKnowledgeEditorPage />} />
+            <Route path="/admin/knowledge/search" element={<AdminKnowledgeSearchPage />} />
+            <Route path="/admin/knowledge/stats" element={<AdminKnowledgeStatsPage />} />
+            <Route path="/admin/knowledge/drafts" element={<AdminDraftsPage />} />
+            <Route path="/admin/knowledge/versions/:id" element={<AdminVersionHistoryPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
       </PreferencesProvider>
     </AuthProvider>
+    </BackendStatusGuard>
   );
 }
 

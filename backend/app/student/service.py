@@ -215,7 +215,7 @@ class StudentManagementService:
         """
         Generates matching filters and retrieves a paginated student registry.
         """
-        query = {}
+        query: Dict[str, Any] = {}
         
         if search:
             search_clean = search.strip()

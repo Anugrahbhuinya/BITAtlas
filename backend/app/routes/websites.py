@@ -1,6 +1,7 @@
 import logging
 from fastapi import APIRouter, Depends, HTTPException, status
 from app.core.auth import get_current_admin
+from app.security.rate_limit.rate_limiter import rate_limit_admin, rate_limit_website_indexing
 from app.services.websites import website_service
 from app.models.website import AddWebsiteRequest, WebsiteResponse, WebsiteListResponse, IndexSummaryResponse
 from app.services.websites.validator import validate_url
@@ -15,10 +16,11 @@ logger = logging.getLogger("website_routes")
 
 router = APIRouter(
     prefix="/api/admin/websites",
-    tags=["Websites Ingestion"]
+    tags=["Websites Ingestion"],
+    dependencies=[Depends(rate_limit_admin)]
 )
 
-@router.post("", response_model=IndexSummaryResponse)
+@router.post("", response_model=IndexSummaryResponse, dependencies=[Depends(rate_limit_website_indexing)])
 async def add_website(
     request: AddWebsiteRequest,
     current_user: str = Depends(get_current_admin)
@@ -151,7 +153,7 @@ async def get_website_crawl_history(
             detail=f"Failed to retrieve website crawl history list: {str(e)}"
         )
 
-@router.post("/sync-all", response_model=BulkSyncResponse)
+@router.post("/sync-all", response_model=BulkSyncResponse, dependencies=[Depends(rate_limit_website_indexing)])
 async def trigger_bulk_sync(
     current_user: str = Depends(get_current_admin)
 ):
@@ -165,7 +167,7 @@ async def trigger_bulk_sync(
             detail=f"Failed to run bulk synchronization: {str(e)}"
         )
 
-@router.post("/{id}/sync")
+@router.post("/{id}/sync", dependencies=[Depends(rate_limit_website_indexing)])
 async def trigger_manual_sync(
     id: str,
     current_user: str = Depends(get_current_admin)
@@ -261,7 +263,7 @@ async def delete_website(
             detail=f"Failed to delete website content: {str(e)}"
         )
 
-@router.post("/{id}/reindex", response_model=IndexSummaryResponse)
+@router.post("/{id}/reindex", response_model=IndexSummaryResponse, dependencies=[Depends(rate_limit_website_indexing)])
 async def reindex_website(
     id: str,
     current_user: str = Depends(get_current_admin)

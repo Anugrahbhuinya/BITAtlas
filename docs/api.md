@@ -6,7 +6,7 @@ This document describes all API endpoints exposed by the **BIT Mesra AI Assistan
 
 ## Endpoint Base URL
 ```text
-http://localhost:8000
+http://localhost:8001
 ```
 
 ---
@@ -469,3 +469,60 @@ http://localhost:8000
 * **Route:** `/api/admin/settings`
 * **Purpose:** Fetches active directory sizes and config settings (token timeout, max files allowed).
 * **Authentication Required:** Yes (JWT Bearer Token)
+
+---
+
+## 8. Navigation & Diagnostics Module
+
+### Get All Navigation Graph Nodes
+* **Method:** `GET`
+* **Route:** `/api/navigation/nodes`
+* **Purpose:** Retrieves all spatial nodes (buildings, facilities, landmarks, rooms) from the MongoDB graph collection.
+* **Authentication Required:** No
+* **Response (JSON):**
+  ```json
+  [
+    {
+      "id": "node_lib",
+      "name": "Central Library",
+      "node_type": "building",
+      "latitude": 23.4150,
+      "longitude": 85.4400,
+      "metadata": {
+        "building_code": "LIB",
+        "description": "Central Library of BIT Mesra"
+      }
+    }
+  ]
+  ```
+
+### Calculate Dijkstra Route
+* **Method:** `POST`
+* **Route:** `/api/navigation/route`
+* **Purpose:** Generates path coordinate points, distances, ETA durations, and walking instructions between source and destination.
+* **Authentication Required:** No
+* **Request Body (JSON):**
+  ```json
+  {
+    "source_id": "main_gate",
+    "destination_id": "node_lib",
+    "accessibility_mode": false
+  }
+  ```
+* **Response (JSON):**
+  ```json
+  {
+    "route_found": true,
+    "distance_meters": 780.0,
+    "eta_minutes": 10,
+    "path": [[23.4082, 85.4452], [23.4110, 85.4430], [23.4150, 85.4400]],
+    "instructions": ["Walk straight from Main Gate...", "Turn right past Central Lawn..."]
+  }
+  ```
+
+### Compile Academic Context
+* **Method:** `GET`
+* **Route:** `/api/academics/context`
+* **Purpose:** Compiles full student context (profile, today/tomorrow classes, attendance alerts, checklist tasks) for the prompt builder. Used for developer diagnostics.
+* **Authentication Required:** Yes (JWT Bearer Token)
+

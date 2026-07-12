@@ -12,7 +12,12 @@ async def get_history(sessionId: str):
     try:
         messages = await get_chat_history(sessionId)
         formatted_messages = [
-            MessageSchema(role=msg["role"], content=msg["content"])
+            MessageSchema(
+                role=msg["role"],
+                content=msg["content"],
+                messageType=msg.get("messageType", "text"),
+                metadata=msg.get("metadata", None)
+            )
             for msg in messages
         ]
         return HistoryResponse(sessionId=sessionId, messages=formatted_messages)

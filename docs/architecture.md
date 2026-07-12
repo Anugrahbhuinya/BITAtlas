@@ -180,3 +180,39 @@ bit-mesra-ai-agent/
 2. **SOLID Principles:** Dependencies like database access clients and third-party LLM clients are resolved via injectable handlers.
 3. **Thread Safety & Async Execution:** Time-consuming network operations (such as robot parser crawls) are run asynchronously using `asyncio.to_thread` to prevent thread blocks.
 4. **Idempotence & Graceful Recovery:** Dynamic indexing operates under strict cleanups where obsolete entries are fully purged from ChromaDB before rebuilding, preventing memory leaks or duplicate responses.
+
+---
+
+## 10. Enterprise QA & Validation Architecture
+
+To ensure correctness and prevent regressions, the platform incorporates a multi-tiered validation structure:
+- **Unit Testing Layer:** Validates logic isolations of Intent classification, JWT creation, website normalizers, and timeline engines under mocked adapters.
+- **Integration Layer:** Validates inter-service APIs, verifying structured schema exchanges (e.g. `PromptContext` maps) and coordinate mappings against mock database states.
+- **E2e Simulation Layer:** Emulates realistic student workflows (registration, login, multi-turn chat sessions, and RAG follow-ups).
+- **Security Assessment Layer:** Focuses on authorization, input limits, traversal preventions, and prompt injection blocks.
+- **Performance Benchmarks:** Stresses the async ContextOrchestrator pipeline using semaphore pools to benchmark throughput (req/s) and P95 latency rates.
+- **Quality Dashboard Compiler:** Integrates coverage indices, static metrics, and test outputs into a single quality MD report.
+
+---
+
+## 11. Phase 12 — Security & Production Hardening Architecture
+
+Under Phase 12, the system's infrastructure has been hardened to prevent common vulnerability patterns and ensure high operational reliability:
+
+### 11.1 Security Middleware Pipeline
+Requests traverse a series of modular, non-blocking Starlette middlewares:
+* **`RequestIDMiddleware`**: Attaches a unique correlation UUID to the request state and response headers.
+* **`RequestTimingMiddleware`**: Measures timing metrics to capture slow operations.
+* **`SecurityHeadersMiddleware`**: Integrates OWASP-recommended headers including:
+  - `X-Frame-Options: DENY` (prevents clickjacking)
+  - `X-Content-Type-Options: nosniff` (prevents MIME sniffing)
+  - `Content-Security-Policy` (limits scripting domains)
+  - `Strict-Transport-Security` (enforces HTTPS)
+* **`StructuredLoggingMiddleware`**: Aggregates latency, status code, correlation ID, and active user claims to output a single structured JSON log record.
+
+### 11.2 Request Validator & Sanitizer Layer
+* **Strong Type Casting**: Incoming queries use Pydantic models (such as `ChatRequest`) to intercept malformed body shapes.
+* **AI Sanitization**: User inputs route through `validate_chat_query` in `ai_guard.py` to prevent prompt overrides and injection.
+* **Global Error Mappers**: Uncaught Python exceptions or validation failures are captured by standard FastAPI error handlers to return sanitized JSON payloads without disclosing application tracebacks.
+
+

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import adminApi from "../services/api";
+import { API_BASE_URL } from "../../../config";
 import { TableToolbar } from "../components/TableToolbar";
 import { TableSkeleton } from "../components/LoadingSkeleton";
 import { EmptyState } from "../components/EmptyState";
@@ -42,6 +43,8 @@ export const AdminDocumentsPage = () => {
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [duplicateFound, setDuplicateFound] = useState(false);
   const [duplicateDocId, setDuplicateDocId] = useState<string | null>(null);
+
+  const isUploading = uploadModalOpen && uploadStatus !== "Completed" && uploadStatus !== "Failed" && uploadStatus !== "Duplicate";
 
   // File input ref
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -117,10 +120,12 @@ export const AdminDocumentsPage = () => {
   };
 
   const handleUploadClick = () => {
+    if (isUploading) return;
     fileInputRef.current?.click();
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isUploading) return;
     const file = e.target.files?.[0];
     if (file) {
       if (file.type !== "application/pdf" && !file.name.endsWith(".pdf")) {
@@ -136,6 +141,7 @@ export const AdminDocumentsPage = () => {
   };
 
   const startUpload = async (fileToUpload: File, isOverwrite: boolean = false) => {
+    if (!isOverwrite && isUploading) return;
     setUploadModalOpen(true);
     setUploadingFile(fileToUpload);
     setUploadProgress(10);
@@ -149,7 +155,7 @@ export const AdminDocumentsPage = () => {
 
     try {
       const token = useAdminStore.getState().token;
-      const url = `http://localhost:8000/api/admin/documents/upload${isOverwrite ? "?overwrite=true" : ""}`;
+      const url = `${API_BASE_URL}/api/admin/documents/upload${isOverwrite ? "?overwrite=true" : ""}`;
 
       const response = await fetch(url, {
         method: "POST",
@@ -217,6 +223,7 @@ export const AdminDocumentsPage = () => {
   };
 
   const startReindex = async (docId: string, filename: string) => {
+    if (isUploading) return;
     setUploadModalOpen(true);
     setUploadingFile({ name: filename } as any);
     setUploadProgress(20);
@@ -226,7 +233,7 @@ export const AdminDocumentsPage = () => {
 
     try {
       const token = useAdminStore.getState().token;
-      const url = `http://localhost:8000/api/admin/documents/${docId}/reindex`;
+      const url = `${API_BASE_URL}/api/admin/documents/${docId}/reindex`;
 
       const response = await fetch(url, {
         method: "POST",
@@ -346,7 +353,8 @@ export const AdminDocumentsPage = () => {
 
         <button
           onClick={handleUploadClick}
-          className="px-4 py-2.5 text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white rounded-xl shadow-lg hover:shadow-blue-500/20 active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer select-none"
+          disabled={isUploading}
+          className="px-4 py-2.5 text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white rounded-xl shadow-lg hover:shadow-blue-500/20 active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer select-none disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none"
         >
           <Upload className="w-4 h-4" />
           <span>Upload Document</span>
@@ -460,7 +468,8 @@ export const AdminDocumentsPage = () => {
                             {isDynamic && (
                               <button
                                 onClick={() => startReindex(doc.id, doc.filename)}
-                                className="p-2 hover:bg-slate-800 rounded-xl text-slate-400 hover:text-blue-400 transition-colors cursor-pointer"
+                                disabled={isUploading}
+                                className="p-2 hover:bg-slate-800 rounded-xl text-slate-400 hover:text-blue-400 transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed disabled:pointer-events-none"
                                 title="Reindex Document"
                               >
                                 <RefreshCw className="w-4 h-4" />

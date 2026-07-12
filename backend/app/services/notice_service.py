@@ -48,3 +48,26 @@ def search_notice(query: str):
             }
 
     return None
+
+
+def get_all_notices() -> list:
+    """Returns all loaded notices."""
+    return notices
+
+
+def get_latest_notices(limit: int = 5) -> list:
+    """Returns the latest notices (sorted by date if possible)."""
+    try:
+        # Sort by date descending if in YYYY-MM-DD or similar sortable format
+        sorted_notices = sorted(notices, key=lambda x: x.get("date", ""), reverse=True)
+        return sorted_notices[:limit]
+    except Exception:
+        return notices[:limit]
+
+
+def get_notices_by_category(category: str) -> list:
+    """Filters notices by category name (case-insensitive)."""
+    return [
+        n for n in notices
+        if n.get("category", "").lower() == category.lower()
+    ]

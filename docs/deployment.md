@@ -22,7 +22,7 @@ Create a `.env` file inside the `backend` folder to configure database and authe
 
 ```ini
 # Core Server Configuration
-PORT=8000
+PORT=8001
 HOST=0.0.0.0
 
 # MongoDB Configuration
@@ -77,7 +77,7 @@ IGNORE_EXTRA_WHITESPACE=True
    ```
 4. Start the FastAPI development server:
    ```bash
-   uvicorn app.main:app --reload --port 8000
+   uvicorn app.main:app --reload --port 8001
    ```
    *The server will boot, automatically seeding the default administrator account (`admin` / `admin123`) and triggering the background website synchronization thread.*
 
@@ -94,7 +94,7 @@ IGNORE_EXTRA_WHITESPACE=True
    ```bash
    npm run dev
    ```
-4. Access the web interface at `http://localhost:5173`.
+4. Access the web interface at `http://localhost:5180`.
    - Admin Workspace: `/admin/login`
 
 ---
@@ -128,9 +128,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 8000
+EXPOSE 8001
 
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:8000", "app.main:app"]
+CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:8001", "app.main:app"]
 ```
 
 #### Frontend Dockerfile (`frontend/Dockerfile`)
@@ -166,3 +166,16 @@ CMD ["nginx", "-g", "daemon off;"]
 ### Gemini API rate limit blocks
 - **Symptom:** Ingestion or chats return `429 Too Many Requests` when using Gemini.
 - **Solution:** Reduce chunk sizes or insert delays when batching multiple PDF document ingestions concurrently.
+
+---
+
+## 6. Hardened Production Deployment Checklist & Monitoring Verification
+
+When preparing to launch the hardened application in production:
+1. **Set Configuration Mode**: Define `APP_ENV=production` in the environment variables block. This disables debug traceback screens, enables OWASP-compliant security headers, and enforces standard rate limits.
+2. **Setup Log Aggregation**: Structured JSON logs are written by the FastAPI server to stdout. Configure Fluentd or log agents to parse and route these payloads to your centralized SIEM.
+3. **Configure Health Inquiries**:
+   - Set up ping configurations to hit `/health` every 10 seconds.
+   - Configure gateway ready checks to poll `/ready` to monitor MongoDB, ChromaDB, and Gemini API statuses.
+4. **Enforce Rate Limits**: Apply firewall rate limits (e.g., in Nginx reverse-proxy settings) that match the internal FastAPI rate limits (`RATE_LIMIT_CHAT_LIMIT`, `RATE_LIMIT_ADMIN_LIMIT`).
+

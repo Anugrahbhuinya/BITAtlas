@@ -85,6 +85,12 @@ async def scheduler_loop():
             logger.info("Scheduler Triggered: Beginning scheduled website synchronization cycle...")
             from app.services.websites.website_service import sync_all_websites
             await sync_all_websites(username="system")
+            
+            # Check KMS expired items
+            if getattr(config, "KNOWLEDGE_EXPIRY_CHECK_ENABLED", True):
+                logger.info("Scheduler Triggered: Checking for expired KMS items...")
+                from app.services.knowledge.expiry_service import check_expired_items
+                await check_expired_items()
         except Exception as e:
             logger.error(f"Error occurred in scheduler loop execution: {str(e)}", exc_info=True)
 

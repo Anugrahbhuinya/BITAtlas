@@ -213,7 +213,8 @@ all_docs.extend(
 # ==================================================
 
 save_documents(
-    all_docs
+    all_docs,
+    source_types=["faq", "calendar", "notice", "building", "facility", "hostel", "department", "club"]
 )
 
 print(

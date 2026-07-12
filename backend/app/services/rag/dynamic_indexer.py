@@ -10,6 +10,7 @@ from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from app.services.rag.vector_store import get_vector_store, PERSIST_DIRECTORY
 from app.core.database import get_database
+from app.services.ai.cache import clear_response_cache
 
 logger = logging.getLogger("dynamic_indexer")
 
@@ -187,6 +188,7 @@ async def index_pdf_generator(
         }
         await db.indexed_documents.insert_one(metadata)
         metadata_saved = True
+        clear_response_cache()
         
         # Log Admin Activity
         from app.services.admin_service import log_admin_activity
@@ -283,6 +285,7 @@ async def delete_indexed_document(doc_id: str) -> bool:
     try:
         await db.indexed_documents.delete_one({"id": doc_id})
         logger.info(f"Deleted MongoDB metadata for doc {doc_id}.")
+        clear_response_cache()
     except Exception as e:
         logger.error(f"Failed to delete MongoDB metadata for {doc_id}: {e}")
         
@@ -370,6 +373,7 @@ async def reindex_document_generator(doc_id: str) -> AsyncGenerator[str, None]:
                 "$unset": {"error": ""}
             }
         )
+        clear_response_cache()
         
         # Log Admin Activity
         from app.services.admin_service import log_admin_activity

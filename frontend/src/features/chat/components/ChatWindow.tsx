@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Trash2, AlertCircle, ArrowRight, Bot } from "lucide-react";
+import { Trash2, AlertCircle, ArrowRight, Bot, X } from "lucide-react";
 import MessageBubble from "./MessageBubble";
 import ChatInput from "./ChatInput";
 import { useChat } from "../hooks/useChat";
@@ -19,6 +19,16 @@ export const ChatWindow = () => {
   const location = useLocation();
   const bottomRef = useRef<HTMLDivElement>(null);
   const prefilledSent = useRef(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // Catch errors passed via redirect state (e.g. from missing navigation data)
+  useEffect(() => {
+    if (location.state?.error) {
+      setErrorMessage(location.state.error);
+      // Clear location state history so it doesn't reappear on navigation back/forth
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({
@@ -32,6 +42,8 @@ export const ChatWindow = () => {
     if (statePrompt && !prefilledSent.current) {
       prefilledSent.current = true;
       sendChatMessage(statePrompt);
+      // Clear history state to prevent duplicate prompt execution on refresh (F5)
+      window.history.replaceState({}, document.title);
     }
   }, [location.state, sendChatMessage]);
 
@@ -44,6 +56,21 @@ export const ChatWindow = () => {
       {/* Dynamic Main Chat Scroll Area */}
       <div className="flex-1 overflow-y-auto custom-scrollbar px-4 py-6">
         <div className="max-w-[800px] mx-auto w-full pb-6">
+          {errorMessage && (
+            <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 text-red-500 rounded-2xl flex items-center justify-between animate-in fade-in duration-200 select-none">
+              <div className="flex items-center gap-2">
+                <AlertCircle size={16} />
+                <span className="text-xs font-bold leading-relaxed">{errorMessage}</span>
+              </div>
+              <button
+                onClick={() => setErrorMessage(null)}
+                className="p-1 text-red-500 hover:text-red-700 hover:bg-red-500/10 rounded-lg transition-colors cursor-pointer"
+              >
+                <X size={14} />
+              </button>
+            </div>
+          )}
+
           {messages.length === 0 ? (
             /* Welcome / Empty State */
             <div className="text-center py-12 animate-in fade-in duration-300">
@@ -66,20 +93,20 @@ export const ChatWindow = () => {
                     desc: "Check attendance bunk safety",
                   },
                   {
-                    title: "When are my exams?",
-                    desc: "Check semester calendar & schedules",
+                    title: "Where should I go now?",
+                    desc: "AI navigation & departure advisor",
                   },
                   {
-                    title: "What planner tasks are pending?",
-                    desc: "Inspect study & assignment list",
+                    title: "When should I leave for class?",
+                    desc: "Walking time & departure planning",
                   },
                   {
                     title: "What notices are relevant to me?",
                     desc: "Latest updates from Deans & Depts",
                   },
                   {
-                    title: "Where is the CS Department?",
-                    desc: "Navigation & landmark directions",
+                    title: "What's nearby right now?",
+                    desc: "Cafeterias, ATMs, study spots",
                   },
                 ].map((item) => (
                   <button

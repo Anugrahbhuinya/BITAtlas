@@ -403,9 +403,9 @@ export const AdminWebsitesPage = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/40 text-sm">
-                {currentItems.map((site) => (
+                {currentItems.map((site, index) => (
                   <tr
-                    key={site.id}
+                    key={site.id || index}
                     className="hover:bg-slate-900/20 transition-colors group"
                   >
                     <td className="p-4 pl-6">

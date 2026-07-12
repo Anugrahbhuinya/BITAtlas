@@ -12,3 +12,5 @@ langchain-huggingface
 pyjwt
 bcrypt
 pypdf
+python-docx
+markdown

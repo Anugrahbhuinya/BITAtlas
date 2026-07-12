@@ -6,6 +6,18 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ---
 
+## [2.1.0] - 2026-07-07
+### Added
+- **Smart Context Engine Pipeline (Phase 10B):** A modular pipeline that gathers, sanitizes, and budgets prompt context.
+- **Provider Selector:** Selects context providers (`system`, `profile`, `conversation`, `workspace`, `navigation`, `rag`) depending on intent routing and authorization status.
+- **Concurrent Context Gathering:** Concurrently executes active providers using `asyncio.gather` for optimal performance.
+- **Priority-based Scoring:** Scores context items based on source importance, classification confidence, and time-decay factors.
+- **Fuzzy Deduplication:** Filters duplicate and near-duplicate documents (Jaccard similarity > 0.85) to save tokens and prevent LLM confusion.
+- **Dynamic Context Compressor:** Trims RAG document lists and reduces conversation history turns depending on context severity levels (LOW, MEDIUM, HIGH, AUTO).
+- **Token Budget Manager:** Guarantees final prompts stay under the 3,500 token limit using priority-based section trimming.
+- **Diagnostics Tracing:** Exposes provider execution latencies, token counts, and deduplication stats in developer diagnostics payload.
+- **Unit and Integration Tests:** Added a test suite of 22 tests verifying models, selector, prioritizer, deduplicator, merger, compressor, budget manager, and full route API integrations.
+
 ## [2.0.0] - 2026-06-27
 ### Added
 - **Automatic Website Synchronization (Phase 6B):** Background cron scheduler executing check cycles to keep indexed webpages fresh.

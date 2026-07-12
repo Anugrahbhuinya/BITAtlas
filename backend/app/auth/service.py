@@ -17,7 +17,7 @@ class AuthenticationService:
         self.student_repo = student_repo
         self.refresh_repo = refresh_repo
 
-    async def login_student(self, email: str, password: str, ip: str = None, device: str = None) -> dict:
+    async def login_student(self, email: str, password: str, ip: str | None = None, device: str | None = None) -> dict:
         """
         Validates credentials, checks status, and issues access/refresh tokens.
         """
@@ -77,12 +77,12 @@ class RefreshService:
         self.student_repo = student_repo
         self.refresh_repo = refresh_repo
 
-    async def refresh_tokens(self, refresh_token: str, ip: str = None, device: str = None) -> dict:
+    async def refresh_tokens(self, refresh_token: str, ip: str | None = None, device: str | None = None) -> dict:
         """
         Validates refresh token, rotates session (invalidating old refresh token), and issues new ones.
         """
         try:
-            payload = JWTService.decode_token(refresh_token)
+            payload = JWTService.decode_token(refresh_token, expected_type="refresh")
             if payload.get("type") != "refresh":
                 raise HTTPException(
                     status_code=status.HTTP_401_UNAUTHORIZED,

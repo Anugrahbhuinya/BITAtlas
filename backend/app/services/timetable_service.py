@@ -51,13 +51,14 @@ def check_timing_overlap(
 
     # Check for overlaps with classes on the same day
     for entry in existing_classes:
-        if entry.get("day").strip().lower() != day.strip().lower():
+        day_val = entry.get("day")
+        if not day_val or day_val.strip().lower() != day.strip().lower():
             continue
         if exclude_entry_id and entry.get("id") == exclude_entry_id:
             continue
             
-        exist_start = parse_time_to_minutes(entry.get("start_time"))
-        exist_end = parse_time_to_minutes(entry.get("end_time"))
+        exist_start = parse_time_to_minutes(entry.get("start_time") or "")
+        exist_end = parse_time_to_minutes(entry.get("end_time") or "")
 
         # Intersection check: max(start1, start2) < min(end1, end2)
         if max(start_mins, exist_start) < min(end_mins, exist_end):
@@ -97,7 +98,7 @@ class TimetableService:
         timetable = await self.get_or_create_timetable(student_id, student_profile)
         classes = timetable.get("classes", [])
 
-        grouped = {
+        grouped: Dict[str, List[Dict[str, Any]]] = {
             "Monday": [],
             "Tuesday": [],
             "Wednesday": [],
@@ -113,7 +114,7 @@ class TimetableService:
 
         # Sort each day's classes by start_time
         for day in grouped:
-            grouped[day].sort(key=lambda x: parse_time_to_minutes(x.get("start_time")))
+            grouped[day].sort(key=lambda x: parse_time_to_minutes(x.get("start_time") or "00:00"))
 
         return grouped
 
@@ -283,7 +284,7 @@ class TimetableService:
         Overwrites the student's classes with a list of verified entries (typically from AI import).
         """
         # Validate that none of the imported classes overlap
-        validated_entries = []
+        validated_entries: List[Dict[str, Any]] = []
         for new_class in classes_payload:
             # Check overlap against currently accumulated list of new classes
             standard_day = new_class.day.strip().capitalize()
@@ -369,8 +370,8 @@ class TimetableService:
         current_mins = now.hour * 60 + now.minute
 
         for entry in today_classes:
-            start_mins = parse_time_to_minutes(entry.get("start_time"))
-            end_mins = parse_time_to_minutes(entry.get("end_time"))
+            start_mins = parse_time_to_minutes(entry.get("start_time") or "")
+            end_mins = parse_time_to_minutes(entry.get("end_time") or "")
             if start_mins <= current_mins <= end_mins:
                 return entry
         return None
@@ -385,7 +386,7 @@ class TimetableService:
 
         # Find first class of today that has not started yet
         for entry in today_classes:
-            start_mins = parse_time_to_minutes(entry.get("start_time"))
+            start_mins = parse_time_to_minutes(entry.get("start_time") or "")
             if start_mins > current_mins:
                 return entry
 

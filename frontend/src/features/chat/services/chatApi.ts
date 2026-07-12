@@ -1,33 +1,41 @@
-import axios from "axios";
+import apiClient from "../../../shared/api/client";
 import type { ChatRequest, ChatResponse, HistoryResponse } from "../types";
 
-const API_BASE_URL = "http://localhost:8000";
+export interface NavContext {
+  currentLocationNodeId?: string;
+  currentDestinationNodeId?: string;
+  accessibilityMode?: boolean;
+}
 
-const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-export const sendMessage = async (message: string, sessionId?: string): Promise<ChatResponse> => {
+export const sendMessage = async (
+  message: string,
+  sessionId?: string,
+  navContext?: NavContext
+): Promise<ChatResponse> => {
   const payload: ChatRequest = {
     message,
     sessionId,
+    ...navContext,
   };
 
-  const response = await api.post<ChatResponse>("/chat", payload);
+  // Attach student auth token if available for personalized context
+  const token = localStorage.getItem("bit_student_access_token") || localStorage.getItem("student_access_token");
+  const headers: Record<string, string> = {};
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
 
+  const response = await apiClient.post<ChatResponse>("/chat", payload, { headers });
   return response.data;
 };
 
 export const fetchChatHistory = async (sessionId: string): Promise<HistoryResponse> => {
-  const response = await api.get<HistoryResponse>(`/chat/history/${sessionId}`);
+  const response = await apiClient.get<HistoryResponse>(`/chat/history/${sessionId}`);
   return response.data;
 };
 
 export const clearChatHistory = async (sessionId: string): Promise<void> => {
-  await api.delete(`/chat/history/${sessionId}`);
+  await apiClient.delete(`/chat/history/${sessionId}`);
 };
 
-export default api;
+export default apiClient;

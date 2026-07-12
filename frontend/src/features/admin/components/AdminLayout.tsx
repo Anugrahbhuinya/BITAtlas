@@ -5,7 +5,7 @@ import { Sidebar } from "./Sidebar";
 import { TopNavbar } from "./TopNavbar";
 import { ToastNotification } from "./ToastNotification";
 import adminApi from "../services/api";
-import { Shield, X, LogOut, LayoutDashboard, Database, FileText, Globe, BarChart3, Activity, Settings, History, Users } from "lucide-react";
+import { Shield, X, LogOut, LayoutDashboard, Database, FileText, Globe, BarChart3, Activity, Settings, History, Users, Map } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const AdminLayout = () => {
@@ -47,6 +47,7 @@ export const AdminLayout = () => {
   const mobileNavItems = [
     { label: "Dashboard", icon: LayoutDashboard, path: "/admin/dashboard" },
     { label: "Students", icon: Users, path: "/admin/students" },
+    { label: "Campus Map", icon: Map, path: "/admin/navigation" },
     { label: "Knowledge Base", icon: Database, path: "/admin/knowledge-base" },
     { label: "Documents", icon: FileText, path: "/admin/documents" },
     { label: "Websites", icon: Globe, path: "/admin/websites" },

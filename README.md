@@ -22,12 +22,13 @@ It is no longer just a simple chatbot. It is a complete AI-powered campus worksp
 8. [API Documentation Overview](#api-documentation-overview)
 9. [Installation & Setup](#installation--setup)
 10. [Environment Variables](#environment-variables)
-11. [Screenshots](#screenshots)
-12. [Roadmap](#roadmap)
-13. [Future Improvements](#future-improvements)
-14. [Contributing](#contributing)
-15. [License](#license)
-16. [Acknowledgements](#acknowledgements)
+11. [Enterprise QA & Validation](#enterprise-qa--validation)
+12. [Screenshots](#screenshots)
+13. [Roadmap](#roadmap)
+14. [Future Improvements](#future-improvements)
+15. [Contributing](#contributing)
+16. [License](#license)
+17. [Acknowledgements](#acknowledgements)
 
 ---
 
@@ -183,13 +184,21 @@ sequenceDiagram
 
 ---
 
-## AI Architecture & Context Engine
+## AI Architecture & Smart Context Engine
 
 ### 1. Hybrid RAG Pipeline
 The Retrieval-Augmented Generation engine indices raw campus files, administrative notifications, and department guides. During retrieval, queries are embedded using HuggingFace models and parsed against ChromaDB indices.
 
-### 2. Academic Context Engine
-Instead of requiring students to input their specific department details, current timetable schedules, or bunk margins in every chat turn, the **Academic Context Engine** automatically queries active MongoDB profiles, resolves the local date/time parameters in India Standard Time (IST), aggregates course percentages, and maps them to a formatted context string.
+### 2. Smart Context Engine (Phase 10B)
+The **Smart Context Engine** dynamically selects, gathers, filters, prioritizes, deduplicates, compresses, and budgets information into a structured payload for the LLM. It operates as a modular context pipeline:
+* **Selector**: Chooses relevant context providers (`system`, `profile`, `conversation`, `workspace`, `navigation`, `rag`) based on routing intent.
+* **Concurrent Execution**: Executes active providers in parallel using `asyncio.gather` for minimal latency.
+* **Prioritizer**: Scores and sorts context items based on provider weight, classification confidence, and time-decay factors.
+* **Deduplicator**: Eliminates exact duplicate documents and filters near-duplicates using Jaccard similarity (threshold > 0.85).
+* **Merger**: Integrates remaining items in canonical order (system -> profile -> conversation -> workspace -> navigation -> rag).
+* **Compressor**: Trims RAG chunks and reduces conversational history turns depending on context severity levels (LOW, MEDIUM, HIGH, AUTO).
+* **Token Budget Manager**: Resolves token overflows to guarantee prompt compliance with a hard 3,500 token limit.
+* **Diagnostics Tracing**: Emits stage execution times, token counts, and duplicates count in developer dev mode.
 
 ### 3. Intent Detection & Routing
 A rule-based keyword router analyzes query parameters. General conversational queries, comparison questions, and all academic-related triggers automatically bypass local RAG retrievals and route directly to Gemini for contextual reasoning.
@@ -348,7 +357,7 @@ cd bit-mesra-ai-agent
    ```
 5. Run the FastAPI development server:
    ```bash
-   uvicorn app.main:app --reload --port 8000
+   uvicorn app.main:app --reload --port 8001
    ```
 
 ### Frontend Setup
@@ -383,7 +392,7 @@ Create a `.env` file in the `backend/` directory using the following template:
 # Application Settings
 APP_NAME="BIT Mesra AI Agent"
 DEBUG=True
-PORT=8000
+PORT=8001
 
 # Security Settings
 SECRET_KEY="your-super-secret-jwt-signing-key-here"
@@ -427,6 +436,36 @@ GEMINI_MODEL="gemini-2.5-flash"
 
 ### Admin Dashboard
 ![Admin Dashboard Placeholder](https://via.placeholder.com/800x450/1e1e24/ffffff?text=Enterprise+Admin+Management+UI)
+
+---
+
+## Enterprise QA & Validation
+
+The platform contains a dedicated Quality Assurance validation suite located in the `tests/` directory to automatically verify unit isolated code logic, inter-service integration bindings, end-to-end user journeys, and security parameters.
+
+- **Automated Validation Runner:**
+  Run the test runner orchestration pipeline locally using:
+  ```bash
+  python tests/test_runner.py --all
+  ```
+- **Performance Stress Load Benchmarks:**
+  Measure pipeline latencies and concurrency throughput limits:
+  ```bash
+  python tests/performance_runner.py
+  ```
+- **QA Health Dashboard:**
+  Compile coverage reports, static analysis logs, and test results into a health index:
+  ```bash
+  python tests/quality_dashboard.py
+  ```
+
+For comprehensive guidelines, configuration options, and results reports, refer to:
+- [Testing & Quality Assurance Guide](file:///c:/Users/ASUS/bit-mesra-ai-agent/docs/testing_guide.md)
+- [Developer & Code Quality Guide](file:///c:/Users/ASUS/bit-mesra-ai-agent/docs/developer_guide.md)
+- [Enterprise Performance Benchmarks](file:///c:/Users/ASUS/bit-mesra-ai-agent/docs/qa_benchmarks.md)
+- [Enterprise Security Documentation](file:///c:/Users/ASUS/bit-mesra-ai-agent/docs/security.md)
+- [Configuration & Environment Setup Guide](file:///c:/Users/ASUS/bit-mesra-ai-agent/docs/configuration_guide.md)
+- [Operational, Logging & Monitoring Guide](file:///c:/Users/ASUS/bit-mesra-ai-agent/docs/operational_guide.md)
 
 ---
 

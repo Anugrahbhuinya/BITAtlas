@@ -3,11 +3,11 @@ from typing import Optional, Dict, Any
 from datetime import datetime
 
 class NotificationPreferencesSchema(BaseModel):
-    email_notifications: bool = Field(True, description="Enable email alerts")
-    push_notifications: bool = Field(True, description="Enable push alerts")
-    notice_updates: bool = Field(True, description="Enable new notice alerts")
-    event_reminders: bool = Field(True, description="Enable campus event reminders")
-    academic_alerts: bool = Field(True, description="Enable academic alerts")
+    email_notifications: bool = Field(default=True, description="Enable email alerts")
+    push_notifications: bool = Field(default=True, description="Enable push alerts")
+    notice_updates: bool = Field(default=True, description="Enable new notice alerts")
+    event_reminders: bool = Field(default=True, description="Enable campus event reminders")
+    academic_alerts: bool = Field(default=True, description="Enable academic alerts")
 
     # Allow dynamic notification updates in the future
     model_config = ConfigDict(extra="allow")
@@ -15,7 +15,7 @@ class NotificationPreferencesSchema(BaseModel):
 class StudentPreferencesResponse(BaseModel):
     preferred_language: str = Field("English", description="System language selection")
     theme: str = Field("System", description="Visual theme setting")
-    notifications: NotificationPreferencesSchema = Field(default_factory=NotificationPreferencesSchema)
+    notifications: NotificationPreferencesSchema = Field(default_factory=lambda: NotificationPreferencesSchema())
     ai_response_style: str = Field("Detailed", description="AI responses granularity")
     default_home_page: str = Field("Dashboard", description="Initial landing page")
 

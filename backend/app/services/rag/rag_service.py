@@ -1,19 +1,74 @@
 import re
+import logging
+from typing import List
 from app.services.rag.retriever import retrieve_with_scores
 from app.utils.loader import load_json
+
+logger = logging.getLogger("rag_service")
 
 SIMILARITY_THRESHOLD = 0.70
 
 # Load FAQs data for answer lookups
 faqs_data = load_json("faqs/student_faqs.json")
 
+def validate_rag_relevance(query: str, doc_content: str, doc_metadata: dict, intent: str | None) -> bool:
+    """
+    Validates if the retrieved RAG document content matches the user's intent.
+    Returns True if relevant, False if it should be rejected.
+    """
+    if not intent:
+        return True
+        
+    query_lower = query.lower()
+    doc_content_lower = doc_content.lower()
+    filename = doc_metadata.get("filename", "").lower()
+    source = doc_metadata.get("source", "").lower()
+    
+    # Rule 1: Reject resume/CV documents if the query is not asking about professional details or student profiles
+    if "resume" in filename or "cv" in filename or source == "resume":
+        profile_keywords = ["resume", "cv", "experience", "education", "project", "work", "job", "career", "skills", "profile", "gpa", "internship"]
+        if not any(k in query_lower for k in profile_keywords):
+            logger.info(f"Rejecting document {filename} because it is a resume and query is not profile-related.")
+            return False
+            
+    # Rule 2: If the query is a comparison or concept question, verify that the document is relevant to the comparison terms
+    if intent in ["Comparison", "AI / ML Concept", "Programming Help", "Engineering Concept"]:
+        if "cnn" in query_lower and "resnet" in query_lower:
+            if "resnet" not in doc_content_lower:
+                logger.info(f"Rejecting document {filename} because it does not contain 'resnet' for CNN vs ResNet comparison.")
+                return False
+        if "list" in query_lower and "tuple" in query_lower:
+            if "tuple" not in doc_content_lower:
+                logger.info(f"Rejecting document {filename} because it does not contain 'tuple' for List vs Tuple comparison.")
+                return False
+        if "tcp" in query_lower and "udp" in query_lower:
+            if "udp" not in doc_content_lower:
+                logger.info(f"Rejecting document {filename} because it does not contain 'udp' for TCP vs UDP comparison.")
+                return False
+                
+    return True
 
-def query_rag(question: str):
+def query_rag(question: str, intent: str | None = None, metadata_filters: dict | None = None):
 
     results = retrieve_with_scores(
         question,
-        k=5
+        k=5,
+        metadata_filters=metadata_filters
     )
+
+    valid_results = []
+    rejected_docs = []
+    if results:
+        for doc, score in results:
+            if validate_rag_relevance(question, doc.page_content, doc.metadata, intent):
+                # Ignore expired knowledge items
+                if doc.metadata.get("status") == "expired":
+                    continue
+                valid_results.append((doc, score))
+            else:
+                rejected_docs.append(doc.metadata.get("filename", "unknown"))
+                
+    results = valid_results
 
     retrieved_docs = []
     if results:
@@ -45,7 +100,13 @@ def query_rag(question: str):
     print("=================================\n")
 
     if not results:
-        return None
+        return {
+            "answer": "I could not find that information in the BIT Mesra knowledge base.",
+            "confidence": 1.0,
+            "source": "rag",
+            "documents": [],
+            "rejected_documents": rejected_docs
+        }
 
     best_doc, best_score = results[0]
 
@@ -270,7 +331,7 @@ def query_rag(question: str):
     }
 
 
-def extract_fallback_answer(query: str, retrieved_docs: List[str] if 'List' in globals() else list) -> str:
+def extract_fallback_answer(query: str, retrieved_docs: List[str]) -> str:
     """
     Parses and extracts a clean direct answer from retrieved document chunks.
     Used as a high-quality fallback when the Gemini API is rate-limited or down.
