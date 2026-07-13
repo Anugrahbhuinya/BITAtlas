@@ -822,8 +822,8 @@ async def _chat_impl(
                 "answer": answer,
                 "navigation_context": nav_ctx.dict() if 'nav_ctx' in locals() and nav_ctx else None
             }
-            if request.sessionId:
-                await add_message_to_history(request.sessionId, "assistant", answer)
+            # Message will be saved once at the end of the handler
+            pass
         else:
             # Circuit is CLOSED. Call Gemini.
             gemini_called = True
@@ -866,8 +866,8 @@ async def _chat_impl(
                     "answer": answer,
                     "navigation_context": nav_ctx.dict() if 'nav_ctx' in locals() and nav_ctx else None
                 }
-                if request.sessionId:
-                    await add_message_to_history(request.sessionId, "assistant", answer)
+                # Message will be saved once at the end of the handler
+                pass
                 
                 # Cache response
                 set_cached_response(query, result)
@@ -897,8 +897,8 @@ async def _chat_impl(
                     "answer": answer,
                     "navigation_context": nav_ctx.dict() if 'nav_ctx' in locals() and nav_ctx else None
                 }
-                if request.sessionId:
-                    await add_message_to_history(request.sessionId, "assistant", answer)
+                # Message will be saved once at the end of the handler
+                pass
                     
             gemini_time = time.time() - gemini_start
 

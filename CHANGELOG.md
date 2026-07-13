@@ -6,6 +6,18 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ---
 
+## [2.2.0-rc1] - 2026-07-14
+### Added
+- **Login Password Visibility Toggle:** standard Eye and Eye-Off button inside the password input field. Fully keyboard-accessible, maintains cursor position and focus, and includes screen-reader aria labels.
+- **Centred Welcome Hero State:** Renders a welcoming hero page with suggested prompts before the first user message. Fades out smoothly on query and restores on New Chat.
+- **Relocated Sidebar Hamburger:** Moved the collapse/expand Menu button inside the sidebar (next to the logo when expanded, centered below when collapsed). State is persisted in `localStorage`.
+- **Diagnostics Toggle:** Simplified developer observability buttons to `▼ Diagnostics` (collapsed) and `▲ Diagnostics` (expanded).
+- **Typography-first Assistant layout:** Assistant bubbles are transparent, borderless, and shadowless text flows anchored next to a small `Bot` avatar, removing repeated text headers.
+- **Input Focus Glow:** Smooth focus-within transition with primary highlight ring on input composer.
+
+### Fixed
+- **Duplicate Assistant Messages:** Resolved duplicate database writes in `chat.py` and added client-side history deduplication in `useChat.ts` to prevent duplicate bubbles on page refresh.
+
 ## [2.1.0] - 2026-07-07
 ### Added
 - **Smart Context Engine Pipeline (Phase 10B):** A modular pipeline that gathers, sanitizes, and budgets prompt context.

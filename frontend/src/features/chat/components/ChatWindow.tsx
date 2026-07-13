@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { Trash2, AlertCircle, ArrowRight, Bot, X } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Trash2, AlertCircle, Bot, X } from "lucide-react";
 import MessageBubble from "./MessageBubble";
 import ChatInput from "./ChatInput";
 import { useChat } from "../hooks/useChat";
@@ -17,23 +17,35 @@ export const ChatWindow = () => {
   } = useChat();
 
   const location = useLocation();
+  const navigate = useNavigate();
   const bottomRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const prefilledSent = useRef(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(() => {
+    return location.state?.error || null;
+  });
 
   // Catch errors passed via redirect state (e.g. from missing navigation data)
   useEffect(() => {
     if (location.state?.error) {
-      setErrorMessage(location.state.error);
       // Clear location state history so it doesn't reappear on navigation back/forth
-      window.history.replaceState({}, document.title);
+      navigate(location.pathname, { replace: true, state: {} });
     }
-  }, [location.state]);
+  }, [location.state, location.pathname, navigate]);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({
-      behavior: "smooth",
-    });
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const isAtBottom = container.scrollHeight - container.scrollTop - container.clientHeight <= 150;
+    const lastMessage = messages[messages.length - 1];
+    const isUserMessage = lastMessage?.sender === "user";
+
+    if (isAtBottom || isUserMessage || messages.length <= 2) {
+      bottomRef.current?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   }, [messages, loading]);
 
   // Handle auto-seeding of dashboard quick prompts
@@ -43,19 +55,21 @@ export const ChatWindow = () => {
       prefilledSent.current = true;
       sendChatMessage(statePrompt);
       // Clear history state to prevent duplicate prompt execution on refresh (F5)
-      window.history.replaceState({}, document.title);
+      navigate(location.pathname, { replace: true, state: {} });
     }
-  }, [location.state, sendChatMessage]);
+  }, [location.state, location.pathname, navigate, sendChatMessage]);
 
   const handleSuggestionClick = (prompt: string) => {
     sendChatMessage(prompt);
   };
 
+  const hasUserMessages = messages.some(m => m.sender === "user");
+
   return (
     <div className="h-full flex flex-col bg-background min-h-0 relative select-text">
       {/* Dynamic Main Chat Scroll Area */}
-      <div className="flex-1 overflow-y-auto custom-scrollbar px-4 py-6">
-        <div className="max-w-[800px] mx-auto w-full pb-6">
+      <div ref={scrollContainerRef} className="flex-1 overflow-y-auto custom-scrollbar px-4 py-6">
+        <div className="max-w-[850px] mx-auto w-full pb-6">
           {errorMessage && (
             <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 text-red-500 rounded-2xl flex items-center justify-between animate-in fade-in duration-200 select-none">
               <div className="flex items-center gap-2">
@@ -71,34 +85,29 @@ export const ChatWindow = () => {
             </div>
           )}
 
-          {messages.length === 0 ? (
-            /* Welcome / Empty State */
-            <div className="text-center py-12 animate-in fade-in duration-300">
-              <h2 className="text-3xl md:text-5xl font-extrabold text-primary mb-4 tracking-tight">
-                BIT Mesra AI Assistant
+          {!hasUserMessages ? (
+            /* Centered Welcome Hero State - Gemini/ChatGPT-inspired */
+            <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4 py-8 animate-in fade-in duration-500 select-none">
+              <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-background mb-6 shadow-lg">
+                <Bot size={26} className="text-background" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-3 tracking-tight">
+                How can I help you today?
               </h2>
-              <p className="text-sm md:text-base text-on-surface-variant max-w-xl mx-auto mb-10 leading-relaxed">
-                Ask anything about academics, notices, departments, clubs, campus navigation, or university information.
+              <p className="text-xs md:text-sm text-on-surface-variant max-w-md mx-auto mb-8 leading-relaxed opacity-85">
+                Ask anything about academics, notices, timetables, departments, campus buildings, food spots, or general information.
               </p>
               
               {/* Suggested Prompts Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left max-w-xl w-full mx-auto">
                 {[
                   {
                     title: "Show my timetable",
                     desc: "View daily class routine",
                   },
                   {
-                    title: "How many safe leaves do I have?",
-                    desc: "Check attendance bunk safety",
-                  },
-                  {
                     title: "Where should I go now?",
                     desc: "AI navigation & departure advisor",
-                  },
-                  {
-                    title: "When should I leave for class?",
-                    desc: "Walking time & departure planning",
                   },
                   {
                     title: "What notices are relevant to me?",
@@ -112,7 +121,7 @@ export const ChatWindow = () => {
                   <button
                     key={item.title}
                     onClick={() => handleSuggestionClick(item.title)}
-                    className="p-4 bg-surface-container-low border border-outline-variant rounded-2xl hover:bg-surface-container hover:border-primary transition-all duration-150 group text-left cursor-pointer"
+                    className="p-4 bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-container hover:border-primary transition-all duration-150 group text-left cursor-pointer shadow-xs"
                   >
                     <p className="text-xs font-bold text-on-surface group-hover:text-primary uppercase tracking-wider">
                       {item.title}
@@ -149,20 +158,17 @@ export const ChatWindow = () => {
               ))}
 
               {loading && (
-                <div className="flex flex-col items-start gap-2 animate-in fade-in duration-200">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-5 h-5 rounded bg-surface-container flex items-center justify-center border border-outline-variant">
-                      <Bot size={12} className="text-primary" />
-                    </div>
-                    <span className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">
-                      BIT AI Assistant
-                    </span>
+                <div className="flex gap-3 max-w-[85%] md:max-w-[850px] w-full flex-row animate-in fade-in duration-200">
+                  <div className="w-7 h-7 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center shrink-0 self-start mt-1 shadow-sm">
+                    <Bot size={14} className="text-primary" />
                   </div>
-                  <div className="bg-surface-container border border-outline-variant px-5 py-3.5 rounded-2xl text-on-surface-variant font-medium">
-                    <div className="flex items-center gap-1.5 py-1 px-1">
-                      <span className="w-1.5 h-1.5 bg-primary/75 rounded-full animate-bounce [animation-duration:1s]" style={{ animationDelay: "0ms" }}></span>
-                      <span className="w-1.5 h-1.5 bg-primary/75 rounded-full animate-bounce [animation-duration:1s]" style={{ animationDelay: "150ms" }}></span>
-                      <span className="w-1.5 h-1.5 bg-primary/75 rounded-full animate-bounce [animation-duration:1s]" style={{ animationDelay: "300ms" }}></span>
+                  <div className="flex-1 min-w-0 flex flex-col items-start">
+                    <div className="bg-surface-container border border-outline-variant px-4 py-2.5 rounded-2xl rounded-tl-sm text-on-surface-variant font-medium">
+                      <div className="flex items-center gap-1.5 py-1 px-1">
+                        <span className="w-1.5 h-1.5 bg-primary/75 rounded-full animate-bounce [animation-duration:1s]" style={{ animationDelay: "0ms" }}></span>
+                        <span className="w-1.5 h-1.5 bg-primary/75 rounded-full animate-bounce [animation-duration:1s]" style={{ animationDelay: "150ms" }}></span>
+                        <span className="w-1.5 h-1.5 bg-primary/75 rounded-full animate-bounce [animation-duration:1s]" style={{ animationDelay: "300ms" }}></span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -176,7 +182,7 @@ export const ChatWindow = () => {
 
       {/* Sticky/Static Composer at the bottom in the normal document flow */}
       <div className="w-full border-t border-outline-variant/30 bg-background/95 backdrop-blur px-6 py-4 shrink-0 z-30">
-        <div className="max-w-[800px] mx-auto w-full">
+        <div className="max-w-[850px] mx-auto w-full">
           <ChatInput 
             onSend={sendChatMessage} 
             onStopSpeaking={stopSpeaking} 

@@ -41,12 +41,28 @@ export const useChat = () => {
             navigation_context: msg.metadata?.navigation_context,
           }));
 
+          // Deduplicate consecutive identical messages (safety guard)
+          const deduped: typeof formatted = [];
+          for (let i = 0; i < formatted.length; i++) {
+            const current = formatted[i];
+            if (i > 0) {
+              const previous = formatted[i - 1];
+              if (
+                current.sender === previous.sender &&
+                current.text === previous.text
+              ) {
+                continue;
+              }
+            }
+            deduped.push(current);
+          }
+
           setMessages([
             {
               sender: "bot",
               text: "Hey I am the BIT Mesra agent",
             },
-            ...formatted,
+            ...deduped,
           ]);
         } else {
           setMessages([

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Lock, ArrowRight, ShieldAlert, GraduationCap } from "lucide-react";
+import { Mail, Lock, ArrowRight, ShieldAlert, GraduationCap, Eye, EyeOff } from "lucide-react";
 import useAuth from "../hooks/useAuth";
 
 export const LoginPage = () => {
@@ -14,6 +14,7 @@ export const LoginPage = () => {
   
   const [formError, setFormError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,9 +29,10 @@ export const LoginPage = () => {
     try {
       await login({ email, password }, rememberMe);
       navigate("/");
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Login failed:", err);
-      const msg = err.response?.data?.detail || "Invalid email or password. Please try again.";
+      const errorDetails = err as { response?: { data?: { detail?: string } } };
+      const msg = errorDetails.response?.data?.detail || "Invalid email or password. Please try again.";
       setFormError(msg);
     } finally {
       setIsSubmitting(false);
@@ -93,13 +95,21 @@ export const LoginPage = () => {
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-on-surface-variant/50" />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full pl-11 pr-4 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface placeholder:text-on-surface-variant/20 text-xs font-semibold"
+                className="w-full pl-11 pr-12 py-3 bg-surface-container border border-outline-variant focus:border-primary rounded-xl focus:outline-none transition-all text-on-surface placeholder:text-on-surface-variant/20 text-xs font-semibold"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 hover:text-primary transition-colors cursor-pointer p-1 rounded-lg focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary flex items-center justify-center"
+              >
+                {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+              </button>
             </div>
           </div>
 

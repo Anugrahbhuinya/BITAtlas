@@ -9,7 +9,7 @@ export const Markdown = ({ text }: MarkdownProps) => {
   const parts = text.split(/(```[\s\S]*?```)/g);
 
   return (
-    <div className="space-y-3 font-sans leading-relaxed text-[11px] md:text-xs">
+    <div className="space-y-3 font-sans leading-relaxed text-xs md:text-sm">
       {parts.map((part, index) => {
         if (part.startsWith("```") && part.endsWith("```")) {
           // It's a code block
@@ -26,7 +26,7 @@ export const Markdown = ({ text }: MarkdownProps) => {
                   <span>{language}</span>
                 </div>
               )}
-              <pre className="p-4 overflow-x-auto text-[10px] md:text-[11px] font-mono-code leading-relaxed bg-black/10">
+              <pre className="p-4 overflow-x-auto text-xs md:text-sm font-mono-code leading-relaxed bg-black/10">
                 <code>{code}</code>
               </pre>
             </div>
@@ -47,7 +47,7 @@ export const Markdown = ({ text }: MarkdownProps) => {
               return <strong key={tIdx} className="font-extrabold text-primary">{token.slice(2, -2)}</strong>;
             }
             if (token.startsWith("`") && token.endsWith("`")) {
-              return <code key={tIdx} className="bg-surface-container px-1.5 py-0.5 rounded font-mono-code text-[10px] text-primary">{token.slice(1, -1)}</code>;
+              return <code key={tIdx} className="bg-surface-container px-1.5 py-0.5 rounded font-mono-code text-[11px] md:text-xs text-primary">{token.slice(1, -1)}</code>;
             }
             if (token.startsWith("[") && token.includes("](")) {
               const labelEnd = token.indexOf("](");
@@ -59,7 +59,7 @@ export const Markdown = ({ text }: MarkdownProps) => {
                   href={url} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-primary underline hover:text-primary/80 transition-colors font-bold uppercase tracking-wider text-[10px]"
+                  className="text-primary underline hover:text-primary/80 transition-colors font-bold uppercase tracking-wider text-[11px] md:text-xs"
                 >
                   {label}
                 </a>
@@ -109,8 +109,8 @@ export const Markdown = ({ text }: MarkdownProps) => {
 
             renderedElements.push(
               <div key={`table-${i}`} className="my-4 overflow-x-auto rounded-xl border border-outline-variant/60 bg-background select-text">
-                <table className="min-w-full divide-y divide-outline-variant/40 text-left text-[11px]">
-                  <thead className="bg-surface-container/60 font-bold uppercase tracking-wider text-[9px] text-on-surface-variant">
+                <table className="min-w-full divide-y divide-outline-variant/40 text-left text-xs md:text-sm">
+                  <thead className="bg-surface-container/60 font-bold uppercase tracking-wider text-[10px] md:text-xs text-on-surface-variant">
                     <tr>
                       {headers.map((header, hIdx) => (
                         <th key={hIdx} className="px-4 py-3 font-semibold">{header}</th>
@@ -136,7 +136,7 @@ export const Markdown = ({ text }: MarkdownProps) => {
           if (trimmed.startsWith("###")) {
             flushList(i);
             renderedElements.push(
-              <h4 key={i} className="text-xs md:text-sm font-extrabold text-primary uppercase tracking-wider mt-4 mb-2">
+              <h4 key={i} className="text-sm md:text-base font-extrabold text-primary uppercase tracking-wider mt-4 mb-2">
                 {renderText(trimmed.slice(3).trim())}
               </h4>
             );
@@ -145,7 +145,7 @@ export const Markdown = ({ text }: MarkdownProps) => {
           if (trimmed.startsWith("##")) {
             flushList(i);
             renderedElements.push(
-              <h3 key={i} className="text-sm md:text-base font-extrabold text-primary uppercase tracking-wider mt-5 mb-2">
+              <h3 key={i} className="text-base md:text-lg font-extrabold text-primary uppercase tracking-wider mt-5 mb-2">
                 {renderText(trimmed.slice(2).trim())}
               </h3>
             );
@@ -154,7 +154,7 @@ export const Markdown = ({ text }: MarkdownProps) => {
           if (trimmed.startsWith("#")) {
             flushList(i);
             renderedElements.push(
-              <h2 key={i} className="text-base md:text-lg font-extrabold text-primary uppercase tracking-wider mt-6 mb-3">
+              <h2 key={i} className="text-lg md:text-xl font-extrabold text-primary uppercase tracking-wider mt-6 mb-3">
                 {renderText(trimmed.slice(1).trim())}
               </h2>
             );

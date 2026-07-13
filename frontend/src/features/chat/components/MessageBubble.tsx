@@ -1,4 +1,4 @@
-import { Volume2, VolumeX, MapPinned, Bot, Navigation, Clock, Coffee, BookOpen, Building2, Compass, Terminal, ChevronDown, ChevronUp, Activity, Cpu, Layers, ShieldAlert } from "lucide-react";
+import { Volume2, VolumeX, MapPinned, Bot, Navigation, Clock, Coffee, BookOpen, Building2, Terminal, Activity } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -80,7 +80,7 @@ export const MessageBubble = ({
     navigate("/map");
   };
 
-  const handleQuickAction = (action: string) => {
+  const handleQuickAction = () => {
     navigate("/map");
   };
 
@@ -108,85 +108,76 @@ export const MessageBubble = ({
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className={`flex flex-col mb-6 ${isUser ? "items-end" : "items-start"}`}
+      className={`flex mb-4 w-full ${isUser ? "justify-end" : "justify-start"}`}
     >
-      {!isUser && (
-        <div className="flex items-center gap-2 mb-2 px-1 select-none">
-          <div className="w-5 h-5 rounded bg-surface-container border border-outline-variant flex items-center justify-center">
-            <Bot size={11} className="text-primary" />
+      <div className={`flex gap-3 max-w-[85%] md:max-w-[850px] w-full ${isUser ? "flex-row-reverse" : "flex-row"}`}>
+        {!isUser ? (
+          <div className="w-7 h-7 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center shrink-0 self-start mt-1 shadow-sm select-none">
+            <Bot size={14} className="text-primary" />
           </div>
-          <span className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">
-            BIT AI Assistant
-          </span>
-        </div>
-      )}
+        ) : null}
 
-      <div className={`flex items-start gap-3 w-full ${isUser ? "justify-end" : "justify-start"}`}>
-        <div
-          className={`
-            px-5 py-3.5
-            rounded-2xl
-            max-w-[90%]
-            md:max-w-[850px]
-            break-words
-            text-xs
-            leading-relaxed
-            shadow-sm
-            ${isUser 
-              ? "bg-transparent border border-outline-variant text-primary font-semibold" 
-              : "bg-surface-container border border-outline-variant text-on-surface"
-            }
-          `}
-        >
-          <Markdown text={cleanText(message.text)} />
+        <div className="flex-1 min-w-0 flex flex-col">
+          <div
+            className={`
+              break-words
+              text-xs md:text-sm
+              leading-relaxed
+              w-full
+              ${isUser 
+                ? "bg-surface-container/60 border border-outline-variant/50 text-on-surface font-medium rounded-2xl rounded-tr-sm px-4 py-2.5 self-end max-w-[85%] shadow-xs" 
+                : "bg-transparent border-none shadow-none text-on-surface px-0 py-1"
+              }
+            `}
+          >
+            <Markdown text={cleanText(message.text)} />
 
-          {showNavigationCard && message.navigation_context && (
-            <div className="mt-3 pt-3 border-t border-outline-variant/30">
-              <NavigationCard
-                navigationContext={message.navigation_context}
-                allNodes={allNodes}
-              />
-            </div>
-          )}
+            {showNavigationCard && message.navigation_context && (
+              <div className="mt-3 pt-3 border-t border-outline-variant/30">
+                <NavigationCard
+                  navigationContext={message.navigation_context}
+                  allNodes={allNodes}
+                />
+              </div>
+            )}
 
-          {!isUser && !message.navigation_context && uniqueActions.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-outline-variant/30">
-              {uniqueActions.map((action) => (
-                <button
-                  key={action.action}
-                  onClick={() => handleQuickAction(action.action)}
-                  className="flex items-center gap-1.5 bg-primary/5 border border-primary/20 hover:bg-primary/10 hover:border-primary/40 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider text-primary transition-all active:scale-[0.97] cursor-pointer"
-                >
-                  {getActionIcon(action.icon)}
-                  <span>{action.label}</span>
-                </button>
-              ))}
-            </div>
-          )}
+            {!isUser && !message.navigation_context && uniqueActions.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-outline-variant/30">
+                {uniqueActions.map((action) => (
+                  <button
+                    key={action.action}
+                    onClick={handleQuickAction}
+                    className="flex items-center gap-1.5 bg-primary/5 border border-primary/20 hover:bg-primary/10 hover:border-primary/40 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider text-primary transition-all active:scale-[0.97] cursor-pointer"
+                  >
+                    {getActionIcon(action.icon)}
+                    <span>{action.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
 
-          {!isUser && !message.navigation_context && detectedLocation && uniqueActions.length === 0 && (
-            <button
-              onClick={handleOpenMap}
-              className="mt-3 flex items-center gap-1.5 bg-surface-container-high border border-outline-variant hover:border-primary px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider text-primary transition-all active:scale-[0.98] cursor-pointer"
-            >
-              <MapPinned size={12} />
-              <span>Open on Map</span>
-            </button>
-          )}
-
-          {/* Developer Observability Panel Toggle Button */}
-          {!isUser && message.diagnostics?.debug_rag && (
-            <div className="mt-4 pt-3 border-t border-outline-variant/30 select-none">
+            {!isUser && !message.navigation_context && detectedLocation && uniqueActions.length === 0 && (
               <button
-                onClick={() => setShowDebug(!showDebug)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider text-primary border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all cursor-pointer"
+                onClick={handleOpenMap}
+                className="mt-3 flex items-center gap-1.5 bg-surface-container-high border border-outline-variant hover:border-primary px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider text-primary transition-all active:scale-[0.98] cursor-pointer"
               >
-                <Terminal size={12} />
-                <span>RAG Telemetry & Diagnostics</span>
-                {showDebug ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                <MapPinned size={12} />
+                <span>Open on Map</span>
               </button>
-            </div>
-          )}
+            )}
+
+            {/* Developer Observability Panel Toggle Button */}
+            {!isUser && message.diagnostics?.debug_rag && (
+              <div className="mt-4 pt-3 border-t border-outline-variant/30 select-none">
+                <button
+                  onClick={() => setShowDebug(!showDebug)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/70 border border-outline-variant bg-transparent hover:bg-surface-container-high hover:border-outline hover:text-primary transition-all cursor-pointer"
+                >
+                  <Terminal size={12} />
+                  <span>{showDebug ? "▲ Diagnostics" : "▼ Diagnostics"}</span>
+                </button>
+              </div>
+            )}
 
           {/* Collapsible Developer Observability Panel */}
           {!isUser && showDebug && message.diagnostics?.debug_rag && (
@@ -296,7 +287,7 @@ export const MessageBubble = ({
                         </tr>
                       </thead>
                       <tbody>
-                        {message.diagnostics.debug_rag.candidates.slice(0, 5).map((cand: any, idx: number) => (
+                        {message.diagnostics.debug_rag.candidates.slice(0, 5).map((cand: { rank: number; source_type: string; title: string; raw_score: number; combined_score: number; explanation: string }, idx: number) => (
                           <tr key={idx} className="border-b border-outline-variant/20 hover:bg-surface-container-high transition-colors">
                             <td className="py-2 px-2 font-bold text-primary">#{cand.rank}</td>
                             <td className="py-2 px-2 max-w-[150px] truncate">
@@ -360,6 +351,7 @@ export const MessageBubble = ({
         {!isUser && (
           <button
             onClick={isSpeaking ? onStopSpeaking : () => onSpeak(message.text)}
+            aria-label={isSpeaking ? "Stop listening to response" : "Listen to response"}
             className={`
               p-2
               rounded-lg
@@ -368,6 +360,7 @@ export const MessageBubble = ({
               duration-150
               cursor-pointer
               mt-1.5
+              self-start
               ${
                 isSpeaking
                   ? "bg-red-500/10 border-red-500/20 text-red-400 hover:bg-red-500/20 scale-105"
@@ -379,6 +372,7 @@ export const MessageBubble = ({
             {isSpeaking ? <VolumeX size={13} /> : <Volume2 size={13} />}
           </button>
         )}
+      </div>
       </div>
     </motion.div>
   );

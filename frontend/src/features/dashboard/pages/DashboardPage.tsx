@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { 
-  Calendar as CalendarIcon, Bolt, AlertCircle, 
-  Clock, ArrowRight, Sparkles, MapPin, 
-  BookOpen, CalendarRange 
+  Bolt, AlertCircle, 
+  Clock, ArrowRight, Sparkles, CalendarRange 
 } from "lucide-react";
 import { useAuth } from "../../auth/hooks/useAuth";
 
@@ -11,14 +10,12 @@ export const DashboardPage = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
-  const [greeting, setGreeting] = useState("Hello");
-
-  useEffect(() => {
+  const [greeting] = useState(() => {
     const hour = new Date().getHours();
-    if (hour < 12) setGreeting("Good Morning");
-    else if (hour < 17) setGreeting("Good Afternoon");
-    else setGreeting("Good Evening");
-  }, []);
+    if (hour < 12) return "Good Morning";
+    if (hour < 17) return "Good Afternoon";
+    return "Good Evening";
+  });
 
   const handleQuickAction = (promptText: string) => {
     // Navigate to Chat page and pass promptText in location state
@@ -47,7 +44,7 @@ export const DashboardPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           
           {/* Today's Schedule (Styled Timeline Card) */}
-          <div className="md:col-span-8 border border-outline-variant/40 bg-surface-container-low rounded-2xl p-8 flex flex-col justify-between min-h-[360px]">
+          <div className="md:col-span-8 border border-outline-variant/40 bg-surface-container-low rounded-2xl p-6 flex flex-col justify-between min-h-[360px] hover:border-outline transition-colors duration-200">
             <div>
               <div className="flex justify-between items-center mb-6 border-b border-outline-variant/30 pb-4">
                 <div className="flex items-center gap-3">
@@ -60,7 +57,7 @@ export const DashboardPage = () => {
               <div className="relative border-l border-outline-variant/40 pl-6 ml-3 space-y-6">
                 {/* Active class */}
                 <div className="relative">
-                  <div className="absolute -left-[30px] top-1.5 w-3 h-3 rounded-full bg-primary ring-4 ring-primary/20"></div>
+                  <div className="absolute -left-[22px] top-1.5 w-3 h-3 rounded-full bg-primary ring-4 ring-primary/20"></div>
                   <div className="flex flex-col md:flex-row md:items-center gap-2 justify-between">
                     <div>
                       <h4 className="text-xs font-bold text-primary uppercase tracking-wider">Machine Learning (L-302)</h4>
@@ -72,7 +69,7 @@ export const DashboardPage = () => {
 
                 {/* Upcoming class */}
                 <div className="relative">
-                  <div className="absolute -left-[30px] top-1.5 w-3 h-3 rounded-full bg-outline-variant"></div>
+                  <div className="absolute -left-[22px] top-1.5 w-3 h-3 rounded-full bg-outline-variant"></div>
                   <div className="flex flex-col md:flex-row md:items-center gap-2 justify-between">
                     <div>
                       <h4 className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Data Structures Lab</h4>
@@ -84,7 +81,7 @@ export const DashboardPage = () => {
 
                 {/* Later class */}
                 <div className="relative opacity-60">
-                  <div className="absolute -left-[30px] top-1.5 w-3 h-3 rounded-full bg-outline-variant/60"></div>
+                  <div className="absolute -left-[22px] top-1.5 w-3 h-3 rounded-full bg-outline-variant/60"></div>
                   <div className="flex flex-col md:flex-row md:items-center gap-2 justify-between">
                     <div>
                       <h4 className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Minor Project Review</h4>
@@ -98,7 +95,7 @@ export const DashboardPage = () => {
           </div>
 
           {/* Quick AI Actions (Clean Pill Button Card) */}
-          <div className="md:col-span-4 matte-card rounded-2xl p-8 flex flex-col justify-between min-h-[360px]">
+          <div className="md:col-span-4 matte-card rounded-2xl p-6 flex flex-col justify-between min-h-[360px]">
             <div>
               <div className="flex items-center gap-3 mb-6 border-b border-outline-variant/30 pb-4">
                 <Bolt className="w-5 h-5 text-primary" />
@@ -125,7 +122,7 @@ export const DashboardPage = () => {
           </div>
 
           {/* Unread Notices Feed Card */}
-          <div className="md:col-span-5 border border-outline-variant/40 bg-surface-container-low rounded-2xl p-8 flex flex-col justify-between">
+          <div className="md:col-span-5 border border-outline-variant/40 bg-surface-container-low rounded-2xl p-6 flex flex-col justify-between hover:border-outline transition-colors duration-200">
             <div>
               <div className="flex justify-between items-center mb-6 border-b border-outline-variant/30 pb-4">
                 <div className="flex items-center gap-3">
@@ -167,39 +164,41 @@ export const DashboardPage = () => {
           </div>
 
           {/* Academic Calendar highlights */}
-          <div className="md:col-span-4 matte-card rounded-2xl p-8">
-            <div className="flex items-center gap-3 mb-6 border-b border-outline-variant/30 pb-4">
-              <Clock className="w-5 h-5 text-primary" />
-              <h3 className="text-sm font-extrabold text-primary uppercase tracking-wider">Key Dates</h3>
-            </div>
-
-            <div className="space-y-6">
-              <div className="flex gap-4 items-center">
-                <div className="flex flex-col items-center justify-center w-12 h-12 bg-surface-container rounded-lg border border-outline-variant shrink-0 select-none">
-                  <span className="text-[9px] text-on-surface-variant uppercase font-extrabold leading-none">Nov</span>
-                  <span className="text-sm font-extrabold text-primary leading-none mt-1">05</span>
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-primary leading-tight uppercase tracking-wide">Mid-Sem Start</h4>
-                  <p className="text-[10px] text-on-surface-variant mt-0.5 font-medium">Major Academic Event</p>
-                </div>
+          <div className="md:col-span-4 matte-card rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-3 mb-6 border-b border-outline-variant/30 pb-4">
+                <Clock className="w-5 h-5 text-primary" />
+                <h3 className="text-sm font-extrabold text-primary uppercase tracking-wider">Key Dates</h3>
               </div>
 
-              <div className="flex gap-4 items-center">
-                <div className="flex flex-col items-center justify-center w-12 h-12 bg-surface-container rounded-lg border border-outline-variant shrink-0 select-none">
-                  <span className="text-[9px] text-on-surface-variant uppercase font-extrabold leading-none">Nov</span>
-                  <span className="text-sm font-extrabold text-primary leading-none mt-1">12</span>
+              <div className="space-y-6">
+                <div className="flex gap-4 items-center">
+                  <div className="flex flex-col items-center justify-center w-12 h-12 bg-surface-container rounded-lg border border-outline-variant shrink-0 select-none">
+                    <span className="text-[9px] text-on-surface-variant uppercase font-extrabold leading-none">Nov</span>
+                    <span className="text-sm font-extrabold text-primary leading-none mt-1">05</span>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-primary leading-tight uppercase tracking-wide">Mid-Sem Start</h4>
+                    <p className="text-[10px] text-on-surface-variant mt-0.5 font-medium">Major Academic Event</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-xs font-bold text-primary leading-tight uppercase tracking-wide">Diwali Break</h4>
-                  <p className="text-[10px] text-on-surface-variant mt-0.5 font-medium">University Closed</p>
+
+                <div className="flex gap-4 items-center">
+                  <div className="flex flex-col items-center justify-center w-12 h-12 bg-surface-container rounded-lg border border-outline-variant shrink-0 select-none">
+                    <span className="text-[9px] text-on-surface-variant uppercase font-extrabold leading-none">Nov</span>
+                    <span className="text-sm font-extrabold text-primary leading-none mt-1">12</span>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-primary leading-tight uppercase tracking-wide">Diwali Break</h4>
+                    <p className="text-[10px] text-on-surface-variant mt-0.5 font-medium">University Closed</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Upcoming Events (Image Banner Card) */}
-          <div className="md:col-span-3 border border-outline-variant/40 bg-surface-container-low rounded-2xl overflow-hidden group flex flex-col justify-between">
+          <div className="md:col-span-3 border border-outline-variant/40 bg-surface-container-low rounded-2xl overflow-hidden group flex flex-col justify-between hover:border-outline transition-colors duration-200">
             <div className="h-28 w-full bg-surface-container relative shrink-0 select-none">
               <div 
                 className="absolute inset-0 bg-cover bg-center" 
@@ -207,7 +206,7 @@ export const DashboardPage = () => {
               ></div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#18181B] to-transparent"></div>
             </div>
-            <div className="p-5 flex-1 flex flex-col justify-between">
+            <div className="p-6 flex-1 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-1.5 mb-1.5 text-[9px] font-extrabold text-primary uppercase tracking-wider select-none">
                   <Sparkles size={10} />

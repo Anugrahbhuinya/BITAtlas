@@ -1,61 +1,42 @@
-# Enterprise Security Documentation
+# Security Architecture & Best Practices
 
-This document describes the security policies, protections, rate limiting rules, input validations, and threat mitigation models deployed in the **BIT Mesra AI Operating System** under **Phase 12 Hardening**.
-
----
-
-## 1. Authentication Hardening
-The application enforces JWT (JSON Web Token) authentication on all administrative and private student endpoints.
-- **Access Token Integrity**: Access tokens are digitally signed using `HMAC-SHA256` using a cryptographically random secret key (`JWT_SECRET`) loaded from environment variables.
-- **Expired Token Rejection**: Tokens are verified against active expiration timestamps (`ACCESS_TOKEN_EXPIRE_MINUTES`). Expired tokens are rejected with a standard `401 Unauthorized` status.
-- **Invalid Signatures & Malformed Claims**: Any JWT token with a modified payload or incorrect signature is immediately intercepted and rejected at the route level.
-- **Protected Routes**:
-  - Protected student endpoints (e.g. `/api/student/profile`) require a valid bearer JWT with role `student`.
-  - Protected administrative endpoints (e.g. `/api/admin/dashboard`) require a valid bearer JWT with role `admin`.
+This document describes the security controls, validation middlewares, encryption frameworks, and prompt injection mitigation strategies implemented in the **BIT Mesra AI Workspace**.
 
 ---
 
-## 2. Authorization (Role-Based Access Control)
-The application validates that authenticated users have the correct authorization scopes.
-- **Role Scoping**: Users are assigned roles (e.g. `student`, `admin`) encoded in their JWT payload claim boundaries.
-- **Admin Isolation**: Admin routes explicitly verify that the token owner holds admin permissions using FastAPI dependencies:
-  ```python
-  async def get_current_admin(current_user: str = Depends(get_current_user)) -> str:
-      # Verifies role and grants permissions
-  ```
-- **Diagnostics and Settings Protection**: All internal system statuses, website logs, PDF management, and database statistics routes are locked behind admin authorization.
+## 1. Authentication & Session Security
+
+- **JWT bearer validation**: Session verification relies on JSON Web Tokens (JWT). The backend signs JWT keys using `HS256` symmetric encryption keys and enforces a session timeout limit (`ACCESS_TOKEN_EXPIRE_MINUTES`).
+- **Secure Password Storage**: Student passwords are hashed before database entry using **bcrypt** with a work factor of 12 rounds. Plaintext passwords are never logged or stored.
+- **Refresh Token Rotation**: Standard rotating token checks verify refresh requests before issuing new short-lived access credentials.
 
 ---
 
-## 3. Input Validation & Request Constraints
-Every API endpoint utilizes strongly typed Pydantic models for request body deserialization.
-- **Malformed Payloads**: Any request containing invalid JSON structure or data types is immediately rejected with a `400 Bad Request` before invoking application logic.
-- **Missing Required Fields**: The application catches `RequestValidationError` and returns a clean error mapping listing the missing fields, preventing raw python stack traces from leaking.
-- **Oversized Payloads**: Standard REST endpoints are protected against excessive resource consumption using size checks on request bodies.
+## 2. API Middleware Pipelines (OWASP Hardening)
+
+FastAPI endpoints are protected by non-blocking Starlette middlewares:
+- **`SecurityHeadersMiddleware`**: Adds HTTP response headers to harden the application:
+  - `X-Frame-Options: DENY` (intercepts clickjacking attempts)
+  - `X-Content-Type-Options: nosniff` (mitigates MIME sniffing)
+  - `Strict-Transport-Security` (enforces TLS/HTTPS usage)
+- **CORS Configuration**: Restricts API calls to approved origins (`settings.CORS_ORIGINS`). Wildcard origins are disabled in production.
 
 ---
 
-## 4. AI Security & Guardrails
-The system protects LLM generation pipelines against manipulation and attacks:
-- **Prompt Injection Filter**: User inputs are sanitized to strip system-override phrases (e.g. *"Ignore previous instructions..."*).
-- **Jailbreak Blocks**: Input strings are assessed against pre-defined adversarial patterns and system keywords.
-- **Smart Context Engine Budgeting**: Prevents large inputs from bloating the token counts. A strict budget of 3,500 tokens is enforced via the `TokenBudgetManager`.
-- **RAG Context Sanitization**: Retrieved content is sanitized before prompt composition to ensure malicious documents cannot trick the LLM.
+## 3. Data Sanitization & Input Filters
+
+- **Pydantic Validation**: Strong-typed Pydantic model schemas intercept HTTP payloads at the routing tier, rejecting malformed JSON parameters immediately.
+- **SQL / NoSQL Injection Prevention**: Database CRUD queries compile using async Motor parameters, preventing query string injections.
+- **File Upload Verification**: 
+  - Restricts uploads strictly to matching file formats (`.pdf` or `.png`/`.jpg`).
+  - Limits file size properties to prevent denial-of-service (DoS) memory exhaustion.
+  - Sanitizes target file names using `secure_filename` to prevent path traversal attempts.
 
 ---
 
-## 5. Standardized API Hardening
-All exceptions are mapped to clean JSON response formats at the middleware level:
-- **No Stack Traces**: Production modes disable internal tracebacks in error responses. 
-- **Standardized Response Formats**: 
-  - **401 Unauthorized**: Correctly formatted WWW-Authenticate headers.
-  - **429 Too Many Requests**: Returned when rate limits are exceeded.
-  - **500 Internal Server Error**: A generic user-friendly message is shown while the error is recorded securely in structured logs.
+## 4. Prompt Injection Mitigation
 
----
-
-## 6. Rate Limiting
-Configurable rate limit boundaries are applied to expensive endpoints:
-- **Chat Endpoint (`/chat`)**: Standard rate is 20 requests per 60-second window.
-- **Admin Authentication (`/api/admin/login`)**: Limit is 10 login attempts per 60-second window.
-- **File Uploads (`/api/admin/documents/upload`)**: Rate-limited to avoid denial-of-service vector.
+User inputs are evaluated by `validate_chat_query` in `ai_guard.py` before prompt assembly:
+- **Block-list Regex**: Intercepts phrases containing instruction overrides (e.g., `ignore previous instructions`, `reveal system prompt`, `system developer guidelines`, `you are now acting as`).
+- **Structured Prompts**: Enforces strict demarcation between system rules, context data, and user input variables, preventing user messages from leaking into system execution blocks.
+- **Grounding Restraints**: Gemini instructions forbid the model from answering queries using facts not documented in the compiled context prompt.

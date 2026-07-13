@@ -1,181 +1,190 @@
-# Deployment and Setup Guide
+# Production Deployment Guide
 
-This document describes how to setup, run, configure, and deploy the **BIT Mesra AI Assistant** (Enterprise Knowledge Platform) in both development and production environments.
+This document describes environment configurations, Docker Compose orchestration models, reverse proxy configurations, and TLS/HTTPS setups to deploy the **BIT Mesra AI Workspace** to production.
 
 ---
 
 ## 1. Prerequisites
 
-Before running the application, make sure the following dependencies are installed on your environment:
-
-* **OS:** Windows / Linux / macOS
-* **Python:** Python 3.10 or 3.11
-* **Node.js:** Node.js 18.x or higher (with npm package manager)
-* **MongoDB:** MongoDB Community Server (v6.0 or higher) running locally or a MongoDB Atlas connection URI.
-* **C++ Build Tools:** Required for compiling compilation dependencies of ChromaDB (e.g., visual studio build tools on Windows, `build-essential` on Linux).
+Before deploying the workspace, ensure the target virtual machine (VM) contains:
+- **Docker Engine** (v24.0.0+)
+- **Docker Compose** (v2.20.0+)
+- An active domain name resolving to your server's public IP address.
+- A valid **Google Gemini API Key**.
 
 ---
 
-## 2. Environment Variables
+## 2. Production Environment Configurations
 
-Create a `.env` file inside the `backend` folder to configure database and authentication properties:
+Create a production environment file (`.env`) in the project root:
 
-```ini
-# Core Server Configuration
+```env
+# Application Settings
+ENV=production
+DEBUG=False
 PORT=8001
-HOST=0.0.0.0
 
-# MongoDB Configuration
-MONGO_URI=mongodb://localhost:27017/bit_mesra_assistant
+# Security Settings
+SECRET_KEY="generate-a-64-character-cryptographic-hash-here"
+ALGORITHM="HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES=60
 
-# ChromaDB Configuration
-CHROMA_PERSIST_DIR=./data/chromadb
+# Databases
+MONGODB_URI="mongodb://production-mongo-ip-or-container:27017"
+MONGODB_DB_NAME="bit_mesra_ai_agent_prod"
+CHROMA_DB_PATH="/data/chroma_db"
 
-# AI & LLM Service Keys
-GEMINI_API_KEY=your_gemini_api_key_here
-
-# JWT Authentication Configs
-JWT_SECRET=your_super_secret_jwt_signature_key_here
-JWT_ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=120
-
-# Website Synchronization Configs
-WEBSITE_SYNC_ENABLED=True
-WEBSITE_SYNC_INTERVAL_MINUTES=60
-MAX_CONCURRENT_WEBSITE_SYNCS=3
-RESPECT_ROBOTS_TXT=False
-
-# Content Normalizer Configurations
-ENABLE_NORMALIZED_HASH=True
-IGNORE_DATES=True
-IGNORE_TIMESTAMPS=True
-IGNORE_COUNTERS=True
-IGNORE_SESSION_IDS=True
-IGNORE_EXTRA_WHITESPACE=True
+# LLM Keys
+GEMINI_API_KEY="AIzaSyYourProductionGeminiApiKeyHere"
+GEMINI_MODEL="gemini-2.5-flash"
 ```
 
 ---
 
-## 3. Local Development Setup
+## 3. Docker Compose Configuration
 
-### 3.1 Backend Server Setup (FastAPI)
-1. Navigate to the backend folder:
-   ```bash
-   cd backend
-   ```
-2. Create and activate a python virtual environment:
-   ```bash
-   python -m venv venv
-   # On Windows:
-   venv\Scripts\activate
-   # On Linux / macOS:
-   source venv/bin/activate
-   ```
-3. Install Python dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Start the FastAPI development server:
-   ```bash
-   uvicorn app.main:app --reload --port 8001
-   ```
-   *The server will boot, automatically seeding the default administrator account (`admin` / `admin123`) and triggering the background website synchronization thread.*
+Use the following `docker-compose.yml` to orchestrate backend, database, and client services:
 
-### 3.2 Frontend Web Setup (Vite + React)
-1. Navigate to the frontend folder:
+```yaml
+version: '3.8'
+
+services:
+  database:
+    image: mongo:6.0
+    container_name: bit-mesra-db
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - bit-mesra-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bit-mesra-api
+    restart: always
+    environment:
+      - ENV=production
+      - MONGODB_URI=mongodb://database:27017
+      - MONGODB_DB_NAME=bit_mesra_ai_agent_prod
+      - CHROMA_DB_PATH=/data/chroma_db
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=gemini-2.5-flash
+    volumes:
+      - chroma-data:/data/chroma_db
+      - uploads-data:/app/uploads
+    ports:
+      - "8001:8001"
+    depends_on:
+      - database
+    networks:
+      - bit-mesra-network
+
+  frontend:
+    image: nginx:alpine
+    container_name: bit-mesra-client
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./frontend/dist:/usr/share/nginx/html
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    depends_on:
+      - backend
+    networks:
+      - bit-mesra-network
+
+networks:
+  bit-mesra-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+  chroma-data:
+  uploads-data:
+```
+
+---
+
+## 4. Reverse Proxy & Nginx Configurations
+
+Create Nginx server blocks to map client routes and forward API endpoints safely to the backend container:
+
+```nginx
+events { worker_connections 1024; }
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    server {
+        listen 80;
+        server_name bit-mesra-ai.yourdomain.com;
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+        server_name bit-mesra-ai.yourdomain.com;
+
+        ssl_certificate     /etc/letsencrypt/live/bit-mesra-ai.yourdomain.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/bit-mesra-ai.yourdomain.com/privkey.pem;
+        
+        ssl_protocols       TLSv1.2 TLSv1.3;
+        ssl_ciphers         HIGH:!aNULL:!MD5;
+
+        # Frontend Client SPA
+        location / {
+            root /usr/share/nginx/html;
+            try_files $uri $uri/ /index.html;
+            add_header X-Frame-Options "DENY";
+            add_header X-Content-Type-Options "nosniff";
+        }
+
+        # Backend FastAPI Gateway
+        location /api/ {
+            proxy_pass http://backend:8001/;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # Static uploads folder (Profile pictures)
+        location /uploads/ {
+            alias /app/uploads/;
+            expires 7d;
+        }
+    }
+}
+```
+
+---
+
+## 5. Deployment Commands
+
+1. **Build Static Assets**:
    ```bash
    cd frontend
+   npm run build
    ```
-2. Install npm dependencies:
+2. **Build and Start Container Pool**:
    ```bash
-   npm install
+   docker-compose up -d --build
    ```
-3. Start the React development server:
+3. **Verify running containers**:
    ```bash
-   npm run dev
+   docker ps
    ```
-4. Access the web interface at `http://localhost:5180`.
-   - Admin Workspace: `/admin/login`
-
----
-
-## 4. Production Deployment
-
-### 4.1 Production Stack Recommendation
-* **Web Server:** Nginx (acting as a reverse proxy SSL terminator).
-* **API Runner:** Gunicorn with Uvicorn workers (`gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app`).
-* **Database Hosting:** MongoDB Atlas (for managed replication and backups).
-* **Vector Store Hosting:** ChromaDB deployed on a standalone container or running locally on local persistent folders (backed up periodically).
-* **Hosting Platform:** AWS EC2, DigitalOcean Droplet, or Google Compute Engine.
-
-### 4.2 Docker Configuration (Future-Ready Containerization)
-
-To containerize the application, you can use the following layout:
-
-#### Backend Dockerfile (`backend/Dockerfile`)
-```dockerfile
-FROM python:3.10-slim
-
-WORKDIR /app
-
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-EXPOSE 8001
-
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:8001", "app.main:app"]
-```
-
-#### Frontend Dockerfile (`frontend/Dockerfile`)
-```dockerfile
-# Build stage
-FROM node:18-alpine AS build
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-# Production stage
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-```
-
----
-
-## 5. Common Troubleshooting
-
-### ChromaDB C++ Build Errors
-- **Symptom:** Python complains about failing to compile `hnswlib` or `chromadb` during `pip install`.
-- **Solution:** Make sure compile build tools are installed. On Windows, install *Desktop development with C++* through Visual Studio Installer. On Linux, run `sudo apt-get install build-essential python3-dev`.
-
-### "Event loop is closed" on MongoDB/Motor calls
-- **Symptom:** Logs display warnings about Motor trying to perform collection database operations on a closed loop.
-- **Solution:** This is caused by running database operations inside separate threads or nested async tasks. Avoid instantiating new loops during standard FastAPI lifespan executions. Ensure all operations share the main event loop context.
-
-### Gemini API rate limit blocks
-- **Symptom:** Ingestion or chats return `429 Too Many Requests` when using Gemini.
-- **Solution:** Reduce chunk sizes or insert delays when batching multiple PDF document ingestions concurrently.
-
----
-
-## 6. Hardened Production Deployment Checklist & Monitoring Verification
-
-When preparing to launch the hardened application in production:
-1. **Set Configuration Mode**: Define `APP_ENV=production` in the environment variables block. This disables debug traceback screens, enables OWASP-compliant security headers, and enforces standard rate limits.
-2. **Setup Log Aggregation**: Structured JSON logs are written by the FastAPI server to stdout. Configure Fluentd or log agents to parse and route these payloads to your centralized SIEM.
-3. **Configure Health Inquiries**:
-   - Set up ping configurations to hit `/health` every 10 seconds.
-   - Configure gateway ready checks to poll `/ready` to monitor MongoDB, ChromaDB, and Gemini API statuses.
-4. **Enforce Rate Limits**: Apply firewall rate limits (e.g., in Nginx reverse-proxy settings) that match the internal FastAPI rate limits (`RATE_LIMIT_CHAT_LIMIT`, `RATE_LIMIT_ADMIN_LIMIT`).
-
+4. **View Backend Logs**:
+   ```bash
+   docker logs -f bit-mesra-api
+   ```
