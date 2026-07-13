@@ -19,47 +19,65 @@ The system employs a client-server separation model. Communication is structured
 
 ```mermaid
 graph TB
-    subgraph Client Layer (React Frontend)
-        UI[React UI Dashboard]
-        MapUI[Campus Navigation View]
-        ChatUI[AI Assistant Interface]
+    subgraph ClientLayer ["Client Layer (React Frontend)"]
+        UI["React UI Dashboard"]
+        MapUI["Campus Navigation View"]
+        ChatUI["AI Assistant Interface"]
     end
 
-    subgraph API & Core Gateway (FastAPI Backend)
-        Router[FastAPI Route Dispatcher]
-        Middleware[Timing, ID & Security Middleware]
-        Auth[JWT Token Validator]
+    subgraph AppLayer ["API & Core Gateway (FastAPI Backend)"]
+        Router["FastAPI Route Dispatcher"]
+        Middleware["Timing, ID & Security Middleware"]
+        Auth["JWT Token Validator"]
     end
 
-    subgraph Service Orchestration Layer
-        DashboardSvc[Dashboard Service]
-        ContextEngine[Smart Context Engine]
-        RAGSvc[Hybrid RAG Engine]
-        NavEngine[Navigation Router]
-        Crawler[Website Sync Scheduler]
+    subgraph ServiceLayer ["Service Orchestration Layer"]
+        DashboardSvc["Dashboard Service"]
+        ContextEngine["Smart Context Engine"]
+        RAGSvc["Hybrid RAG Engine"]
+        NavEngine["Navigation Router"]
+        Crawler["Website Sync Scheduler"]
     end
 
-    subgraph Persistence Layer
-        Mongo[(MongoDB Database)]
-        Chroma[(ChromaDB Vector Index)]
-        Uploads[Static Uploads File Store]
+    subgraph PersistLayer ["Persistence Layer"]
+        Mongo[("MongoDB Database")]
+        Chroma[("ChromaDB Vector Index")]
+        Uploads["Static Uploads File Store"]
     end
 
-    UI & MapUI & ChatUI <-->|"HTTP REST (JWT)"| Router
+    UI --> Router
+    Router --> UI
+    MapUI --> Router
+    Router --> MapUI
+    ChatUI --> Router
+    Router --> ChatUI
+
     Router --> Middleware
     Middleware --> Auth
-    Auth --> DashboardSvc & ContextEngine & RAGSvc & NavEngine
     
-    DashboardSvc <--> Mongo
-    NavEngine <--> Mongo
-    Crawler <--> Mongo
+    Auth --> DashboardSvc
+    Auth --> ContextEngine
+    Auth --> RAGSvc
+    Auth --> NavEngine
     
-    RAGSvc <--> Chroma
-    Crawler <--> Chroma
+    DashboardSvc --> Mongo
+    Mongo --> DashboardSvc
+
+    NavEngine --> Mongo
+    Mongo --> NavEngine
+
+    Crawler --> Mongo
+    Mongo --> Crawler
+    
+    RAGSvc --> Chroma
+    Chroma --> RAGSvc
+
+    Crawler --> Chroma
+    Chroma --> Crawler
     
     ContextEngine --> RAGSvc
     ContextEngine --> DashboardSvc
-    ContextEngine --> LLM[Google Gemini 2.5 API]
+    ContextEngine --> LLM["Google Gemini 2.5 API"]
     
     Router --> Uploads
 ```

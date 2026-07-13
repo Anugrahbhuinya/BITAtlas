@@ -47,7 +47,7 @@ The **BIT Mesra AI Assistant** resolves this by consolidating campus resources i
 - **AI-Powered Timetable Imports**: Scans course sheets using Gemini Vision to automatically extract class times, locations, and teachers, writing them to MongoDB.
 - **Dijkstra Campus Maps**: Calculates walking paths, ETA durations, and directions between landmarks and department buildings.
 - **Incremental Website Sync**: Hourly cron checks monitor webpage changes, re-indexing vector stores when hashes change.
-- **Observability Diagnostics**: Collaspible logs (`▼ Diagnostics`) display cosine similarities, Cross-Encoder ratings, latency metrics, and prompt token budgets.
+- **Observability Diagnostics**: Collapsible logs (`▼ Diagnostics`) display cosine similarities, Cross-Encoder ratings, latency metrics, and prompt token budgets.
 
 ---
 
@@ -57,49 +57,68 @@ The project employs a decoupled client-server architecture. Client requests are 
 
 ```mermaid
 graph TB
-    subgraph Client Layer (React Frontend)
-        UI[React UI Dashboard]
-        MapUI[Campus Navigation View]
-        ChatUI[AI Assistant Interface]
+    subgraph ClientLayer ["Client Layer (Frontend)"]
+        FE["React UI Dashboard"]
+        AC["Academic Workspace Pages"]
+        Chat["AI Assistant Chatbox"]
     end
 
-    subgraph API & Core Gateway (FastAPI Backend)
-        Router[FastAPI Route Dispatcher]
-        Middleware[Timing, ID & Security Middleware]
-        Auth[JWT Token Validator]
+    subgraph AppLayer ["Application Layer (FastAPI Backend)"]
+        API["Router Gateway"]
+        Auth["JWT Security / Auth"]
+        AS["Attendance Service"]
+        TS["Timetable Service"]
+        PS["Planner Service"]
+        DS["Dashboard Service"]
+        ACS["Academic Context Service"]
     end
 
-    subgraph Service Orchestration Layer
-        DashboardSvc[Dashboard Service]
-        ContextEngine[Smart Context Engine]
-        RAGSvc[Hybrid RAG Engine]
-        NavEngine[Navigation Router]
-        Crawler[Website Sync Scheduler]
+    subgraph AiLayer ["AI & Knowledge Layer"]
+        IR["Intent Router"]
+        PB["Prompt Builder"]
+        RAG["Hybrid RAG Engine"]
+        Gemini["Google Gemini API"]
     end
 
-    subgraph Persistence Layer
-        Mongo[(MongoDB Database)]
-        Chroma[(ChromaDB Vector Index)]
-        Uploads[Static Uploads File Store]
+    subgraph PersistLayer ["Persistence Layer"]
+        DB[("MongoDB")]
+        VDB[("ChromaDB Vector Store")]
+        FS["Static Assets / PDF Documents"]
     end
 
-    UI & MapUI & ChatUI <-->|"HTTP REST (JWT)"| Router
-    Router --> Middleware
-    Middleware --> Auth
-    Auth --> DashboardSvc & ContextEngine & RAGSvc & NavEngine
+    FE --> API
+    Chat --> API
+    API --> Auth
+
+    AC --> AS
+    AC --> TS
+    AC --> PS
+    AC --> DS
+
+    Auth --> DS
+    Auth --> ACS
+    Auth --> RAG
+
+    ACS --> AS
+    ACS --> TS
+    ACS --> PS
     
-    DashboardSvc <--> Mongo
-    NavEngine <--> Mongo
-    Crawler <--> Mongo
+    DS --> AS
+    DS --> TS
+    DS --> PS
     
-    RAGSvc <--> Chroma
-    Crawler <--> Chroma
+    RAG --> VDB
+    ACS --> PB
+    RAG --> PB
     
-    ContextEngine --> RAGSvc
-    ContextEngine --> DashboardSvc
-    ContextEngine --> LLM[Google Gemini 2.5 API]
+    PB --> Gemini
     
-    Router --> Uploads
+    AS --> DB
+    TS --> DB
+    PS --> DB
+    Auth --> DB
+
+    API --> FS
 ```
 
 ---
@@ -122,7 +141,7 @@ When a student queries the assistant, the prompt compiles using context-aware pr
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Student as Student Client
+    actor Client as Student Client
     participant Router as FastAPI Router Gateway
     participant Auth as Auth Token Validator
     participant Context as Smart Context Engine
@@ -130,32 +149,32 @@ sequenceDiagram
     participant Chroma as ChromaDB Index
     participant Gemini as Gemini LLM Engine
 
-    Client->>Router: POST /chat (message, sessionId, Authorization Header)
-    Router->>Auth: decode_access_token()
+    Client->>Router: POST /chat (sessionId)
+    Router->>Auth: decode token
     Auth-->>Router: return Student Payload
     
-    Router->>Context: gather_context(message, student_id)
+    Router->>Context: gather context
     activate Context
     
     par Query Database records
-        Context->>DB: Get Student Profile, Schedules, & Attendance Logs
-        DB-->>Context: return Academic Records
+        Context->>DB: Get Student records
+        DB-->>Context: return Academic records
     and Query Vector indexes
-        Context->>Chroma: Retrieve Vector document chunks (Cos-Sim)
-        Chroma-->>Context: return Vector Chunks & Meta
+        Context->>Chroma: Retrieve Vector chunks
+        Chroma-->>Context: return Vector Chunks
     end
     
-    Context->>Context: Fuzzy Deduplication & Token Budget Validation
-    Context->>Gemini: generate_response(ContextPrompt)
+    Context->>Context: Deduplication & Token Budget checks
+    Context->>Gemini: generate response
     Gemini-->>Context: return Synthesized Answer
     
-    Context->>DB: add_message_to_history(sessionId, role="assistant", content)
+    Context->>DB: add message to history
     DB-->>Context: return Success
     
-    Context-->>Router: return Formatted Response Payload
+    Context-->>Router: return Formatted Payload
     deactivate Context
     
-    Router-->>Client: return JSON Response (with Citations & Telemetry)
+    Router-->>Client: return JSON Response
 ```
 
 ---

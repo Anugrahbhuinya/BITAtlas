@@ -1,6 +1,6 @@
-# System Architecture & Lifecycle Diagrams
+# System Architecture & Request Flows
 
-This document details the request lifecycles, sequence interaction parameters, and flow pathways within the **BIT Mesra AI Workspace**.
+This document details the detailed system flow diagrams, request lifecycles, and sequence diagrams of the **BIT Mesra AI Workspace**.
 
 ---
 
@@ -10,25 +10,24 @@ The platform processes student actions through dedicated routing pipelines, load
 
 ```mermaid
 graph TD
-    Client[Student Browser / Client]
-    Router[FastAPI Route Handler]
-    ContextEngine[Smart Context Engine]
-    RAG[Hybrid RAG Engine]
-    LLM[Gemini 2.5 API]
-    Mongo[(MongoDB Database)]
-    Chroma[(ChromaDB Vector Store)]
+    Client["Student Browser / Client"]
+    Router["FastAPI Route Handler"]
+    ContextEngine["Smart Context Engine"]
+    RAG["Hybrid RAG Engine"]
+    LLM["Gemini 2.5 API"]
+    Mongo[("MongoDB Database")]
+    Chroma[("ChromaDB Vector Store")]
 
-    Client -->|"1. Chat Request (JWT Claim)"| Router
-    Router -->|"2. Assemble Context"| ContextEngine
-    ContextEngine -->|"3. Retrieve Profile, Schedule, Checklist"| Mongo
-    ContextEngine -->|"4. Retrieve Semantic Chunks"| RAG
-    RAG -->|"5. Embed & Retrieve"| Chroma
+    Client --> Router
+    Router --> ContextEngine
+    ContextEngine --> Mongo
+    ContextEngine --> RAG
+    RAG --> Chroma
     
-    ContextEngine -->|"6. Deduplicate & Merge Context"| ContextEngine
-    ContextEngine -->|"7. Send Structured Prompt"| LLM
-    LLM -->|"8. Return Grounded Answer"| ContextEngine
-    ContextEngine -->|"9. Save Thread History"| Mongo
-    Router -->|"10. Return Response Stream"| Client
+    ContextEngine --> LLM
+    LLM --> ContextEngine
+    ContextEngine --> Mongo
+    Router --> Client
 ```
 
 ---
@@ -66,35 +65,35 @@ sequenceDiagram
     participant Chroma as ChromaDB Index
     participant Gemini as Gemini LLM Engine
 
-    Client->>Router: POST /chat (message, sessionId, Authorization Header)
-    Router->>Auth: decode_access_token()
+    Client->>Router: POST /chat (sessionId)
+    Router->>Auth: decode token
     Auth-->>Router: return Student Payload
     
-    Router->>Context: gather_context(message, student_id)
+    Router->>Context: gather context
     activate Context
     
     par Query Database records
-        Context->>DB: Get Student Profile, Schedules, & Attendance Logs
-        DB-->>Context: return Academic Records
+        Context->>DB: Get Student records
+        DB-->>Context: return Academic records
     and Query Vector indexes
-        Context->>Chroma: Retrieve Vector document chunks (Cos-Sim)
-        Chroma-->>Context: return Vector Chunks & Meta
+        Context->>Chroma: Retrieve Vector chunks
+        Chroma-->>Context: return Vector Chunks
     end
     
-    Context->>Context: Fuzzy Deduplication & Token Budget Validation
-    Context->>Gemini: generate_response(ContextPrompt)
+    Context->>Context: Deduplication & Token Budget checks
+    Context->>Gemini: generate response
     Gemini-->>Context: return Synthesized Answer
     
-    Context->>DB: add_message_to_history(sessionId, role="assistant", content)
+    Context->>DB: add message to history
     DB-->>Context: return Success
     
-    Context-->>Router: return Formatted Response Payload
+    Context-->>Router: return Formatted Payload
     deactivate Context
     
-    Router-->>Client: return JSON Response (with Citations & Telemetry)
+    Router-->>Client: return JSON Response
 ```
 
-### 3.2 Website crawling & Automatic Synchronization Sequence
+### 3.2 Website Crawling & Automatic Synchronization Sequence
 
 ```mermaid
 sequenceDiagram
@@ -105,25 +104,24 @@ sequenceDiagram
     participant Mongo as MongoDB Collections
     participant Chroma as ChromaDB Vector Store
 
-    Scheduler->>Sync: trigger_sync_cycle()
-    Sync->>Mongo: Find all active websites (sync_enabled=true)
+    Scheduler->>Sync: trigger sync cycle
+    Sync->>Mongo: Find active websites
     Mongo-->>Sync: Return website records
     
     loop For each website
-        Sync->>Crawler: crawl_url(url)
-        Crawler->>Crawler: Extract HTML & BeautifulSoup parse
-        Crawler->>Crawler: Normalize content (strip Date, Session, Dynamic properties)
-        Crawler->>Crawler: Generate content SHA-256 hash
+        Sync->>Crawler: crawl url
+        Crawler->>Crawler: Extract & BeautifulSoup parse
+        Crawler->>Crawler: Normalize content hash
         
-        Sync->>Mongo: Compare newly generated hash with stored database hash
+        Sync->>Mongo: Compare newly generated hash
         
-        alt Content Hash matches (No Changes)
-            Sync->>Mongo: Update last_checked timestamp & Log Sync status "Unchanged"
-        else Content Hash differs (Updates Detected)
-            Sync->>Chroma: Purge old vector chunks by source ID
-            Sync->>Crawler: Segment text into chunks & generate HuggingFace embeddings
+        alt Content Hash matches
+            Sync->>Mongo: Update last checked
+        else Content Hash differs
+            Sync->>Chroma: Purge old vector chunks
+            Sync->>Crawler: Segment text & generate embeddings
             Crawler-->>Chroma: Insert new vector chunks
-            Sync->>Mongo: Update stored hash, last_checked, & Log Sync audit trail "Updated"
+            Sync->>Mongo: Update stored hash & Log Sync success
         end
     end
 ```
