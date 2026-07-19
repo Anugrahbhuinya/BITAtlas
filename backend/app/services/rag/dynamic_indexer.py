@@ -11,6 +11,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from app.services.rag.vector_store import get_vector_store, PERSIST_DIRECTORY
 from app.core.database import get_database
 from app.services.ai.cache import clear_response_cache
+from app.services.rag.retriever import clear_retriever_cache
 
 logger = logging.getLogger("dynamic_indexer")
 
@@ -41,15 +42,141 @@ def extract_pdf_text_by_page(file_path: str) -> List[Tuple[str, int]]:
         
     return pages_data
 
+def extract_text_from_doc(file_path: str) -> str:
+    """
+    Extracts text from legacy Word (.doc) binary files.
+    """
+    # 1. Try win32com as primary on Windows
+    try:
+        import win32com.client
+        import pythoncom
+        pythoncom.CoInitialize()
+        word = win32com.client.DispatchEx("Word.Application")
+        word.Visible = False
+        word.DisplayAlerts = False
+        doc = None
+        try:
+            doc = word.Documents.Open(os.path.abspath(file_path), ReadOnly=True)
+            text = doc.Content.Text
+            return text
+        finally:
+            if doc:
+                doc.Close(False)
+            word.Quit()
+    except Exception as e:
+        logger.warning(f"win32com extraction failed or Word not installed: {e}. Falling back to binary extraction.")
+        
+    # 2. Pure-Python Fallback (Extracts ASCII and UTF-16 strings from the binary structure)
+    try:
+        with open(file_path, "rb") as f:
+            data = f.read()
+            
+        import re
+        # Find UTF-16LE printable characters: (printable ASCII + \x00)
+        # Printable ASCII is 0x20-0x7E, plus 0x09 (tab), 0x0A (LF), 0x0D (CR).
+        utf16_pattern = re.compile(rb'(?:[\x20-\x7e\x09\x0a\x0d]\x00){4,}')
+        ascii_pattern = re.compile(rb'[\x20-\x7e\x09\x0a\x0d]{4,}')
+        
+        extracted_parts = []
+        # Find all UTF-16LE text blocks
+        for match in utf16_pattern.finditer(data):
+            try:
+                decoded = match.group(0).decode("utf-16le")
+                if len(decoded.strip()) > 3:
+                    extracted_parts.append(decoded.strip())
+            except Exception:
+                pass
+                
+        # If UTF-16 extraction yields little text, fall back to ASCII extraction
+        if not extracted_parts or len(" ".join(extracted_parts)) < 50:
+            for match in ascii_pattern.finditer(data):
+                try:
+                    decoded = match.group(0).decode("ascii")
+                    if len(decoded.strip()) > 3:
+                        extracted_parts.append(decoded.strip())
+                except Exception:
+                    pass
+                    
+        # Join extracted segments
+        full_text = "\n\n".join(extracted_parts)
+        
+        # Simple cleanup of OLE headers/footers if matched
+        cleaned_lines = []
+        for line in full_text.splitlines():
+            if any(term in line for term in ["Microsoft Word", "MSWordDoc", "Word.Document"]):
+                if len(line) < 100:
+                    continue
+            cleaned_lines.append(line)
+            
+        return "\n".join(cleaned_lines)
+    except Exception as ex:
+        raise ValueError(f"Failed to extract text from Word document: {str(ex)}")
+
+def extract_txt_text(file_path: str) -> str:
+    """
+    Decodes txt or md file with standard encoding fallbacks.
+    """
+    with open(file_path, "rb") as f:
+        content = f.read()
+    for encoding in ("utf-8", "utf-16", "latin-1"):
+        try:
+            return content.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+    raise ValueError("Unable to decode text file. Supported encodings: UTF-8, UTF-16, Latin-1.")
+
+def extract_text_by_page(file_path: str) -> List[Tuple[str, int]]:
+    """
+    Extracts text page-by-page from the supported document types.
+    For non-paginated formats, the entire text is returned as page 1.
+    """
+    ext = os.path.splitext(file_path)[1].lower()
+    
+    if ext == ".pdf":
+        return extract_pdf_text_by_page(file_path)
+        
+    elif ext == ".docx":
+        import docx
+        try:
+            doc = docx.Document(file_path)
+            full_text = []
+            for paragraph in doc.paragraphs:
+                if paragraph.text.strip():
+                    full_text.append(paragraph.text.strip())
+            for table in doc.tables:
+                for row in table.rows:
+                    row_text = [cell.text.strip() for cell in row.cells if cell.text.strip()]
+                    if row_text:
+                        full_text.append(" | ".join(row_text))
+            text = "\n".join(full_text)
+            return [(text, 1)]
+        except Exception as e:
+            raise ValueError(f"Failed to read DOCX file: {str(e)}")
+            
+    elif ext == ".doc":
+        text = extract_text_from_doc(file_path)
+        return [(text, 1)]
+        
+    elif ext in (".txt", ".md"):
+        text = extract_txt_text(file_path)
+        return [(text, 1)]
+        
+    else:
+        raise ValueError(f"Unsupported file format: {ext}")
+
 def chunk_pdf_pages(pages_data: List[Tuple[str, int]], source_name: str, doc_id: str, file_hash: str) -> List[Document]:
     """
     Chunks each page's text using RecursiveCharacterTextSplitter (chunk_size=500, chunk_overlap=100)
-    preserving page numbers.
+    preserving page numbers. Works with multiple document formats.
     """
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
         chunk_overlap=100
     )
+    
+    # Dynamically extract extension for metadata type fields
+    ext = os.path.splitext(source_name)[1].lower()
+    file_type = ext[1:] if ext else "pdf"
     
     documents = []
     chunk_idx = 0
@@ -66,14 +193,14 @@ def chunk_pdf_pages(pages_data: List[Tuple[str, int]], source_name: str, doc_id:
                     "filename": source_name,
                     "page": page_num,
                     "source": "kb_document",
-                    "source_type": "pdf",
+                    "source_type": file_type,
                     "chunk_number": chunk_idx,
                     "sha256": file_hash,
                     # Backwards compatibility keys
                     "name": source_name,
                     "title": source_name,
                     "doc_id": doc_id,
-                    "type": "pdf"
+                    "type": file_type
                 }
             )
             documents.append(doc)
@@ -87,7 +214,7 @@ async def index_pdf_generator(
     overwrite: bool = False
 ) -> AsyncGenerator[str, None]:
     """
-    Validates, saves, extracts, chunks, embeds, and indexes a PDF.
+    Validates, saves, extracts, chunks, embeds, and indexes a supported document format.
     Yields progress status as line-delimited JSON.
     Supports atomic rollback in case of failure.
     """
@@ -97,9 +224,27 @@ async def index_pdf_generator(
     # 1. Start Uploading
     yield json.dumps({"status": "Uploading", "progress": 10}) + "\n"
     
-    # Validation
-    if not file_content.startswith(b"%PDF"):
-        yield json.dumps({"status": "Failed", "detail": "Invalid file format. Only PDF files are supported."}) + "\n"
+    ext = os.path.splitext(filename)[1].lower()
+    
+    # Validation based on format
+    if ext == ".pdf":
+        if not file_content.startswith(b"%PDF"):
+            yield json.dumps({"status": "Failed", "detail": "Invalid file format. Only PDF files are supported."}) + "\n"
+            return
+    elif ext == ".docx":
+        if not file_content.startswith(b"PK\x03\x04"):
+            yield json.dumps({"status": "Failed", "detail": "Invalid file format. Only DOCX files are supported."}) + "\n"
+            return
+    elif ext == ".doc":
+        if not file_content.startswith(b"\xd0\xcf\x11\xe0"):
+            yield json.dumps({"status": "Failed", "detail": "Invalid file format. Only DOC files are supported."}) + "\n"
+            return
+    elif ext in (".txt", ".md"):
+        if b"\x00" in file_content[:1024]:
+            yield json.dumps({"status": "Failed", "detail": "Binary characters detected in text file."}) + "\n"
+            return
+    else:
+        yield json.dumps({"status": "Failed", "detail": f"Unsupported file format: {ext}"}) + "\n"
         return
         
     if len(file_content) > 10 * 1024 * 1024: # 10MB limit
@@ -129,14 +274,14 @@ async def index_pdf_generator(
     # Initialize variables for atomic rollback tracking
     doc_id = f"doc_{uuid.uuid4()}"
     os.makedirs(UPLOAD_DIR, exist_ok=True)
-    file_path = os.path.join(UPLOAD_DIR, f"{doc_id}.pdf")
+    file_path = os.path.join(UPLOAD_DIR, f"{doc_id}{ext}")
     
     saved_on_disk = False
     vector_ids: List[str] = []
     metadata_saved = False
     
     try:
-        # Write PDF to disk
+        # Write file to disk
         with open(file_path, "wb") as f:
             f.write(file_content)
         saved_on_disk = True
@@ -144,7 +289,7 @@ async def index_pdf_generator(
         # 2. Extracting text
         yield json.dumps({"status": "Extracting", "progress": 30}) + "\n"
         try:
-            pages_data = extract_pdf_text_by_page(file_path)
+            pages_data = extract_text_by_page(file_path)
         except ValueError as e:
             yield json.dumps({"status": "Failed", "detail": str(e)}) + "\n"
             # Cleanup immediately
@@ -157,7 +302,7 @@ async def index_pdf_generator(
         chunks = chunk_pdf_pages(pages_data, filename, doc_id, file_hash)
         
         if not chunks:
-            yield json.dumps({"status": "Failed", "detail": "The PDF contains no extractable text."}) + "\n"
+            yield json.dumps({"status": "Failed", "detail": "The document contains no extractable text."}) + "\n"
             if os.path.exists(file_path):
                 os.remove(file_path)
             return
@@ -179,7 +324,7 @@ async def index_pdf_generator(
             "filename": filename,
             "hash": file_hash,
             "filepath": file_path,
-            "type": "pdf",
+            "type": ext[1:],
             "status": "Indexed",
             "created": datetime.now(timezone.utc),
             "size_bytes": len(file_content),
@@ -189,6 +334,7 @@ async def index_pdf_generator(
         await db.indexed_documents.insert_one(metadata)
         metadata_saved = True
         clear_response_cache()
+        clear_retriever_cache()
         
         # Log Admin Activity
         from app.services.admin_service import log_admin_activity
@@ -286,6 +432,7 @@ async def delete_indexed_document(doc_id: str) -> bool:
         await db.indexed_documents.delete_one({"id": doc_id})
         logger.info(f"Deleted MongoDB metadata for doc {doc_id}.")
         clear_response_cache()
+        clear_retriever_cache()
     except Exception as e:
         logger.error(f"Failed to delete MongoDB metadata for {doc_id}: {e}")
         
@@ -333,14 +480,14 @@ async def reindex_document_generator(doc_id: str) -> AsyncGenerator[str, None]:
     
     try:
         # Extract text page-by-page
-        pages_data = extract_pdf_text_by_page(file_path)
+        pages_data = extract_text_by_page(file_path)
         
         # 2. Chunking
         yield json.dumps({"status": "Chunking", "progress": 40}) + "\n"
         chunks = chunk_pdf_pages(pages_data, filename, doc_id, doc["hash"])
         
         if not chunks:
-            yield json.dumps({"status": "Failed", "detail": "The PDF contains no extractable text."}) + "\n"
+            yield json.dumps({"status": "Failed", "detail": "The document contains no extractable text."}) + "\n"
             return
             
         # 3. Embedding
@@ -374,6 +521,7 @@ async def reindex_document_generator(doc_id: str) -> AsyncGenerator[str, None]:
             }
         )
         clear_response_cache()
+        clear_retriever_cache()
         
         # Log Admin Activity
         from app.services.admin_service import log_admin_activity

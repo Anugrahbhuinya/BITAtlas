@@ -37,12 +37,18 @@ async def get_website(website_id: str) -> Optional[dict]:
         return doc
     return None
 
-async def delete_website(website_id: str, username: str = "admin") -> bool:
+async def delete_website(website_id: str, purge: bool = True, username: str = "admin") -> bool:
     """
-    Deletes the website record from MongoDB and cleans up all vector chunks from ChromaDB.
+    Deletes the website record.
+    If purge=True, deletes everything (metadata, crawl history, Chroma vectors).
+    If purge=False, deletes website metadata only, keeping the Chroma vectors.
     """
     db = get_database()
     vector_store = get_vector_store()
+
+    from app.core import config
+    if config.IS_DEV_MODE:
+        logger.info(f"[DEV DEBUG] Delete Trace: Deletion strategy: {'Purge (everything)' if purge else 'Keep Content (metadata only)'}")
 
     # 1. Fetch website document
     doc = await db.websites.find_one({"_id": website_id})
@@ -54,32 +60,64 @@ async def delete_website(website_id: str, username: str = "admin") -> bool:
     title = doc.get("title", "unknown")
     vector_ids = doc.get("vector_ids", [])
 
-    # 2. Delete vectors from ChromaDB
-    # If vector_ids is empty or not tracked, try fallback using Chroma filter
-    if not vector_ids:
-        try:
-            chroma_res = vector_store.get(where={"doc_id": website_id})
-            vector_ids = chroma_res.get("ids", [])
-        except Exception as e:
-            logger.error(f"Failed to query ChromaDB for fallback deletion of website {website_id}: {e}")
+    if purge:
+        logger.info("Deleting website metadata...")
+        logger.info("Deleting Chroma vectors...")
+        logger.info("Deleting chunk metadata...")
+        logger.info("Deleting embeddings...")
+        logger.info("Deleting indexed documents...")
+        
+        # If vector_ids is empty or not tracked, try fallback using Chroma filter
+        if not vector_ids:
+            try:
+                chroma_res = vector_store.get(where={"doc_id": website_id})
+                vector_ids = chroma_res.get("ids", [])
+            except Exception as e:
+                logger.error(f"Failed to query ChromaDB for fallback deletion of website {website_id}: {e}")
 
-    if vector_ids:
-        try:
-            logger.info(f"Deleting {len(vector_ids)} vectors from ChromaDB for website: {title}")
-            vector_store.delete(ids=vector_ids)
-        except Exception as e:
-            logger.error(f"Failed to delete ChromaDB vectors for website {website_id}: {e}")
+        num_vectors_removed = 0
+        if vector_ids:
+            try:
+                logger.info(f"Deleting {len(vector_ids)} vectors from ChromaDB for website: {title}")
+                vector_store.delete(ids=vector_ids)
+                num_vectors_removed = len(vector_ids)
+            except Exception as e:
+                logger.error(f"Failed to delete ChromaDB vectors for website {website_id}: {e}")
 
-    # 3. Delete MongoDB metadata
-    try:
-        await db.websites.delete_one({"_id": website_id})
-        logger.info(f"Deleted MongoDB metadata for website ID {website_id}.")
-    except Exception as e:
-        logger.error(f"Failed to delete MongoDB metadata for website {website_id}: {e}")
+        if config.IS_DEV_MODE:
+            logger.info(f"[DEV DEBUG] Delete Trace: Vectors removed: {num_vectors_removed}")
+
+        # Delete MongoDB website crawl history
+        try:
+            await db.website_crawl_history.delete_many({"website_id": website_id})
+            logger.info(f"Deleted MongoDB crawl history for website ID {website_id}.")
+        except Exception as e:
+            logger.error(f"Failed to delete MongoDB crawl history for website {website_id}: {e}")
+
+        # Delete MongoDB website record
+        try:
+            await db.websites.delete_one({"_id": website_id})
+            logger.info(f"Deleted MongoDB metadata for website ID {website_id}.")
+        except Exception as e:
+            logger.error(f"Failed to delete MongoDB metadata for website {website_id}: {e}")
+
+        logger.info("Deletion completed.")
+        logger.info(f"Number of vectors removed: {num_vectors_removed}")
+    else:
+        logger.info("Deleting website metadata only...")
+        
+        # Delete MongoDB website record
+        try:
+            await db.websites.delete_one({"_id": website_id})
+            logger.info("Website removed from Admin Dashboard.")
+            logger.info("Knowledge retained.")
+            logger.info("Vector count unchanged.")
+        except Exception as e:
+            logger.error(f"Failed to delete MongoDB metadata for website {website_id}: {e}")
 
     # 4. Log Admin Activity
     await log_admin_activity(
-        action="Website Deleted",
+        action="Website Purged" if purge else "Website Metadata Deleted",
         username=username,
         details={"url": url, "title": title, "website_id": website_id}
     )

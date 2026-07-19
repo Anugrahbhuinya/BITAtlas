@@ -192,37 +192,42 @@ Nearby Facilities: {facilities_str}"""
         compression_status = "Completed" if metadata.compression_enabled else "Disabled"
         estimated_tokens = final_length // 4
 
-        print("\n================================================")
-        print("PROMPT PIPELINE")
-        print("===============")
-        print("\nPrompt Pipeline Enabled\n")
-        print(f"Intent:\n{metadata.intent}\n")
-        print(f"Template:\n{template_name}\n")
-        print(f"Persona:\n{persona_name}\n")
-        print(f"Variables Injected:\n{vars_injected}\n")
-        print(f"Conversation Summary:\n{has_history}\n")
-        print(f"Student Context:\n{has_student}\n")
-        print(f"Retrieved Context:\n{chunks_count} chunks\n")
-        print(f"Few-shot Examples:\n{few_shot_count}\n")
-        print(f"Hallucination Guard:\n{hallucination_status}\n")
-        print(f"Response Formatter:\n{formatter_status}\n")
-        print(f"Prompt Validator:\n{validator_status}\n")
-        print(f"Prompt Compression:\n{compression_status}\n")
-        print(f"Final Prompt Tokens:\n{estimated_tokens}\n")
-        print("Calling Gemini...\n")
+        # Print detailed pipeline execution logging as requested safely
+        try:
+            print("\n================================================")
+            print("PROMPT PIPELINE")
+            print("===============")
+            print("\nPrompt Pipeline Enabled\n")
+            print(f"Intent:\n{metadata.intent}\n")
+            print(f"Template:\n{template_name}\n")
+            print(f"Persona:\n{persona_name}\n")
+            print(f"Variables Injected:\n{vars_injected}\n")
+            print(f"Conversation Summary:\n{has_history}\n")
+            print(f"Student Context:\n{has_student}\n")
+            print(f"Retrieved Context:\n{chunks_count} chunks\n")
+            print(f"Few-shot Examples:\n{few_shot_count}\n")
+            print(f"Hallucination Guard:\n{hallucination_status}\n")
+            print(f"Response Formatter:\n{formatter_status}\n")
+            print(f"Prompt Validator:\n{validator_status}\n")
+            print(f"Prompt Compression:\n{compression_status}\n")
+            print(f"Final Prompt Tokens:\n{estimated_tokens}\n")
+            print("Calling Gemini...\n")
 
-        if metadata.intent == "navigation":
-            print("==================================================")
-            print("NAVIGATION PROMPT")
-            print("==================================================")
-            print(final_prompt)
-            print("==================================================\n")
-        else:
-            print("================================================")
-            print("FINAL PROMPT")
-            print("============")
-            print(final_prompt)
-            print("================================================\n")
+            if metadata.intent == "navigation":
+                print("==================================================")
+                print("NAVIGATION PROMPT")
+                print("==================================================")
+                print(final_prompt)
+                print("==================================================\n")
+            else:
+                print("================================================")
+                print("FINAL PROMPT")
+                print("============")
+                print(final_prompt)
+                print("================================================\n")
+        except Exception as print_exc:
+            logger.warning(f"Failed to print prompt pipeline debug logs: {print_exc}")
+
 
         # --- Stage 14: Return Assembled PromptSchema ---
         return PromptSchema(

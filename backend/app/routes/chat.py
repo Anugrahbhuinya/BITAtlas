@@ -205,6 +205,30 @@ def generate_grounded_structured_block(nav_ctx) -> str:
 ### Landmarks
 {landmarks_str}"""
 
+def split_mixed_query(query: str) -> tuple[Optional[str], Optional[str]]:
+    import re
+    # Split query by punctuation and conjunctions
+    parts = re.split(r'[.;?]+|\b(?:and|also|as\s+well\s+as)\b', query, flags=re.IGNORECASE)
+    parts = [p.strip() for p in parts if p.strip()]
+    
+    fac_part = None
+    other_part = None
+    
+    for part in parts:
+        part_intent = classify_intent(part)
+        if part_intent == "FacultyDirectory":
+            if fac_part:
+                fac_part += " and " + part
+            else:
+                fac_part = part
+        else:
+            if other_part:
+                other_part += " and " + part
+            else:
+                other_part = part
+                
+    return fac_part, other_part
+
 @router.post("/chat", dependencies=[Depends(rate_limit_chat)])
 async def chat(
     request: ChatRequest,
@@ -248,9 +272,37 @@ async def chat(
                 result["diagnostics"] = {}
             result["diagnostics"]["debug_rag"] = debug_store.to_dict()
             
+            # Save telemetry to database
+            try:
+                from app.services.telemetry_service import log_ai_request
+                student_username = current_student.get("email") if current_student else "Guest"
+                await log_ai_request(
+                    query=request.message,
+                    response=result.get("answer") or "",
+                    username=student_username,
+                    debug_store=debug_store,
+                    status="success"
+                )
+            except Exception as tel_err:
+                logger.error(f"Failed to log telemetry: {tel_err}")
+            
         return result
     except Exception as e:
         logger.error(f"Error in chat wrapper: {e}", exc_info=True)
+        try:
+            from app.services.telemetry_service import log_ai_request
+            debug_store = get_debug_store()
+            student_username = current_student.get("email") if current_student else "Guest"
+            await log_ai_request(
+                query=request.message,
+                response=str(e),
+                username=student_username,
+                debug_store=debug_store,
+                status="failure",
+                error_message=str(e)
+            )
+        except Exception as tel_err:
+            logger.error(f"Failed to log failure telemetry: {tel_err}")
         raise e
 
 async def _chat_impl(
@@ -274,10 +326,43 @@ async def _chat_impl(
         metadata: dict[str, Any] | None = None
         prompt_gen_duration = 0.0
         query = request.message.strip()
+        original_query = query
+        
+        # Conversation Context Reference Resolution
+        from app.services.context_resolver.resolver import ConversationContextResolver
+        resolver = ConversationContextResolver()
+        resolved_query, clarification_needed = await resolver.resolve_references(query, request.sessionId)
+        
+        if clarification_needed:
+            result = {
+                "type": "text",
+                "answer": resolved_query,
+                "metadata": {}
+            }
+            if request.sessionId:
+                await add_message_to_history(
+                    request.sessionId,
+                    "user",
+                    original_query
+                )
+                await add_message_to_history(
+                    request.sessionId,
+                    "assistant",
+                    resolved_query,
+                    metadata=result["metadata"]
+                )
+            set_cached_response(original_query, result)
+            return result
+
+        query = resolved_query
+
+        if IS_DEV_MODE:
+            logger.info(f"[DEV DEBUG] RAG Trace: Request received with query: '{request.message}'")
+            logger.info(f"[DEV DEBUG] RAG Trace: Query normalized: '{query}'")
         validate_chat_query(query)
 
         # Telemetry Store initialization
-        debug_store = init_debug_store() if DEBUG_RAG else None
+        debug_store = init_debug_store()
         if debug_store:
             debug_store.original_query = query
 
@@ -290,10 +375,10 @@ async def _chat_impl(
         auth_time = getattr(raw_request.state if raw_request and hasattr(raw_request, "state") else None, "auth_time", 0.0)
 
         # Check response cache first
-        cached = get_cached_response(query)
+        cached = get_cached_response(original_query)
         if cached:
             if request.sessionId:
-                await add_message_to_history(request.sessionId, "user", query)
+                await add_message_to_history(request.sessionId, "user", original_query)
                 await add_message_to_history(
                     request.sessionId,
                     "assistant",
@@ -346,8 +431,125 @@ async def _chat_impl(
             await add_message_to_history(
                 request.sessionId,
                 "user",
-                query
+                original_query
             )
+
+        # Check for mixed-intent queries
+        fac_part, other_part = split_mixed_query(query)
+        is_mixed = False
+        faculty_prefix = ""
+        faculty_ids = []
+        if fac_part and other_part:
+            is_mixed = True
+            import re
+            # Process the faculty portion first
+            stop_words = {
+                "who", "teaches", "teaching", "is", "the", "of", "in", "on", 
+                "interested", "working", "faculty", "professor", "prof", "dr", 
+                "show", "give", "me", "find", "email", "phone", "number", "contact", 
+                "xyz", "abc", "about", "list", "members", "member", "department", 
+                "works", "here", "are", "look", "for", "search", "details", "info", 
+                "information", "please", "can", "you", "tell", "get", "address", 
+                "office", "hours", "website", "designation"
+            }
+            
+            # Extract words from fac_part
+            fac_part_clean = re.sub(r"[^\w\s]", " ", fac_part)
+            fac_words = [w.lower() for w in fac_part_clean.split() if w.lower() not in stop_words]
+            
+            # Resolve department names/acronyms to normalized names
+            DEPT_ACRONYMS = {
+                "cse": "Computer Science & Engineering",
+                "ece": "Electronics & Communication Engineering",
+                "eee": "Electrical & Electronics Engineering",
+                "mechanical": "Mechanical Engineering",
+                "civil": "Civil & Environmental Engineering",
+                "chemical": "Chemical Engineering",
+                "chemistry": "Chemistry",
+                "physics": "Physics",
+                "math": "Mathematics",
+                "mathematics": "Mathematics",
+                "architecture": "Architecture & Planning",
+                "management": "Management",
+                "pharmaceutical": "Pharmaceutical Sciences & Technology",
+                "production": "Production & Industrial Engineering",
+                "biotechnology": "Bioengineering & Biotechnology",
+                "quantitative economics": "Center for Quantitative Economics and Data Science",
+                "remote sensing": "Remote Sensing",
+                "space engineering": "Space Engineering & Rocketry",
+                "humanities": "Humanities & Social Sciences"
+            }
+            
+            fac_search_query = " ".join(fac_words).strip()
+            
+            fac_dept_filter = None
+            fac_dept_acronym_matched = None
+            for word in fac_part.lower().split():
+                clean_w = re.sub(r"[^\w]", "", word)
+                if clean_w in DEPT_ACRONYMS:
+                    fac_dept_filter = DEPT_ACRONYMS[clean_w]
+                    fac_dept_acronym_matched = clean_w
+                    break
+            
+            from app.services.faculty_service import FacultyService
+            matching_faculty = []
+            
+            try:
+                # Expand acronyms for search
+                fac_search_terms = [fac_search_query] if fac_search_query else [fac_part]
+                if fac_search_query.lower() == "nlp":
+                    fac_search_terms.append("natural language processing")
+                elif fac_search_query.lower() == "ai":
+                    fac_search_terms.append("artificial intelligence")
+                elif fac_search_query.lower() == "ml":
+                    fac_search_terms.append("machine learning")
+                elif fac_search_query.lower() == "cv":
+                    fac_search_terms.append("computer vision")
+                elif fac_search_query.lower() == "dl":
+                    fac_search_terms.append("deep learning")
+                elif fac_search_query.lower() == "iot":
+                    fac_search_terms.append("internet of things")
+                
+                from app.services.faculty.resolver import FacultyNameResolver
+                resolution = FacultyNameResolver.resolve(fac_part, fac_dept_filter, fac_dept_acronym_matched)
+                matching_faculty = resolution.get("candidates", [])
+                if resolution.get("message"):
+                    faculty_prefix = resolution["message"]
+            except Exception as e:
+                logger.error(f"Error querying FacultyNameResolver in mixed query: {e}")
+                matching_faculty = []
+            
+            # Format Faculty Response
+            limit = 5
+            if faculty_prefix:
+                pass
+            elif not matching_faculty:
+                faculty_prefix = "I couldn't find any faculty member matching your request."
+            else:
+                subject = fac_dept_filter or fac_search_query or "your request"
+                faculty_prefix = f"I found the following faculty members related to {subject}:\n\n"
+                for member in matching_faculty[:limit]:
+                    faculty_prefix += f"• **{member['name']}**\n"
+                    faculty_prefix += f"  * Designation: {member.get('designation') or 'Faculty Member'}\n"
+                    faculty_prefix += f"  * Department: {member.get('department')}\n"
+                    if member.get('research_interests'):
+                        faculty_prefix += f"  * Research Interests: {', '.join(member['research_interests'])}\n"
+                    faculty_prefix += f"  * Email: {member.get('email')}\n"
+                    if member.get('phone'):
+                        faculty_prefix += f"  * Phone: {member['phone']}\n"
+                    if member.get('office'):
+                        faculty_prefix += f"  * Office: {member['office']}\n"
+                    if member.get('building'):
+                        faculty_prefix += f"  * Building: {member['building']}\n"
+                    faculty_prefix += "\n"
+                
+                if len(matching_faculty) > limit:
+                    faculty_prefix += f"Showing first {limit} of {len(matching_faculty)} matching faculty members. Let me know if you would like to see more!\n"
+            
+            faculty_ids = [m["id"] for m in matching_faculty] if matching_faculty else []
+            
+            # Swap query with other_part for RAG execution
+            query = other_part
 
         # ==========================================
         # INTENT / CONFIDENCE ROUTING DECISION
@@ -357,6 +559,8 @@ async def _chat_impl(
         selected_service = ROUTING_TABLE.get(detected_intent, "Gemini")
         routing_reason = f"Intent '{detected_intent}' mapped to service '{selected_service}'"
         
+        requires_rag = (selected_service in ["Hybrid RAG", "Website Knowledge", "Hybrid Strategy", "Calendar Service", "Workspace Service"]) or (detected_intent in ["AI / ML Concept", "AI / ML Concepts", "Programming Help", "Engineering Concept", "Explanation", "Reasoning", "Comparison", "Summarization"])
+
         # Legacy intent mapping for selector compatibility
         def map_to_legacy_intent(intent_name: str) -> str:
             mapping = {
@@ -367,10 +571,10 @@ async def _chat_impl(
                 "Workspace": "student_workspace",
                 "Greeting": "general",
                 "Conversation Follow-up": "general",
-                "Campus Information": "general",
+                "Campus Information": "rag" if requires_rag else "general",
                 "Notice Retrieval": "general",
-                "Uploaded Document QA": "general",
-                "Website QA": "general",
+                "Uploaded Document QA": "rag" if requires_rag else "general",
+                "Website QA": "rag" if requires_rag else "general",
                 # Educational / conceptual intents → dedicated educational template
                 "AI / ML Concept": "educational",
                 "AI / ML Concepts": "educational",
@@ -385,11 +589,13 @@ async def _chat_impl(
                 "Document Question": "general",
                 "Website Question": "general",
                 "Follow-up Question": "general",
-                "Unknown": "general"
+                "FacultyDirectory": "faculty",
+                "Unknown": "rag" if requires_rag else "general"
             }
             return mapping.get(intent_name, "general")
             
         intent = map_to_legacy_intent(detected_intent)
+
 
         if debug_store:
             debug_store.detected_intent = detected_intent
@@ -400,7 +606,8 @@ async def _chat_impl(
 
         # Gating flags
         gemini_required = (selected_service == "Gemini")
-        rag_required = (selected_service in ["Hybrid RAG", "Website Knowledge", "Hybrid Strategy"])
+        rag_required = (selected_service in ["Hybrid RAG", "Website Knowledge", "Hybrid Strategy"]) or (detected_intent in ["AI / ML Concept", "AI / ML Concepts", "Programming Help", "Engineering Concept", "Explanation", "Reasoning", "Comparison", "Summarization"])
+
         navigation_required = (detected_intent == "Navigation")
         workspace_required = (detected_intent in ["Workspace", "Student Dashboard"])
         confidence = 1.0
@@ -419,7 +626,7 @@ async def _chat_impl(
             confidence=1.0,
             reason="Initial classification",
             requires_rag=(selected_service in ["Hybrid RAG", "Website Knowledge", "Hybrid Strategy", "Calendar Service", "Workspace Service"]),
-            requires_gemini=(selected_service == "Gemini"),
+            requires_gemini=(selected_service == "Gemini") or (selected_service in ["Hybrid RAG", "Website Knowledge", "Hybrid Strategy"]),
             requires_navigation=(detected_intent == "Navigation"),
             requires_workspace=(detected_intent in ["Workspace", "Student Dashboard", "Student Workspace"]),
             requires_conversation_memory=True
@@ -438,6 +645,10 @@ async def _chat_impl(
             current_student=current_student,
             nav_request_data=nav_req_data
         )
+        if IS_DEV_MODE:
+            context_chunks = len(prompt_context.retrieved_chunks)
+            context_length = len(prompt_context.context)
+            logger.info(f"[DEV DEBUG] RAG Trace: Context built: length={context_length} chars, chunks={context_chunks}.")
 
         # Extract timing values from diagnostics
         history_time = 0.0
@@ -611,16 +822,121 @@ async def _chat_impl(
                 )
             return result
 
+        # Check for Faculty Directory Bypass
+        is_faculty_intent = (routing_decision.intent == "FacultyDirectory")
+        is_faculty_followup = False
+        previous_faculty_ids = []
+        last_assistant_msg = None
+
+        if history:
+            # Find the last assistant message
+            last_assistant_msg = None
+            for msg in reversed(history):
+                if msg.get("role") == "assistant":
+                    last_assistant_msg = msg
+                    break
+            if last_assistant_msg and last_assistant_msg.get("metadata") and "faculty_ids" in last_assistant_msg["metadata"]:
+                previous_faculty_ids = last_assistant_msg["metadata"]["faculty_ids"]
+                last_assistant_text = last_assistant_msg.get("content", "")
+                is_suggestion = "did you mean" in last_assistant_text.lower() or "which one did you mean" in last_assistant_text.lower()
+                is_short_response = len(query.strip().split()) <= 3
+                if (routing_decision.intent in ["FacultyDirectory", "Conversation Follow-up"] or
+                    (is_suggestion and (is_short_response or routing_decision.intent == "Unknown"))):
+                    is_faculty_followup = True
+        
+        if is_faculty_intent or is_faculty_followup:
+            routing_decision_str = "Local Route (Faculty Directory)"
+            
+            # Start timer
+            fac_start_time = time.time()
+            
+            from app.services.routing.router import FacultyQueryRouter
+            router = FacultyQueryRouter()
+            res = await router.route_query(
+                query=query,
+                previous_faculty_ids=previous_faculty_ids,
+                last_assistant_msg=last_assistant_msg
+            )
+            
+            answer = res["answer"]
+            matching_faculty_ids = res.get("faculty_ids") or []
+            
+            result = {
+                "type": "text",
+                "answer": answer,
+                "metadata": {
+                    "faculty_ids": matching_faculty_ids
+                }
+            }
+            
+            if request.sessionId:
+                await add_message_to_history(
+                    request.sessionId,
+                    "assistant",
+                    answer,
+                    metadata=result["metadata"]
+                )
+            
+            set_cached_response(original_query, result)
+            
+            fac_duration = time.time() - fac_start_time
+            if IS_DEV_MODE:
+                result["diagnostics"] = get_diagnostics_payload(
+                    total_time=time.time() - start_time,
+                    auth_time=auth_time,
+                    history_time=history_time,
+                    rag_time=rag_time,
+                    academic_time=fac_duration,
+                    nav_time=nav_time,
+                    prompt_gen_duration=0.0,
+                    gemini_time=0.0,
+                    prompt_length=0,
+                    estimated_tokens=0,
+                    context_chunks=0,
+                    history_length=history_length,
+                    context_length=0,
+                    intent=intent,
+                    circuit_breaker_status="CLOSED",
+                    gemini_called=False,
+                    fallback_used=False,
+                    retry_count=0,
+                    cache_hit=False,
+                    routing_decision=routing_decision_str,
+                    detected_intent=routing_decision.intent,
+                    selected_service=routing_decision.primary_service,
+                    routing_reason=routing_decision.reason,
+                    gemini_required=False,
+                    rag_required=False,
+                    navigation_required=False,
+                    workspace_required=False,
+                    confidence=1.0,
+                    rejected_retrievals=[],
+                    intent_confidence=1.0,
+                    fallback_service="Gemini",
+                    gemini_called_flag=False,
+                    rag_called_flag=False,
+                    navigation_called_flag=False,
+                    workspace_called_flag=False,
+                    rejected_retrieval_count=0,
+                    response_strategy="Local",
+                    context_engine_diagnostics=ctx_diagnostics.dict()
+                )
+            return result
+
         # Check for Campus Navigation Bypass
         if routing_decision.requires_navigation and nav_ctx and nav_ctx.validation_status == "valid" and not is_reasoning_query(query):
             routing_decision_str = "Local Route (Navigation)"
             structured_block = generate_grounded_structured_block(nav_ctx)
             ans = f"Here is the route to {nav_ctx.destination}:\n\n{structured_block}"
+            if is_mixed:
+                ans = faculty_prefix + "\n\n" + ans
             result = {
                 "type": "navigation",
                 "answer": ans,
                 "navigation_context": nav_ctx.dict() if nav_ctx else None
             }
+            if is_mixed:
+                result["metadata"] = {"faculty_ids": faculty_ids}
             if request.sessionId:
                 metadata = {
                     "cardType": "route" if nav_ctx.source else "place",
@@ -634,6 +950,8 @@ async def _chat_impl(
                     "actions": ["start_navigation"] if nav_ctx.source else ["navigate"],
                     "navigation_context": nav_ctx.dict()
                 }
+                if is_mixed:
+                    metadata["faculty_ids"] = faculty_ids
                 await add_message_to_history(
                     request.sessionId,
                     "assistant",
@@ -641,7 +959,7 @@ async def _chat_impl(
                     message_type="navigation",
                     metadata=metadata
                 )
-            set_cached_response(query, result)
+            set_cached_response(original_query, result)
             
             if IS_DEV_MODE:
                 result["diagnostics"] = get_diagnostics_payload(
@@ -696,6 +1014,9 @@ async def _chat_impl(
             retrieved_docs = get_last_retrieved_docs()
             ans_content = append_citations_to_response(ans_content, retrieved_docs)
             
+            if is_mixed:
+                ans_content = faculty_prefix + "\n\n" + ans_content
+                
             result = {
                 "type": "rag",
                 "answer": ans_content,
@@ -703,10 +1024,18 @@ async def _chat_impl(
                 "confidence": routing_decision.confidence,
                 "navigation_context": nav_ctx.dict() if 'nav_ctx' in locals() and nav_ctx else None
             }
+            if is_mixed:
+                result["metadata"] = {"faculty_ids": faculty_ids}
             if request.sessionId:
-                await add_message_to_history(request.sessionId, "assistant", ans_content)
+                meta = {"faculty_ids": faculty_ids} if is_mixed else None
+                await add_message_to_history(
+                    request.sessionId,
+                    "assistant",
+                    ans_content,
+                    metadata=meta
+                )
             
-            set_cached_response(query, result)
+            set_cached_response(original_query, result)
             
             if IS_DEV_MODE:
                 if rag_result and "documents" in rag_result:
@@ -773,6 +1102,8 @@ async def _chat_impl(
             prompt_assemble_start = time.time()
             orchestrated_schema = prompt_orchestrator.assemble_prompt(prompt_context, prompt_metadata)
             prompt = orchestrated_schema.final_prompt
+            if IS_DEV_MODE:
+                logger.info(f"[DEV DEBUG] RAG Trace: Prompt built: length={len(prompt)} chars.")
             prompt_gen_duration = time.time() - prompt_assemble_start
             if debug_store:
                 debug_store.prompt_builder_time_ms = prompt_gen_duration * 1000.0
@@ -830,9 +1161,23 @@ async def _chat_impl(
             routing_decision_str = "Gemini"
             gemini_start = time.time()
             try:
+                if IS_DEV_MODE:
+                    logger.info("[DEV DEBUG] RAG Trace: Gemini called.")
                 gemini_raw = generate_response(prompt)
                 retry_count = get_last_retry_count()
                 answer = clean_gemini_response(gemini_raw)
+                
+                if IS_DEV_MODE:
+                    model_name, usage = get_last_llm_usage()
+                    p_tok = usage.prompt_token_count if usage else 0
+                    c_tok = usage.candidates_token_count if usage else 0
+                    k_sources = list(set(d.metadata.get("source", "rag") for d in package.get_section("rag").items)) if package.get_section("rag") else []
+                    logger.info(
+                        f"[DEV DEBUG] RAG Trace:\n"
+                        f"  Prompt tokens: {p_tok}\n"
+                        f"  Completion tokens: {c_tok}\n"
+                        f"  Knowledge sources: {k_sources}"
+                    )
                 
                 if debug_store:
                     gemini_time = (time.time() - gemini_start) * 1000.0
@@ -870,7 +1215,7 @@ async def _chat_impl(
                 pass
                 
                 # Cache response
-                set_cached_response(query, result)
+                set_cached_response(original_query, result)
             except Exception as gemini_exc:
                 logger.error(f"Gemini API failure, executing local Direct RAG extraction fallback: {gemini_exc}", exc_info=True)
                 fallback_used = True
@@ -904,129 +1249,191 @@ async def _chat_impl(
 
         # Total response time
         total_time = time.time() - start_time
-
-        # Display debugging logs as requested
-        print("\n========== QUERY ==========")
-        print(query)
-
-        print("\n========== RAG ==========")
-        if rag_result:
-            print(f"Source: {rag_result.get('source')}")
-            print(f"Confidence: {rag_result.get('confidence')}")
-        else:
-            print("Source: None")
-            print("Confidence: None")
-
-        print("\n========== ROUTING ==========")
-        print(f"Routing Decision: {routing_decision_str}")
-        print(f"Gemini Called: {gemini_called}")
-        print(f"Context Length: {context_length} chars ({context_chunks} chunks)")
-        print(f"History Length: {history_length} messages")
-
-        print("\n========== PERFORMANCE ==========")
-        print(f"Response Time: {total_time:.4f}s")
-        print(f"RAG Time: {rag_time:.4f}s")
-        print(f"Gemini Time: {gemini_time:.4f}s")
-        print("=================================\n")
-
-        # Developer Debug Logging to Console (Requirement 6 / Timing diagnostics)
-        if IS_DEV_MODE:
-            db_latency = history_time + academic_time + nav_time
-            print("\n" + "="*50)
-            print("DEVELOPER TIMING DIAGNOSTICS")
-            print("="*50)
-            print(f"Total API Latency:             {total_time:.4f}s")
-            print(f"  - Authentication Stage:      {auth_time:.4f}s")
-            print(f"  - Chat History Retrieval:    {history_time:.4f}s")
-            print(f"  - RAG Context Retrieval:     {rag_time:.4f}s")
-            print(f"  - Academic Context Stage:    {academic_time:.4f}s")
-            print(f"  - Navigation Resolution:     {nav_time:.4f}s")
-            print(f"  - Prompt Assembly Stage:     {prompt_gen_duration:.4f}s")
-            print(f"  - Gemini API Latency:        {gemini_time:.4f}s")
-            print(f"Cumulative DB Latency:         {db_latency:.4f}s")
-            print("-"*50)
-            print(f"Prompt Size (chars):           {prompt_length}")
-            print(f"Estimated Prompt Tokens:       {estimated_tokens}")
-            print(f"Retrieved RAG Chunk Count:     {context_chunks}")
-            print(f"Memory Message Count:          {history_length}")
-            print(f"Injected Context Size (chars): {context_length}")
-            doc_hits = getattr(retriever, "_docs_cache_hits", 0)
-            doc_misses = getattr(retriever, "_docs_cache_misses", 0)
-            t_hits = prompt_orchestrator.template_loader.hits
-            t_misses = prompt_orchestrator.template_loader.misses
-            print(f"Chroma Doc Cache Status:       hits={doc_hits}, misses={doc_misses}")
-            print(f"Template Cache Status:         hits={t_hits}, misses={t_misses}")
-            print("="*50 + "\n")
-
-            print("\n" + "="*50)
-            print("INTENT ROUTING DIAGNOSTICS")
-            print("="*50)
-            print(f"Detected Intent:               {detected_intent}")
-            print(f"Selected Service:              {selected_service}")
-            print(f"Routing Reason:                {routing_reason}")
-            print(f"Gemini Required:               {gemini_required}")
-            print(f"RAG Required:                  {rag_required}")
-            print(f"Navigation Required:           {navigation_required}")
-            print(f"Workspace Required:            {workspace_required}")
-            print(f"Confidence:                    {confidence}")
-            print(f"Fallback Used:                 {fallback_used}")
-            print(f"Rejected Retrievals:           {rejected_retrievals}")
-            print("="*50 + "\n")
-
-        # Navigation specific logs (ISSUE 13)
-        from app.core.config import ENABLE_NAVIGATION_DEBUG
-        if intent == "navigation" and ENABLE_NAVIGATION_DEBUG and 'nav_ctx' in locals() and nav_ctx:
-            print("\n==================================================")
-            print("NAVIGATION AI DEBUG")
-            print("==================================================")
-            print(f"Navigation Intent: {'route' if nav_ctx.source else 'search'}")
-            print("Entity Extraction:")
-            print(f"  Source: {nav_ctx.source or 'None'}")
-            print(f"  Destination: {nav_ctx.destination}")
-            print("Route Validation:")
-            print(f"  Graph Nodes: {nav_ctx.validation_status == 'valid'}")
-            print(f"  Distance: {nav_ctx.walking_distance} meters")
-            print(f"  Walking Time: {nav_ctx.estimated_time} minutes")
-            print(f"Prompt Validation: {orchestrated_schema.validation.is_valid if 'orchestrated_schema' in locals() else 'Passed'}")
-            print(f"Prompt Compression: {round(orchestrated_schema.compression_ratio, 2) if 'orchestrated_schema' in locals() else '1.0'}")
-            print(f"Navigation Context Validation: {nav_ctx.validation_status}")
-            print(f"Gemini Prompt Tokens: {len(prompt) // 4 if 'prompt' in locals() else 0}")
-            print(f"Gemini Response Time: {gemini_time:.4f}s")
-            print("Prompt Version: v1")
-            print("Navigation Template Version: v1")
-            print("==================================================\n")
-
-        # Reasoning retrieval diagnostics
-        if is_reasoning_query(query):
-            sent_docs = []
-            _use_gemini = routing_decision.requires_gemini if 'routing_decision' in locals() and hasattr(routing_decision, 'requires_gemini') else True
-            if _use_gemini:
-                if rag_result and "documents" in rag_result:
-                    limit = 7
-                    sent_docs = rag_result["documents"][:limit]
-            else:
-                if rag_result and "documents" in rag_result:
-                    sent_docs = rag_result["documents"]
-            
-            from app.services.rag.retriever import get_last_retrieval_sources
-            raw_sources = get_last_retrieval_sources()
-            unique_sources = []
-            for i in range(len(sent_docs)):
-                if i < len(raw_sources):
-                    src = raw_sources[i]
-                    if src and src not in unique_sources:
-                        unique_sources.append(src)
-
-            print("==================================================")
-            print("\nREASONING RETRIEVAL\n")
-            print("Query:")
+        # Display debugging logs as requested safely
+        try:
+            print("\n========== QUERY ==========")
             print(query)
-            print("\nDocuments Sent:")
-            print(len(sent_docs))
-            print("\nSources Found:")
-            for src in unique_sources:
-                print(src)
-            print("\n==================================================")
+
+            print("\n========== RAG ==========")
+            if rag_result:
+                print(f"Source: {rag_result.get('source')}")
+                print(f"Confidence: {rag_result.get('confidence')}")
+            else:
+                print("Source: None")
+                print("Confidence: None")
+
+            print("\n========== ROUTING ==========")
+            print(f"Routing Decision: {routing_decision_str}")
+            print(f"Gemini Called: {gemini_called}")
+            print(f"Context Length: {context_length} chars ({context_chunks} chunks)")
+            print(f"History Length: {history_length} messages")
+
+            print("\n========== PERFORMANCE ==========")
+            print(f"Response Time: {total_time:.4f}s")
+            print(f"RAG Time: {rag_time:.4f}s")
+            print(f"Gemini Time: {gemini_time:.4f}s")
+            print("=================================\n")
+
+            # Developer Debug Logging to Console (Requirement 6 / Timing diagnostics)
+            if IS_DEV_MODE:
+                db_latency = history_time + academic_time + nav_time
+                print("\n" + "="*50)
+                print("DEVELOPER TIMING DIAGNOSTICS")
+                print("="*50)
+                print(f"Total API Latency:             {total_time:.4f}s")
+                print(f"  - Authentication Stage:      {auth_time:.4f}s")
+                print(f"  - Chat History Retrieval:    {history_time:.4f}s")
+                print(f"  - RAG Context Retrieval:     {rag_time:.4f}s")
+                print(f"  - Academic Context Stage:    {academic_time:.4f}s")
+                print(f"  - Navigation Resolution:     {nav_time:.4f}s")
+                print(f"  - Prompt Assembly Stage:     {prompt_gen_duration:.4f}s")
+                print(f"  - Gemini API Latency:        {gemini_time:.4f}s")
+                print(f"Cumulative DB Latency:         {db_latency:.4f}s")
+                print("-"*50)
+                print(f"Prompt Size (chars):           {prompt_length}")
+                print(f"Estimated Prompt Tokens:       {estimated_tokens}")
+                print(f"Retrieved RAG Chunk Count:     {context_chunks}")
+                print(f"Memory Message Count:          {history_length}")
+                print(f"Injected Context Size (chars): {context_length}")
+                doc_hits = getattr(retriever, "_docs_cache_hits", 0)
+                doc_misses = getattr(retriever, "_docs_cache_misses", 0)
+                t_hits = prompt_orchestrator.template_loader.hits
+                t_misses = prompt_orchestrator.template_loader.misses
+                print(f"Chroma Doc Cache Status:       hits={doc_hits}, misses={doc_misses}")
+                print(f"Template Cache Status:         hits={t_hits}, misses={t_misses}")
+                print("="*50 + "\n")
+
+                # Temporary Debug Logging for RAG
+                print("\n" + "="*50)
+                print("TEMPORARY RAG PIPELINE TRACE")
+                print("="*50)
+                print("1. Retrieved Chunks:")
+                if 'chunks' in locals() and chunks:
+                    for idx, c in enumerate(chunks):
+                        print(f"  Chunk {idx+1}: {str(c)[:120]}...")
+                elif 'rag_result' in locals() and rag_result and "documents" in rag_result:
+                    for idx, c in enumerate(rag_result["documents"]):
+                        print(f"  Chunk {idx+1}: {str(c)[:120]}...")
+                else:
+                    print("  None")
+                    
+                print("2. Selected Chunks:")
+                if 'prompt_context' in locals() and prompt_context and prompt_context.retrieved_chunks:
+                    for idx, c in enumerate(prompt_context.retrieved_chunks):
+                        print(f"  Selected Chunk {idx+1}: {str(c)[:120]}...")
+                else:
+                    print("  None")
+                    
+                print(f"3. Context Length: {context_length} chars")
+                print(f"4. Prompt Length: {prompt_length} chars")
+                
+                print("5. Prompt Preview:")
+                if 'prompt' in locals() and prompt:
+                    print(prompt[:300] + "\n...")
+                else:
+                    print("  None")
+                    
+                print("6. Gemini Request:")
+                if 'prompt' in locals() and prompt:
+                    print(prompt)
+                else:
+                    print("  None")
+                    
+                print("7. Gemini Response:")
+                if 'gemini_raw' in locals() and gemini_raw:
+                    print(gemini_raw)
+                else:
+                    print("  None")
+                    
+                print("8. Parsed Response:")
+                if 'answer' in locals() and answer:
+                    print(answer)
+                else:
+                    print("  None")
+                    
+                print("9. Final Response:")
+                if 'result' in locals() and result and "answer" in result:
+                    print(result["answer"])
+                else:
+                    print("  None")
+                print("="*50 + "\n")
+
+
+                print("\n" + "="*50)
+                print("INTENT ROUTING DIAGNOSTICS")
+                print("="*50)
+                print(f"Detected Intent:               {detected_intent}")
+                print(f"Selected Service:              {selected_service}")
+                print(f"Routing Reason:                {routing_reason}")
+                print(f"Gemini Required:               {gemini_required}")
+                print(f"RAG Required:                  {rag_required}")
+                print(f"Navigation Required:           {navigation_required}")
+                print(f"Workspace Required:            {workspace_required}")
+                print(f"Confidence:                    {confidence}")
+                print(f"Fallback Used:                 {fallback_used}")
+                print(f"Rejected Retrievals:           {rejected_retrievals}")
+                print("="*50 + "\n")
+
+            # Navigation specific logs (ISSUE 13)
+            from app.core.config import ENABLE_NAVIGATION_DEBUG
+            if intent == "navigation" and ENABLE_NAVIGATION_DEBUG and 'nav_ctx' in locals() and nav_ctx:
+                print("\n==================================================")
+                print("NAVIGATION AI DEBUG")
+                print("==================================================")
+                print(f"Navigation Intent: {'route' if nav_ctx.source else 'search'}")
+                print("Entity Extraction:")
+                print(f"  Source: {nav_ctx.source or 'None'}")
+                print(f"  Destination: {nav_ctx.destination}")
+                print("Route Validation:")
+                print(f"  Graph Nodes: {nav_ctx.validation_status == 'valid'}")
+                print(f"  Distance: {nav_ctx.walking_distance} meters")
+                print(f"  Walking Time: {nav_ctx.estimated_time} minutes")
+                print(f"Prompt Validation: {orchestrated_schema.validation.is_valid if 'orchestrated_schema' in locals() else 'Passed'}")
+                print(f"Prompt Compression: {round(orchestrated_schema.compression_ratio, 2) if 'orchestrated_schema' in locals() else '1.0'}")
+                print(f"Navigation Context Validation: {nav_ctx.validation_status}")
+                print(f"Gemini Prompt Tokens: {len(prompt) // 4 if 'prompt' in locals() else 0}")
+                print(f"Gemini Response Time: {gemini_time:.4f}s")
+                print("Prompt Version: v1")
+                print("Navigation Template Version: v1")
+                print("==================================================\n")
+
+            # Reasoning retrieval diagnostics
+            if is_reasoning_query(query):
+                sent_docs = []
+                _use_gemini = routing_decision.requires_gemini if 'routing_decision' in locals() and hasattr(routing_decision, 'requires_gemini') else True
+                if _use_gemini:
+                    if rag_result and "documents" in rag_result:
+                        limit = 7
+                        sent_docs = rag_result["documents"][:limit]
+                else:
+                    if rag_result and "documents" in rag_result:
+                        sent_docs = rag_result["documents"]
+                
+                from app.services.rag.retriever import get_last_retrieval_sources
+                raw_sources = get_last_retrieval_sources()
+                unique_sources = []
+                for i in range(len(sent_docs)):
+                    if i < len(raw_sources):
+                        src = raw_sources[i]
+                        if src and src not in unique_sources:
+                            unique_sources.append(src)
+
+                print("==================================================")
+                print("\nREASONING RETRIEVAL\n")
+                print("Query:")
+                print(query)
+                print("\nDocuments Sent:")
+                print(len(sent_docs))
+                print("\nSources Found:")
+                for src in unique_sources:
+                    print(src)
+                print("\n==================================================")
+        except Exception as print_exc:
+            logger.warning(f"Failed to print debug output logs in chat handler: {print_exc}")
+
+
+        if is_mixed and "answer" in result:
+            result["answer"] = faculty_prefix + "\n\n" + result["answer"]
 
         # ==========================================
         # SAVE BOT RESPONSE
@@ -1063,6 +1470,10 @@ async def _chat_impl(
                         "actions": ["navigate"],
                         "navigation_context": nav_ctx.dict()
                     }
+            if is_mixed:
+                if metadata is None:
+                    metadata = {}
+                metadata["faculty_ids"] = faculty_ids
 
             await add_message_to_history(
                 request.sessionId,
@@ -1141,6 +1552,13 @@ async def _chat_impl(
                 context_engine_diagnostics=ctx_diagnostics.dict()
             )
 
+        if is_mixed:
+            if "metadata" not in result or result["metadata"] is None:
+                result["metadata"] = {}
+            result["metadata"]["faculty_ids"] = faculty_ids
+
+        if IS_DEV_MODE:
+            logger.info(f"[DEV DEBUG] RAG Trace: Response returned (type={result.get('type')})")
         print("Returning response successfully")
         return result
 

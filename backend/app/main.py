@@ -19,6 +19,7 @@ from app.routes.attendance import router as attendance_router
 from app.routes.planner import router as planner_router
 from app.routes.academic_dashboard import router as academic_dashboard_router
 from app.navigation import navigation_router
+from app.api.faculty import router as faculty_router
 
 # Health & Monitoring Router
 from app.security.monitoring.health import router as health_router
@@ -77,6 +78,7 @@ async def lifespan(app: FastAPI):
             ("indexed_documents", [("hash", True), ("id", True)]),
             ("knowledge_items", [("status", False), ("category", False), ("source_type", False)]),
             ("knowledge_versions", [("knowledge_id", False)]),
+            ("ai_requests", [("timestamp", False), ("username", False), ("intent", False)]),
         ]
         for coll_name, index_fields in collections_and_indexes:
             for field, unique in index_fields:
@@ -94,6 +96,14 @@ async def lifespan(app: FastAPI):
             pass
     except Exception as e:
         print(f"Failed to initialize database indexes: {e}")
+
+    # Pre-load Faculty Directory cache to avoid lazy loading disk I/O latency
+    try:
+        from app.services.faculty_service import FacultyService
+        FacultyService._load_data()
+        print("FACULTY API: In-memory cache loaded successfully.")
+    except Exception as e:
+        print(f"FACULTY API ERROR: Failed to pre-load cache: {e}")
 
     async def run_diagnostics():
         mongo_status = "Disconnected"
@@ -219,6 +229,7 @@ app.include_router(attendance_router)
 app.include_router(planner_router)
 app.include_router(academic_dashboard_router)
 app.include_router(navigation_router)
+app.include_router(faculty_router)
 
 @app.get("/")
 def root():

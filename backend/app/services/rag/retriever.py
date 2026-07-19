@@ -20,6 +20,14 @@ _docs_cache_hits: int = 0
 _docs_cache_misses: int = 0
 
 
+def clear_retriever_cache():
+    """Clears the retriever documents cache to force reload on the next query."""
+    global _docs_cache, _docs_cache_count, _docs_cache_last_updated
+    _docs_cache = []
+    _docs_cache_count = 0
+    _docs_cache_last_updated = 0.0
+
+
 def normalize_query_text(query: str) -> str:
     """Normalizes and expands standard student queries to target canonical terms."""
     if not query:
@@ -184,7 +192,7 @@ def classify_query(query: str, docs_cache: List[Document]) -> str:
                 base_name = os.path.splitext(filename.lower())[0]
                 clean_base = re.sub(r"[^\w\s]", " ", base_name)
                 filename_words = set(clean_base.split())
-                sig_words = {w for w in filename_words if len(w) > 2 and w not in ["pdf", "docx", "doc", "txt"]}
+                sig_words = {w for w in filename_words if len(w) > 2 and w not in ["pdf", "docx", "doc", "txt", "md"]}
                 if sig_words and all(re.search(r"\b" + re.escape(w) + r"\b", query_lower) for w in sig_words):
                     has_filename_match = True
                     break
@@ -453,7 +461,37 @@ def merge_retrieved_chunks(results: List[Dict], limit_k: int = 2) -> List[Dict]:
                 return idx
         return 999999
         
-    def merge_two_texts(text_a: str, text_b: str, max_overlap: int = 150) -> str:
+    def are_consecutive(item_a: Dict, item_b: Dict) -> bool:
+        meta_a = item_a["doc"].metadata or {}
+        meta_b = item_b["doc"].metadata or {}
+        
+        # Try chunk_number first
+        num_a = meta_a.get("chunk_number")
+        num_b = meta_b.get("chunk_number")
+        if num_a is not None and num_b is not None:
+            try:
+                return abs(int(num_a) - int(num_b)) == 1
+            except (ValueError, TypeError):
+                pass
+                
+        # Try chunk_index
+        idx_a = meta_a.get("chunk_index")
+        idx_b = meta_b.get("chunk_index")
+        if idx_a is not None and idx_b is not None:
+            try:
+                return abs(int(idx_a) - int(idx_b)) == 1
+            except (ValueError, TypeError):
+                pass
+
+        # Try cache index
+        cache_a = get_cache_index(item_a["doc"])
+        cache_b = get_cache_index(item_b["doc"])
+        if cache_a != 999999 and cache_b != 999999:
+            return abs(cache_a - cache_b) == 1
+            
+        return False
+
+    def merge_two_texts_if_overlap(text_a: str, text_b: str, max_overlap: int = 150) -> Optional[str]:
         text_a_strip = text_a.strip()
         text_b_strip = text_b.strip()
         
@@ -470,7 +508,7 @@ def merge_retrieved_chunks(results: List[Dict], limit_k: int = 2) -> List[Dict]:
         if text_a_strip in text_b_strip:
             return text_b_strip
             
-        return text_a_strip + "\n\n" + text_b_strip
+        return None
         
     merged_results = []
     
@@ -478,33 +516,30 @@ def merge_retrieved_chunks(results: List[Dict], limit_k: int = 2) -> List[Dict]:
         # Sort sequentially
         items.sort(key=lambda x: get_cache_index(x["doc"]))
         
-        merged_text = items[0]["doc"].page_content
-        best_score = items[0]["final_score"]
-        best_raw_score = items[0]["raw_score"]
-        best_boost = items[0]["boost"]
-        best_method = items[0]["method"]
-        best_name = items[0]["name"]
+        # We will build runs of mergeable chunks
+        current_run = [dict(items[0])]
         
         for item in items[1:]:
-            merged_text = merge_two_texts(merged_text, item["doc"].page_content)
-            best_score = min(best_score, item["final_score"])
-            best_raw_score = min(best_raw_score, item["raw_score"])
+            prev_item = current_run[-1]
+            if are_consecutive(prev_item, item):
+                # Try to merge
+                merged_text = merge_two_texts_if_overlap(prev_item["doc"].page_content, item["doc"].page_content)
+                if merged_text is not None:
+                    # Merge them in-place in current_run's last item
+                    prev_item["doc"] = Document(
+                        page_content=merged_text,
+                        metadata=prev_item["doc"].metadata
+                    )
+                    prev_item["final_score"] = min(prev_item["final_score"], item["final_score"])
+                    prev_item["raw_score"] = min(prev_item["raw_score"], item["raw_score"])
+                    continue
             
-        merged_doc = Document(
-            page_content=merged_text,
-            metadata=items[0]["doc"].metadata
-        )
-        
-        merged_results.append({
-            "doc": merged_doc,
-            "raw_score": best_raw_score,
-            "final_score": best_score,
-            "boost": best_boost,
-            "source": items[0]["source"],
-            "method": best_method,
-            "name": best_name
-        })
-        
+            # If not consecutive or no overlap, start a new run
+            current_run.append(dict(item))
+            
+        for run_item in current_run:
+            merged_results.append(run_item)
+            
     merged_results.sort(key=lambda x: x["final_score"])
     return merged_results[:limit_k]
 
@@ -928,17 +963,19 @@ def retrieve_with_scores(
     
     # Map back to dict representation for remaining steps
     reranked_results = []
-    for doc, final_score in reranked_docs:
+    for doc, final_score, ce_raw_score in reranked_docs:
         # Find original result to preserve metadata log attributes
         match = next((item for item in boosted_results if item["doc"] == doc), None)
         if match:
             match["final_score"] = final_score
+            match["ce_raw_score"] = ce_raw_score
             reranked_results.append(match)
         else:
             reranked_results.append({
                 "doc": doc,
                 "raw_score": 0.5,
                 "final_score": final_score,
+                "ce_raw_score": ce_raw_score,
                 "boost": 0.0,
                 "source": doc.metadata.get("source", "rag"),
                 "method": "reranked",
@@ -985,9 +1022,10 @@ def retrieve_with_scores(
             if extra_merged:
                 # Rerank with Cross-Encoder and append
                 extra_reranked = rerank_documents(query, extra_merged, k=5)
-                for doc, score in extra_reranked:
+                for doc, score, ce_raw_score in extra_reranked:
                     match_item = seen_contents[" ".join(doc.page_content.lower().split())]
                     match_item["final_score"] = score
+                    match_item["ce_raw_score"] = ce_raw_score
                     boosted_results.append(match_item)
                 
                 # Re-sort
@@ -1109,6 +1147,7 @@ def retrieve_with_scores(
                 
             return ", ".join(reasons)
 
+        selected_docs = [item["doc"] for item in selected_results]
         candidates_list = []
         for idx, item in enumerate(boosted_results[:10]):  # log top 10 candidates
             doc = item["doc"]
@@ -1119,6 +1158,8 @@ def retrieve_with_scores(
             else:
                 chunk_id = f"Chunk {chunk_id}"
                 
+            is_selected = any(doc.page_content in s_doc.page_content for s_doc in selected_docs)
+                
             c_info = {
                 "rank": idx + 1,
                 "doc_id": str(doc_metadata.get("id", "N/A")),
@@ -1126,8 +1167,14 @@ def retrieve_with_scores(
                 "source_type": str(doc_metadata.get("source", "rag")),
                 "category": str(doc_metadata.get("category", "General")),
                 "raw_score": float(item.get("raw_score", 1.0)),
-                "ce_score": float(item.get("final_score", 1.0)),
+                "ce_score": float(item.get("ce_raw_score", 0.0)),
                 "combined_score": float(item.get("final_score", 1.0)),
+                # Goal 3 improved diagnostics
+                "vector_score": float(item.get("raw_score", 1.0)),
+                "cross_encoder_score": float(item.get("ce_raw_score", 0.0)),
+                "hybrid_score": float(item.get("final_score", 1.0)),
+                "retrieval_rank": idx + 1,
+                "final_selected": "Yes" if is_selected else "No",
                 "chunk_id": str(chunk_id),
                 "version": int(doc_metadata.get("version", 1)),
                 "explanation": generate_ranking_explanation(item, query.lower())

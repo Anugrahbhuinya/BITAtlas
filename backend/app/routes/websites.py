@@ -1,5 +1,5 @@
 import logging
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from app.core.auth import get_current_admin
 from app.security.rate_limit.rate_limiter import rate_limit_admin, rate_limit_website_indexing
 from app.services.websites import website_service
@@ -241,19 +241,23 @@ async def get_website_details(
 @router.delete("/{id}")
 async def delete_website(
     id: str,
+    purge: bool = Query(True),
     current_user: str = Depends(get_current_admin)
 ):
     """
     Deletes the website record and associated Chroma vectors.
     """
+    if config.IS_DEV_MODE:
+        logger.info(f"[DEV DEBUG] Delete Trace: Backend received ID: {id}")
     try:
-        success = await website_service.delete_website(id, username=current_user)
+        success = await website_service.delete_website(id, purge=purge, username=current_user)
         if not success:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail=f"Website ID {id} not found."
             )
-        return {"status": "success", "message": "Website and associated vector chunks deleted successfully."}
+        msg = "Website and associated vector chunks deleted successfully." if purge else "Website metadata deleted successfully. Vectors retained."
+        return {"status": "success", "message": msg}
     except HTTPException:
         raise
     except Exception as e:

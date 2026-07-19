@@ -4,69 +4,2467 @@
     "name": "Medical Unit",
     "description": "Provides 24/7 basic medical services, pharmacy access, patient beds, and emergency ambulance transport. Qualified doctors are available for general consultations and first-aid treatment for students and staff.",
     "location": "Located near Hostel 1 and the staff quarters, along the medical road.",
-    "timings": "Open 24 hours daily (Emergency services); General OPD: 9:00 AM - 1:00 PM and 4:00 PM - 7:00 PM"
+    "timings": "Open 24 hours daily (Emergency services); General OPD: 9:00 AM - 1:00 PM and 4:00 PM - 7:00 PM",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Medical Unit",
+    "Category": "Other",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Provides 24/7 basic medical services, pharmacy access, patient beds, and emergency ambulance transport. Qualified doctors are available for general consultations and first-aid treatment for students and staff.",
+    "Aliases": [
+      "Medical Unit"
+    ],
+    "Search Keywords": [
+      "medical",
+      "unit"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "aliases": [
+      "Medical Unit"
+    ],
+    "search_keywords": [
+      "medical",
+      "unit"
+    ],
+    "associated_building": null
   },
   {
     "id": 2,
     "name": "Central Cafeteria",
     "description": "Offers hot meals, regional Indian snacks, beverages, and dessert choices at subsidized rates. Features a large seating hall accommodating up to 300 students, popular for group discussions and casual dining.",
     "location": "Located behind the Main Administrative Building, near the Lecture Hall Complex.",
-    "timings": "8:00 AM - 9:30 PM (Closed on Sundays)"
+    "timings": "8:00 AM - 9:30 PM (Closed on Sundays)",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Central Cafeteria",
+    "Category": "Other",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Offers hot meals, regional Indian snacks, beverages, and dessert choices at subsidized rates. Features a large seating hall accommodating up to 300 students, popular for group discussions and casual dining.",
+    "Aliases": [
+      "Central Cafeteria"
+    ],
+    "Search Keywords": [
+      "central",
+      "cafeteria"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "aliases": [
+      "Central Cafeteria"
+    ],
+    "search_keywords": [
+      "central",
+      "cafeteria"
+    ],
+    "associated_building": null
   },
   {
     "id": 3,
     "name": "Nescafe Outlet",
     "description": "A popular student hangout spot serving hot/cold coffee, maggi noodles, iced teas, and quick bites. Known for late-night student discussions and group study sessions.",
     "location": "Situated in the courtyard between the CSE Department and the Central Library.",
-    "timings": "9:00 AM - 11:30 PM daily"
+    "timings": "9:00 AM - 11:30 PM daily",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Nescafe Outlet",
+    "Category": "Other",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "A popular student hangout spot serving hot/cold coffee, maggi noodles, iced teas, and quick bites. Known for late-night student discussions and group study sessions.",
+    "Aliases": [
+      "Nescafe Outlet"
+    ],
+    "Search Keywords": [
+      "nescafe",
+      "outlet"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "aliases": [
+      "Nescafe Outlet"
+    ],
+    "search_keywords": [
+      "nescafe",
+      "outlet"
+    ],
+    "associated_building": null
   },
   {
     "id": 4,
     "name": "SBI Bank Branch",
     "description": "Full-service branch of State Bank of India offering student accounts, education loan applications, fee payment processing, and general banking services.",
     "location": "Located near the Administrative Building annex, opposite the Guest House road.",
-    "timings": "10:00 AM - 4:00 PM (Monday to Saturday, closed on 2nd & 4th Saturdays)"
+    "timings": "10:00 AM - 4:00 PM (Monday to Saturday, closed on 2nd & 4th Saturdays)",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "SBI Bank Branch",
+    "Category": "Other",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Full-service branch of State Bank of India offering student accounts, education loan applications, fee payment processing, and general banking services.",
+    "Aliases": [
+      "SBI Bank Branch"
+    ],
+    "Search Keywords": [
+      "sbi",
+      "bank",
+      "branch"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "aliases": [
+      "SBI Bank Branch"
+    ],
+    "search_keywords": [
+      "sbi",
+      "bank",
+      "branch"
+    ],
+    "associated_building": null
   },
   {
     "id": 5,
     "name": "SBI ATM",
     "description": "Two 24/7 cash dispensing machines with support for cash withdrawal, balance inquiries, and PIN changes. Accessible to all students and staff.",
     "location": "Situated right next to the SBI Bank Branch building near the main road.",
-    "timings": "Open 24 hours daily"
+    "timings": "Open 24 hours daily",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "SBI ATM",
+    "Category": "Other",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Two 24/7 cash dispensing machines with support for cash withdrawal, balance inquiries, and PIN changes. Accessible to all students and staff.",
+    "Aliases": [
+      "SBI ATM"
+    ],
+    "Search Keywords": [
+      "sbi",
+      "atm"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "aliases": [
+      "SBI ATM"
+    ],
+    "search_keywords": [
+      "sbi",
+      "atm"
+    ],
+    "associated_building": null
   },
   {
     "id": 6,
     "name": "Placement and Training Cell",
     "description": "Coordinates campus recruitment drives, company presentations, and mock interview prep. It contains presentation halls, group discussion chambers, and interview cabins for visiting recruiters.",
     "location": "Housed on the first floor of the Main Administrative Building, Wing B.",
-    "timings": "9:00 AM - 6:00 PM (Monday to Saturday)"
+    "timings": "9:00 AM - 6:00 PM (Monday to Saturday)",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Placement and Training Cell",
+    "Category": "Other",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Coordinates campus recruitment drives, company presentations, and mock interview prep. It contains presentation halls, group discussion chambers, and interview cabins for visiting recruiters.",
+    "Aliases": [
+      "Placement and Training Cell"
+    ],
+    "Search Keywords": [
+      "placement",
+      "and",
+      "training",
+      "cell"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "aliases": [
+      "Placement and Training Cell"
+    ],
+    "search_keywords": [
+      "placement",
+      "and",
+      "training",
+      "cell"
+    ],
+    "associated_building": null
   },
   {
     "id": 7,
     "name": "Campus Gymnasium",
     "description": "Equipped with treadmills, weightlifting machines, dumbbells, and cardiovascular trainers. Experienced trainers are on duty to guide students with workouts and general fitness advice.",
     "location": "Located inside the Main Sports Complex building, adjacent to the basketball court.",
-    "timings": "6:00 AM - 9:00 AM & 5:00 PM - 8:30 PM (Closed on Sundays)"
+    "timings": "6:00 AM - 9:00 AM & 5:00 PM - 8:30 PM (Closed on Sundays)",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Campus Gymnasium",
+    "Category": "Other",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Equipped with treadmills, weightlifting machines, dumbbells, and cardiovascular trainers. Experienced trainers are on duty to guide students with workouts and general fitness advice.",
+    "Aliases": [
+      "Campus Gymnasium"
+    ],
+    "Search Keywords": [
+      "campus",
+      "gymnasium"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "aliases": [
+      "Campus Gymnasium"
+    ],
+    "search_keywords": [
+      "campus",
+      "gymnasium"
+    ],
+    "associated_building": null
   },
   {
     "id": 8,
     "name": "Indoor Sports Hall",
     "description": "Features multiple high-quality badminton courts, table tennis tables, carrom boards, and chess corners. It hosts inter-hostel and annual state-level tournaments.",
     "location": "Located inside the Sports Complex near the main stadium entrance.",
-    "timings": "4:00 PM - 9:00 PM daily"
+    "timings": "4:00 PM - 9:00 PM daily",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Indoor Sports Hall",
+    "Category": "Other",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Features multiple high-quality badminton courts, table tennis tables, carrom boards, and chess corners. It hosts inter-hostel and annual state-level tournaments.",
+    "Aliases": [
+      "Indoor Sports Hall"
+    ],
+    "Search Keywords": [
+      "indoor",
+      "sports",
+      "hall"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "aliases": [
+      "Indoor Sports Hall"
+    ],
+    "search_keywords": [
+      "indoor",
+      "sports",
+      "hall"
+    ],
+    "associated_building": null
   },
   {
     "id": 9,
     "name": "Student Store",
     "description": "Sells textbooks, engineering drawing boards, reference materials, mattresses, pillows, buckets, and essential toiletries. Ideal for first-year hostel settlers.",
     "location": "Situated in the shopping arcade near the staff colony gate.",
-    "timings": "10:00 AM - 8:00 PM (Closed on Tuesdays)"
+    "timings": "10:00 AM - 8:00 PM (Closed on Tuesdays)",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Student Store",
+    "Category": "Other",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Sells textbooks, engineering drawing boards, reference materials, mattresses, pillows, buckets, and essential toiletries. Ideal for first-year hostel settlers.",
+    "Aliases": [
+      "Student Store"
+    ],
+    "Search Keywords": [
+      "student",
+      "store"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "aliases": [
+      "Student Store"
+    ],
+    "search_keywords": [
+      "student",
+      "store"
+    ],
+    "associated_building": null
   },
   {
     "id": 10,
     "name": "Stationery and Xerox Center",
     "description": "Provides high-speed photocopying, thesis binding, printing, and general stationery sales like notebooks, calculators, charts, and laboratory record files.",
     "location": "Located adjacent to the Central Library entrance.",
-    "timings": "8:30 AM - 8:00 PM (Monday to Saturday)"
+    "timings": "8:30 AM - 8:00 PM (Monday to Saturday)",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Stationery and Xerox Center",
+    "Category": "Other",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Provides high-speed photocopying, thesis binding, printing, and general stationery sales like notebooks, calculators, charts, and laboratory record files.",
+    "Aliases": [
+      "Stationery and Xerox Center"
+    ],
+    "Search Keywords": [
+      "stationery",
+      "and",
+      "xerox",
+      "center"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "aliases": [
+      "Stationery and Xerox Center"
+    ],
+    "search_keywords": [
+      "stationery",
+      "and",
+      "xerox",
+      "center"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 11,
+    "name": "Subernarekha Viewpoint",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Subernarekha Viewpoint",
+    "Category": "Other",
+    "Latitude": 23.409362468471766,
+    "Longitude": 85.4428079673325,
+    "Description": "Campus facility Subernarekha Viewpoint serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Subernarekha Viewpoint"
+    ],
+    "Search Keywords": [
+      "subernarekha",
+      "viewpoint"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.409362468471766,
+    "longitude": 85.4428079673325,
+    "description": "Campus facility Subernarekha Viewpoint serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Subernarekha Viewpoint"
+    ],
+    "search_keywords": [
+      "subernarekha",
+      "viewpoint"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 12,
+    "name": "Veda é Cafe",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Veda é Cafe",
+    "Category": "Cafeteria",
+    "Latitude": 23.41023983158542,
+    "Longitude": 85.44024223091698,
+    "Description": "Campus facility Veda é Cafe serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Veda é Cafe"
+    ],
+    "Search Keywords": [
+      "veda",
+      "cafe"
+    ],
+    "Associated Building": null,
+    "category": "Cafeteria",
+    "latitude": 23.41023983158542,
+    "longitude": 85.44024223091698,
+    "description": "Campus facility Veda é Cafe serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Veda é Cafe"
+    ],
+    "search_keywords": [
+      "veda",
+      "cafe"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 13,
+    "name": "Team Srijan Manufacturing House",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Team Srijan Manufacturing House",
+    "Category": "Other",
+    "Latitude": 23.41103689514296,
+    "Longitude": 85.44034823220541,
+    "Description": "Campus facility Team Srijan Manufacturing House serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Team Srijan Manufacturing House"
+    ],
+    "Search Keywords": [
+      "team",
+      "srijan",
+      "manufacturing",
+      "house"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.41103689514296,
+    "longitude": 85.44034823220541,
+    "description": "Campus facility Team Srijan Manufacturing House serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Team Srijan Manufacturing House"
+    ],
+    "search_keywords": [
+      "team",
+      "srijan",
+      "manufacturing",
+      "house"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 14,
+    "name": "LH Bicycle Stand",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "LH Bicycle Stand",
+    "Category": "Parking",
+    "Latitude": 23.411509917856574,
+    "Longitude": 85.43978768725827,
+    "Description": "Campus facility LH Bicycle Stand serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "LH Bicycle Stand"
+    ],
+    "Search Keywords": [
+      "bicycle",
+      "stand"
+    ],
+    "Associated Building": null,
+    "category": "Parking",
+    "latitude": 23.411509917856574,
+    "longitude": 85.43978768725827,
+    "description": "Campus facility LH Bicycle Stand serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "LH Bicycle Stand"
+    ],
+    "search_keywords": [
+      "bicycle",
+      "stand"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 15,
+    "name": "Slitting Tank",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Slitting Tank",
+    "Category": "Other",
+    "Latitude": 23.411305190617004,
+    "Longitude": 85.43939979785664,
+    "Description": "Campus facility Slitting Tank serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Slitting Tank"
+    ],
+    "Search Keywords": [
+      "slitting",
+      "tank"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.411305190617004,
+    "longitude": 85.43939979785664,
+    "description": "Campus facility Slitting Tank serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Slitting Tank"
+    ],
+    "search_keywords": [
+      "slitting",
+      "tank"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 16,
+    "name": "Water Treatment Plant",
+    "location": "BIT Mesra Campus",
+    "timings": "24 Hours",
+    "Name": "Water Treatment Plant",
+    "Category": "ATM",
+    "Latitude": 23.41107266191242,
+    "Longitude": 85.4390402975412,
+    "Description": "Campus facility Water Treatment Plant serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Water Treatment Plant"
+    ],
+    "Search Keywords": [
+      "water",
+      "treatment",
+      "plant"
+    ],
+    "Associated Building": null,
+    "category": "ATM",
+    "latitude": 23.41107266191242,
+    "longitude": 85.4390402975412,
+    "description": "Campus facility Water Treatment Plant serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Water Treatment Plant"
+    ],
+    "search_keywords": [
+      "water",
+      "treatment",
+      "plant"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 17,
+    "name": "Training and Placement Division",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Training and Placement Division",
+    "Category": "Other",
+    "Latitude": 23.411792308667,
+    "Longitude": 85.43905275291849,
+    "Description": "Campus facility Training and Placement Division serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Training and Placement Division"
+    ],
+    "Search Keywords": [
+      "training",
+      "and",
+      "placement",
+      "division"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.411792308667,
+    "longitude": 85.43905275291849,
+    "description": "Campus facility Training and Placement Division serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Training and Placement Division"
+    ],
+    "search_keywords": [
+      "training",
+      "and",
+      "placement",
+      "division"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 18,
+    "name": "Environmental Engineering Lab",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Environmental Engineering Lab",
+    "Category": "Other",
+    "Latitude": 23.412105783242453,
+    "Longitude": 85.44025382693846,
+    "Description": "Campus facility Environmental Engineering Lab serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Environmental Engineering Lab"
+    ],
+    "Search Keywords": [
+      "environmental",
+      "engineering",
+      "lab"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.412105783242453,
+    "longitude": 85.44025382693846,
+    "description": "Campus facility Environmental Engineering Lab serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Environmental Engineering Lab"
+    ],
+    "search_keywords": [
+      "environmental",
+      "engineering",
+      "lab"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 19,
+    "name": "Shorbagh-2",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Shorbagh-2",
+    "Category": "Other",
+    "Latitude": 23.412439611816072,
+    "Longitude": 85.43874782176145,
+    "Description": "Campus facility Shorbagh-2 serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Shorbagh-2"
+    ],
+    "Search Keywords": [
+      "shorbagh-2"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.412439611816072,
+    "longitude": 85.43874782176145,
+    "description": "Campus facility Shorbagh-2 serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Shorbagh-2"
+    ],
+    "search_keywords": [
+      "shorbagh-2"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 20,
+    "name": "Birla Institute of Technology - Mesra",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Birla Institute of Technology - Mesra",
+    "Category": "Other",
+    "Latitude": 23.412332399170733,
+    "Longitude": 85.43990246592783,
+    "Description": "Campus facility Birla Institute of Technology - Mesra serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Birla Institute of Technology - Mesra"
+    ],
+    "Search Keywords": [
+      "birla",
+      "institute",
+      "technology",
+      "mesra"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.412332399170733,
+    "longitude": 85.43990246592783,
+    "description": "Campus facility Birla Institute of Technology - Mesra serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Birla Institute of Technology - Mesra"
+    ],
+    "search_keywords": [
+      "birla",
+      "institute",
+      "technology",
+      "mesra"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 21,
+    "name": "NCC training ground",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "NCC training ground",
+    "Category": "Sports Complex",
+    "Latitude": 23.410959413414712,
+    "Longitude": 85.44154537802177,
+    "Description": "Campus facility NCC training ground serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "NCC training ground"
+    ],
+    "Search Keywords": [
+      "ncc",
+      "training",
+      "ground"
+    ],
+    "Associated Building": null,
+    "category": "Sports Complex",
+    "latitude": 23.410959413414712,
+    "longitude": 85.44154537802177,
+    "description": "Campus facility NCC training ground serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "NCC training ground"
+    ],
+    "search_keywords": [
+      "ncc",
+      "training",
+      "ground"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 22,
+    "name": "Nescafé",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Nescafé",
+    "Category": "Other",
+    "Latitude": 23.411391143310027,
+    "Longitude": 85.44154387284591,
+    "Description": "Campus facility Nescafé serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Nescafé"
+    ],
+    "Search Keywords": [
+      "nescafé"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.411391143310027,
+    "longitude": 85.44154387284591,
+    "description": "Campus facility Nescafé serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Nescafé"
+    ],
+    "search_keywords": [
+      "nescafé"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 23,
+    "name": "Central Animal House BIT Mesra",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Central Animal House BIT Mesra",
+    "Category": "Other",
+    "Latitude": 23.41161103831976,
+    "Longitude": 85.44145170824682,
+    "Description": "Campus facility Central Animal House BIT Mesra serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Central Animal House BIT Mesra"
+    ],
+    "Search Keywords": [
+      "central",
+      "animal",
+      "house",
+      "bit",
+      "mesra"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.41161103831976,
+    "longitude": 85.44145170824682,
+    "description": "Campus facility Central Animal House BIT Mesra serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Central Animal House BIT Mesra"
+    ],
+    "search_keywords": [
+      "central",
+      "animal",
+      "house",
+      "bit",
+      "mesra"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 24,
+    "name": "Hot 'N' Cold",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Hot 'N' Cold",
+    "Category": "Other",
+    "Latitude": 23.41180681114229,
+    "Longitude": 85.44116974536601,
+    "Description": "Campus facility Hot 'N' Cold serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Hot 'N' Cold"
+    ],
+    "Search Keywords": [
+      "hot",
+      "n",
+      "cold"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.41180681114229,
+    "longitude": 85.44116974536601,
+    "description": "Campus facility Hot 'N' Cold serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Hot 'N' Cold"
+    ],
+    "search_keywords": [
+      "hot",
+      "n",
+      "cold"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 25,
+    "name": "ANSH FOOD FACTORY",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "ANSH FOOD FACTORY",
+    "Category": "Cafeteria",
+    "Latitude": 23.411743698755235,
+    "Longitude": 85.44100128678389,
+    "Description": "Campus facility ANSH FOOD FACTORY serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "ANSH FOOD FACTORY"
+    ],
+    "Search Keywords": [
+      "ansh",
+      "food",
+      "factory"
+    ],
+    "Associated Building": null,
+    "category": "Cafeteria",
+    "latitude": 23.411743698755235,
+    "longitude": 85.44100128678389,
+    "description": "Campus facility ANSH FOOD FACTORY serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "ANSH FOOD FACTORY"
+    ],
+    "search_keywords": [
+      "ansh",
+      "food",
+      "factory"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 26,
+    "name": "Book Centre",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Book Centre",
+    "Category": "Other",
+    "Latitude": 23.41184292503105,
+    "Longitude": 85.44105477520436,
+    "Description": "Campus facility Book Centre serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Book Centre"
+    ],
+    "Search Keywords": [
+      "book",
+      "centre"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.41184292503105,
+    "longitude": 85.44105477520436,
+    "description": "Campus facility Book Centre serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Book Centre"
+    ],
+    "search_keywords": [
+      "book",
+      "centre"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 27,
+    "name": "MEDDY BUDDY PHARMACY",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "MEDDY BUDDY PHARMACY",
+    "Category": "Medical Centre",
+    "Latitude": 23.41191159332793,
+    "Longitude": 85.4409846231835,
+    "Description": "Campus facility MEDDY BUDDY PHARMACY serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "MEDDY BUDDY PHARMACY"
+    ],
+    "Search Keywords": [
+      "meddy",
+      "buddy",
+      "pharmacy"
+    ],
+    "Associated Building": null,
+    "category": "Medical Centre",
+    "latitude": 23.41191159332793,
+    "longitude": 85.4409846231835,
+    "description": "Campus facility MEDDY BUDDY PHARMACY serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "MEDDY BUDDY PHARMACY"
+    ],
+    "search_keywords": [
+      "meddy",
+      "buddy",
+      "pharmacy"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 28,
+    "name": "IC Vehicle Parking",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "IC Vehicle Parking",
+    "Category": "Parking",
+    "Latitude": 23.411940888329845,
+    "Longitude": 85.44140359986645,
+    "Description": "Campus facility IC Vehicle Parking serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "IC Vehicle Parking"
+    ],
+    "Search Keywords": [
+      "vehicle",
+      "parking"
+    ],
+    "Associated Building": null,
+    "category": "Parking",
+    "latitude": 23.411940888329845,
+    "longitude": 85.44140359986645,
+    "description": "Campus facility IC Vehicle Parking serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "IC Vehicle Parking"
+    ],
+    "search_keywords": [
+      "vehicle",
+      "parking"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 29,
+    "name": "POST OFFICE",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "POST OFFICE",
+    "Category": "Other",
+    "Latitude": 23.412042883296184,
+    "Longitude": 85.44124482437209,
+    "Description": "Campus facility POST OFFICE serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "POST OFFICE"
+    ],
+    "Search Keywords": [
+      "post",
+      "office"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.412042883296184,
+    "longitude": 85.44124482437209,
+    "description": "Campus facility POST OFFICE serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "POST OFFICE"
+    ],
+    "search_keywords": [
+      "post",
+      "office"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 30,
+    "name": "The urban frush",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "The urban frush",
+    "Category": "Other",
+    "Latitude": 23.411927305751956,
+    "Longitude": 85.4416134921751,
+    "Description": "Campus facility The urban frush serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "The urban frush"
+    ],
+    "Search Keywords": [
+      "the",
+      "urban",
+      "frush"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.411927305751956,
+    "longitude": 85.4416134921751,
+    "description": "Campus facility The urban frush serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "The urban frush"
+    ],
+    "search_keywords": [
+      "the",
+      "urban",
+      "frush"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 31,
+    "name": "3 Jharkhand Compo Tech Coy NCC",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "3 Jharkhand Compo Tech Coy NCC",
+    "Category": "Other",
+    "Latitude": 23.411203892119463,
+    "Longitude": 85.44222677086296,
+    "Description": "Campus facility 3 Jharkhand Compo Tech Coy NCC serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "3 Jharkhand Compo Tech Coy NCC"
+    ],
+    "Search Keywords": [
+      "jharkhand",
+      "compo",
+      "tech",
+      "coy",
+      "ncc"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.411203892119463,
+    "longitude": 85.44222677086296,
+    "description": "Campus facility 3 Jharkhand Compo Tech Coy NCC serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "3 Jharkhand Compo Tech Coy NCC"
+    ],
+    "search_keywords": [
+      "jharkhand",
+      "compo",
+      "tech",
+      "coy",
+      "ncc"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 32,
+    "name": "Music Room, Dhwani- Music Club, Birla Institute of Technology, Mesra",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Music Room, Dhwani- Music Club, Birla Institute of Technology, Mesra",
+    "Category": "Other",
+    "Latitude": 23.41138556373977,
+    "Longitude": 85.44217227011744,
+    "Description": "Campus facility Music Room, Dhwani- Music Club, Birla Institute of Technology, Mesra serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Music Room, Dhwani- Music Club, Birla Institute of Technology, Mesra"
+    ],
+    "Search Keywords": [
+      "music",
+      "room",
+      "dhwani-",
+      "music",
+      "club",
+      "birla",
+      "institute",
+      "technology",
+      "mesra"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.41138556373977,
+    "longitude": 85.44217227011744,
+    "description": "Campus facility Music Room, Dhwani- Music Club, Birla Institute of Technology, Mesra serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Music Room, Dhwani- Music Club, Birla Institute of Technology, Mesra"
+    ],
+    "search_keywords": [
+      "music",
+      "room",
+      "dhwani-",
+      "music",
+      "club",
+      "birla",
+      "institute",
+      "technology",
+      "mesra"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 33,
+    "name": "Apni Rasoi",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Apni Rasoi",
+    "Category": "Other",
+    "Latitude": 23.412511434797423,
+    "Longitude": 85.44168880809886,
+    "Description": "Campus facility Apni Rasoi serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Apni Rasoi"
+    ],
+    "Search Keywords": [
+      "apni",
+      "rasoi"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.412511434797423,
+    "longitude": 85.44168880809886,
+    "description": "Campus facility Apni Rasoi serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Apni Rasoi"
+    ],
+    "search_keywords": [
+      "apni",
+      "rasoi"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 34,
+    "name": "Dominos BIT Mesra Store",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Dominos BIT Mesra Store",
+    "Category": "Other",
+    "Latitude": 23.412450110964286,
+    "Longitude": 85.44186733658233,
+    "Description": "Campus facility Dominos BIT Mesra Store serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Dominos BIT Mesra Store"
+    ],
+    "Search Keywords": [
+      "dominos",
+      "bit",
+      "mesra",
+      "store"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.412450110964286,
+    "longitude": 85.44186733658233,
+    "description": "Campus facility Dominos BIT Mesra Store serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Dominos BIT Mesra Store"
+    ],
+    "search_keywords": [
+      "dominos",
+      "bit",
+      "mesra",
+      "store"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 35,
+    "name": "Center for Quantitative Economics and Data Science",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Center for Quantitative Economics and Data Science",
+    "Category": "Other",
+    "Latitude": 23.412624547326757,
+    "Longitude": 85.4411749628251,
+    "Description": "Campus facility Center for Quantitative Economics and Data Science serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Center for Quantitative Economics and Data Science"
+    ],
+    "Search Keywords": [
+      "center",
+      "for",
+      "quantitative",
+      "economics",
+      "and",
+      "data",
+      "science"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.412624547326757,
+    "longitude": 85.4411749628251,
+    "description": "Campus facility Center for Quantitative Economics and Data Science serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Center for Quantitative Economics and Data Science"
+    ],
+    "search_keywords": [
+      "center",
+      "for",
+      "quantitative",
+      "economics",
+      "and",
+      "data",
+      "science"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 36,
+    "name": "Two Wheeler Stand #2",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Two Wheeler Stand #2",
+    "Category": "Parking",
+    "Latitude": 23.412824383968346,
+    "Longitude": 85.44057572203518,
+    "Description": "Campus facility Two Wheeler Stand #2 serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Two Wheeler Stand #2"
+    ],
+    "Search Keywords": [
+      "two",
+      "wheeler",
+      "stand"
+    ],
+    "Associated Building": null,
+    "category": "Parking",
+    "latitude": 23.412824383968346,
+    "longitude": 85.44057572203518,
+    "description": "Campus facility Two Wheeler Stand #2 serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Two Wheeler Stand #2"
+    ],
+    "search_keywords": [
+      "two",
+      "wheeler",
+      "stand"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 37,
+    "name": "Shorbagh-1",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Shorbagh-1",
+    "Category": "Other",
+    "Latitude": 23.413068473826417,
+    "Longitude": 85.4408049254318,
+    "Description": "Campus facility Shorbagh-1 serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Shorbagh-1"
+    ],
+    "Search Keywords": [
+      "shorbagh-1"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.413068473826417,
+    "longitude": 85.4408049254318,
+    "description": "Campus facility Shorbagh-1 serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Shorbagh-1"
+    ],
+    "search_keywords": [
+      "shorbagh-1"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 38,
+    "name": "UCO BANK",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "UCO BANK",
+    "Category": "Bank",
+    "Latitude": 23.413012537010406,
+    "Longitude": 85.44194308967539,
+    "Description": "Campus facility UCO BANK serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "UCO BANK"
+    ],
+    "Search Keywords": [
+      "uco",
+      "bank"
+    ],
+    "Associated Building": null,
+    "category": "Bank",
+    "latitude": 23.413012537010406,
+    "longitude": 85.44194308967539,
+    "description": "Campus facility UCO BANK serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "UCO BANK"
+    ],
+    "search_keywords": [
+      "uco",
+      "bank"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 39,
+    "name": "UCO Bank ATM",
+    "location": "BIT Mesra Campus",
+    "timings": "24 Hours",
+    "Name": "UCO Bank ATM",
+    "Category": "ATM",
+    "Latitude": 23.412876173278924,
+    "Longitude": 85.44210204629994,
+    "Description": "Campus facility UCO Bank ATM serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "UCO Bank ATM"
+    ],
+    "Search Keywords": [
+      "uco",
+      "bank",
+      "atm"
+    ],
+    "Associated Building": null,
+    "category": "ATM",
+    "latitude": 23.412876173278924,
+    "longitude": 85.44210204629994,
+    "description": "Campus facility UCO Bank ATM serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "UCO Bank ATM"
+    ],
+    "search_keywords": [
+      "uco",
+      "bank",
+      "atm"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 40,
+    "name": "Vehicle stand",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Vehicle stand",
+    "Category": "Parking",
+    "Latitude": 23.413234439848736,
+    "Longitude": 85.4413131550474,
+    "Description": "Campus facility Vehicle stand serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Vehicle stand"
+    ],
+    "Search Keywords": [
+      "vehicle",
+      "stand"
+    ],
+    "Associated Building": null,
+    "category": "Parking",
+    "latitude": 23.413234439848736,
+    "longitude": 85.4413131550474,
+    "description": "Campus facility Vehicle stand serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Vehicle stand"
+    ],
+    "search_keywords": [
+      "vehicle",
+      "stand"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 41,
+    "name": "Upper Lawn",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Upper Lawn",
+    "Category": "Other",
+    "Latitude": 23.413835915528814,
+    "Longitude": 85.43934048308685,
+    "Description": "Campus facility Upper Lawn serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Upper Lawn"
+    ],
+    "Search Keywords": [
+      "upper",
+      "lawn"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.413835915528814,
+    "longitude": 85.43934048308685,
+    "description": "Campus facility Upper Lawn serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Upper Lawn"
+    ],
+    "search_keywords": [
+      "upper",
+      "lawn"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 42,
+    "name": "Lawn Circle",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Lawn Circle",
+    "Category": "Other",
+    "Latitude": 23.41492875230243,
+    "Longitude": 85.43909574353651,
+    "Description": "Campus facility Lawn Circle serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Lawn Circle"
+    ],
+    "Search Keywords": [
+      "lawn",
+      "circle"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.41492875230243,
+    "longitude": 85.43909574353651,
+    "description": "Campus facility Lawn Circle serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Lawn Circle"
+    ],
+    "search_keywords": [
+      "lawn",
+      "circle"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 43,
+    "name": "Lower Lawn",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Lower Lawn",
+    "Category": "Other",
+    "Latitude": 23.41592804933937,
+    "Longitude": 85.43868804777914,
+    "Description": "Campus facility Lower Lawn serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Lower Lawn"
+    ],
+    "Search Keywords": [
+      "lower",
+      "lawn"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.41592804933937,
+    "longitude": 85.43868804777914,
+    "description": "Campus facility Lower Lawn serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Lower Lawn"
+    ],
+    "search_keywords": [
+      "lower",
+      "lawn"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 44,
+    "name": "PMC",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "PMC",
+    "Category": "Other",
+    "Latitude": 23.415253845372227,
+    "Longitude": 85.44046634643496,
+    "Description": "Campus facility PMC serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "PMC"
+    ],
+    "Search Keywords": [
+      "pmc"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.415253845372227,
+    "longitude": 85.44046634643496,
+    "description": "Campus facility PMC serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "PMC"
+    ],
+    "search_keywords": [
+      "pmc"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 45,
+    "name": "Ghosh Bagan",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Ghosh Bagan",
+    "Category": "Other",
+    "Latitude": 23.415052696155353,
+    "Longitude": 85.44177812246488,
+    "Description": "Campus facility Ghosh Bagan serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Ghosh Bagan"
+    ],
+    "Search Keywords": [
+      "ghosh",
+      "bagan"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.415052696155353,
+    "longitude": 85.44177812246488,
+    "description": "Campus facility Ghosh Bagan serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Ghosh Bagan"
+    ],
+    "search_keywords": [
+      "ghosh",
+      "bagan"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 46,
+    "name": "BIT Park",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "BIT Park",
+    "Category": "Other",
+    "Latitude": 23.415123436502594,
+    "Longitude": 85.44287800067626,
+    "Description": "Campus facility BIT Park serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "BIT Park"
+    ],
+    "Search Keywords": [
+      "bit",
+      "park"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.415123436502594,
+    "longitude": 85.44287800067626,
+    "description": "Campus facility BIT Park serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "BIT Park"
+    ],
+    "search_keywords": [
+      "bit",
+      "park"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 47,
+    "name": "Bit mesra club house",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Bit mesra club house",
+    "Category": "Other",
+    "Latitude": 23.41421633718051,
+    "Longitude": 85.44322874861938,
+    "Description": "Campus facility Bit mesra club house serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Bit mesra club house"
+    ],
+    "Search Keywords": [
+      "bit",
+      "mesra",
+      "club",
+      "house"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.41421633718051,
+    "longitude": 85.44322874861938,
+    "description": "Campus facility Bit mesra club house serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Bit mesra club house"
+    ],
+    "search_keywords": [
+      "bit",
+      "mesra",
+      "club",
+      "house"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 48,
+    "name": "Shiv Mandir",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Shiv Mandir",
+    "Category": "Other",
+    "Latitude": 23.413413719162243,
+    "Longitude": 85.44508226716576,
+    "Description": "Campus facility Shiv Mandir serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Shiv Mandir"
+    ],
+    "Search Keywords": [
+      "shiv",
+      "mandir"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.413413719162243,
+    "longitude": 85.44508226716576,
+    "description": "Campus facility Shiv Mandir serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Shiv Mandir"
+    ],
+    "search_keywords": [
+      "shiv",
+      "mandir"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 49,
+    "name": "Vice Chancellor's Residence",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Vice Chancellor's Residence",
+    "Category": "Other",
+    "Latitude": 23.41693608645179,
+    "Longitude": 85.44036502686825,
+    "Description": "Campus facility Vice Chancellor's Residence serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Vice Chancellor's Residence"
+    ],
+    "Search Keywords": [
+      "vice",
+      "chancellor's",
+      "residence"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.41693608645179,
+    "longitude": 85.44036502686825,
+    "description": "Campus facility Vice Chancellor's Residence serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Vice Chancellor's Residence"
+    ],
+    "search_keywords": [
+      "vice",
+      "chancellor's",
+      "residence"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 50,
+    "name": "Director's Residence",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Director's Residence",
+    "Category": "Other",
+    "Latitude": 23.417065203544563,
+    "Longitude": 85.4410654305858,
+    "Description": "Campus facility Director's Residence serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Director's Residence"
+    ],
+    "Search Keywords": [
+      "director's",
+      "residence"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.417065203544563,
+    "longitude": 85.4410654305858,
+    "description": "Campus facility Director's Residence serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Director's Residence"
+    ],
+    "search_keywords": [
+      "director's",
+      "residence"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 51,
+    "name": "Institute Guest House (IGH)",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Institute Guest House (IGH)",
+    "Category": "Other",
+    "Latitude": 23.41688550436767,
+    "Longitude": 85.43640142002181,
+    "Description": "Campus facility Institute Guest House (IGH) serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Institute Guest House (IGH)"
+    ],
+    "Search Keywords": [
+      "institute",
+      "guest",
+      "house",
+      "igh"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.41688550436767,
+    "longitude": 85.43640142002181,
+    "description": "Campus facility Institute Guest House (IGH) serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Institute Guest House (IGH)"
+    ],
+    "search_keywords": [
+      "institute",
+      "guest",
+      "house",
+      "igh"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 52,
+    "name": "BIT Dispensary",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "BIT Dispensary",
+    "Category": "Other",
+    "Latitude": 23.41550233046553,
+    "Longitude": 85.43538648127833,
+    "Description": "Campus facility BIT Dispensary serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "BIT Dispensary"
+    ],
+    "Search Keywords": [
+      "bit",
+      "dispensary"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.41550233046553,
+    "longitude": 85.43538648127833,
+    "description": "Campus facility BIT Dispensary serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "BIT Dispensary"
+    ],
+    "search_keywords": [
+      "bit",
+      "dispensary"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 53,
+    "name": "MS Xerox",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "MS Xerox",
+    "Category": "Other",
+    "Latitude": 23.416844039425758,
+    "Longitude": 85.43572515197049,
+    "Description": "Campus facility MS Xerox serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "MS Xerox"
+    ],
+    "Search Keywords": [
+      "xerox"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.416844039425758,
+    "longitude": 85.43572515197049,
+    "description": "Campus facility MS Xerox serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "MS Xerox"
+    ],
+    "search_keywords": [
+      "xerox"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 54,
+    "name": "Pahan Tea Shop",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Pahan Tea Shop",
+    "Category": "Other",
+    "Latitude": 23.417677770670668,
+    "Longitude": 85.43412803820685,
+    "Description": "Campus facility Pahan Tea Shop serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Pahan Tea Shop"
+    ],
+    "Search Keywords": [
+      "pahan",
+      "tea",
+      "shop"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.417677770670668,
+    "longitude": 85.43412803820685,
+    "description": "Campus facility Pahan Tea Shop serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Pahan Tea Shop"
+    ],
+    "search_keywords": [
+      "pahan",
+      "tea",
+      "shop"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 55,
+    "name": "Chhotu Dhaba",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Chhotu Dhaba",
+    "Category": "Cafeteria",
+    "Latitude": 23.419337997441573,
+    "Longitude": 85.4334364790424,
+    "Description": "Campus facility Chhotu Dhaba serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Chhotu Dhaba"
+    ],
+    "Search Keywords": [
+      "chhotu",
+      "dhaba"
+    ],
+    "Associated Building": null,
+    "category": "Cafeteria",
+    "latitude": 23.419337997441573,
+    "longitude": 85.4334364790424,
+    "description": "Campus facility Chhotu Dhaba serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Chhotu Dhaba"
+    ],
+    "search_keywords": [
+      "chhotu",
+      "dhaba"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 56,
+    "name": "Staff Quarters",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Staff Quarters",
+    "Category": "Other",
+    "Latitude": 23.42047223177716,
+    "Longitude": 85.43270395219884,
+    "Description": "Campus facility Staff Quarters serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Staff Quarters"
+    ],
+    "Search Keywords": [
+      "staff",
+      "quarters"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.42047223177716,
+    "longitude": 85.43270395219884,
+    "description": "Campus facility Staff Quarters serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Staff Quarters"
+    ],
+    "search_keywords": [
+      "staff",
+      "quarters"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 57,
+    "name": "ITALIAN PIZZA HUB BIT MESRA",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "ITALIAN PIZZA HUB BIT MESRA",
+    "Category": "Cafeteria",
+    "Latitude": 23.421023208590796,
+    "Longitude": 85.43383331203104,
+    "Description": "Campus facility ITALIAN PIZZA HUB BIT MESRA serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "ITALIAN PIZZA HUB BIT MESRA"
+    ],
+    "Search Keywords": [
+      "italian",
+      "pizza",
+      "hub",
+      "bit",
+      "mesra"
+    ],
+    "Associated Building": null,
+    "category": "Cafeteria",
+    "latitude": 23.421023208590796,
+    "longitude": 85.43383331203104,
+    "description": "Campus facility ITALIAN PIZZA HUB BIT MESRA serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "ITALIAN PIZZA HUB BIT MESRA"
+    ],
+    "search_keywords": [
+      "italian",
+      "pizza",
+      "hub",
+      "bit",
+      "mesra"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 58,
+    "name": "DOWN SOUTH CAFE",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "DOWN SOUTH CAFE",
+    "Category": "Cafeteria",
+    "Latitude": 23.421417948696458,
+    "Longitude": 85.43363647023772,
+    "Description": "Campus facility DOWN SOUTH CAFE serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "DOWN SOUTH CAFE"
+    ],
+    "Search Keywords": [
+      "down",
+      "south",
+      "cafe"
+    ],
+    "Associated Building": null,
+    "category": "Cafeteria",
+    "latitude": 23.421417948696458,
+    "longitude": 85.43363647023772,
+    "description": "Campus facility DOWN SOUTH CAFE serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "DOWN SOUTH CAFE"
+    ],
+    "search_keywords": [
+      "down",
+      "south",
+      "cafe"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 59,
+    "name": "DELHI SHAKE & JUICE",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "DELHI SHAKE & JUICE",
+    "Category": "Other",
+    "Latitude": 23.421310292421452,
+    "Longitude": 85.43360257694891,
+    "Description": "Campus facility DELHI SHAKE & JUICE serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "DELHI SHAKE & JUICE"
+    ],
+    "Search Keywords": [
+      "delhi",
+      "shake",
+      "juice"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.421310292421452,
+    "longitude": 85.43360257694891,
+    "description": "Campus facility DELHI SHAKE & JUICE serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "DELHI SHAKE & JUICE"
+    ],
+    "search_keywords": [
+      "delhi",
+      "shake",
+      "juice"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 60,
+    "name": "R. Tech Solution",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "R. Tech Solution",
+    "Category": "Other",
+    "Latitude": 23.42118349714074,
+    "Longitude": 85.43360648771299,
+    "Description": "Campus facility R. Tech Solution serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "R. Tech Solution"
+    ],
+    "Search Keywords": [
+      "tech",
+      "solution"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.42118349714074,
+    "longitude": 85.43360648771299,
+    "description": "Campus facility R. Tech Solution serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "R. Tech Solution"
+    ],
+    "search_keywords": [
+      "tech",
+      "solution"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 61,
+    "name": "Staff Garage",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Staff Garage",
+    "Category": "Other",
+    "Latitude": 23.42190201951457,
+    "Longitude": 85.43230204857466,
+    "Description": "Campus facility Staff Garage serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Staff Garage"
+    ],
+    "Search Keywords": [
+      "staff",
+      "garage"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.42190201951457,
+    "longitude": 85.43230204857466,
+    "description": "Campus facility Staff Garage serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Staff Garage"
+    ],
+    "search_keywords": [
+      "staff",
+      "garage"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 62,
+    "name": "BIT OUTER PARK",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "BIT OUTER PARK",
+    "Category": "Other",
+    "Latitude": 23.422678421637148,
+    "Longitude": 85.43242406041936,
+    "Description": "Campus facility BIT OUTER PARK serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "BIT OUTER PARK"
+    ],
+    "Search Keywords": [
+      "bit",
+      "outer",
+      "park"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.422678421637148,
+    "longitude": 85.43242406041936,
+    "description": "Campus facility BIT OUTER PARK serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "BIT OUTER PARK"
+    ],
+    "search_keywords": [
+      "bit",
+      "outer",
+      "park"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 63,
+    "name": "Technosoft BIT",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Technosoft BIT",
+    "Category": "Other",
+    "Latitude": 23.423545172805582,
+    "Longitude": 85.43258387770854,
+    "Description": "Campus facility Technosoft BIT serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Technosoft BIT"
+    ],
+    "Search Keywords": [
+      "technosoft",
+      "bit"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.423545172805582,
+    "longitude": 85.43258387770854,
+    "description": "Campus facility Technosoft BIT serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Technosoft BIT"
+    ],
+    "search_keywords": [
+      "technosoft",
+      "bit"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 64,
+    "name": "Oval Ground",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Oval Ground",
+    "Category": "Sports Complex",
+    "Latitude": 23.425693428005218,
+    "Longitude": 85.43147899674467,
+    "Description": "Campus facility Oval Ground serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Oval Ground"
+    ],
+    "Search Keywords": [
+      "oval",
+      "ground"
+    ],
+    "Associated Building": null,
+    "category": "Sports Complex",
+    "latitude": 23.425693428005218,
+    "longitude": 85.43147899674467,
+    "description": "Campus facility Oval Ground serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Oval Ground"
+    ],
+    "search_keywords": [
+      "oval",
+      "ground"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 65,
+    "name": "BIT Mesra Main Gate",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "BIT Mesra Main Gate",
+    "Category": "Other",
+    "Latitude": 23.42633438644036,
+    "Longitude": 85.43152611959987,
+    "Description": "Campus facility BIT Mesra Main Gate serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "BIT Mesra Main Gate"
+    ],
+    "Search Keywords": [
+      "bit",
+      "mesra",
+      "main",
+      "gate"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.42633438644036,
+    "longitude": 85.43152611959987,
+    "description": "Campus facility BIT Mesra Main Gate serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "BIT Mesra Main Gate"
+    ],
+    "search_keywords": [
+      "bit",
+      "mesra",
+      "main",
+      "gate"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 66,
+    "name": "Sports Complex",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Sports Complex",
+    "Category": "Sports Complex",
+    "Latitude": 23.41411,
+    "Longitude": 85.43695,
+    "Description": "Campus facility Sports Complex serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Sports Complex"
+    ],
+    "Search Keywords": [
+      "sports",
+      "complex"
+    ],
+    "Associated Building": null,
+    "category": "Sports Complex",
+    "latitude": 23.41411,
+    "longitude": 85.43695,
+    "description": "Campus facility Sports Complex serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Sports Complex"
+    ],
+    "search_keywords": [
+      "sports",
+      "complex"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 67,
+    "name": "Indoor Badminton Court",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Indoor Badminton Court",
+    "Category": "Other",
+    "Latitude": 23.424977170300426,
+    "Longitude": 85.43466152302385,
+    "Description": "Campus facility Indoor Badminton Court serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Indoor Badminton Court"
+    ],
+    "Search Keywords": [
+      "indoor",
+      "badminton",
+      "court"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.424977170300426,
+    "longitude": 85.43466152302385,
+    "description": "Campus facility Indoor Badminton Court serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Indoor Badminton Court"
+    ],
+    "search_keywords": [
+      "indoor",
+      "badminton",
+      "court"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 68,
+    "name": "Basketball Court",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Basketball Court",
+    "Category": "Other",
+    "Latitude": 23.426683847016275,
+    "Longitude": 85.43465709449583,
+    "Description": "Campus facility Basketball Court serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Basketball Court"
+    ],
+    "Search Keywords": [
+      "basketball",
+      "court"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.426683847016275,
+    "longitude": 85.43465709449583,
+    "description": "Campus facility Basketball Court serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Basketball Court"
+    ],
+    "search_keywords": [
+      "basketball",
+      "court"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 69,
+    "name": "Fujiya Ground",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Fujiya Ground",
+    "Category": "Sports Complex",
+    "Latitude": 23.4241929995645,
+    "Longitude": 85.4342760692793,
+    "Description": "Campus facility Fujiya Ground serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Fujiya Ground"
+    ],
+    "Search Keywords": [
+      "fujiya",
+      "ground"
+    ],
+    "Associated Building": null,
+    "category": "Sports Complex",
+    "latitude": 23.4241929995645,
+    "longitude": 85.4342760692793,
+    "description": "Campus facility Fujiya Ground serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Fujiya Ground"
+    ],
+    "search_keywords": [
+      "fujiya",
+      "ground"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 70,
+    "name": "RK Food Truck",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "RK Food Truck",
+    "Category": "Cafeteria",
+    "Latitude": 23.416752586814262,
+    "Longitude": 85.43787979415323,
+    "Description": "Campus facility RK Food Truck serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "RK Food Truck"
+    ],
+    "Search Keywords": [
+      "food",
+      "truck"
+    ],
+    "Associated Building": null,
+    "category": "Cafeteria",
+    "latitude": 23.416752586814262,
+    "longitude": 85.43787979415323,
+    "description": "Campus facility RK Food Truck serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "RK Food Truck"
+    ],
+    "search_keywords": [
+      "food",
+      "truck"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 71,
+    "name": "G P Birla Auditorium",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "G P Birla Auditorium",
+    "Category": "Other",
+    "Latitude": 23.422535466848743,
+    "Longitude": 85.43860954834906,
+    "Description": "Campus facility G P Birla Auditorium serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "G P Birla Auditorium"
+    ],
+    "Search Keywords": [
+      "birla",
+      "auditorium"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.422535466848743,
+    "longitude": 85.43860954834906,
+    "description": "Campus facility G P Birla Auditorium serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "G P Birla Auditorium"
+    ],
+    "search_keywords": [
+      "birla",
+      "auditorium"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 72,
+    "name": "OC (Outer Co-operative)",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "OC (Outer Co-operative)",
+    "Category": "Other",
+    "Latitude": 23.423781650618356,
+    "Longitude": 85.43960335672473,
+    "Description": "Campus facility OC (Outer Co-operative) serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "OC (Outer Co-operative)"
+    ],
+    "Search Keywords": [
+      "outer",
+      "co-operative"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.423781650618356,
+    "longitude": 85.43960335672473,
+    "description": "Campus facility OC (Outer Co-operative) serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "OC (Outer Co-operative)"
+    ],
+    "search_keywords": [
+      "outer",
+      "co-operative"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 73,
+    "name": "Friends Store",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "Friends Store",
+    "Category": "Other",
+    "Latitude": 23.42389344961244,
+    "Longitude": 85.439469332832,
+    "Description": "Campus facility Friends Store serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "Friends Store"
+    ],
+    "Search Keywords": [
+      "friends",
+      "store"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.42389344961244,
+    "longitude": 85.439469332832,
+    "description": "Campus facility Friends Store serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "Friends Store"
+    ],
+    "search_keywords": [
+      "friends",
+      "store"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 74,
+    "name": "BIT HIGH SCHOOL +2",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "BIT HIGH SCHOOL +2",
+    "Category": "Other",
+    "Latitude": 23.42562638354884,
+    "Longitude": 85.44002070180734,
+    "Description": "Campus facility BIT HIGH SCHOOL +2 serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "BIT HIGH SCHOOL +2"
+    ],
+    "Search Keywords": [
+      "bit",
+      "high",
+      "school"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.42562638354884,
+    "longitude": 85.44002070180734,
+    "description": "Campus facility BIT HIGH SCHOOL +2 serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "BIT HIGH SCHOOL +2"
+    ],
+    "search_keywords": [
+      "bit",
+      "high",
+      "school"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 75,
+    "name": "BIT MESRA campus river view",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "BIT MESRA campus river view",
+    "Category": "Other",
+    "Latitude": 23.4240498723775,
+    "Longitude": 85.44469154037516,
+    "Description": "Campus facility BIT MESRA campus river view serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "BIT MESRA campus river view"
+    ],
+    "Search Keywords": [
+      "bit",
+      "mesra",
+      "campus",
+      "river",
+      "view"
+    ],
+    "Associated Building": null,
+    "category": "Other",
+    "latitude": 23.4240498723775,
+    "longitude": 85.44469154037516,
+    "description": "Campus facility BIT MESRA campus river view serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "BIT MESRA campus river view"
+    ],
+    "search_keywords": [
+      "bit",
+      "mesra",
+      "campus",
+      "river",
+      "view"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 76,
+    "name": "BIT Laxmi Canteen",
+    "location": "BIT Mesra Campus",
+    "timings": "09:00 AM - 08:00 PM",
+    "Name": "BIT Laxmi Canteen",
+    "Category": "Cafeteria",
+    "Latitude": 23.41376269108293,
+    "Longitude": 85.43616498209812,
+    "Description": "Campus facility BIT Laxmi Canteen serving students, faculty, and visitors at BIT Mesra.",
+    "Aliases": [
+      "BIT Laxmi Canteen"
+    ],
+    "Search Keywords": [
+      "bit",
+      "laxmi",
+      "canteen"
+    ],
+    "Associated Building": null,
+    "category": "Cafeteria",
+    "latitude": 23.41376269108293,
+    "longitude": 85.43616498209812,
+    "description": "Campus facility BIT Laxmi Canteen serving students, faculty, and visitors at BIT Mesra.",
+    "aliases": [
+      "BIT Laxmi Canteen"
+    ],
+    "search_keywords": [
+      "bit",
+      "laxmi",
+      "canteen"
+    ],
+    "associated_building": null
   }
 ]

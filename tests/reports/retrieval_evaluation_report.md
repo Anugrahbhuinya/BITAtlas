@@ -1,6 +1,6 @@
 # RAG Retrieval Quality Evaluation Report
 
-Generated at: 2026-07-12 23:51:03
+Generated at: 2026-07-14 23:29:17
 
 ## 1. Executive Summary Metrics
 | Retrieval Metric | Score / Value |
@@ -10,7 +10,7 @@ Generated at: 2026-07-12 23:51:03
 | Precision@5 | 89.05% |
 | **Mean Reciprocal Rank (MRR)** | **0.9657** |
 | **NDCG@5** | **0.967** |
-| Average Retrieval Latency | 92.65 ms |
+| Average Retrieval Latency | 54.61 ms |
 | Average Similarity Score | 0.7984 |
 
 ## 2. Details of 100 Campus Queries Benchmark

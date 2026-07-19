@@ -1,3 +1,4 @@
+import re
 from typing import Dict, List, Any
 
 class SystemPromptBlock:
@@ -261,10 +262,62 @@ class PromptBuilder:
         self.sections_content = sections
         return self.sections_content
 
+    def optimize(self) -> None:
+        # 1. Deduplicate System Instructions
+        if self.system_block.content:
+            content = self.system_block.content
+            # Remove ROLE block (redundant with Persona)
+            content = re.sub(r"(?i)\bROLE:\s*\n.*?(?=\n\n|\n[A-Z\s]{4,}:)", "", content, flags=re.DOTALL)
+            # Remove FORMATTING INSTRUCTIONS (redundant with OUTPUT FORMAT)
+            content = re.sub(r"(?i)\bFORMATTING INSTRUCTIONS:\s*\n.*$", "", content, flags=re.DOTALL)
+            self.system_block.content = content.strip()
+            
+        # 2. Deduplicate rules/constraints across SYSTEM and SAFETY
+        if self.system_block.content and self.safety_block.content:
+            system_rules_lower = self.system_block.content.lower()
+            safety_lines = self.safety_block.content.splitlines()
+            cleaned_safety_lines = []
+            
+            for line in safety_lines:
+                cleaned = line.strip()
+                # Check for numbered/bullet rules
+                rule_match = re.match(r"^(\d+[\.\)]|[a-zA-Z][\.\)]|-|\*)\s+(.*)$", cleaned)
+                if rule_match:
+                    rule_text = rule_match.group(2).strip()
+                    rule_lower = rule_text.lower()
+                    
+                    # Check if this rule is semantically already in system_block
+                    is_dup = False
+                    if "could not find" in rule_lower or "information is not" in rule_lower or "unavailable" in rule_lower:
+                        if "could not find" in system_rules_lower or "unavailable" in system_rules_lower:
+                            is_dup = True
+                    elif "fabricate" in rule_lower or "invent" in rule_lower or "speculate" in rule_lower:
+                        if "fabricate" in system_rules_lower or "invent" in system_rules_lower or "speculate" in system_rules_lower:
+                            is_dup = True
+                            
+                    if is_dup:
+                        continue
+                cleaned_safety_lines.append(line)
+            self.safety_block.content = "\n".join(cleaned_safety_lines).strip()
+            
+        # 3. Deduplicate RETRIEVED KNOWLEDGE context
+        retrieved = self.context_block.sub_sections.get("RETRIEVED KNOWLEDGE", "")
+        if retrieved:
+            optimized_retrieved = deduplicate_context(retrieved)
+            self.context_block.sub_sections["RETRIEVED KNOWLEDGE"] = optimized_retrieved
+            self.sections_content["RETRIEVED KNOWLEDGE"] = optimized_retrieved
+            
+        # Synchronize backward compatibility content dict
+        if self.system_block.content:
+            self.sections_content["SYSTEM"] = self.system_block.content
+        if self.safety_block.content:
+            self.sections_content["SAFETY"] = self.safety_block.content
+
     def build(self) -> str:
         """
         Assembles all populated prompt sections separated by clear visual markers.
         """
+        self.optimize()
         assembled_parts = []
         for key in self.block_order:
             block = self.blocks.get(key)
@@ -274,3 +327,76 @@ class PromptBuilder:
                     assembled_parts.append(rendered)
         
         return "\n\n".join(assembled_parts)
+
+
+def deduplicate_context(text: str) -> str:
+    if not text:
+        return ""
+        
+    paragraphs = text.split("\n\n")
+    seen_paragraphs = set()
+    unique_paragraphs = []
+    
+    for para in paragraphs:
+        para_clean = " ".join(para.lower().split())
+        if not para_clean:
+            continue
+            
+        # Avoid duplicate paragraphs
+        if para_clean in seen_paragraphs:
+            continue
+            
+        # Check if this paragraph is a substring of an already seen paragraph
+        # or if any seen paragraph is a substring of this paragraph (replace with the longer one)
+        is_sub = False
+        for seen in list(seen_paragraphs):
+            if para_clean in seen:
+                is_sub = True
+                break
+            elif seen in para_clean:
+                # The new paragraph is longer and contains the old one.
+                # Remove the old one from unique_paragraphs and seen_paragraphs.
+                seen_paragraphs.remove(seen)
+                # find and remove from unique_paragraphs
+                for i, p in enumerate(unique_paragraphs):
+                    if " ".join(p.lower().split()) == seen:
+                        unique_paragraphs.pop(i)
+                        break
+                break
+                
+        if is_sub:
+            continue
+            
+        # Deduplicate sentences within the paragraph
+        sentences = re.split(r'(?<=[.!?])\s+', para)
+        seen_sentences = set()
+        unique_sentences = []
+        for sent in sentences:
+            sent_clean = " ".join(sent.lower().split())
+            if not sent_clean:
+                continue
+            if sent_clean not in seen_sentences:
+                # Check for substring overlap
+                is_sent_sub = False
+                for seen_s in list(seen_sentences):
+                    if sent_clean in seen_s:
+                        is_sent_sub = True
+                        break
+                    elif seen_s in sent_clean:
+                        seen_sentences.remove(seen_s)
+                        for idx, s in enumerate(unique_sentences):
+                            if " ".join(s.lower().split()) == seen_s:
+                                unique_sentences.pop(idx)
+                                break
+                        break
+                if not is_sent_sub:
+                    seen_sentences.add(sent_clean)
+                    unique_sentences.append(sent)
+                    
+        cleaned_para = " ".join(unique_sentences).strip()
+        if cleaned_para:
+            seen_paragraphs.add(para_clean)
+            unique_paragraphs.append(cleaned_para)
+            
+    return "\n\n".join(unique_paragraphs)
+

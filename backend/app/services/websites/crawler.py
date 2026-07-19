@@ -4,7 +4,7 @@ from app.services.websites.validator import validate_url, normalize_url
 
 logger = logging.getLogger("website_crawler")
 
-async def crawl_single_page(url: str) -> str:
+async def crawl_single_page(url: str, original_url: str = None) -> str:
     """
     Crawls a single URL (depth = 0).
     Validates, normalizes, and downloads the raw HTML contents.
@@ -15,5 +15,5 @@ async def crawl_single_page(url: str) -> str:
     normalized = normalize_url(url)
     logger.info(f"Initiating single page crawl for: {normalized}")
     
-    html = await download_html(normalized)
+    html = await download_html(normalized, original_url=original_url)
     return html

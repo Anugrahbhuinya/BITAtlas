@@ -34,7 +34,7 @@ def normalize_url(url: str) -> str:
     
     scheme = parsed.scheme.lower()
     netloc = parsed.netloc.lower()
-    path = parsed.path.lower()
+    path = parsed.path
     
     # Strip trailing slash from path, unless path is empty or just "/"
     if path.endswith('/') and len(path) > 1:

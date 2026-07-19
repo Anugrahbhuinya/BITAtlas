@@ -1,6 +1,6 @@
 # Unit Test Suite Report
 
-Generated at: 2026-07-12 23:43:45
+Generated at: 2026-07-15 00:32:26
 **Status**: PASSED
 **Exit Code**: 0
 
@@ -101,12 +101,12 @@ backend\app\routes\academic_dashboard.py                             30     14  
 backend\app\routes\academics.py                                      41     27      0      0    34%   20, 30-34, 48-53, 65-98
 backend\app\routes\admin.py                                         115     78     30      0    26%   47-77, 84-85, 89-90, 94-95, 99-100, 104-105, 109-110, 114-115, 129-144, 157-163, 175-181, 193-268
 backend\app\routes\attendance.py                                     35     11      0      0    69%   25-28, 36, 44, 53, 62, 72, 81, 89
-backend\app\routes\chat.py                                          512    482    156      0     4%   71-77, 134-162, 169-187, 190-196, 214-251, 262-1145
+backend\app\routes\chat.py                                          525    495    162      0     4%   71-77, 134-162, 169-187, 190-196, 214-251, 262-1170
 backend\app\routes\history.py                                        17      9      2      0    42%   12-23, 29-33
 backend\app\routes\knowledge.py                                     109     66     14      0    35%   31-33, 54-64, 74-75, 95-107, 120-126, 134-143, 156-162, 169-176, 188-195, 207-214, 226-227, 240-249, 270-288, 301-302, 306-307, 311-312, 316-317
 backend\app\routes\planner.py                                        42     15      0      0    64%   26-28, 31-35, 43, 52, 62, 71, 80, 88, 96
 backend\app\routes\timetable.py                                      47     21      2      0    53%   26, 36-37, 47-48, 58-59, 70-71, 83-84, 95-96, 107-123, 138-139
-backend\app\routes\websites.py                                      106     70     16      0    30%   31-38, 53-55, 67-68, 80-104, 121-128, 141-148, 160-162, 175-182, 199-208, 224-233, 249-258, 274-278
+backend\app\routes\websites.py                                      109     73     18      0    28%   31-38, 53-55, 67-68, 80-104, 121-128, 141-148, 160-162, 175-182, 199-208, 224-233, 250-262, 278-282
 backend\app\schemas\prompt_schema.py                                 48      0      0      0   100%
 backend\app\security\config\settings.py                              75      8     12      3    83%   78->77, 90-94, 102, 110, 112
 backend\app\security\core\exceptions\handlers.py                     34     23     10      0    25%   13-21, 32-40, 50-72, 85-104
@@ -125,8 +125,8 @@ backend\app\services\academic_dashboard_service.py                   75     60  
 backend\app\services\academic_workspace_service.py                   36     26     10      0    22%   10, 16-36, 46-68, 78-92
 backend\app\services\admin_service.py                               143    129     38      0     8%   15-46, 54-62, 70-174, 187-242, 248-286, 292-389, 395-398
 backend\app\services\ai\cache.py                                     45     28     10      0    31%   14-16, 19-32, 35-42, 45-47, 53, 56, 59
-backend\app\services\ai\prompt\builder.py                           170     22     52     10    82%   127-141, 144-146, 194-196, 223, 228->230, 238->240, 240->242, 242->244, 248, 249->251, 251->255, 257-259, 271->269
-backend\app\services\ai\prompt\compression.py                        99     30     54     12    63%   20-21, 53-73, 80, 93, 102, 107-113, 115->99, 125, 134-135, 137->131, 149, 161->155
+backend\app\services\ai\prompt\builder.py                           262     47    116     27    74%   128-142, 145-147, 195-197, 224, 229->231, 239->241, 241->243, 243->245, 249, 250->252, 252->256, 258-260, 267->276, 276->304, 292->298, 295->298, 305->311, 311->313, 313->exit, 324->322, 334, 343, 347, 353-365, 368, 377, 378->374, 382-391, 392->374, 397->340
+backend\app\services\ai\prompt\compression.py                        82     22     40      8    67%   21-22, 54-74, 81, 100, 109-110, 112->106, 124, 136->130
 backend\app\services\ai\prompt\examples.py                           27      1      4      1    94%   105
 backend\app\services\ai\prompt\formatter.py                          10      1      2      1    83%   20
 backend\app\services\ai\prompt\hallucination.py                       5      0      0      0   100%
@@ -154,7 +154,7 @@ backend\app\services\context\providers\base.py                       19     11  
 backend\app\services\context\providers\conversation_provider.py      60     42     18      0    23%   55-63, 77-85, 98, 102, 117-181
 backend\app\services\context\providers\navigation_provider.py        60     45     12      0    21%   46, 50, 63-213, 223-224
 backend\app\services\context\providers\profile_provider.py           43     28     10      0    28%   41, 45, 57-114
-backend\app\services\context\providers\rag_provider.py               48     30     12      0    30%   61, 65, 78-164
+backend\app\services\context\providers\rag_provider.py               53     35     16      0    26%   61, 65, 78-170
 backend\app\services\context\providers\system_provider.py            29     13      0      0    55%   43, 47, 59-92
 backend\app\services\context\providers\workspace_provider.py         34     19      4      0    39%   42, 46, 58-123
 backend\app\services\context\selector.py                             35     25     16      0    20%   81-128
@@ -178,7 +178,7 @@ backend\app\services\rag\debug_logger.py                             73     53  
 backend\app\services\rag\dynamic_indexer.py                         162    140     38      0    11%   23-25, 32-42, 49-82, 94-202, 247-300, 307-387
 backend\app\services\rag\query_normalizer.py                         53     45     30      0    10%   30-81, 94-124
 backend\app\services\rag\rag_service.py                             196    185    122      0     3%   19-49, 53-326, 339-419
-backend\app\services\rag\retriever.py                               604    568    306      0     4%   25-58, 63-105, 110-114, 121-123, 132, 137, 145-155, 160, 168-215, 219-238, 258-262, 265-402, 407-423, 431-509, 519-1140
+backend\app\services\rag\retriever.py                               629    593    318      0     4%   25-58, 63-105, 110-114, 121-123, 132, 137, 145-155, 160, 168-215, 219-238, 258-262, 265-402, 407-423, 431-536, 546-1179
 backend\app\services\rag\vector_store.py                              9      1      0      0    89%   20
 backend\app\services\timeline_service.py                             84     70     30      0    12%   11-12, 16, 25-27, 37-197, 201-208, 213
 backend\app\services\timetable_import_service.py                     58     47     20      0    14%   19-136
@@ -189,9 +189,9 @@ backend\app\services\websites\extractor.py                          104     97  
 backend\app\services\websites\metadata.py                            37     32     20      0     9%   9-63, 69-72
 backend\app\services\websites\pipeline.py                            84     67     20      0    16%   27-191
 backend\app\services\websites\scheduler.py                           75     52     14      0    26%   26-32, 43-54, 62-74, 81-104, 127-149, 154, 157, 160
-backend\app\services\websites\scraper.py                             31     23      8      0    21%   10-36, 43-47
+backend\app\services\websites\scraper.py                             60     50     16      0    13%   13-15, 19-150, 157-161
 backend\app\services\websites\validator.py                           31     27     14      0     9%   8-24, 31-48
-backend\app\services\websites\website_service.py                    195    179     56      0     6%   14-15, 21-27, 33-38, 44-86, 93-111, 118-343, 349-393, 405-419, 425-456
+backend\app\services\websites\website_service.py                    219    203     62      0     6%   14-15, 21-27, 33-38, 46-124, 131-149, 156-381, 387-431, 443-457, 463-494
 backend\app\student\repository.py                                    49     34      6      0    27%   7, 14-17, 23-28, 34, 40, 46-55, 61-63, 69-70, 76, 82, 94-103
 backend\app\student\routes.py                                        53     25      4      0    49%   29, 42, 53-54, 65-67, 100, 127-128, 147-148, 160-161, 173-182, 214-221
 backend\app\student\schemas.py                                       73     16      8      0    70%   20-23, 50-53, 76-79, 84-87
@@ -204,7 +204,7 @@ backend\app\student_preferences\schemas.py                           94     40  
 backend\app\student_preferences\service.py                           61     48     28      0    15%   14, 20-24, 31-36, 47-64, 74-110, 117-130
 backend\app\utils\loader.py                                           8      0      0      0   100%
 -------------------------------------------------------------------------------------------------------------
-TOTAL                                                             10896   7142   3150    107    28%
-================ 10 passed, 98 deselected in 64.57s (0:01:04) =================
+TOTAL                                                             11070   7256   3238    120    28%
+===================== 10 passed, 98 deselected in 44.77s ======================
 
 ```

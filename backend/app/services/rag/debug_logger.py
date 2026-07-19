@@ -133,6 +133,9 @@ class RAGDebugStore:
 
     def log_report(self) -> None:
         """Logs a beautiful colorized diagnostic report to the python root logger."""
+        from app.core.config import DEBUG_RAG
+        if not DEBUG_RAG:
+            return
         report = (
             f"\n{BOLD}{CYAN}============================================================{RESET}\n"
             f"{BOLD}{CYAN}               RAG PIPELINE DEBUG REPORT{RESET}\n"

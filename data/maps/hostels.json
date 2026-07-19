@@ -4,55 +4,422 @@
     "name": "Aryabhatta Hostel",
     "gender": "Male",
     "description": "Exclusively for first-year undergraduate students, offering triple-sharing rooms to promote peer interaction. Features a spacious mess hall, common recreation room with a TV, outdoor badminton court, and 24/7 security guard patrol.",
-    "capacity": 450
+    "capacity": 450,
+    "Name": "Aryabhatta Hostel",
+    "Category": "Residential",
+    "Latitude": 23.414164971081686,
+    "Longitude": 85.44022387934972,
+    "Description": "Exclusively for first-year undergraduate students, offering triple-sharing rooms to promote peer interaction. Features a spacious mess hall, common recreation room with a TV, outdoor badminton court, and 24/7 security guard patrol.",
+    "Aliases": [
+      "Aryabhatta Hostel",
+      "Hostel 1"
+    ],
+    "Search Keywords": [
+      "aryabhatta",
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.414164971081686,
+    "longitude": 85.44022387934972,
+    "aliases": [
+      "Aryabhatta Hostel",
+      "Hostel 1"
+    ],
+    "search_keywords": [
+      "aryabhatta",
+      "hostel"
+    ],
+    "associated_building": null
   },
   {
     "id": 2,
     "name": "Raman Hostel",
     "gender": "Male",
     "description": "Accommodates second and third-year B.Tech students in double-sharing rooms. Includes an indoor table tennis table, fully functional mess serving vegetarian and non-vegetarian food, and high-speed Wi-Fi router connectivity on each corridor.",
-    "capacity": 380
+    "capacity": 380,
+    "Name": "Raman Hostel",
+    "Category": "Residential",
+    "Latitude": 23.413643253780286,
+    "Longitude": 85.43850495472381,
+    "Description": "Accommodates second and third-year B.Tech students in double-sharing rooms. Includes an indoor table tennis table, fully functional mess serving vegetarian and non-vegetarian food, and high-speed Wi-Fi router connectivity on each corridor.",
+    "Aliases": [
+      "Raman Hostel",
+      "Hostel 2"
+    ],
+    "Search Keywords": [
+      "raman",
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.413643253780286,
+    "longitude": 85.43850495472381,
+    "aliases": [
+      "Raman Hostel",
+      "Hostel 2"
+    ],
+    "search_keywords": [
+      "raman",
+      "hostel"
+    ],
+    "associated_building": null
   },
   {
     "id": 3,
     "name": "CV Raman Hostel",
     "gender": "Male",
     "description": "A hostel for senior students and postgraduates offering single and double rooms. Equipped with a small gymnasium area, library reading corner, volleyball court, and automated washing machines for student convenience.",
-    "capacity": 350
+    "capacity": 350,
+    "Name": "CV Raman Hostel",
+    "Category": "Residential",
+    "Latitude": 23.41610396755132,
+    "Longitude": 85.43943775724732,
+    "Description": "A hostel for senior students and postgraduates offering single and double rooms. Equipped with a small gymnasium area, library reading corner, volleyball court, and automated washing machines for student convenience.",
+    "Aliases": [
+      "CV Raman Hostel",
+      "Hostel 3"
+    ],
+    "Search Keywords": [
+      "raman",
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.41610396755132,
+    "longitude": 85.43943775724732,
+    "aliases": [
+      "CV Raman Hostel",
+      "Hostel 3"
+    ],
+    "search_keywords": [
+      "raman",
+      "hostel"
+    ],
+    "associated_building": null
   },
   {
     "id": 4,
     "name": "Vivekananda Hostel",
     "gender": "Male",
     "description": "Houses final year undergraduate students and PhD scholars in single-occupancy rooms. It features a quiet study hall, mess hall with special menu days, and an outdoor courtyard for evening recreation.",
-    "capacity": 400
+    "capacity": 400,
+    "Name": "Vivekananda Hostel",
+    "Category": "Residential",
+    "Latitude": 23.415527965091627,
+    "Longitude": 85.43798656920542,
+    "Description": "Houses final year undergraduate students and PhD scholars in single-occupancy rooms. It features a quiet study hall, mess hall with special menu days, and an outdoor courtyard for evening recreation.",
+    "Aliases": [
+      "Vivekananda Hostel",
+      "Hostel 4"
+    ],
+    "Search Keywords": [
+      "vivekananda",
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.415527965091627,
+    "longitude": 85.43798656920542,
+    "aliases": [
+      "Vivekananda Hostel",
+      "Hostel 4"
+    ],
+    "search_keywords": [
+      "vivekananda",
+      "hostel"
+    ],
+    "associated_building": null
   },
   {
     "id": 5,
     "name": "Gargi Hostel",
     "gender": "Female",
     "description": "The primary hostel for first and second-year female students. Features double and triple-sharing rooms, a tight security network, beauty parlor service corner, indoor sports facility, and a hygienic mess offering nutritious meals.",
-    "capacity": 350
+    "capacity": 350,
+    "Name": "Gargi Hostel",
+    "Category": "Residential",
+    "Latitude": 23.420719613242547,
+    "Longitude": 85.4343922980136,
+    "Description": "The primary hostel for first and second-year female students. Features double and triple-sharing rooms, a tight security network, beauty parlor service corner, indoor sports facility, and a hygienic mess offering nutritious meals.",
+    "Aliases": [
+      "Gargi Hostel",
+      "Hostel 5"
+    ],
+    "Search Keywords": [
+      "gargi",
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.420719613242547,
+    "longitude": 85.4343922980136,
+    "aliases": [
+      "Gargi Hostel",
+      "Hostel 5"
+    ],
+    "search_keywords": [
+      "gargi",
+      "hostel"
+    ],
+    "associated_building": null
   },
   {
     "id": 6,
     "name": "Sarojini Hostel",
     "gender": "Female",
     "description": "Accommodates senior undergraduate and postgraduate female students in single and double rooms. It contains a garden courtyard, common lounge, library space, and automatic washing machine facilities.",
-    "capacity": 300
+    "capacity": 300,
+    "Name": "Sarojini Hostel",
+    "Category": "Residential",
+    "Latitude": 23.42278643325519,
+    "Longitude": 85.43318223909004,
+    "Description": "Accommodates senior undergraduate and postgraduate female students in single and double rooms. It contains a garden courtyard, common lounge, library space, and automatic washing machine facilities.",
+    "Aliases": [
+      "Sarojini Hostel",
+      "Hostel 6"
+    ],
+    "Search Keywords": [
+      "sarojini",
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.42278643325519,
+    "longitude": 85.43318223909004,
+    "aliases": [
+      "Sarojini Hostel",
+      "Hostel 6"
+    ],
+    "search_keywords": [
+      "sarojini",
+      "hostel"
+    ],
+    "associated_building": null
   },
   {
     "id": 7,
     "name": "New Girls Hostel",
     "gender": "Female",
     "description": "A modern multi-storey hostel building for female students with premium single-sharing rooms, elevators, and modern bathrooms. Includes a gym room, juice bar counter, and study rooms on each floor.",
-    "capacity": 500
+    "capacity": 500,
+    "Name": "New Girls Hostel",
+    "Category": "Residential",
+    "Latitude": 23.42455261779003,
+    "Longitude": 85.4322651251977,
+    "Description": "A modern multi-storey hostel building for female students with premium single-sharing rooms, elevators, and modern bathrooms. Includes a gym room, juice bar counter, and study rooms on each floor.",
+    "Aliases": [
+      "New Girls Hostel",
+      "Hostel 7"
+    ],
+    "Search Keywords": [
+      "new",
+      "girls",
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.42455261779003,
+    "longitude": 85.4322651251977,
+    "aliases": [
+      "New Girls Hostel",
+      "Hostel 7"
+    ],
+    "search_keywords": [
+      "new",
+      "girls",
+      "hostel"
+    ],
+    "associated_building": null
   },
   {
     "id": 8,
     "name": "International Students Hostel",
     "gender": "Co-ed (Separate Wings)",
     "description": "Specially designed for international students, NRI students, and exchange scholars. It offers air-conditioned single rooms, attached kitchenettes, dining area serving diverse cuisines, and laundry service.",
-    "capacity": 150
+    "capacity": 150,
+    "Name": "International Students Hostel",
+    "Category": "Residential",
+    "Latitude": 23.415691295713845,
+    "Longitude": 85.44105030949292,
+    "Description": "Specially designed for international students, NRI students, and exchange scholars. It offers air-conditioned single rooms, attached kitchenettes, dining area serving diverse cuisines, and laundry service.",
+    "Aliases": [
+      "International Students Hostel",
+      "Hostel 8"
+    ],
+    "Search Keywords": [
+      "international",
+      "students",
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.415691295713845,
+    "longitude": 85.44105030949292,
+    "aliases": [
+      "International Students Hostel",
+      "Hostel 8"
+    ],
+    "search_keywords": [
+      "international",
+      "students",
+      "hostel"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 9,
+    "name": "Hostel 9",
+    "gender": "Male",
+    "capacity": 350,
+    "Name": "Hostel 9",
+    "Category": "Residential",
+    "Latitude": 23.41619557724271,
+    "Longitude": 85.44120584399994,
+    "Description": "Student residential hostel 9 located at the hostel zone of the BIT Mesra campus.",
+    "Aliases": [
+      "Hostel 9",
+      "H9"
+    ],
+    "Search Keywords": [
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.41619557724271,
+    "longitude": 85.44120584399994,
+    "description": "Student residential hostel 9 located at the hostel zone of the BIT Mesra campus.",
+    "aliases": [
+      "Hostel 9",
+      "H9"
+    ],
+    "search_keywords": [
+      "hostel"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 10,
+    "name": "Hostel 10",
+    "gender": "Male",
+    "capacity": 350,
+    "Name": "Hostel 10",
+    "Category": "Residential",
+    "Latitude": 23.419119430187155,
+    "Longitude": 85.43500855881622,
+    "Description": "Student residential hostel 10 located at the hostel zone of the BIT Mesra campus.",
+    "Aliases": [
+      "Hostel 10",
+      "H10"
+    ],
+    "Search Keywords": [
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.419119430187155,
+    "longitude": 85.43500855881622,
+    "description": "Student residential hostel 10 located at the hostel zone of the BIT Mesra campus.",
+    "aliases": [
+      "Hostel 10",
+      "H10"
+    ],
+    "search_keywords": [
+      "hostel"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 11,
+    "name": "Hostel 11",
+    "gender": "Male",
+    "capacity": 350,
+    "Name": "Hostel 11",
+    "Category": "Residential",
+    "Latitude": 23.41799528962531,
+    "Longitude": 85.43544969494823,
+    "Description": "Student residential hostel 11 located at the hostel zone of the BIT Mesra campus.",
+    "Aliases": [
+      "Hostel 11",
+      "H11"
+    ],
+    "Search Keywords": [
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.41799528962531,
+    "longitude": 85.43544969494823,
+    "description": "Student residential hostel 11 located at the hostel zone of the BIT Mesra campus.",
+    "aliases": [
+      "Hostel 11",
+      "H11"
+    ],
+    "search_keywords": [
+      "hostel"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 12,
+    "name": "Hostel 12",
+    "gender": "Male",
+    "capacity": 350,
+    "Name": "Hostel 12",
+    "Category": "Residential",
+    "Latitude": 23.418916665524208,
+    "Longitude": 85.4342494872445,
+    "Description": "Student residential hostel 12 located at the hostel zone of the BIT Mesra campus.",
+    "Aliases": [
+      "Hostel 12",
+      "H12"
+    ],
+    "Search Keywords": [
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.418916665524208,
+    "longitude": 85.4342494872445,
+    "description": "Student residential hostel 12 located at the hostel zone of the BIT Mesra campus.",
+    "aliases": [
+      "Hostel 12",
+      "H12"
+    ],
+    "search_keywords": [
+      "hostel"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 13,
+    "name": "Hostel 13",
+    "gender": "Male",
+    "capacity": 350,
+    "Name": "Hostel 13",
+    "Category": "Residential",
+    "Latitude": 23.417893476561524,
+    "Longitude": 85.43462331563403,
+    "Description": "Student residential hostel 13 located at the hostel zone of the BIT Mesra campus.",
+    "Aliases": [
+      "Hostel 13",
+      "H13"
+    ],
+    "Search Keywords": [
+      "hostel"
+    ],
+    "Associated Building": null,
+    "category": "Residential",
+    "latitude": 23.417893476561524,
+    "longitude": 85.43462331563403,
+    "description": "Student residential hostel 13 located at the hostel zone of the BIT Mesra campus.",
+    "aliases": [
+      "Hostel 13",
+      "H13"
+    ],
+    "search_keywords": [
+      "hostel"
+    ],
+    "associated_building": null
   }
 ]

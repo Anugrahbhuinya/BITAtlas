@@ -11,13 +11,22 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const STEPS = [
   { name: "Uploading", pct: 10, label: "Uploading file..." },
-  { name: "Extracting", pct: 30, label: "Extracting text from PDF..." },
+  { name: "Extracting", pct: 30, label: "Extracting text from document..." },
   { name: "Chunking", pct: 50, label: "Splitting text into chunks..." },
   { name: "Embedding", pct: 70, label: "Generating text embeddings..." },
   { name: "Updating Chroma", pct: 85, label: "Inserting chunks into ChromaDB..." },
   { name: "Saving Metadata", pct: 95, label: "Saving document metadata..." },
   { name: "Completed", pct: 100, label: "Document indexed successfully!" },
 ];
+
+const getDocTypeBadgeClass = (type: string) => {
+  const t = type.toLowerCase();
+  if (t === "pdf") return "bg-rose-500/10 border border-rose-500/20 text-rose-400";
+  if (t === "doc" || t === "docx") return "bg-blue-500/10 border border-blue-500/20 text-blue-400";
+  if (t === "txt") return "bg-slate-500/10 border border-slate-500/20 text-slate-400";
+  if (t === "md") return "bg-purple-500/10 border border-purple-500/20 text-purple-400";
+  return "bg-slate-500/10 border border-slate-800 text-slate-400";
+};
 
 export const AdminDocumentsPage = () => {
   const { showToast } = useAdminStore();
@@ -128,8 +137,10 @@ export const AdminDocumentsPage = () => {
     if (isUploading) return;
     const file = e.target.files?.[0];
     if (file) {
-      if (file.type !== "application/pdf" && !file.name.endsWith(".pdf")) {
-        showToast("Only PDF files are supported.", "error");
+      const allowedExtensions = [".pdf", ".doc", ".docx", ".txt", ".md"];
+      const fileExt = file.name.substring(file.name.lastIndexOf(".")).toLowerCase();
+      if (!allowedExtensions.includes(fileExt)) {
+        showToast("Unsupported file format. Supported formats: PDF, DOC, DOCX, TXT, MD", "error");
         return;
       }
       startUpload(file);
@@ -331,12 +342,12 @@ export const AdminDocumentsPage = () => {
 
   return (
     <div className="space-y-6">
-      {/* Hidden input for PDF uploads */}
+      {/* Hidden input for document uploads */}
       <input
         type="file"
         ref={fileInputRef}
         onChange={handleFileChange}
-        accept=".pdf"
+        accept=".pdf,.doc,.docx,.txt,.md"
         className="hidden"
       />
 
@@ -422,7 +433,7 @@ export const AdminDocumentsPage = () => {
                           </div>
                         </td>
                         <td className="py-4 px-6">
-                          <span className="font-mono text-xs text-slate-400 uppercase bg-slate-900 border border-slate-800 px-2 py-0.5 rounded">
+                          <span className={`font-mono text-xs uppercase px-2 py-0.5 rounded font-black tracking-wider ${getDocTypeBadgeClass(doc.type)}`}>
                             {doc.type}
                           </span>
                         </td>

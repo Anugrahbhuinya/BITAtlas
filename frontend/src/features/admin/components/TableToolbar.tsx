@@ -60,8 +60,11 @@ export const TableToolbar = ({
         >
           <option value="all">All Types</option>
           <option value="pdf">PDF Docs</option>
-          <option value="json">JSON Datasets</option>
+          <option value="doc">Word (.doc)</option>
+          <option value="docx">Word (.docx)</option>
           <option value="txt">TXT Files</option>
+          <option value="md">Markdown Docs</option>
+          <option value="json">JSON Datasets</option>
         </select>
 
         {/* Sort selector */}

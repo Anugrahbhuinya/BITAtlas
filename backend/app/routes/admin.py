@@ -122,14 +122,15 @@ async def upload_document(
     current_user: str = Depends(get_current_admin)
 ):
     """
-    Upload and index a PDF document. Rate-limited to protect server resources.
+    Upload and index a document (PDF, DOC, DOCX, TXT, MD). Rate-limited to protect server resources.
     Streams progress statuses back to the client.
     """
     
-    if not file.filename or not file.filename.endswith(".pdf"):
+    allowed_extensions = (".pdf", ".doc", ".docx", ".txt", ".md")
+    if not file.filename or not any(file.filename.lower().endswith(ext) for ext in allowed_extensions):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Only PDF files are supported."
+            detail="Unsupported file format. Supported: PDF, DOC, DOCX, TXT, MD"
         )
         
     file_content = await file.read()
@@ -291,3 +292,89 @@ async def get_index_health(
             "missing_vectors": [],
             "chroma_size_bytes": 0
         }
+
+# ==============================================================================
+# TELEMETRY & OBSERVABILITY ENDPOINTS (AI Operations Center)
+# ==============================================================================
+
+@router.get("/telemetry/health")
+async def get_telemetry_health_route(current_user: str = Depends(get_current_admin)):
+    """
+    Detailed health stats for the AI Operations Center.
+    """
+    try:
+        from app.services import telemetry_service
+        health = await telemetry_service.get_system_health()
+        return {"status": "success", "data": health}
+    except Exception as e:
+        logger.error(f"Failed to fetch system health telemetry: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/telemetry/stats")
+async def get_telemetry_stats_route(
+    time_range: str = "7d",
+    start_date: str | None = None,
+    end_date: str | None = None,
+    filter_keyword: str | None = None,
+    current_user: str = Depends(get_current_admin)
+):
+    """
+    Computes all database metrics, KPI cards with trends, sparkline graphs,
+    pipeline statistics, knowledge statistics, and queries volume for the selected range.
+    """
+    try:
+        from app.services import telemetry_service
+        stats = await telemetry_service.get_telemetry_stats(
+            time_range=time_range,
+            start_date=start_date,
+            end_date=end_date,
+            filter_keyword=filter_keyword
+        )
+        return {"status": "success", "data": stats}
+    except Exception as e:
+        logger.error(f"Failed to fetch telemetry stats: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/telemetry/requests")
+async def get_telemetry_requests_route(
+    limit: int = 50,
+    skip: int = 0,
+    status_filter: str | None = None,
+    intent_filter: str | None = None,
+    keyword: str | None = None,
+    current_user: str = Depends(get_current_admin)
+):
+    """
+    Retrieves the most recent AI requests with pagination and filters.
+    """
+    try:
+        from app.services import telemetry_service
+        requests_list = await telemetry_service.get_recent_requests(
+            limit=limit,
+            skip=skip,
+            status_filter=status_filter,
+            intent_filter=intent_filter,
+            keyword=keyword
+        )
+        return {"status": "success", "data": requests_list}
+    except Exception as e:
+        logger.error(f"Failed to fetch recent requests: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/telemetry/export")
+async def get_telemetry_export_route(
+    export_format: str = "json",
+    limit: int = 1000,
+    current_user: str = Depends(get_current_admin)
+):
+    """
+    Returns telemetry logs for export.
+    """
+    try:
+        from app.services import telemetry_service
+        data = await telemetry_service.export_telemetry_data(export_format=export_format, limit=limit)
+        return {"status": "success", "data": data}
+    except Exception as e:
+        logger.error(f"Failed to export telemetry data: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+

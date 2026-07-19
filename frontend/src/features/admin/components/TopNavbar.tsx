@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAdminStore } from "../hooks/adminStore";
-import { Search, Bell, Moon, User, Menu, Cpu, Server, Database as DbIcon } from "lucide-react";
+import { Search, User, Menu, Cpu, Server, Database as DbIcon } from "lucide-react";
 
 interface StatusItem {
   name: string;
@@ -111,19 +111,7 @@ export const TopNavbar = ({ statusComponents, onMobileMenuToggle }: TopNavbarPro
           </span>
         </div>
 
-        {/* Action icons */}
-        <div className="flex items-center gap-2">
-          {/* Notifications toggle */}
-          <button className="p-2.5 hover:bg-surface-container/60 rounded-xl text-on-surface-variant hover:text-on-surface transition-colors relative cursor-pointer group" title="Notifications">
-            <Bell className="w-4 h-4 group-hover:scale-105 transition-transform" />
-            <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full" />
-          </button>
 
-          {/* Theme Toggle (Static design mode placeholder) */}
-          <button className="p-2.5 hover:bg-surface-container/60 rounded-xl text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer group" title="Theme Toggle (Dark Theme Lock)">
-            <Moon className="w-4 h-4 text-primary group-hover:rotate-12 transition-transform" />
-          </button>
-        </div>
 
         {/* Current user badge */}
         <div className="flex items-center gap-3 pl-2 sm:pl-4 border-l border-outline-variant select-none">

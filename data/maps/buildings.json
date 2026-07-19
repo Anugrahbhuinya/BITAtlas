@@ -4,104 +4,983 @@
     "name": "Central Library",
     "description": "The digital library houses over 100,000 volumes, academic journals, and a spacious quiet reading zone. It features electronic search database terminals and serves as the primary study space for students and researchers.",
     "location": "Located adjacent to the Main Administrative Building, opposite the Lecture Hall Complex.",
-    "category": "Academic"
+    "category": "Academic",
+    "Name": "Central Library",
+    "Category": "Academic",
+    "Latitude": 23.411990124523793,
+    "Longitude": 85.43977419357459,
+    "Description": "The digital library houses over 100,000 volumes, academic journals, and a spacious quiet reading zone. It features electronic search database terminals and serves as the primary study space for students and researchers.",
+    "Aliases": [
+      "Central Library"
+    ],
+    "Search Keywords": [
+      "central",
+      "library"
+    ],
+    "Associated Building": null,
+    "latitude": 23.411990124523793,
+    "longitude": 85.43977419357459,
+    "aliases": [
+      "Central Library"
+    ],
+    "search_keywords": [
+      "central",
+      "library"
+    ],
+    "associated_building": null
   },
   {
     "id": 2,
     "name": "Main Administrative Building",
     "description": "This iconic building hosts executive offices including the Vice Chancellor's office, the Registrar's office, and academic finance branches. All administrative affairs, ERP management, and registration validations are conducted here.",
     "location": "Situated at the central core of the campus, directly facing the main entrance boulevard.",
-    "category": "Administrative"
+    "category": "Administrative",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Main Administrative Building",
+    "Category": "Administrative",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "This iconic building hosts executive offices including the Vice Chancellor's office, the Registrar's office, and academic finance branches. All administrative affairs, ERP management, and registration validations are conducted here.",
+    "Aliases": [
+      "Main Administrative Building"
+    ],
+    "Search Keywords": [
+      "main",
+      "administrative",
+      "building"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Main Administrative Building"
+    ],
+    "search_keywords": [
+      "main",
+      "administrative",
+      "building"
+    ],
+    "associated_building": null
   },
   {
     "id": 3,
     "name": "University Auditorium",
     "description": "A state-of-the-art facility with a seating capacity of 2,500 people, equipped with modern acoustic and lighting systems. It hosts major cultural festivals, convocation ceremonies, national conferences, and guest lectures.",
     "location": "Located near the Student Activity Center, accessible from the main ring road.",
-    "category": "Student Services"
+    "category": "Student Services",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "University Auditorium",
+    "Category": "Student Services",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "A state-of-the-art facility with a seating capacity of 2,500 people, equipped with modern acoustic and lighting systems. It hosts major cultural festivals, convocation ceremonies, national conferences, and guest lectures.",
+    "Aliases": [
+      "University Auditorium"
+    ],
+    "Search Keywords": [
+      "university",
+      "auditorium"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "University Auditorium"
+    ],
+    "search_keywords": [
+      "university",
+      "auditorium"
+    ],
+    "associated_building": null
   },
   {
     "id": 4,
     "name": "Lecture Hall Complex",
     "description": "A multi-storey complex consisting of smart classrooms, halls (LH-1 to LH-4), and modern audio-visual learning aids. It serves as the primary venue for first and second-year undergraduate common courses and exams.",
     "location": "Situated opposite the Central Library, near the CSE Department.",
-    "category": "Academic"
+    "category": "Academic",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Lecture Hall Complex",
+    "Category": "Academic",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "A multi-storey complex consisting of smart classrooms, halls (LH-1 to LH-4), and modern audio-visual learning aids. It serves as the primary venue for first and second-year undergraduate common courses and exams.",
+    "Aliases": [
+      "Lecture Hall Complex"
+    ],
+    "Search Keywords": [
+      "lecture",
+      "hall",
+      "complex"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Lecture Hall Complex"
+    ],
+    "search_keywords": [
+      "lecture",
+      "hall",
+      "complex"
+    ],
+    "associated_building": null
   },
   {
     "id": 5,
     "name": "Department of Computer Science and Engineering",
     "description": "Hosts computer programming labs, AI laboratories, academic faculty chambers, and high-performance computing centers. It conducts cutting-edge research in networks, algorithms, and cybersecurity.",
     "location": "Located adjacent to the Lecture Hall Complex and near the central courtyard.",
-    "category": "Academic"
+    "category": "Academic",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Department of Computer Science and Engineering",
+    "Category": "Academic",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Hosts computer programming labs, AI laboratories, academic faculty chambers, and high-performance computing centers. It conducts cutting-edge research in networks, algorithms, and cybersecurity.",
+    "Aliases": [
+      "Department of Computer Science and Engineering"
+    ],
+    "Search Keywords": [
+      "department",
+      "computer",
+      "science",
+      "and",
+      "engineering"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Department of Computer Science and Engineering"
+    ],
+    "search_keywords": [
+      "department",
+      "computer",
+      "science",
+      "and",
+      "engineering"
+    ],
+    "associated_building": null
   },
   {
     "id": 6,
     "name": "Department of Artificial Intelligence and Machine Learning",
     "description": "A newly established academic department with specialized labs for deep learning, natural language processing, and computer vision. It is equipped with dedicated GPU-accelerated computing nodes.",
     "location": "Housed on the second floor of the Research and Innovation Center wing.",
-    "category": "Academic"
+    "category": "Academic",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Department of Artificial Intelligence and Machine Learning",
+    "Category": "Academic",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "A newly established academic department with specialized labs for deep learning, natural language processing, and computer vision. It is equipped with dedicated GPU-accelerated computing nodes.",
+    "Aliases": [
+      "Department of Artificial Intelligence and Machine Learning"
+    ],
+    "Search Keywords": [
+      "department",
+      "artificial",
+      "intelligence",
+      "and",
+      "machine",
+      "learning"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Department of Artificial Intelligence and Machine Learning"
+    ],
+    "search_keywords": [
+      "department",
+      "artificial",
+      "intelligence",
+      "and",
+      "machine",
+      "learning"
+    ],
+    "associated_building": null
   },
   {
     "id": 7,
     "name": "Department of Electronics and Communication Engineering",
     "description": "Features labs dedicated to VLSI design, digital signal processing, microwave engineering, and communication systems. It is one of the oldest departments with extensive research funding.",
     "location": "Situated in the Eastern Wing of the main academic block.",
-    "category": "Academic"
+    "category": "Academic",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Department of Electronics and Communication Engineering",
+    "Category": "Academic",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Features labs dedicated to VLSI design, digital signal processing, microwave engineering, and communication systems. It is one of the oldest departments with extensive research funding.",
+    "Aliases": [
+      "Department of Electronics and Communication Engineering"
+    ],
+    "Search Keywords": [
+      "department",
+      "electronics",
+      "and",
+      "communication",
+      "engineering"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Department of Electronics and Communication Engineering"
+    ],
+    "search_keywords": [
+      "department",
+      "electronics",
+      "and",
+      "communication",
+      "engineering"
+    ],
+    "associated_building": null
   },
   {
     "id": 8,
     "name": "Department of Mechanical Engineering",
     "description": "Contains heavy machineries, fluid mechanics labs, thermal engineering centers, and workshop facilities for manufacturing practices. It is active in automobile modeling and material science studies.",
     "location": "Located in the workshop area near the back gate of the academic campus.",
-    "category": "Academic"
+    "category": "Academic",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Department of Mechanical Engineering",
+    "Category": "Academic",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Contains heavy machineries, fluid mechanics labs, thermal engineering centers, and workshop facilities for manufacturing practices. It is active in automobile modeling and material science studies.",
+    "Aliases": [
+      "Department of Mechanical Engineering"
+    ],
+    "Search Keywords": [
+      "department",
+      "mechanical",
+      "engineering"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Department of Mechanical Engineering"
+    ],
+    "search_keywords": [
+      "department",
+      "mechanical",
+      "engineering"
+    ],
+    "associated_building": null
   },
   {
     "id": 9,
     "name": "Department of Electrical Engineering",
     "description": "Equipped with power systems laboratories, electrical machine simulation setups, control system desks, and renewable energy research modules. It focuses on grid integration and electric vehicle charging research.",
     "location": "Situated in the Western Wing of the main academic block, adjacent to the ECE Department.",
-    "category": "Academic"
+    "category": "Academic",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Department of Electrical Engineering",
+    "Category": "Academic",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Equipped with power systems laboratories, electrical machine simulation setups, control system desks, and renewable energy research modules. It focuses on grid integration and electric vehicle charging research.",
+    "Aliases": [
+      "Department of Electrical Engineering"
+    ],
+    "Search Keywords": [
+      "department",
+      "electrical",
+      "engineering"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Department of Electrical Engineering"
+    ],
+    "search_keywords": [
+      "department",
+      "electrical",
+      "engineering"
+    ],
+    "associated_building": null
   },
   {
     "id": 10,
     "name": "Department of Civil Engineering",
     "description": "Houses structural testing facilities, concrete design labs, surveying equipment, and environmental engineering testing kits. The department does consultation work for regional infrastructure projects.",
     "location": "Located near the Mechanical workshop area in the southern block.",
-    "category": "Academic"
+    "category": "Academic",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Department of Civil Engineering",
+    "Category": "Academic",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Houses structural testing facilities, concrete design labs, surveying equipment, and environmental engineering testing kits. The department does consultation work for regional infrastructure projects.",
+    "Aliases": [
+      "Department of Civil Engineering"
+    ],
+    "Search Keywords": [
+      "department",
+      "civil",
+      "engineering"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Department of Civil Engineering"
+    ],
+    "search_keywords": [
+      "department",
+      "civil",
+      "engineering"
+    ],
+    "associated_building": null
   },
   {
     "id": 11,
     "name": "Department of Biotechnology",
     "description": "Equipped with advanced tissue culture, microbiology, molecular biology, and genomic sequencing apparatus. It provides hands-on training and works on biomedical research and bioremediation projects.",
     "location": "Located near the Research and Innovation Center, towards the campus nursery.",
-    "category": "Academic"
+    "category": "Academic",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Department of Biotechnology",
+    "Category": "Academic",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Equipped with advanced tissue culture, microbiology, molecular biology, and genomic sequencing apparatus. It provides hands-on training and works on biomedical research and bioremediation projects.",
+    "Aliases": [
+      "Department of Biotechnology"
+    ],
+    "Search Keywords": [
+      "department",
+      "biotechnology"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Department of Biotechnology"
+    ],
+    "search_keywords": [
+      "department",
+      "biotechnology"
+    ],
+    "associated_building": null
   },
   {
     "id": 12,
     "name": "Research and Innovation Center",
     "description": "A premium research hub built to foster industry collaboration, startups, and intellectual property development. It features advanced analytical instruments and collaborative workspaces.",
     "location": "Positioned between the Biotechnology Department and the Main Administrative Building.",
-    "category": "Research"
+    "category": "Research",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Research and Innovation Center",
+    "Category": "Research",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "A premium research hub built to foster industry collaboration, startups, and intellectual property development. It features advanced analytical instruments and collaborative workspaces.",
+    "Aliases": [
+      "Research and Innovation Center"
+    ],
+    "Search Keywords": [
+      "research",
+      "and",
+      "innovation",
+      "center"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Research and Innovation Center"
+    ],
+    "search_keywords": [
+      "research",
+      "and",
+      "innovation",
+      "center"
+    ],
+    "associated_building": null
   },
   {
     "id": 13,
     "name": "Student Activity Center",
     "description": "The nerve center of student life, hosting office chambers for student clubs, a common lounge, creative studios, and cafeteria corners. It is where club orientations, meetings, and jam sessions take place.",
     "location": "Located near the sports ground, behind the University Auditorium.",
-    "category": "Student Services"
+    "category": "Student Services",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Student Activity Center",
+    "Category": "Student Services",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "The nerve center of student life, hosting office chambers for student clubs, a common lounge, creative studios, and cafeteria corners. It is where club orientations, meetings, and jam sessions take place.",
+    "Aliases": [
+      "Student Activity Center"
+    ],
+    "Search Keywords": [
+      "student",
+      "activity",
+      "center"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Student Activity Center"
+    ],
+    "search_keywords": [
+      "student",
+      "activity",
+      "center"
+    ],
+    "associated_building": null
   },
   {
     "id": 14,
     "name": "Sports Complex",
     "description": "Comprises a cricket stadium, athletic track, football ground, basketball court, and tennis setups. It is the primary venue for the annual sports meet, inter-college events, and daily fitness routines.",
     "location": "Located at the far northern edge of the campus, close to the hostel zone.",
-    "category": "Sports"
+    "category": "Sports",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Sports Complex",
+    "Category": "Sports",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Comprises a cricket stadium, athletic track, football ground, basketball court, and tennis setups. It is the primary venue for the annual sports meet, inter-college events, and daily fitness routines.",
+    "Aliases": [
+      "Sports Complex"
+    ],
+    "Search Keywords": [
+      "sports",
+      "complex"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Sports Complex"
+    ],
+    "search_keywords": [
+      "sports",
+      "complex"
+    ],
+    "associated_building": null
   },
   {
     "id": 15,
     "name": "Guest House",
     "description": "Features premium suites, meeting halls, and dining facilities for visiting dignitaries, alumni, recruiters, and parents. It offers accommodation in a green, peaceful setting with room service.",
     "location": "Situated near the Main Gate entry, nestled in a quiet green zone.",
-    "category": "Administrative"
+    "category": "Administrative",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "Name": "Guest House",
+    "Category": "Administrative",
+    "Latitude": 0.0,
+    "Longitude": 0.0,
+    "Description": "Features premium suites, meeting halls, and dining facilities for visiting dignitaries, alumni, recruiters, and parents. It offers accommodation in a green, peaceful setting with room service.",
+    "Aliases": [
+      "Guest House"
+    ],
+    "Search Keywords": [
+      "guest",
+      "house"
+    ],
+    "Associated Building": null,
+    "aliases": [
+      "Guest House"
+    ],
+    "search_keywords": [
+      "guest",
+      "house"
+    ],
+    "associated_building": null
+  },
+  {
+    "id": 16,
+    "name": "Department of Space Engineering & Rocketry",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Department of Space Engineering & Rocketry",
+    "Category": "Academic",
+    "Latitude": 23.41052641889787,
+    "Longitude": 85.44557741550562,
+    "Description": "The Department of Space Engineering & Rocketry building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Department of Space Engineering & Rocketry",
+      "SER"
+    ],
+    "Search Keywords": [
+      "department",
+      "space",
+      "engineering",
+      "rocketry"
+    ],
+    "Associated Building": null,
+    "latitude": 23.41052641889787,
+    "longitude": 85.44557741550562,
+    "description": "The Department of Space Engineering & Rocketry building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Department of Space Engineering & Rocketry",
+      "SER"
+    ],
+    "search_keywords": [
+      "department",
+      "space",
+      "engineering",
+      "rocketry"
+    ],
+    "associated_building": null,
+    "building_code": "SER"
+  },
+  {
+    "id": 17,
+    "name": "Department of Bioengineering and Biotechnology",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Department of Bioengineering and Biotechnology",
+    "Category": "Academic",
+    "Latitude": 23.410076340855365,
+    "Longitude": 85.44059385852306,
+    "Description": "The Department of Bioengineering and Biotechnology building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Department of Bioengineering and Biotechnology",
+      "BB"
+    ],
+    "Search Keywords": [
+      "department",
+      "bioengineering",
+      "and",
+      "biotechnology"
+    ],
+    "Associated Building": null,
+    "latitude": 23.410076340855365,
+    "longitude": 85.44059385852306,
+    "description": "The Department of Bioengineering and Biotechnology building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Department of Bioengineering and Biotechnology",
+      "BB"
+    ],
+    "search_keywords": [
+      "department",
+      "bioengineering",
+      "and",
+      "biotechnology"
+    ],
+    "associated_building": null,
+    "building_code": "BB"
+  },
+  {
+    "id": 18,
+    "name": "Department of Pharmaceutical Sciences & Technology",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Department of Pharmaceutical Sciences & Technology",
+    "Category": "Academic",
+    "Latitude": 23.410497019051856,
+    "Longitude": 85.44090867647765,
+    "Description": "The Department of Pharmaceutical Sciences & Technology building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Department of Pharmaceutical Sciences & Technology",
+      "PST"
+    ],
+    "Search Keywords": [
+      "department",
+      "pharmaceutical",
+      "sciences",
+      "technology"
+    ],
+    "Associated Building": null,
+    "latitude": 23.410497019051856,
+    "longitude": 85.44090867647765,
+    "description": "The Department of Pharmaceutical Sciences & Technology building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Department of Pharmaceutical Sciences & Technology",
+      "PST"
+    ],
+    "search_keywords": [
+      "department",
+      "pharmaceutical",
+      "sciences",
+      "technology"
+    ],
+    "associated_building": null,
+    "building_code": "PST"
+  },
+  {
+    "id": 19,
+    "name": "Department of Chemical Engineering",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Department of Chemical Engineering",
+    "Category": "Academic",
+    "Latitude": 23.41103689514296,
+    "Longitude": 85.44052355070316,
+    "Description": "The Department of Chemical Engineering building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Department of Chemical Engineering",
+      "CE"
+    ],
+    "Search Keywords": [
+      "department",
+      "chemical",
+      "engineering"
+    ],
+    "Associated Building": null,
+    "latitude": 23.41103689514296,
+    "longitude": 85.44052355070316,
+    "description": "The Department of Chemical Engineering building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Department of Chemical Engineering",
+      "CE"
+    ],
+    "search_keywords": [
+      "department",
+      "chemical",
+      "engineering"
+    ],
+    "associated_building": null,
+    "building_code": "CE"
+  },
+  {
+    "id": 20,
+    "name": "Faculty Chambers Mathematics Department",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Faculty Chambers Mathematics Department",
+    "Category": "Academic",
+    "Latitude": 23.411391770810756,
+    "Longitude": 85.43974208970307,
+    "Description": "The Faculty Chambers Mathematics Department building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Faculty Chambers Mathematics Department",
+      "FCM"
+    ],
+    "Search Keywords": [
+      "faculty",
+      "chambers",
+      "mathematics",
+      "department"
+    ],
+    "Associated Building": null,
+    "latitude": 23.411391770810756,
+    "longitude": 85.43974208970307,
+    "description": "The Faculty Chambers Mathematics Department building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Faculty Chambers Mathematics Department",
+      "FCM"
+    ],
+    "search_keywords": [
+      "faculty",
+      "chambers",
+      "mathematics",
+      "department"
+    ],
+    "associated_building": null,
+    "building_code": "FCM"
+  },
+  {
+    "id": 21,
+    "name": "Lecture Hall 1 & 2",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Lecture Hall 1 & 2",
+    "Category": "Academic",
+    "Latitude": 23.411485303895628,
+    "Longitude": 85.43959859152532,
+    "Description": "The Lecture Hall 1 & 2 building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Lecture Hall 1 & 2",
+      "LH"
+    ],
+    "Search Keywords": [
+      "lecture",
+      "hall"
+    ],
+    "Associated Building": null,
+    "latitude": 23.411485303895628,
+    "longitude": 85.43959859152532,
+    "description": "The Lecture Hall 1 & 2 building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Lecture Hall 1 & 2",
+      "LH"
+    ],
+    "search_keywords": [
+      "lecture",
+      "hall"
+    ],
+    "associated_building": null,
+    "building_code": "LH"
+  },
+  {
+    "id": 22,
+    "name": "Production and Industrial Engineering Department",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Production and Industrial Engineering Department",
+    "Category": "Academic",
+    "Latitude": 23.41165514011979,
+    "Longitude": 85.4400787069272,
+    "Description": "The Production and Industrial Engineering Department building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Production and Industrial Engineering Department",
+      "PIE"
+    ],
+    "Search Keywords": [
+      "production",
+      "and",
+      "industrial",
+      "engineering",
+      "department"
+    ],
+    "Associated Building": null,
+    "latitude": 23.41165514011979,
+    "longitude": 85.4400787069272,
+    "description": "The Production and Industrial Engineering Department building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Production and Industrial Engineering Department",
+      "PIE"
+    ],
+    "search_keywords": [
+      "production",
+      "and",
+      "industrial",
+      "engineering",
+      "department"
+    ],
+    "associated_building": null,
+    "building_code": "PIE"
+  },
+  {
+    "id": 23,
+    "name": "Department of Architecture and Planning",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Department of Architecture and Planning",
+    "Category": "Academic",
+    "Latitude": 23.41172961916443,
+    "Longitude": 85.43913607199391,
+    "Description": "The Department of Architecture and Planning building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Department of Architecture and Planning",
+      "AP"
+    ],
+    "Search Keywords": [
+      "department",
+      "architecture",
+      "and",
+      "planning"
+    ],
+    "Associated Building": null,
+    "latitude": 23.41172961916443,
+    "longitude": 85.43913607199391,
+    "description": "The Department of Architecture and Planning building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Department of Architecture and Planning",
+      "AP"
+    ],
+    "search_keywords": [
+      "department",
+      "architecture",
+      "and",
+      "planning"
+    ],
+    "associated_building": null,
+    "building_code": "AP"
+  },
+  {
+    "id": 24,
+    "name": "Main Building",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Main Building",
+    "Category": "Academic",
+    "Latitude": 23.41224393773927,
+    "Longitude": 85.4398308188201,
+    "Description": "The Main Building building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Main Building",
+      "MB"
+    ],
+    "Search Keywords": [
+      "main",
+      "building"
+    ],
+    "Associated Building": null,
+    "latitude": 23.41224393773927,
+    "longitude": 85.4398308188201,
+    "description": "The Main Building building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Main Building",
+      "MB"
+    ],
+    "search_keywords": [
+      "main",
+      "building"
+    ],
+    "associated_building": null,
+    "building_code": "MB"
+  },
+  {
+    "id": 25,
+    "name": "Construction Department",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Construction Department",
+    "Category": "Academic",
+    "Latitude": 23.41167271958017,
+    "Longitude": 85.4412480576199,
+    "Description": "The Construction Department building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Construction Department",
+      "CONS"
+    ],
+    "Search Keywords": [
+      "construction",
+      "department"
+    ],
+    "Associated Building": null,
+    "latitude": 23.41167271958017,
+    "longitude": 85.4412480576199,
+    "description": "The Construction Department building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Construction Department",
+      "CONS"
+    ],
+    "search_keywords": [
+      "construction",
+      "department"
+    ],
+    "associated_building": null,
+    "building_code": "CONS"
+  },
+  {
+    "id": 26,
+    "name": "DEPARTMENT OF CHEMISTRY",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "DEPARTMENT OF CHEMISTRY",
+    "Category": "Academic",
+    "Latitude": 23.412739089859624,
+    "Longitude": 85.44096074588748,
+    "Description": "The DEPARTMENT OF CHEMISTRY building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "DEPARTMENT OF CHEMISTRY",
+      "DOC"
+    ],
+    "Search Keywords": [
+      "department",
+      "chemistry"
+    ],
+    "Associated Building": null,
+    "latitude": 23.412739089859624,
+    "longitude": 85.44096074588748,
+    "description": "The DEPARTMENT OF CHEMISTRY building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "DEPARTMENT OF CHEMISTRY",
+      "DOC"
+    ],
+    "search_keywords": [
+      "department",
+      "chemistry"
+    ],
+    "associated_building": null,
+    "building_code": "DOC"
+  },
+  {
+    "id": 27,
+    "name": "Remote Sensing and Geoinformatics Department",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Remote Sensing and Geoinformatics Department",
+    "Category": "Academic",
+    "Latitude": 23.41279831566354,
+    "Longitude": 85.4417982656851,
+    "Description": "The Remote Sensing and Geoinformatics Department building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Remote Sensing and Geoinformatics Department",
+      "RSG"
+    ],
+    "Search Keywords": [
+      "remote",
+      "sensing",
+      "and",
+      "geoinformatics",
+      "department"
+    ],
+    "Associated Building": null,
+    "latitude": 23.41279831566354,
+    "longitude": 85.4417982656851,
+    "description": "The Remote Sensing and Geoinformatics Department building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Remote Sensing and Geoinformatics Department",
+      "RSG"
+    ],
+    "search_keywords": [
+      "remote",
+      "sensing",
+      "and",
+      "geoinformatics",
+      "department"
+    ],
+    "associated_building": null,
+    "building_code": "RSG"
+  },
+  {
+    "id": 28,
+    "name": "CSE & IT Department",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "CSE & IT Department",
+    "Category": "Academic",
+    "Latitude": 23.412855009375257,
+    "Longitude": 85.44152610007735,
+    "Description": "The CSE & IT Department building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "CSE & IT Department",
+      "CI"
+    ],
+    "Search Keywords": [
+      "cse",
+      "department"
+    ],
+    "Associated Building": null,
+    "latitude": 23.412855009375257,
+    "longitude": 85.44152610007735,
+    "description": "The CSE & IT Department building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "CSE & IT Department",
+      "CI"
+    ],
+    "search_keywords": [
+      "cse",
+      "department"
+    ],
+    "associated_building": null,
+    "building_code": "CI"
+  },
+  {
+    "id": 29,
+    "name": "Department Of Hotel Management",
+    "location": "Academic Zone, BIT Mesra",
+    "category": "Academic",
+    "Name": "Department Of Hotel Management",
+    "Category": "Academic",
+    "Latitude": 23.416581867112868,
+    "Longitude": 85.43570474460023,
+    "Description": "The Department Of Hotel Management building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "Aliases": [
+      "Department Of Hotel Management",
+      "OHM"
+    ],
+    "Search Keywords": [
+      "department",
+      "hotel",
+      "management"
+    ],
+    "Associated Building": null,
+    "latitude": 23.416581867112868,
+    "longitude": 85.43570474460023,
+    "description": "The Department Of Hotel Management building at BIT Mesra campus houses academic classrooms, laboratories, faculty chambers, and research facilities.",
+    "aliases": [
+      "Department Of Hotel Management",
+      "OHM"
+    ],
+    "search_keywords": [
+      "department",
+      "hotel",
+      "management"
+    ],
+    "associated_building": null,
+    "building_code": "OHM"
   }
 ]

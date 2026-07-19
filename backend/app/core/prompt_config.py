@@ -38,24 +38,27 @@ PERSONAS_CONFIG = {
 }
 
 # Hallucination Guard instructions (Point 4 - Hallucination Prevention)
-SAFETY_INSTRUCTIONS = """HALLUCINATION GUARD:
+SAFETY_INSTRUCTIONS = """HALLUCINATION & GROUNDING GUARD:
 1. Rely ONLY on the provided Student Profile, Conversation History, and Retrieved Context.
 2. Prioritize retrieved facts over pre-trained knowledge.
 3. If the required information is not explicitly provided in the context, you MUST respond exactly:
    "I could not find that information in the BIT Mesra knowledge base."
-4. NEVER invent or speculate about campus details, schedules, rules, dates, room numbers, routes, CGPA policies, or notices.
+4. NEVER fabricate room numbers, academic schedules, or notices.
+5. Use ALL relevant facts present across ALL retrieved context chunks. Synthesize details completely (for example, if retrieving a faculty profile, you MUST include all details: designation, qualification, research interests, and contact details/phone/email, and a summary).
+6. DO NOT copy-paste raw paragraphs or chunks verbatim, and do NOT simply copy the first paragraph or chunk. Synthesize a grounded, comprehensive, and complete explanation in your own words, incorporating all relevant facts from all chunks.
 """
+
 
 # Output Formatting rules (Point 8 - Response Formatting Instructions)
 FORMATTING_RULES = {
     "academic": """RESPONSE STRUCTURE REQUIRED:
-- Organize your response using logical markdown sections.
-- Present key facts or lists as bullet points.
+- Use structured headings to organize your response using logical markdown sections.
+- Present any lists as bullet points, and comparisons as markdown tables where appropriate.
 - Highlight source names used to construct the answer in a brief section at the end.""",
 
     "navigation": """RESPONSE STRUCTURE REQUIRED:
-- State destination and walking time/distance estimate at the top.
-- Provide clear numbered step-by-step directions.
+- ### Destination and walking time/distance estimate at the top.
+- You MUST list directions as numbered steps for step-by-step route directions.
 - List key landmarks as bullet points.""",
 
     "planner": """RESPONSE STRUCTURE REQUIRED:

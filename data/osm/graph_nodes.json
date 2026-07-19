@@ -1,91 +1,16 @@
 [
   {
-    "id": "osm_100013",
+    "id": "osm_100001",
     "type": "Road",
-    "name": "sports",
+    "name": "admin",
     "coordinates": {
-      "latitude": 23.418,
-      "longitude": 85.442
+      "latitude": 23.4142,
+      "longitude": 85.4388
     },
     "metadata": {
       "is_road": true,
       "tags": {
-        "name": "sports"
-      }
-    }
-  },
-  {
-    "id": "osm_100009",
-    "type": "Road",
-    "name": "ee",
-    "coordinates": {
-      "latitude": 23.414,
-      "longitude": 85.4368
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "ee"
-      }
-    }
-  },
-  {
-    "id": "osm_100010",
-    "type": "Road",
-    "name": "biotech",
-    "coordinates": {
-      "latitude": 23.4125,
-      "longitude": 85.443
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "biotech"
-      }
-    }
-  },
-  {
-    "id": "osm_100022",
-    "type": "Road",
-    "name": "h8",
-    "coordinates": {
-      "latitude": 23.407,
-      "longitude": 85.44
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "h8"
-      }
-    }
-  },
-  {
-    "id": "osm_100007",
-    "type": "Road",
-    "name": "ece",
-    "coordinates": {
-      "latitude": 23.4148,
-      "longitude": 85.4372
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "ece"
-      }
-    }
-  },
-  {
-    "id": "osm_100028",
-    "type": "Road",
-    "name": "int_sac_biotech",
-    "coordinates": {
-      "latitude": 23.412,
-      "longitude": 85.4424
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "int_sac_biotech"
+        "name": "admin"
       }
     }
   },
@@ -105,21 +30,6 @@
     }
   },
   {
-    "id": "osm_100014",
-    "type": "Road",
-    "name": "guest",
-    "coordinates": {
-      "latitude": 23.4095,
-      "longitude": 85.4435
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "guest"
-      }
-    }
-  },
-  {
     "id": "osm_100004",
     "type": "Road",
     "name": "lhc",
@@ -131,141 +41,6 @@
       "is_road": true,
       "tags": {
         "name": "lhc"
-      }
-    }
-  },
-  {
-    "id": "osm_100017",
-    "type": "Road",
-    "name": "h3",
-    "coordinates": {
-      "latitude": 23.42,
-      "longitude": 85.4425
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "h3"
-      }
-    }
-  },
-  {
-    "id": "osm_100029",
-    "type": "Road",
-    "name": "int_hostels_north",
-    "coordinates": {
-      "latitude": 23.4185,
-      "longitude": 85.441
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "int_hostels_north"
-      }
-    }
-  },
-  {
-    "id": "osm_100020",
-    "type": "Road",
-    "name": "h6",
-    "coordinates": {
-      "latitude": 23.4055,
-      "longitude": 85.438
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "h6"
-      }
-    }
-  },
-  {
-    "id": "osm_100025",
-    "type": "Road",
-    "name": "int_admin_ece",
-    "coordinates": {
-      "latitude": 23.4145,
-      "longitude": 85.438
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "int_admin_ece"
-      }
-    }
-  },
-  {
-    "id": "osm_100008",
-    "type": "Road",
-    "name": "mech",
-    "coordinates": {
-      "latitude": 23.411,
-      "longitude": 85.436
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "mech"
-      }
-    }
-  },
-  {
-    "id": "osm_100019",
-    "type": "Road",
-    "name": "h5",
-    "coordinates": {
-      "latitude": 23.406,
-      "longitude": 85.439
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "h5"
-      }
-    }
-  },
-  {
-    "id": "osm_100016",
-    "type": "Road",
-    "name": "h2",
-    "coordinates": {
-      "latitude": 23.4195,
-      "longitude": 85.4415
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "h2"
-      }
-    }
-  },
-  {
-    "id": "osm_100005",
-    "type": "Road",
-    "name": "cse",
-    "coordinates": {
-      "latitude": 23.4162,
-      "longitude": 85.4385
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "cse"
-      }
-    }
-  },
-  {
-    "id": "osm_100030",
-    "type": "Road",
-    "name": "int_hostels_south",
-    "coordinates": {
-      "latitude": 23.4065,
-      "longitude": 85.4385
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "int_hostels_south"
       }
     }
   },
@@ -285,62 +60,32 @@
     }
   },
   {
-    "id": "osm_100001",
+    "id": "osm_100030",
     "type": "Road",
-    "name": "admin",
+    "name": "int_hostels_south",
     "coordinates": {
-      "latitude": 23.4142,
-      "longitude": 85.4388
+      "latitude": 23.4065,
+      "longitude": 85.4385
     },
     "metadata": {
       "is_road": true,
       "tags": {
-        "name": "admin"
+        "name": "int_hostels_south"
       }
     }
   },
   {
-    "id": "osm_100015",
+    "id": "osm_100028",
     "type": "Road",
-    "name": "h1",
+    "name": "int_sac_biotech",
     "coordinates": {
-      "latitude": 23.419,
-      "longitude": 85.4405
+      "latitude": 23.412,
+      "longitude": 85.4424
     },
     "metadata": {
       "is_road": true,
       "tags": {
-        "name": "h1"
-      }
-    }
-  },
-  {
-    "id": "osm_100011",
-    "type": "Road",
-    "name": "ric",
-    "coordinates": {
-      "latitude": 23.4132,
-      "longitude": 85.4402
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "ric"
-      }
-    }
-  },
-  {
-    "id": "osm_100018",
-    "type": "Road",
-    "name": "h4",
-    "coordinates": {
-      "latitude": 23.4205,
-      "longitude": 85.4435
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "h4"
+        "name": "int_sac_biotech"
       }
     }
   },
@@ -360,6 +105,126 @@
     }
   },
   {
+    "id": "osm_100010",
+    "type": "Road",
+    "name": "biotech",
+    "coordinates": {
+      "latitude": 23.4125,
+      "longitude": 85.443
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "biotech"
+      }
+    }
+  },
+  {
+    "id": "osm_100012",
+    "type": "Road",
+    "name": "sac",
+    "coordinates": {
+      "latitude": 23.4115,
+      "longitude": 85.4418
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "sac"
+      }
+    }
+  },
+  {
+    "id": "osm_100025",
+    "type": "Road",
+    "name": "int_admin_ece",
+    "coordinates": {
+      "latitude": 23.4145,
+      "longitude": 85.438
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "int_admin_ece"
+      }
+    }
+  },
+  {
+    "id": "osm_100013",
+    "type": "Road",
+    "name": "sports",
+    "coordinates": {
+      "latitude": 23.418,
+      "longitude": 85.442
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "sports"
+      }
+    }
+  },
+  {
+    "id": "osm_100029",
+    "type": "Road",
+    "name": "int_hostels_north",
+    "coordinates": {
+      "latitude": 23.4185,
+      "longitude": 85.441
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "int_hostels_north"
+      }
+    }
+  },
+  {
+    "id": "osm_100008",
+    "type": "Road",
+    "name": "mech",
+    "coordinates": {
+      "latitude": 23.411,
+      "longitude": 85.436
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "mech"
+      }
+    }
+  },
+  {
+    "id": "osm_100007",
+    "type": "Road",
+    "name": "ece",
+    "coordinates": {
+      "latitude": 23.4148,
+      "longitude": 85.4372
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "ece"
+      }
+    }
+  },
+  {
+    "id": "osm_100015",
+    "type": "Road",
+    "name": "h1",
+    "coordinates": {
+      "latitude": 23.419,
+      "longitude": 85.4405
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h1"
+      }
+    }
+  },
+  {
     "id": "osm_100027",
     "type": "Road",
     "name": "int_audi_ric",
@@ -371,6 +236,171 @@
       "is_road": true,
       "tags": {
         "name": "int_audi_ric"
+      }
+    }
+  },
+  {
+    "id": "osm_100005",
+    "type": "Road",
+    "name": "cse",
+    "coordinates": {
+      "latitude": 23.4162,
+      "longitude": 85.4385
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "cse"
+      }
+    }
+  },
+  {
+    "id": "osm_100018",
+    "type": "Road",
+    "name": "h4",
+    "coordinates": {
+      "latitude": 23.4205,
+      "longitude": 85.4435
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h4"
+      }
+    }
+  },
+  {
+    "id": "osm_100011",
+    "type": "Road",
+    "name": "ric",
+    "coordinates": {
+      "latitude": 23.4132,
+      "longitude": 85.4402
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "ric"
+      }
+    }
+  },
+  {
+    "id": "osm_100016",
+    "type": "Road",
+    "name": "h2",
+    "coordinates": {
+      "latitude": 23.4195,
+      "longitude": 85.4415
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h2"
+      }
+    }
+  },
+  {
+    "id": "osm_100014",
+    "type": "Road",
+    "name": "guest",
+    "coordinates": {
+      "latitude": 23.4095,
+      "longitude": 85.4435
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "guest"
+      }
+    }
+  },
+  {
+    "id": "osm_100009",
+    "type": "Road",
+    "name": "ee",
+    "coordinates": {
+      "latitude": 23.414,
+      "longitude": 85.4368
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "ee"
+      }
+    }
+  },
+  {
+    "id": "osm_100017",
+    "type": "Road",
+    "name": "h3",
+    "coordinates": {
+      "latitude": 23.42,
+      "longitude": 85.4425
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h3"
+      }
+    }
+  },
+  {
+    "id": "osm_100020",
+    "type": "Road",
+    "name": "h6",
+    "coordinates": {
+      "latitude": 23.4055,
+      "longitude": 85.438
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h6"
+      }
+    }
+  },
+  {
+    "id": "osm_100019",
+    "type": "Road",
+    "name": "h5",
+    "coordinates": {
+      "latitude": 23.406,
+      "longitude": 85.439
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h5"
+      }
+    }
+  },
+  {
+    "id": "osm_100022",
+    "type": "Road",
+    "name": "h8",
+    "coordinates": {
+      "latitude": 23.407,
+      "longitude": 85.44
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "h8"
+      }
+    }
+  },
+  {
+    "id": "osm_100002",
+    "type": "Road",
+    "name": "library",
+    "coordinates": {
+      "latitude": 23.415,
+      "longitude": 85.44
+    },
+    "metadata": {
+      "is_road": true,
+      "tags": {
+        "name": "library"
       }
     }
   },
@@ -405,37 +435,7 @@
     }
   },
   {
-    "id": "osm_100002",
-    "type": "Road",
-    "name": "library",
-    "coordinates": {
-      "latitude": 23.415,
-      "longitude": 85.44
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "library"
-      }
-    }
-  },
-  {
-    "id": "osm_100012",
-    "type": "Road",
-    "name": "sac",
-    "coordinates": {
-      "latitude": 23.4115,
-      "longitude": 85.4418
-    },
-    "metadata": {
-      "is_road": true,
-      "tags": {
-        "name": "sac"
-      }
-    }
-  },
-  {
-    "id": "6a4a96825016593b081a84ee",
+    "id": "6a568699129884d82fab3b0b",
     "type": "Building",
     "name": "Central Library",
     "coordinates": {
@@ -466,7 +466,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84ee_0",
+    "id": "entr_6a568699129884d82fab3b0b_0",
     "type": "Entrance",
     "name": "LIB - Main Entrance",
     "coordinates": {
@@ -474,11 +474,11 @@
       "longitude": 85.44
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84ee"
+      "parent_building_id": "6a568699129884d82fab3b0b"
     }
   },
   {
-    "id": "6a4a96825016593b081a84ef",
+    "id": "6a568699129884d82fab3b0c",
     "type": "Building",
     "name": "Main Administrative Building",
     "coordinates": {
@@ -509,7 +509,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84ef_0",
+    "id": "entr_6a568699129884d82fab3b0c_0",
     "type": "Entrance",
     "name": "MAIN - Main Entrance",
     "coordinates": {
@@ -517,11 +517,11 @@
       "longitude": 85.4388
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84ef"
+      "parent_building_id": "6a568699129884d82fab3b0c"
     }
   },
   {
-    "id": "6a4a96825016593b081a84f0",
+    "id": "6a568699129884d82fab3b0d",
     "type": "Building",
     "name": "University Auditorium",
     "coordinates": {
@@ -552,7 +552,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84f0_0",
+    "id": "entr_6a568699129884d82fab3b0d_0",
     "type": "Entrance",
     "name": "AUDI - Main Entrance",
     "coordinates": {
@@ -560,11 +560,11 @@
       "longitude": 85.441
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84f0"
+      "parent_building_id": "6a568699129884d82fab3b0d"
     }
   },
   {
-    "id": "6a4a96825016593b081a84f1",
+    "id": "6a568699129884d82fab3b0e",
     "type": "Building",
     "name": "Lecture Hall Complex",
     "coordinates": {
@@ -595,7 +595,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84f1_0",
+    "id": "entr_6a568699129884d82fab3b0e_0",
     "type": "Entrance",
     "name": "LHC - Main Entrance",
     "coordinates": {
@@ -603,11 +603,11 @@
       "longitude": 85.4395
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84f1"
+      "parent_building_id": "6a568699129884d82fab3b0e"
     }
   },
   {
-    "id": "6a4a96825016593b081a84f2",
+    "id": "6a568699129884d82fab3b0f",
     "type": "Building",
     "name": "Department of Computer Science and Engineering",
     "coordinates": {
@@ -640,7 +640,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84f2_0",
+    "id": "entr_6a568699129884d82fab3b0f_0",
     "type": "Entrance",
     "name": "CSE - Main Entrance",
     "coordinates": {
@@ -648,11 +648,11 @@
       "longitude": 85.4385
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84f2"
+      "parent_building_id": "6a568699129884d82fab3b0f"
     }
   },
   {
-    "id": "6a4a96825016593b081a84f3",
+    "id": "6a568699129884d82fab3b10",
     "type": "Building",
     "name": "Department of Artificial Intelligence and Machine Learning",
     "coordinates": {
@@ -685,7 +685,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84f3_0",
+    "id": "entr_6a568699129884d82fab3b10_0",
     "type": "Entrance",
     "name": "AIML - Main Entrance",
     "coordinates": {
@@ -693,11 +693,11 @@
       "longitude": 85.4392
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84f3"
+      "parent_building_id": "6a568699129884d82fab3b10"
     }
   },
   {
-    "id": "6a4a96825016593b081a84f4",
+    "id": "6a568699129884d82fab3b11",
     "type": "Building",
     "name": "Department of Electronics and Communication Engineering",
     "coordinates": {
@@ -730,7 +730,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84f4_0",
+    "id": "entr_6a568699129884d82fab3b11_0",
     "type": "Entrance",
     "name": "ECE - Main Entrance",
     "coordinates": {
@@ -738,11 +738,11 @@
       "longitude": 85.4372
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84f4"
+      "parent_building_id": "6a568699129884d82fab3b11"
     }
   },
   {
-    "id": "6a4a96825016593b081a84f5",
+    "id": "6a568699129884d82fab3b12",
     "type": "Building",
     "name": "Department of Mechanical Engineering",
     "coordinates": {
@@ -775,7 +775,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84f5_0",
+    "id": "entr_6a568699129884d82fab3b12_0",
     "type": "Entrance",
     "name": "MECH - Main Entrance",
     "coordinates": {
@@ -783,11 +783,11 @@
       "longitude": 85.436
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84f5"
+      "parent_building_id": "6a568699129884d82fab3b12"
     }
   },
   {
-    "id": "6a4a96825016593b081a84f6",
+    "id": "6a568699129884d82fab3b13",
     "type": "Building",
     "name": "Department of Electrical Engineering",
     "coordinates": {
@@ -820,7 +820,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84f6_0",
+    "id": "entr_6a568699129884d82fab3b13_0",
     "type": "Entrance",
     "name": "EE - Main Entrance",
     "coordinates": {
@@ -828,11 +828,11 @@
       "longitude": 85.4368
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84f6"
+      "parent_building_id": "6a568699129884d82fab3b13"
     }
   },
   {
-    "id": "6a4a96825016593b081a84f7",
+    "id": "6a568699129884d82fab3b14",
     "type": "Building",
     "name": "Department of Civil Engineering",
     "coordinates": {
@@ -865,7 +865,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84f7_0",
+    "id": "entr_6a568699129884d82fab3b14_0",
     "type": "Entrance",
     "name": "CIVIL - Main Entrance",
     "coordinates": {
@@ -873,11 +873,11 @@
       "longitude": 85.4364
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84f7"
+      "parent_building_id": "6a568699129884d82fab3b14"
     }
   },
   {
-    "id": "6a4a96825016593b081a84f8",
+    "id": "6a568699129884d82fab3b15",
     "type": "Building",
     "name": "Department of Biotechnology",
     "coordinates": {
@@ -910,7 +910,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84f8_0",
+    "id": "entr_6a568699129884d82fab3b15_0",
     "type": "Entrance",
     "name": "BIOTECH - Main Entrance",
     "coordinates": {
@@ -918,11 +918,11 @@
       "longitude": 85.443
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84f8"
+      "parent_building_id": "6a568699129884d82fab3b15"
     }
   },
   {
-    "id": "6a4a96825016593b081a84f9",
+    "id": "6a568699129884d82fab3b16",
     "type": "Building",
     "name": "Research and Innovation Center",
     "coordinates": {
@@ -953,7 +953,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84f9_0",
+    "id": "entr_6a568699129884d82fab3b16_0",
     "type": "Entrance",
     "name": "RIC - Main Entrance",
     "coordinates": {
@@ -961,11 +961,11 @@
       "longitude": 85.4402
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84f9"
+      "parent_building_id": "6a568699129884d82fab3b16"
     }
   },
   {
-    "id": "6a4a96825016593b081a84fa",
+    "id": "6a568699129884d82fab3b17",
     "type": "Building",
     "name": "Student Activity Center",
     "coordinates": {
@@ -996,7 +996,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84fa_0",
+    "id": "entr_6a568699129884d82fab3b17_0",
     "type": "Entrance",
     "name": "SAC - Main Entrance",
     "coordinates": {
@@ -1004,11 +1004,11 @@
       "longitude": 85.4418
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84fa"
+      "parent_building_id": "6a568699129884d82fab3b17"
     }
   },
   {
-    "id": "6a4a96825016593b081a84fb",
+    "id": "6a568699129884d82fab3b18",
     "type": "Building",
     "name": "Sports Complex",
     "coordinates": {
@@ -1039,7 +1039,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84fb_0",
+    "id": "entr_6a568699129884d82fab3b18_0",
     "type": "Entrance",
     "name": "SPORTS - Main Entrance",
     "coordinates": {
@@ -1047,11 +1047,11 @@
       "longitude": 85.442
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84fb"
+      "parent_building_id": "6a568699129884d82fab3b18"
     }
   },
   {
-    "id": "6a4a96825016593b081a84fc",
+    "id": "6a568699129884d82fab3b19",
     "type": "Building",
     "name": "Guest House",
     "coordinates": {
@@ -1082,7 +1082,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84fc_0",
+    "id": "entr_6a568699129884d82fab3b19_0",
     "type": "Entrance",
     "name": "GUEST - Main Entrance",
     "coordinates": {
@@ -1090,11 +1090,635 @@
       "longitude": 85.4435
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84fc"
+      "parent_building_id": "6a568699129884d82fab3b19"
     }
   },
   {
-    "id": "6a4a96825016593b081a84fd",
+    "id": "6a568699129884d82fab3b1a",
+    "type": "Building",
+    "name": "Department of Space Engineering & Rocketry",
+    "coordinates": {
+      "latitude": 23.41052641889787,
+      "longitude": 85.44557741550562
+    },
+    "metadata": {
+      "building_code": "SER",
+      "category": "Academic",
+      "departments": [
+        "Space Engineering & Rocketry"
+      ],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b1a",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41052641889787,
+          85.44557741550562
+        ]
+      ],
+      "centroid": [
+        23.41052641889787,
+        85.44557741550562
+      ],
+      "entrance": [
+        23.41052641889787,
+        85.44557741550562
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b1a_0",
+    "type": "Entrance",
+    "name": "SER - Main Entrance",
+    "coordinates": {
+      "latitude": 23.41052641889787,
+      "longitude": 85.44557741550562
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b1a"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b1b",
+    "type": "Building",
+    "name": "Department of Bioengineering and Biotechnology",
+    "coordinates": {
+      "latitude": 23.410076340855365,
+      "longitude": 85.44059385852306
+    },
+    "metadata": {
+      "building_code": "BB",
+      "category": "Academic",
+      "departments": [
+        "Bioengineering and Biotechnology"
+      ],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b1b",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.410076340855365,
+          85.44059385852306
+        ]
+      ],
+      "centroid": [
+        23.410076340855365,
+        85.44059385852306
+      ],
+      "entrance": [
+        23.410076340855365,
+        85.44059385852306
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b1b_0",
+    "type": "Entrance",
+    "name": "BB - Main Entrance",
+    "coordinates": {
+      "latitude": 23.410076340855365,
+      "longitude": 85.44059385852306
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b1b"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b1c",
+    "type": "Building",
+    "name": "Department of Pharmaceutical Sciences & Technology",
+    "coordinates": {
+      "latitude": 23.410497019051856,
+      "longitude": 85.44090867647765
+    },
+    "metadata": {
+      "building_code": "PST",
+      "category": "Academic",
+      "departments": [
+        "Pharmaceutical Sciences & Technology"
+      ],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b1c",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.410497019051856,
+          85.44090867647765
+        ]
+      ],
+      "centroid": [
+        23.410497019051856,
+        85.44090867647765
+      ],
+      "entrance": [
+        23.410497019051856,
+        85.44090867647765
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b1c_0",
+    "type": "Entrance",
+    "name": "PST - Main Entrance",
+    "coordinates": {
+      "latitude": 23.410497019051856,
+      "longitude": 85.44090867647765
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b1c"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b1d",
+    "type": "Building",
+    "name": "Department of Chemical Engineering",
+    "coordinates": {
+      "latitude": 23.41103689514296,
+      "longitude": 85.44052355070316
+    },
+    "metadata": {
+      "building_code": "CE",
+      "category": "Academic",
+      "departments": [
+        "Chemical Engineering"
+      ],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b1d",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41103689514296,
+          85.44052355070316
+        ]
+      ],
+      "centroid": [
+        23.41103689514296,
+        85.44052355070316
+      ],
+      "entrance": [
+        23.41103689514296,
+        85.44052355070316
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b1d_0",
+    "type": "Entrance",
+    "name": "CE - Main Entrance",
+    "coordinates": {
+      "latitude": 23.41103689514296,
+      "longitude": 85.44052355070316
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b1d"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b1e",
+    "type": "Building",
+    "name": "Faculty Chambers Mathematics Department",
+    "coordinates": {
+      "latitude": 23.411391770810756,
+      "longitude": 85.43974208970307
+    },
+    "metadata": {
+      "building_code": "FCM",
+      "category": "Academic",
+      "departments": [
+        "Faculty Chambers Mathematics Department"
+      ],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b1e",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.411391770810756,
+          85.43974208970307
+        ]
+      ],
+      "centroid": [
+        23.411391770810756,
+        85.43974208970307
+      ],
+      "entrance": [
+        23.411391770810756,
+        85.43974208970307
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b1e_0",
+    "type": "Entrance",
+    "name": "FCM - Main Entrance",
+    "coordinates": {
+      "latitude": 23.411391770810756,
+      "longitude": 85.43974208970307
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b1e"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b1f",
+    "type": "Building",
+    "name": "Lecture Hall 1 & 2",
+    "coordinates": {
+      "latitude": 23.411485303895628,
+      "longitude": 85.43959859152532
+    },
+    "metadata": {
+      "building_code": "LH",
+      "category": "Academic",
+      "departments": [],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b1f",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.411485303895628,
+          85.43959859152532
+        ]
+      ],
+      "centroid": [
+        23.411485303895628,
+        85.43959859152532
+      ],
+      "entrance": [
+        23.411485303895628,
+        85.43959859152532
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b1f_0",
+    "type": "Entrance",
+    "name": "LH - Main Entrance",
+    "coordinates": {
+      "latitude": 23.411485303895628,
+      "longitude": 85.43959859152532
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b1f"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b20",
+    "type": "Building",
+    "name": "Production and Industrial Engineering Department",
+    "coordinates": {
+      "latitude": 23.41165514011979,
+      "longitude": 85.4400787069272
+    },
+    "metadata": {
+      "building_code": "PIE",
+      "category": "Academic",
+      "departments": [
+        "Production and Industrial Engineering Department"
+      ],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b20",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41165514011979,
+          85.4400787069272
+        ]
+      ],
+      "centroid": [
+        23.41165514011979,
+        85.4400787069272
+      ],
+      "entrance": [
+        23.41165514011979,
+        85.4400787069272
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b20_0",
+    "type": "Entrance",
+    "name": "PIE - Main Entrance",
+    "coordinates": {
+      "latitude": 23.41165514011979,
+      "longitude": 85.4400787069272
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b20"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b21",
+    "type": "Building",
+    "name": "Department of Architecture and Planning",
+    "coordinates": {
+      "latitude": 23.41172961916443,
+      "longitude": 85.43913607199391
+    },
+    "metadata": {
+      "building_code": "AP",
+      "category": "Academic",
+      "departments": [
+        "Architecture and Planning"
+      ],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b21",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41172961916443,
+          85.43913607199391
+        ]
+      ],
+      "centroid": [
+        23.41172961916443,
+        85.43913607199391
+      ],
+      "entrance": [
+        23.41172961916443,
+        85.43913607199391
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b21_0",
+    "type": "Entrance",
+    "name": "AP - Main Entrance",
+    "coordinates": {
+      "latitude": 23.41172961916443,
+      "longitude": 85.43913607199391
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b21"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b22",
+    "type": "Building",
+    "name": "Main Building",
+    "coordinates": {
+      "latitude": 23.41224393773927,
+      "longitude": 85.4398308188201
+    },
+    "metadata": {
+      "building_code": "MB",
+      "category": "Academic",
+      "departments": [],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b22",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41224393773927,
+          85.4398308188201
+        ]
+      ],
+      "centroid": [
+        23.41224393773927,
+        85.4398308188201
+      ],
+      "entrance": [
+        23.41224393773927,
+        85.4398308188201
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b22_0",
+    "type": "Entrance",
+    "name": "MB - Main Entrance",
+    "coordinates": {
+      "latitude": 23.41224393773927,
+      "longitude": 85.4398308188201
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b22"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b23",
+    "type": "Building",
+    "name": "Construction Department",
+    "coordinates": {
+      "latitude": 23.41167271958017,
+      "longitude": 85.4412480576199
+    },
+    "metadata": {
+      "building_code": "CONS",
+      "category": "Academic",
+      "departments": [
+        "Construction Department"
+      ],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b23",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41167271958017,
+          85.4412480576199
+        ]
+      ],
+      "centroid": [
+        23.41167271958017,
+        85.4412480576199
+      ],
+      "entrance": [
+        23.41167271958017,
+        85.4412480576199
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b23_0",
+    "type": "Entrance",
+    "name": "CONS - Main Entrance",
+    "coordinates": {
+      "latitude": 23.41167271958017,
+      "longitude": 85.4412480576199
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b23"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b24",
+    "type": "Building",
+    "name": "DEPARTMENT OF CHEMISTRY",
+    "coordinates": {
+      "latitude": 23.412739089859624,
+      "longitude": 85.44096074588748
+    },
+    "metadata": {
+      "building_code": "DOC",
+      "category": "Academic",
+      "departments": [],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b24",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.412739089859624,
+          85.44096074588748
+        ]
+      ],
+      "centroid": [
+        23.412739089859624,
+        85.44096074588748
+      ],
+      "entrance": [
+        23.412739089859624,
+        85.44096074588748
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b24_0",
+    "type": "Entrance",
+    "name": "DOC - Main Entrance",
+    "coordinates": {
+      "latitude": 23.412739089859624,
+      "longitude": 85.44096074588748
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b24"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b25",
+    "type": "Building",
+    "name": "Remote Sensing and Geoinformatics Department",
+    "coordinates": {
+      "latitude": 23.41279831566354,
+      "longitude": 85.4417982656851
+    },
+    "metadata": {
+      "building_code": "RSG",
+      "category": "Academic",
+      "departments": [
+        "Remote Sensing and Geoinformatics Department"
+      ],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b25",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41279831566354,
+          85.4417982656851
+        ]
+      ],
+      "centroid": [
+        23.41279831566354,
+        85.4417982656851
+      ],
+      "entrance": [
+        23.41279831566354,
+        85.4417982656851
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b25_0",
+    "type": "Entrance",
+    "name": "RSG - Main Entrance",
+    "coordinates": {
+      "latitude": 23.41279831566354,
+      "longitude": 85.4417982656851
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b25"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b26",
+    "type": "Building",
+    "name": "CSE & IT Department",
+    "coordinates": {
+      "latitude": 23.412855009375257,
+      "longitude": 85.44152610007735
+    },
+    "metadata": {
+      "building_code": "CI",
+      "category": "Academic",
+      "departments": [
+        "CSE & IT Department"
+      ],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b26",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.412855009375257,
+          85.44152610007735
+        ]
+      ],
+      "centroid": [
+        23.412855009375257,
+        85.44152610007735
+      ],
+      "entrance": [
+        23.412855009375257,
+        85.44152610007735
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b26_0",
+    "type": "Entrance",
+    "name": "CI - Main Entrance",
+    "coordinates": {
+      "latitude": 23.412855009375257,
+      "longitude": 85.44152610007735
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b26"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b27",
+    "type": "Building",
+    "name": "Department Of Hotel Management",
+    "coordinates": {
+      "latitude": 23.416581867112868,
+      "longitude": 85.43570474460023
+    },
+    "metadata": {
+      "building_code": "OHM",
+      "category": "Academic",
+      "departments": [
+        "Department Of Hotel Management"
+      ],
+      "address": "Academic Zone, BIT Mesra",
+      "osm_id": "synth_6a568699129884d82fab3b27",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.416581867112868,
+          85.43570474460023
+        ]
+      ],
+      "centroid": [
+        23.416581867112868,
+        85.43570474460023
+      ],
+      "entrance": [
+        23.416581867112868,
+        85.43570474460023
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b27_0",
+    "type": "Entrance",
+    "name": "OHM - Main Entrance",
+    "coordinates": {
+      "latitude": 23.416581867112868,
+      "longitude": 85.43570474460023
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b27"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b28",
     "type": "Hostel",
     "name": "Aryabhatta Hostel",
     "coordinates": {
@@ -1125,7 +1749,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84fd_0",
+    "id": "entr_6a568699129884d82fab3b28_0",
     "type": "Entrance",
     "name": "H1 - Main Entrance",
     "coordinates": {
@@ -1133,11 +1757,11 @@
       "longitude": 85.4405
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84fd"
+      "parent_building_id": "6a568699129884d82fab3b28"
     }
   },
   {
-    "id": "6a4a96825016593b081a84fe",
+    "id": "6a568699129884d82fab3b29",
     "type": "Hostel",
     "name": "Raman Hostel",
     "coordinates": {
@@ -1168,7 +1792,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84fe_0",
+    "id": "entr_6a568699129884d82fab3b29_0",
     "type": "Entrance",
     "name": "H2 - Main Entrance",
     "coordinates": {
@@ -1176,11 +1800,11 @@
       "longitude": 85.4415
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84fe"
+      "parent_building_id": "6a568699129884d82fab3b29"
     }
   },
   {
-    "id": "6a4a96825016593b081a84ff",
+    "id": "6a568699129884d82fab3b2a",
     "type": "Hostel",
     "name": "CV Raman Hostel",
     "coordinates": {
@@ -1211,7 +1835,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a84ff_0",
+    "id": "entr_6a568699129884d82fab3b2a_0",
     "type": "Entrance",
     "name": "H3 - Main Entrance",
     "coordinates": {
@@ -1219,11 +1843,11 @@
       "longitude": 85.4425
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a84ff"
+      "parent_building_id": "6a568699129884d82fab3b2a"
     }
   },
   {
-    "id": "6a4a96825016593b081a8500",
+    "id": "6a568699129884d82fab3b2b",
     "type": "Hostel",
     "name": "Vivekananda Hostel",
     "coordinates": {
@@ -1254,7 +1878,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a8500_0",
+    "id": "entr_6a568699129884d82fab3b2b_0",
     "type": "Entrance",
     "name": "H4 - Main Entrance",
     "coordinates": {
@@ -1262,11 +1886,11 @@
       "longitude": 85.4435
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a8500"
+      "parent_building_id": "6a568699129884d82fab3b2b"
     }
   },
   {
-    "id": "6a4a96825016593b081a8501",
+    "id": "6a568699129884d82fab3b2c",
     "type": "Hostel",
     "name": "Gargi Hostel",
     "coordinates": {
@@ -1297,7 +1921,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a8501_0",
+    "id": "entr_6a568699129884d82fab3b2c_0",
     "type": "Entrance",
     "name": "H5 - Main Entrance",
     "coordinates": {
@@ -1305,11 +1929,11 @@
       "longitude": 85.439
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a8501"
+      "parent_building_id": "6a568699129884d82fab3b2c"
     }
   },
   {
-    "id": "6a4a96825016593b081a8502",
+    "id": "6a568699129884d82fab3b2d",
     "type": "Hostel",
     "name": "Sarojini Hostel",
     "coordinates": {
@@ -1340,7 +1964,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a8502_0",
+    "id": "entr_6a568699129884d82fab3b2d_0",
     "type": "Entrance",
     "name": "H6 - Main Entrance",
     "coordinates": {
@@ -1348,11 +1972,11 @@
       "longitude": 85.438
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a8502"
+      "parent_building_id": "6a568699129884d82fab3b2d"
     }
   },
   {
-    "id": "6a4a96825016593b081a8503",
+    "id": "6a568699129884d82fab3b2e",
     "type": "Hostel",
     "name": "New Girls Hostel",
     "coordinates": {
@@ -1383,7 +2007,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a8503_0",
+    "id": "entr_6a568699129884d82fab3b2e_0",
     "type": "Entrance",
     "name": "H7 - Main Entrance",
     "coordinates": {
@@ -1391,11 +2015,11 @@
       "longitude": 85.437
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a8503"
+      "parent_building_id": "6a568699129884d82fab3b2e"
     }
   },
   {
-    "id": "6a4a96825016593b081a8504",
+    "id": "6a568699129884d82fab3b2f",
     "type": "Hostel",
     "name": "International Students Hostel",
     "coordinates": {
@@ -1426,7 +2050,7 @@
     }
   },
   {
-    "id": "entr_6a4a96825016593b081a8504_0",
+    "id": "entr_6a568699129884d82fab3b2f_0",
     "type": "Entrance",
     "name": "H8 - Main Entrance",
     "coordinates": {
@@ -1434,11 +2058,226 @@
       "longitude": 85.44
     },
     "metadata": {
-      "parent_building_id": "6a4a96825016593b081a8504"
+      "parent_building_id": "6a568699129884d82fab3b2f"
     }
   },
   {
-    "id": "6a4a96825016593b081a8505",
+    "id": "6a568699129884d82fab3b30",
+    "type": "Hostel",
+    "name": "Hostel 9",
+    "coordinates": {
+      "latitude": 23.41619557724271,
+      "longitude": 85.44120584399994
+    },
+    "metadata": {
+      "building_code": "H9",
+      "category": "Residential",
+      "departments": [],
+      "address": "Hostel Zone, BIT Mesra Campus",
+      "osm_id": "synth_6a568699129884d82fab3b30",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41619557724271,
+          85.44120584399994
+        ]
+      ],
+      "centroid": [
+        23.41619557724271,
+        85.44120584399994
+      ],
+      "entrance": [
+        23.41619557724271,
+        85.44120584399994
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b30_0",
+    "type": "Entrance",
+    "name": "H9 - Main Entrance",
+    "coordinates": {
+      "latitude": 23.41619557724271,
+      "longitude": 85.44120584399994
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b30"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b31",
+    "type": "Hostel",
+    "name": "Hostel 10",
+    "coordinates": {
+      "latitude": 23.419119430187155,
+      "longitude": 85.43500855881622
+    },
+    "metadata": {
+      "building_code": "H10",
+      "category": "Residential",
+      "departments": [],
+      "address": "Hostel Zone, BIT Mesra Campus",
+      "osm_id": "synth_6a568699129884d82fab3b31",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.419119430187155,
+          85.43500855881622
+        ]
+      ],
+      "centroid": [
+        23.419119430187155,
+        85.43500855881622
+      ],
+      "entrance": [
+        23.419119430187155,
+        85.43500855881622
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b31_0",
+    "type": "Entrance",
+    "name": "H10 - Main Entrance",
+    "coordinates": {
+      "latitude": 23.419119430187155,
+      "longitude": 85.43500855881622
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b31"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b32",
+    "type": "Hostel",
+    "name": "Hostel 11",
+    "coordinates": {
+      "latitude": 23.41799528962531,
+      "longitude": 85.43544969494823
+    },
+    "metadata": {
+      "building_code": "H11",
+      "category": "Residential",
+      "departments": [],
+      "address": "Hostel Zone, BIT Mesra Campus",
+      "osm_id": "synth_6a568699129884d82fab3b32",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41799528962531,
+          85.43544969494823
+        ]
+      ],
+      "centroid": [
+        23.41799528962531,
+        85.43544969494823
+      ],
+      "entrance": [
+        23.41799528962531,
+        85.43544969494823
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b32_0",
+    "type": "Entrance",
+    "name": "H11 - Main Entrance",
+    "coordinates": {
+      "latitude": 23.41799528962531,
+      "longitude": 85.43544969494823
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b32"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b33",
+    "type": "Hostel",
+    "name": "Hostel 12",
+    "coordinates": {
+      "latitude": 23.418916665524208,
+      "longitude": 85.4342494872445
+    },
+    "metadata": {
+      "building_code": "H12",
+      "category": "Residential",
+      "departments": [],
+      "address": "Hostel Zone, BIT Mesra Campus",
+      "osm_id": "synth_6a568699129884d82fab3b33",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.418916665524208,
+          85.4342494872445
+        ]
+      ],
+      "centroid": [
+        23.418916665524208,
+        85.4342494872445
+      ],
+      "entrance": [
+        23.418916665524208,
+        85.4342494872445
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b33_0",
+    "type": "Entrance",
+    "name": "H12 - Main Entrance",
+    "coordinates": {
+      "latitude": 23.418916665524208,
+      "longitude": 85.4342494872445
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b33"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b34",
+    "type": "Hostel",
+    "name": "Hostel 13",
+    "coordinates": {
+      "latitude": 23.417893476561524,
+      "longitude": 85.43462331563403
+    },
+    "metadata": {
+      "building_code": "H13",
+      "category": "Residential",
+      "departments": [],
+      "address": "Hostel Zone, BIT Mesra Campus",
+      "osm_id": "synth_6a568699129884d82fab3b34",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.417893476561524,
+          85.43462331563403
+        ]
+      ],
+      "centroid": [
+        23.417893476561524,
+        85.43462331563403
+      ],
+      "entrance": [
+        23.417893476561524,
+        85.43462331563403
+      ]
+    }
+  },
+  {
+    "id": "entr_6a568699129884d82fab3b34_0",
+    "type": "Entrance",
+    "name": "H13 - Main Entrance",
+    "coordinates": {
+      "latitude": 23.417893476561524,
+      "longitude": 85.43462331563403
+    },
+    "metadata": {
+      "parent_building_id": "6a568699129884d82fab3b34"
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b35",
     "type": "Room",
     "name": "LH-1 - Lecture Hall 1",
     "coordinates": {
@@ -1447,14 +2286,14 @@
     },
     "metadata": {
       "room_number": "LH-1",
-      "building_id": "6a4a96825016593b081a84f1",
+      "building_id": "6a568699129884d82fab3b0e",
       "floor": 0,
       "room_type": "Classroom",
       "capacity": 150
     }
   },
   {
-    "id": "6a4a96825016593b081a8506",
+    "id": "6a568699129884d82fab3b36",
     "type": "Room",
     "name": "LH-2 - Lecture Hall 2",
     "coordinates": {
@@ -1463,14 +2302,14 @@
     },
     "metadata": {
       "room_number": "LH-2",
-      "building_id": "6a4a96825016593b081a84f1",
+      "building_id": "6a568699129884d82fab3b0e",
       "floor": 0,
       "room_type": "Classroom",
       "capacity": 150
     }
   },
   {
-    "id": "6a4a96825016593b081a8507",
+    "id": "6a568699129884d82fab3b37",
     "type": "Room",
     "name": "LH-3 - Lecture Hall 3",
     "coordinates": {
@@ -1479,14 +2318,14 @@
     },
     "metadata": {
       "room_number": "LH-3",
-      "building_id": "6a4a96825016593b081a84f1",
+      "building_id": "6a568699129884d82fab3b0e",
       "floor": 1,
       "room_type": "Classroom",
       "capacity": 120
     }
   },
   {
-    "id": "6a4a96825016593b081a8508",
+    "id": "6a568699129884d82fab3b38",
     "type": "Room",
     "name": "LH-4 - Lecture Hall 4",
     "coordinates": {
@@ -1495,14 +2334,14 @@
     },
     "metadata": {
       "room_number": "LH-4",
-      "building_id": "6a4a96825016593b081a84f1",
+      "building_id": "6a568699129884d82fab3b0e",
       "floor": 1,
       "room_type": "Classroom",
       "capacity": 120
     }
   },
   {
-    "id": "6a4a96825016593b081a8509",
+    "id": "6a568699129884d82fab3b39",
     "type": "Room",
     "name": "CS-102 - Algorithm Lab",
     "coordinates": {
@@ -1511,14 +2350,14 @@
     },
     "metadata": {
       "room_number": "CS-102",
-      "building_id": "6a4a96825016593b081a84f2",
+      "building_id": "6a568699129884d82fab3b0f",
       "floor": 0,
       "room_type": "Laboratory",
       "capacity": 60
     }
   },
   {
-    "id": "6a4a96825016593b081a850a",
+    "id": "6a568699129884d82fab3b3a",
     "type": "Room",
     "name": "CS-201 - Seminar Room",
     "coordinates": {
@@ -1527,14 +2366,14 @@
     },
     "metadata": {
       "room_number": "CS-201",
-      "building_id": "6a4a96825016593b081a84f2",
+      "building_id": "6a568699129884d82fab3b0f",
       "floor": 1,
       "room_type": "Seminar Hall",
       "capacity": 80
     }
   },
   {
-    "id": "6a4a96825016593b081a850b",
+    "id": "6a568699129884d82fab3b3b",
     "type": "Room",
     "name": "CS-305 - HOD Cabin",
     "coordinates": {
@@ -1543,14 +2382,14 @@
     },
     "metadata": {
       "room_number": "CS-305",
-      "building_id": "6a4a96825016593b081a84f2",
+      "building_id": "6a568699129884d82fab3b0f",
       "floor": 2,
       "room_type": "Office",
       "capacity": 5
     }
   },
   {
-    "id": "6a4a96825016593b081a850c",
+    "id": "6a568699129884d82fab3b3c",
     "type": "Room",
     "name": "LIB-RD - Reading Room",
     "coordinates": {
@@ -1559,14 +2398,14 @@
     },
     "metadata": {
       "room_number": "LIB-RD",
-      "building_id": "6a4a96825016593b081a84ee",
+      "building_id": "6a568699129884d82fab3b0b",
       "floor": 0,
       "room_type": "Reading Space",
       "capacity": 200
     }
   },
   {
-    "id": "6a4a96825016593b081a850d",
+    "id": "6a568699129884d82fab3b3d",
     "type": "Room",
     "name": "LIB-EL - E-Library Section",
     "coordinates": {
@@ -1575,14 +2414,14 @@
     },
     "metadata": {
       "room_number": "LIB-EL",
-      "building_id": "6a4a96825016593b081a84ee",
+      "building_id": "6a568699129884d82fab3b0b",
       "floor": 1,
       "room_type": "Computer Lab",
       "capacity": 50
     }
   },
   {
-    "id": "6a4a96825016593b081a850e",
+    "id": "6a568699129884d82fab3b3e",
     "type": "Facility",
     "name": "Medical Unit",
     "coordinates": {
@@ -1616,7 +2455,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a850f",
+    "id": "6a568699129884d82fab3b3f",
     "type": "Facility",
     "name": "Central Cafeteria",
     "coordinates": {
@@ -1650,7 +2489,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a8510",
+    "id": "6a568699129884d82fab3b40",
     "type": "Facility",
     "name": "Nescafe Outlet",
     "coordinates": {
@@ -1684,7 +2523,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a8511",
+    "id": "6a568699129884d82fab3b41",
     "type": "Facility",
     "name": "SBI Bank Branch",
     "coordinates": {
@@ -1718,7 +2557,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a8512",
+    "id": "6a568699129884d82fab3b42",
     "type": "Facility",
     "name": "SBI ATM",
     "coordinates": {
@@ -1752,7 +2591,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a8513",
+    "id": "6a568699129884d82fab3b43",
     "type": "Facility",
     "name": "Placement and Training Cell",
     "coordinates": {
@@ -1784,7 +2623,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a8514",
+    "id": "6a568699129884d82fab3b44",
     "type": "Facility",
     "name": "Campus Gymnasium",
     "coordinates": {
@@ -1816,7 +2655,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a8515",
+    "id": "6a568699129884d82fab3b45",
     "type": "Facility",
     "name": "Indoor Sports Hall",
     "coordinates": {
@@ -1848,7 +2687,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a8516",
+    "id": "6a568699129884d82fab3b46",
     "type": "Facility",
     "name": "Student Store",
     "coordinates": {
@@ -1880,7 +2719,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a8517",
+    "id": "6a568699129884d82fab3b47",
     "type": "Facility",
     "name": "Stationery and Xerox Center",
     "coordinates": {
@@ -1912,7 +2751,2123 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a8518",
+    "id": "6a568699129884d82fab3b48",
+    "type": "Facility",
+    "name": "Subernarekha Viewpoint",
+    "coordinates": {
+      "latitude": 23.409362468471766,
+      "longitude": 85.4428079673325
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Subernarekha Viewpoint"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b48",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.409362468471766,
+          85.4428079673325
+        ]
+      ],
+      "centroid": [
+        23.409362468471766,
+        85.4428079673325
+      ],
+      "entrance": [
+        23.409362468471766,
+        85.4428079673325
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b49",
+    "type": "Facility",
+    "name": "Veda \u00e9 Cafe",
+    "coordinates": {
+      "latitude": 23.41023983158542,
+      "longitude": 85.44024223091698
+    },
+    "metadata": {
+      "category": "Cafeteria",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Veda \u00e9 Cafe",
+        "Food",
+        "Coffee"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b49",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41023983158542,
+          85.44024223091698
+        ]
+      ],
+      "centroid": [
+        23.41023983158542,
+        85.44024223091698
+      ],
+      "entrance": [
+        23.41023983158542,
+        85.44024223091698
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b4a",
+    "type": "Facility",
+    "name": "Team Srijan Manufacturing House",
+    "coordinates": {
+      "latitude": 23.41103689514296,
+      "longitude": 85.44034823220541
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Team Srijan Manufacturing House"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b4a",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41103689514296,
+          85.44034823220541
+        ]
+      ],
+      "centroid": [
+        23.41103689514296,
+        85.44034823220541
+      ],
+      "entrance": [
+        23.41103689514296,
+        85.44034823220541
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b4b",
+    "type": "Parking",
+    "name": "LH Bicycle Stand",
+    "coordinates": {
+      "latitude": 23.411509917856574,
+      "longitude": 85.43978768725827
+    },
+    "metadata": {
+      "category": "Parking",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "LH Bicycle Stand"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b4b",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.411509917856574,
+          85.43978768725827
+        ]
+      ],
+      "centroid": [
+        23.411509917856574,
+        85.43978768725827
+      ],
+      "entrance": [
+        23.411509917856574,
+        85.43978768725827
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b4c",
+    "type": "Facility",
+    "name": "Slitting Tank",
+    "coordinates": {
+      "latitude": 23.411305190617004,
+      "longitude": 85.43939979785664
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Slitting Tank"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b4c",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.411305190617004,
+          85.43939979785664
+        ]
+      ],
+      "centroid": [
+        23.411305190617004,
+        85.43939979785664
+      ],
+      "entrance": [
+        23.411305190617004,
+        85.43939979785664
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b4d",
+    "type": "Facility",
+    "name": "Water Treatment Plant",
+    "coordinates": {
+      "latitude": 23.41107266191242,
+      "longitude": 85.4390402975412
+    },
+    "metadata": {
+      "category": "ATM",
+      "timing": "24 Hours",
+      "services": [
+        "Water Treatment Plant"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b4d",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41107266191242,
+          85.4390402975412
+        ]
+      ],
+      "centroid": [
+        23.41107266191242,
+        85.4390402975412
+      ],
+      "entrance": [
+        23.41107266191242,
+        85.4390402975412
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b4e",
+    "type": "Facility",
+    "name": "Training and Placement Division",
+    "coordinates": {
+      "latitude": 23.411792308667,
+      "longitude": 85.43905275291849
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Training and Placement Division"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b4e",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.411792308667,
+          85.43905275291849
+        ]
+      ],
+      "centroid": [
+        23.411792308667,
+        85.43905275291849
+      ],
+      "entrance": [
+        23.411792308667,
+        85.43905275291849
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b4f",
+    "type": "Facility",
+    "name": "Environmental Engineering Lab",
+    "coordinates": {
+      "latitude": 23.412105783242453,
+      "longitude": 85.44025382693846
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Environmental Engineering Lab"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b4f",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.412105783242453,
+          85.44025382693846
+        ]
+      ],
+      "centroid": [
+        23.412105783242453,
+        85.44025382693846
+      ],
+      "entrance": [
+        23.412105783242453,
+        85.44025382693846
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b50",
+    "type": "Facility",
+    "name": "Shorbagh-2",
+    "coordinates": {
+      "latitude": 23.412439611816072,
+      "longitude": 85.43874782176145
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Shorbagh-2"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b50",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.412439611816072,
+          85.43874782176145
+        ]
+      ],
+      "centroid": [
+        23.412439611816072,
+        85.43874782176145
+      ],
+      "entrance": [
+        23.412439611816072,
+        85.43874782176145
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b51",
+    "type": "Facility",
+    "name": "Birla Institute of Technology - Mesra",
+    "coordinates": {
+      "latitude": 23.412332399170733,
+      "longitude": 85.43990246592783
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Birla Institute of Technology - Mesra"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b51",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.412332399170733,
+          85.43990246592783
+        ]
+      ],
+      "centroid": [
+        23.412332399170733,
+        85.43990246592783
+      ],
+      "entrance": [
+        23.412332399170733,
+        85.43990246592783
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b52",
+    "type": "Facility",
+    "name": "NCC training ground",
+    "coordinates": {
+      "latitude": 23.410959413414712,
+      "longitude": 85.44154537802177
+    },
+    "metadata": {
+      "category": "Sports Complex",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "NCC training ground"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b52",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.410959413414712,
+          85.44154537802177
+        ]
+      ],
+      "centroid": [
+        23.410959413414712,
+        85.44154537802177
+      ],
+      "entrance": [
+        23.410959413414712,
+        85.44154537802177
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b53",
+    "type": "Facility",
+    "name": "Nescaf\u00e9",
+    "coordinates": {
+      "latitude": 23.411391143310027,
+      "longitude": 85.44154387284591
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Nescaf\u00e9"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b53",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.411391143310027,
+          85.44154387284591
+        ]
+      ],
+      "centroid": [
+        23.411391143310027,
+        85.44154387284591
+      ],
+      "entrance": [
+        23.411391143310027,
+        85.44154387284591
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b54",
+    "type": "Facility",
+    "name": "Central Animal House BIT Mesra",
+    "coordinates": {
+      "latitude": 23.41161103831976,
+      "longitude": 85.44145170824682
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Central Animal House BIT Mesra"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b54",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41161103831976,
+          85.44145170824682
+        ]
+      ],
+      "centroid": [
+        23.41161103831976,
+        85.44145170824682
+      ],
+      "entrance": [
+        23.41161103831976,
+        85.44145170824682
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b55",
+    "type": "Facility",
+    "name": "Hot 'N' Cold",
+    "coordinates": {
+      "latitude": 23.41180681114229,
+      "longitude": 85.44116974536601
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Hot 'N' Cold"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b55",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41180681114229,
+          85.44116974536601
+        ]
+      ],
+      "centroid": [
+        23.41180681114229,
+        85.44116974536601
+      ],
+      "entrance": [
+        23.41180681114229,
+        85.44116974536601
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b56",
+    "type": "Facility",
+    "name": "ANSH FOOD FACTORY",
+    "coordinates": {
+      "latitude": 23.411743698755235,
+      "longitude": 85.44100128678389
+    },
+    "metadata": {
+      "category": "Cafeteria",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "ANSH FOOD FACTORY"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b56",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.411743698755235,
+          85.44100128678389
+        ]
+      ],
+      "centroid": [
+        23.411743698755235,
+        85.44100128678389
+      ],
+      "entrance": [
+        23.411743698755235,
+        85.44100128678389
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b57",
+    "type": "Facility",
+    "name": "Book Centre",
+    "coordinates": {
+      "latitude": 23.41184292503105,
+      "longitude": 85.44105477520436
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Book Centre"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b57",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41184292503105,
+          85.44105477520436
+        ]
+      ],
+      "centroid": [
+        23.41184292503105,
+        85.44105477520436
+      ],
+      "entrance": [
+        23.41184292503105,
+        85.44105477520436
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b58",
+    "type": "Facility",
+    "name": "MEDDY BUDDY PHARMACY",
+    "coordinates": {
+      "latitude": 23.41191159332793,
+      "longitude": 85.4409846231835
+    },
+    "metadata": {
+      "category": "Medical Centre",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "MEDDY BUDDY PHARMACY"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b58",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41191159332793,
+          85.4409846231835
+        ]
+      ],
+      "centroid": [
+        23.41191159332793,
+        85.4409846231835
+      ],
+      "entrance": [
+        23.41191159332793,
+        85.4409846231835
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b59",
+    "type": "Parking",
+    "name": "IC Vehicle Parking",
+    "coordinates": {
+      "latitude": 23.411940888329845,
+      "longitude": 85.44140359986645
+    },
+    "metadata": {
+      "category": "Parking",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "IC Vehicle Parking"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b59",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.411940888329845,
+          85.44140359986645
+        ]
+      ],
+      "centroid": [
+        23.411940888329845,
+        85.44140359986645
+      ],
+      "entrance": [
+        23.411940888329845,
+        85.44140359986645
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b5a",
+    "type": "Facility",
+    "name": "POST OFFICE",
+    "coordinates": {
+      "latitude": 23.412042883296184,
+      "longitude": 85.44124482437209
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "POST OFFICE"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b5a",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.412042883296184,
+          85.44124482437209
+        ]
+      ],
+      "centroid": [
+        23.412042883296184,
+        85.44124482437209
+      ],
+      "entrance": [
+        23.412042883296184,
+        85.44124482437209
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b5b",
+    "type": "Facility",
+    "name": "The urban frush",
+    "coordinates": {
+      "latitude": 23.411927305751956,
+      "longitude": 85.4416134921751
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "The urban frush"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b5b",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.411927305751956,
+          85.4416134921751
+        ]
+      ],
+      "centroid": [
+        23.411927305751956,
+        85.4416134921751
+      ],
+      "entrance": [
+        23.411927305751956,
+        85.4416134921751
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b5c",
+    "type": "Facility",
+    "name": "3 Jharkhand Compo Tech Coy NCC",
+    "coordinates": {
+      "latitude": 23.411203892119463,
+      "longitude": 85.44222677086296
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "3 Jharkhand Compo Tech Coy NCC"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b5c",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.411203892119463,
+          85.44222677086296
+        ]
+      ],
+      "centroid": [
+        23.411203892119463,
+        85.44222677086296
+      ],
+      "entrance": [
+        23.411203892119463,
+        85.44222677086296
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b5d",
+    "type": "Facility",
+    "name": "Music Room, Dhwani- Music Club, Birla Institute of Technology, Mesra",
+    "coordinates": {
+      "latitude": 23.41138556373977,
+      "longitude": 85.44217227011744
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Music Room, Dhwani- Music Club, Birla Institute of Technology, Mesra"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b5d",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41138556373977,
+          85.44217227011744
+        ]
+      ],
+      "centroid": [
+        23.41138556373977,
+        85.44217227011744
+      ],
+      "entrance": [
+        23.41138556373977,
+        85.44217227011744
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b5e",
+    "type": "Facility",
+    "name": "Apni Rasoi",
+    "coordinates": {
+      "latitude": 23.412511434797423,
+      "longitude": 85.44168880809886
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Apni Rasoi"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b5e",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.412511434797423,
+          85.44168880809886
+        ]
+      ],
+      "centroid": [
+        23.412511434797423,
+        85.44168880809886
+      ],
+      "entrance": [
+        23.412511434797423,
+        85.44168880809886
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b5f",
+    "type": "Facility",
+    "name": "Dominos BIT Mesra Store",
+    "coordinates": {
+      "latitude": 23.412450110964286,
+      "longitude": 85.44186733658233
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Dominos BIT Mesra Store"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b5f",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.412450110964286,
+          85.44186733658233
+        ]
+      ],
+      "centroid": [
+        23.412450110964286,
+        85.44186733658233
+      ],
+      "entrance": [
+        23.412450110964286,
+        85.44186733658233
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b60",
+    "type": "Facility",
+    "name": "Center for Quantitative Economics and Data Science",
+    "coordinates": {
+      "latitude": 23.412624547326757,
+      "longitude": 85.4411749628251
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Center for Quantitative Economics and Data Science"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b60",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.412624547326757,
+          85.4411749628251
+        ]
+      ],
+      "centroid": [
+        23.412624547326757,
+        85.4411749628251
+      ],
+      "entrance": [
+        23.412624547326757,
+        85.4411749628251
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b61",
+    "type": "Parking",
+    "name": "Two Wheeler Stand #2",
+    "coordinates": {
+      "latitude": 23.412824383968346,
+      "longitude": 85.44057572203518
+    },
+    "metadata": {
+      "category": "Parking",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Two Wheeler Stand #2"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b61",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.412824383968346,
+          85.44057572203518
+        ]
+      ],
+      "centroid": [
+        23.412824383968346,
+        85.44057572203518
+      ],
+      "entrance": [
+        23.412824383968346,
+        85.44057572203518
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b62",
+    "type": "Facility",
+    "name": "Shorbagh-1",
+    "coordinates": {
+      "latitude": 23.413068473826417,
+      "longitude": 85.4408049254318
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Shorbagh-1"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b62",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.413068473826417,
+          85.4408049254318
+        ]
+      ],
+      "centroid": [
+        23.413068473826417,
+        85.4408049254318
+      ],
+      "entrance": [
+        23.413068473826417,
+        85.4408049254318
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b63",
+    "type": "Facility",
+    "name": "UCO BANK",
+    "coordinates": {
+      "latitude": 23.413012537010406,
+      "longitude": 85.44194308967539
+    },
+    "metadata": {
+      "category": "Bank",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "UCO BANK"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b63",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.413012537010406,
+          85.44194308967539
+        ]
+      ],
+      "centroid": [
+        23.413012537010406,
+        85.44194308967539
+      ],
+      "entrance": [
+        23.413012537010406,
+        85.44194308967539
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b64",
+    "type": "Facility",
+    "name": "UCO Bank ATM",
+    "coordinates": {
+      "latitude": 23.412876173278924,
+      "longitude": 85.44210204629994
+    },
+    "metadata": {
+      "category": "ATM",
+      "timing": "24 Hours",
+      "services": [
+        "UCO Bank ATM"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b64",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.412876173278924,
+          85.44210204629994
+        ]
+      ],
+      "centroid": [
+        23.412876173278924,
+        85.44210204629994
+      ],
+      "entrance": [
+        23.412876173278924,
+        85.44210204629994
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b65",
+    "type": "Parking",
+    "name": "Vehicle stand",
+    "coordinates": {
+      "latitude": 23.413234439848736,
+      "longitude": 85.4413131550474
+    },
+    "metadata": {
+      "category": "Parking",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Vehicle stand"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b65",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.413234439848736,
+          85.4413131550474
+        ]
+      ],
+      "centroid": [
+        23.413234439848736,
+        85.4413131550474
+      ],
+      "entrance": [
+        23.413234439848736,
+        85.4413131550474
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b66",
+    "type": "Facility",
+    "name": "Upper Lawn",
+    "coordinates": {
+      "latitude": 23.413835915528814,
+      "longitude": 85.43934048308685
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Upper Lawn"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b66",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.413835915528814,
+          85.43934048308685
+        ]
+      ],
+      "centroid": [
+        23.413835915528814,
+        85.43934048308685
+      ],
+      "entrance": [
+        23.413835915528814,
+        85.43934048308685
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b67",
+    "type": "Facility",
+    "name": "Lawn Circle",
+    "coordinates": {
+      "latitude": 23.41492875230243,
+      "longitude": 85.43909574353651
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Lawn Circle"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b67",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41492875230243,
+          85.43909574353651
+        ]
+      ],
+      "centroid": [
+        23.41492875230243,
+        85.43909574353651
+      ],
+      "entrance": [
+        23.41492875230243,
+        85.43909574353651
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b68",
+    "type": "Facility",
+    "name": "Lower Lawn",
+    "coordinates": {
+      "latitude": 23.41592804933937,
+      "longitude": 85.43868804777914
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Lower Lawn"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b68",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41592804933937,
+          85.43868804777914
+        ]
+      ],
+      "centroid": [
+        23.41592804933937,
+        85.43868804777914
+      ],
+      "entrance": [
+        23.41592804933937,
+        85.43868804777914
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b69",
+    "type": "Facility",
+    "name": "PMC",
+    "coordinates": {
+      "latitude": 23.415253845372227,
+      "longitude": 85.44046634643496
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "PMC"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b69",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.415253845372227,
+          85.44046634643496
+        ]
+      ],
+      "centroid": [
+        23.415253845372227,
+        85.44046634643496
+      ],
+      "entrance": [
+        23.415253845372227,
+        85.44046634643496
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b6a",
+    "type": "Facility",
+    "name": "Ghosh Bagan",
+    "coordinates": {
+      "latitude": 23.415052696155353,
+      "longitude": 85.44177812246488
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Ghosh Bagan"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b6a",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.415052696155353,
+          85.44177812246488
+        ]
+      ],
+      "centroid": [
+        23.415052696155353,
+        85.44177812246488
+      ],
+      "entrance": [
+        23.415052696155353,
+        85.44177812246488
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b6b",
+    "type": "Facility",
+    "name": "BIT Park",
+    "coordinates": {
+      "latitude": 23.415123436502594,
+      "longitude": 85.44287800067626
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "BIT Park"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b6b",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.415123436502594,
+          85.44287800067626
+        ]
+      ],
+      "centroid": [
+        23.415123436502594,
+        85.44287800067626
+      ],
+      "entrance": [
+        23.415123436502594,
+        85.44287800067626
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b6c",
+    "type": "Facility",
+    "name": "Bit mesra club house",
+    "coordinates": {
+      "latitude": 23.41421633718051,
+      "longitude": 85.44322874861938
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Bit mesra club house"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b6c",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41421633718051,
+          85.44322874861938
+        ]
+      ],
+      "centroid": [
+        23.41421633718051,
+        85.44322874861938
+      ],
+      "entrance": [
+        23.41421633718051,
+        85.44322874861938
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b6d",
+    "type": "Facility",
+    "name": "Shiv Mandir",
+    "coordinates": {
+      "latitude": 23.413413719162243,
+      "longitude": 85.44508226716576
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Shiv Mandir"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b6d",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.413413719162243,
+          85.44508226716576
+        ]
+      ],
+      "centroid": [
+        23.413413719162243,
+        85.44508226716576
+      ],
+      "entrance": [
+        23.413413719162243,
+        85.44508226716576
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b6e",
+    "type": "Facility",
+    "name": "Vice Chancellor's Residence",
+    "coordinates": {
+      "latitude": 23.41693608645179,
+      "longitude": 85.44036502686825
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Vice Chancellor's Residence"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b6e",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41693608645179,
+          85.44036502686825
+        ]
+      ],
+      "centroid": [
+        23.41693608645179,
+        85.44036502686825
+      ],
+      "entrance": [
+        23.41693608645179,
+        85.44036502686825
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b6f",
+    "type": "Facility",
+    "name": "Director's Residence",
+    "coordinates": {
+      "latitude": 23.417065203544563,
+      "longitude": 85.4410654305858
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Director's Residence"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b6f",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.417065203544563,
+          85.4410654305858
+        ]
+      ],
+      "centroid": [
+        23.417065203544563,
+        85.4410654305858
+      ],
+      "entrance": [
+        23.417065203544563,
+        85.4410654305858
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b70",
+    "type": "Facility",
+    "name": "Institute Guest House (IGH)",
+    "coordinates": {
+      "latitude": 23.41688550436767,
+      "longitude": 85.43640142002181
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Institute Guest House (IGH)"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b70",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41688550436767,
+          85.43640142002181
+        ]
+      ],
+      "centroid": [
+        23.41688550436767,
+        85.43640142002181
+      ],
+      "entrance": [
+        23.41688550436767,
+        85.43640142002181
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b71",
+    "type": "Facility",
+    "name": "BIT Dispensary",
+    "coordinates": {
+      "latitude": 23.41550233046553,
+      "longitude": 85.43538648127833
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "BIT Dispensary"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b71",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41550233046553,
+          85.43538648127833
+        ]
+      ],
+      "centroid": [
+        23.41550233046553,
+        85.43538648127833
+      ],
+      "entrance": [
+        23.41550233046553,
+        85.43538648127833
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b72",
+    "type": "Facility",
+    "name": "MS Xerox",
+    "coordinates": {
+      "latitude": 23.416844039425758,
+      "longitude": 85.43572515197049
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "MS Xerox"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b72",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.416844039425758,
+          85.43572515197049
+        ]
+      ],
+      "centroid": [
+        23.416844039425758,
+        85.43572515197049
+      ],
+      "entrance": [
+        23.416844039425758,
+        85.43572515197049
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b73",
+    "type": "Facility",
+    "name": "Pahan Tea Shop",
+    "coordinates": {
+      "latitude": 23.417677770670668,
+      "longitude": 85.43412803820685
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Pahan Tea Shop"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b73",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.417677770670668,
+          85.43412803820685
+        ]
+      ],
+      "centroid": [
+        23.417677770670668,
+        85.43412803820685
+      ],
+      "entrance": [
+        23.417677770670668,
+        85.43412803820685
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b74",
+    "type": "Facility",
+    "name": "Chhotu Dhaba",
+    "coordinates": {
+      "latitude": 23.419337997441573,
+      "longitude": 85.4334364790424
+    },
+    "metadata": {
+      "category": "Cafeteria",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Chhotu Dhaba",
+        "Food",
+        "Coffee"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b74",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.419337997441573,
+          85.4334364790424
+        ]
+      ],
+      "centroid": [
+        23.419337997441573,
+        85.4334364790424
+      ],
+      "entrance": [
+        23.419337997441573,
+        85.4334364790424
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b75",
+    "type": "Facility",
+    "name": "Staff Quarters",
+    "coordinates": {
+      "latitude": 23.42047223177716,
+      "longitude": 85.43270395219884
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Staff Quarters"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b75",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.42047223177716,
+          85.43270395219884
+        ]
+      ],
+      "centroid": [
+        23.42047223177716,
+        85.43270395219884
+      ],
+      "entrance": [
+        23.42047223177716,
+        85.43270395219884
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b76",
+    "type": "Facility",
+    "name": "ITALIAN PIZZA HUB BIT MESRA",
+    "coordinates": {
+      "latitude": 23.421023208590796,
+      "longitude": 85.43383331203104
+    },
+    "metadata": {
+      "category": "Cafeteria",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "ITALIAN PIZZA HUB BIT MESRA"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b76",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.421023208590796,
+          85.43383331203104
+        ]
+      ],
+      "centroid": [
+        23.421023208590796,
+        85.43383331203104
+      ],
+      "entrance": [
+        23.421023208590796,
+        85.43383331203104
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b77",
+    "type": "Facility",
+    "name": "DOWN SOUTH CAFE",
+    "coordinates": {
+      "latitude": 23.421417948696458,
+      "longitude": 85.43363647023772
+    },
+    "metadata": {
+      "category": "Cafeteria",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "DOWN SOUTH CAFE"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b77",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.421417948696458,
+          85.43363647023772
+        ]
+      ],
+      "centroid": [
+        23.421417948696458,
+        85.43363647023772
+      ],
+      "entrance": [
+        23.421417948696458,
+        85.43363647023772
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b78",
+    "type": "Facility",
+    "name": "DELHI SHAKE & JUICE",
+    "coordinates": {
+      "latitude": 23.421310292421452,
+      "longitude": 85.43360257694891
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "DELHI SHAKE & JUICE"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b78",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.421310292421452,
+          85.43360257694891
+        ]
+      ],
+      "centroid": [
+        23.421310292421452,
+        85.43360257694891
+      ],
+      "entrance": [
+        23.421310292421452,
+        85.43360257694891
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b79",
+    "type": "Facility",
+    "name": "R. Tech Solution",
+    "coordinates": {
+      "latitude": 23.42118349714074,
+      "longitude": 85.43360648771299
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "R. Tech Solution"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b79",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.42118349714074,
+          85.43360648771299
+        ]
+      ],
+      "centroid": [
+        23.42118349714074,
+        85.43360648771299
+      ],
+      "entrance": [
+        23.42118349714074,
+        85.43360648771299
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b7a",
+    "type": "Facility",
+    "name": "Staff Garage",
+    "coordinates": {
+      "latitude": 23.42190201951457,
+      "longitude": 85.43230204857466
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Staff Garage"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b7a",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.42190201951457,
+          85.43230204857466
+        ]
+      ],
+      "centroid": [
+        23.42190201951457,
+        85.43230204857466
+      ],
+      "entrance": [
+        23.42190201951457,
+        85.43230204857466
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b7b",
+    "type": "Facility",
+    "name": "BIT OUTER PARK",
+    "coordinates": {
+      "latitude": 23.422678421637148,
+      "longitude": 85.43242406041936
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "BIT OUTER PARK"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b7b",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.422678421637148,
+          85.43242406041936
+        ]
+      ],
+      "centroid": [
+        23.422678421637148,
+        85.43242406041936
+      ],
+      "entrance": [
+        23.422678421637148,
+        85.43242406041936
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b7c",
+    "type": "Facility",
+    "name": "Technosoft BIT",
+    "coordinates": {
+      "latitude": 23.423545172805582,
+      "longitude": 85.43258387770854
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Technosoft BIT"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b7c",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.423545172805582,
+          85.43258387770854
+        ]
+      ],
+      "centroid": [
+        23.423545172805582,
+        85.43258387770854
+      ],
+      "entrance": [
+        23.423545172805582,
+        85.43258387770854
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b7d",
+    "type": "Facility",
+    "name": "Oval Ground",
+    "coordinates": {
+      "latitude": 23.425693428005218,
+      "longitude": 85.43147899674467
+    },
+    "metadata": {
+      "category": "Sports Complex",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Oval Ground"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b7d",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.425693428005218,
+          85.43147899674467
+        ]
+      ],
+      "centroid": [
+        23.425693428005218,
+        85.43147899674467
+      ],
+      "entrance": [
+        23.425693428005218,
+        85.43147899674467
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b7e",
+    "type": "Facility",
+    "name": "BIT Mesra Main Gate",
+    "coordinates": {
+      "latitude": 23.42633438644036,
+      "longitude": 85.43152611959987
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "BIT Mesra Main Gate"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b7e",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.42633438644036,
+          85.43152611959987
+        ]
+      ],
+      "centroid": [
+        23.42633438644036,
+        85.43152611959987
+      ],
+      "entrance": [
+        23.42633438644036,
+        85.43152611959987
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b7f",
+    "type": "Facility",
+    "name": "Sports Complex",
+    "coordinates": {
+      "latitude": 23.41411,
+      "longitude": 85.43695
+    },
+    "metadata": {
+      "category": "Sports Complex",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Sports Complex"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b7f",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41411,
+          85.43695
+        ]
+      ],
+      "centroid": [
+        23.41411,
+        85.43695
+      ],
+      "entrance": [
+        23.41411,
+        85.43695
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b80",
+    "type": "Facility",
+    "name": "Indoor Badminton Court",
+    "coordinates": {
+      "latitude": 23.424977170300426,
+      "longitude": 85.43466152302385
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Indoor Badminton Court"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b80",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.424977170300426,
+          85.43466152302385
+        ]
+      ],
+      "centroid": [
+        23.424977170300426,
+        85.43466152302385
+      ],
+      "entrance": [
+        23.424977170300426,
+        85.43466152302385
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b81",
+    "type": "Facility",
+    "name": "Basketball Court",
+    "coordinates": {
+      "latitude": 23.426683847016275,
+      "longitude": 85.43465709449583
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Basketball Court"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b81",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.426683847016275,
+          85.43465709449583
+        ]
+      ],
+      "centroid": [
+        23.426683847016275,
+        85.43465709449583
+      ],
+      "entrance": [
+        23.426683847016275,
+        85.43465709449583
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b82",
+    "type": "Facility",
+    "name": "Fujiya Ground",
+    "coordinates": {
+      "latitude": 23.4241929995645,
+      "longitude": 85.4342760692793
+    },
+    "metadata": {
+      "category": "Sports Complex",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Fujiya Ground"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b82",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.4241929995645,
+          85.4342760692793
+        ]
+      ],
+      "centroid": [
+        23.4241929995645,
+        85.4342760692793
+      ],
+      "entrance": [
+        23.4241929995645,
+        85.4342760692793
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b83",
+    "type": "Facility",
+    "name": "RK Food Truck",
+    "coordinates": {
+      "latitude": 23.416752586814262,
+      "longitude": 85.43787979415323
+    },
+    "metadata": {
+      "category": "Cafeteria",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "RK Food Truck"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b83",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.416752586814262,
+          85.43787979415323
+        ]
+      ],
+      "centroid": [
+        23.416752586814262,
+        85.43787979415323
+      ],
+      "entrance": [
+        23.416752586814262,
+        85.43787979415323
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b84",
+    "type": "Facility",
+    "name": "G P Birla Auditorium",
+    "coordinates": {
+      "latitude": 23.422535466848743,
+      "longitude": 85.43860954834906
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "G P Birla Auditorium"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b84",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.422535466848743,
+          85.43860954834906
+        ]
+      ],
+      "centroid": [
+        23.422535466848743,
+        85.43860954834906
+      ],
+      "entrance": [
+        23.422535466848743,
+        85.43860954834906
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b85",
+    "type": "Facility",
+    "name": "OC (Outer Co-operative)",
+    "coordinates": {
+      "latitude": 23.423781650618356,
+      "longitude": 85.43960335672473
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "OC (Outer Co-operative)"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b85",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.423781650618356,
+          85.43960335672473
+        ]
+      ],
+      "centroid": [
+        23.423781650618356,
+        85.43960335672473
+      ],
+      "entrance": [
+        23.423781650618356,
+        85.43960335672473
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b86",
+    "type": "Facility",
+    "name": "Friends Store",
+    "coordinates": {
+      "latitude": 23.42389344961244,
+      "longitude": 85.439469332832
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "Friends Store"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b86",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.42389344961244,
+          85.439469332832
+        ]
+      ],
+      "centroid": [
+        23.42389344961244,
+        85.439469332832
+      ],
+      "entrance": [
+        23.42389344961244,
+        85.439469332832
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b87",
+    "type": "Facility",
+    "name": "BIT HIGH SCHOOL +2",
+    "coordinates": {
+      "latitude": 23.42562638354884,
+      "longitude": 85.44002070180734
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "BIT HIGH SCHOOL +2"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b87",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.42562638354884,
+          85.44002070180734
+        ]
+      ],
+      "centroid": [
+        23.42562638354884,
+        85.44002070180734
+      ],
+      "entrance": [
+        23.42562638354884,
+        85.44002070180734
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b88",
+    "type": "Facility",
+    "name": "BIT MESRA campus river view",
+    "coordinates": {
+      "latitude": 23.4240498723775,
+      "longitude": 85.44469154037516
+    },
+    "metadata": {
+      "category": "Other",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "BIT MESRA campus river view"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b88",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.4240498723775,
+          85.44469154037516
+        ]
+      ],
+      "centroid": [
+        23.4240498723775,
+        85.44469154037516
+      ],
+      "entrance": [
+        23.4240498723775,
+        85.44469154037516
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b89",
+    "type": "Facility",
+    "name": "BIT Laxmi Canteen",
+    "coordinates": {
+      "latitude": 23.41376269108293,
+      "longitude": 85.43616498209812
+    },
+    "metadata": {
+      "category": "Cafeteria",
+      "timing": "09:00 AM - 08:00 PM",
+      "services": [
+        "BIT Laxmi Canteen"
+      ],
+      "osm_id": "synth_6a568699129884d82fab3b89",
+      "osm_type": "way",
+      "geometry": [
+        [
+          23.41376269108293,
+          85.43616498209812
+        ]
+      ],
+      "centroid": [
+        23.41376269108293,
+        85.43616498209812
+      ],
+      "entrance": [
+        23.41376269108293,
+        85.43616498209812
+      ]
+    }
+  },
+  {
+    "id": "6a568699129884d82fab3b8a",
     "type": "Landmark",
     "name": "Main Gate",
     "coordinates": {
@@ -1941,7 +4896,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a8519",
+    "id": "6a568699129884d82fab3b8b",
     "type": "Landmark",
     "name": "Clock Tower",
     "coordinates": {
@@ -1970,7 +4925,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a851a",
+    "id": "6a568699129884d82fab3b8c",
     "type": "Landmark",
     "name": "Central Lawn",
     "coordinates": {
@@ -1999,7 +4954,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a851b",
+    "id": "6a568699129884d82fab3b8d",
     "type": "Landmark",
     "name": "Saraswati Temple (Statue)",
     "coordinates": {
@@ -2028,7 +4983,7 @@
     }
   },
   {
-    "id": "6a4a96825016593b081a851c",
+    "id": "6a568699129884d82fab3b8e",
     "type": "Landmark",
     "name": "Main Fountain",
     "coordinates": {

@@ -6,7 +6,7 @@ class AddWebsiteRequest(BaseModel):
     url: str = Field(..., description="The absolute HTTP/HTTPS URL of the website to index")
 
 class WebsiteResponse(BaseModel):
-    id: str = Field(..., alias="_id", description="Unique ID of the indexed website")
+    id: str = Field(..., validation_alias="_id", description="Unique ID of the indexed website")
     url: str = Field(..., description="Normalized URL of the website")
     domain: str = Field(..., description="Domain name of the website")
     title: str = Field(..., description="Extracted HTML title")

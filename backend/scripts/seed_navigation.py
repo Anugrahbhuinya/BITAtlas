@@ -112,25 +112,25 @@ async def seed_data():
     
     for bj in buildings_json:
         name = bj["name"]
-        osm_type, osm_id, code = OSM_MAP.get(name, ("way", 0, "BLDG"))
+        osm_type, osm_id, code = OSM_MAP.get(name, ("way", 0, bj.get("building_code", "BLDG")))
         
         building_doc = {
-            "building_code": code,
+            "building_code": bj.get("building_code", code),
             "building_name": name,
             "description": bj["description"],
             "category": bj["category"] if bj["category"] != "Student Services" else "Student Services",
-            "latitude": 0.0,
-            "longitude": 0.0,
+            "latitude": bj.get("latitude", 0.0),
+            "longitude": bj.get("longitude", 0.0),
             "osm_type": osm_type,
             "osm_id": osm_id,
-            "aliases": get_aliases_for_building(name, code),
-            "address": bj["location"],
+            "aliases": bj.get("aliases", get_aliases_for_building(name, code)),
+            "address": bj.get("location") or bj.get("address") or "BIT Mesra Campus",
             "image": None,
             "opening_hours": "09:00 - 17:30" if bj["category"] != "Administrative" else "09:30 - 17:00",
             "contact": "0651-2275444",
             "departments": [name.replace("Department of ", "")] if "Department" in name else [],
             "entrances": [
-                {"name": "Main Entrance", "latitude": 0.0, "longitude": 0.0}
+                {"name": "Main Entrance", "latitude": bj.get("latitude", 0.0), "longitude": bj.get("longitude", 0.0)}
             ],
             "floors": [0, 1, 2],
             "accessibility": {
@@ -138,7 +138,10 @@ async def seed_data():
                 "has_elevator": True if code in ["MAIN", "LIB", "CSE", "RIC"] else False,
                 "has_ramp": True
             },
-            "metadata": {},
+            "metadata": {
+                "search_keywords": bj.get("search_keywords", []),
+                "associated_building": bj.get("associated_building", None)
+            },
             "created_at": datetime.now(timezone.utc),
             "updated_at": datetime.now(timezone.utc)
         }
@@ -155,24 +158,24 @@ async def seed_data():
         
     for hj in hostels_json:
         name = hj["name"]
-        osm_type, osm_id, code = OSM_MAP.get(name, ("way", 0, "HSTL"))
+        osm_type, osm_id, code = OSM_MAP.get(name, ("way", 0, hj.get("building_code", "H" + str(hj["id"]))))
         
         building_doc = {
-            "building_code": code,
+            "building_code": hj.get("building_code", code),
             "building_name": name,
             "description": hj["description"],
             "category": "Residential",
-            "latitude": 0.0,
-            "longitude": 0.0,
+            "latitude": hj.get("latitude", 0.0),
+            "longitude": hj.get("longitude", 0.0),
             "osm_type": osm_type,
             "osm_id": osm_id,
-            "aliases": get_aliases_for_building(name, code),
+            "aliases": hj.get("aliases", get_aliases_for_building(name, code)),
             "address": "Hostel Zone, BIT Mesra Campus",
             "image": None,
             "opening_hours": "24 Hours (Gate closes at 22:00 for students)",
             "contact": "0651-2275000",
             "departments": [],
-            "entrances": [{"name": "Main Gate", "latitude": 0.0, "longitude": 0.0}],
+            "entrances": [{"name": "Main Gate", "latitude": hj.get("latitude", 0.0), "longitude": hj.get("longitude", 0.0)}],
             "floors": [0, 1, 2, 3],
             "accessibility": {
                 "wheelchair_accessible": True,
@@ -181,7 +184,9 @@ async def seed_data():
             },
             "metadata": {
                 "capacity": hj["capacity"],
-                "gender": hj["gender"]
+                "gender": hj["gender"],
+                "search_keywords": hj.get("search_keywords", []),
+                "associated_building": hj.get("associated_building", None)
             },
             "created_at": datetime.now(timezone.utc),
             "updated_at": datetime.now(timezone.utc)
@@ -243,24 +248,26 @@ async def seed_data():
         
     for fj in facilities_json:
         name = fj["name"]
-        osm_type, osm_id, cat = FACILITY_MAP.get(name, ("way", 0, "Other"))
+        osm_type, osm_id, cat = FACILITY_MAP.get(name, ("way", 0, fj.get("category", "Other")))
         
         facility_doc = {
             "name": name,
-            "latitude": 0.0,
-            "longitude": 0.0,
+            "latitude": fj.get("latitude", 0.0),
+            "longitude": fj.get("longitude", 0.0),
             "osm_type": osm_type,
             "osm_id": osm_id,
-            "coordinates": {"latitude": 0.0, "longitude": 0.0},
+            "coordinates": {"latitude": fj.get("latitude", 0.0), "longitude": fj.get("longitude", 0.0)},
             "category": cat,
-            "timing": fj["timings"],
-            "services": [name] + (["OPD", "Pharmacy"] if "Medical" in name else []) + (["Food", "Coffee"] if "Nescafe" in name or "Cafeteria" in name else []) + (["Withdrawal", "Deposit"] if "SBI" in name else []),
+            "timing": fj.get("timings") or fj.get("timing") or "",
+            "services": [name] + (["OPD", "Pharmacy"] if "Medical" in name or "Pharmacy" in name else []) + (["Food", "Coffee"] if "Nescafe" in name or "Cafeteria" in name or "Cafe" in name or "Dhaba" in name or "Factory" in name else []) + (["Withdrawal", "Deposit"] if "SBI" in name else []),
             "accessibility": {
                 "wheelchair_accessible": True
             },
             "metadata": {
-                "description": fj["description"],
-                "location_details": fj["location"]
+                "description": fj.get("description", ""),
+                "location_details": fj.get("location", ""),
+                "search_keywords": fj.get("search_keywords", []),
+                "associated_building": fj.get("associated_building", None)
             }
         }
         await db.facilities.insert_one(facility_doc)

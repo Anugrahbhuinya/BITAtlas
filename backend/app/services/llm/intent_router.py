@@ -27,6 +27,7 @@ ROUTING_TABLE = {
     "Summarization": "Gemini",
     "Explanation": "Gemini",
     "Conversation Follow-up": "Conversation Memory",
+    "FacultyDirectory": "Faculty Service",
     "Unknown": "Hybrid Strategy"
 }
 
@@ -59,6 +60,26 @@ def classify_intent(query: str, history: list | None = None) -> str:
     query_clean = query.strip()
     query_lower = query_clean.lower()
     
+    # 0. Faculty Directory Search
+    faculty_keywords = [
+        "faculty", "faculties", "professor", "professors", "prof", "profs", 
+        "teacher", "teachers", "researcher", "researchers", "hod", "head of department"
+    ]
+    is_fac = False
+    if any(re.search(r"\b" + re.escape(kw) + r"s?\b", query_lower) for kw in faculty_keywords):
+        is_fac = True
+    elif any(phrase in query_lower for phrase in ["who teaches", "who is teaching", "teaches", "teaching by", "who works on", "working on", "interested in", "research interest"]):
+        is_fac = True
+    elif re.search(r"\bdr\.?\s+[a-zA-Z]", query_lower):
+        is_fac = True
+    elif any(kw in query_lower for kw in ["email of", "email for", "phone of", "phone number of", "contact of"]):
+        is_fac = True
+    elif any(phrase in query_lower for phrase in ["who is in room", "who is in office", "who is in building", "who occupies", "office of", "building of"]):
+        is_fac = True
+
+    if is_fac:
+        return "FacultyDirectory"
+
     # 1. Greeting
     if is_greeting(query_lower):
         return "Greeting"
@@ -119,8 +140,10 @@ def classify_intent(query: str, history: list | None = None) -> str:
         "cnn", "resnet", "neural network", "deep learning", "machine learning", 
         "gradient descent", "transformer", "backpropagation", "supervised learning", 
         "unsupervised learning", "overfitting", "underfitting", "nlp", "llm", 
-        "loss function", "activation function", "weights", "biases", "epochs"
+        "loss function", "activation function", "weights", "biases", "epochs",
+        "episodic memory", "ai agent", "ai agents", "agentic", "agent", "reinforcement learning"
     ]
+
     if any(k in query_lower for k in ai_keywords):
         return "AI / ML Concept"
 
@@ -194,8 +217,9 @@ def make_routing_decision(query: str, rag_result: dict | None = None, history: l
             reason = "No RAG result available, falling back to Gemini"
             
     # Gating and flag resolution
-    requires_rag = (primary_service in ["Hybrid RAG", "Website Knowledge", "Hybrid Strategy", "Calendar Service", "Workspace Service"])
-    requires_gemini = (primary_service == "Gemini")
+    requires_rag = (primary_service in ["Hybrid RAG", "Website Knowledge", "Hybrid Strategy", "Calendar Service", "Workspace Service"]) or (intent in ["AI / ML Concept", "AI / ML Concepts", "Programming Help", "Engineering Concept", "Explanation", "Reasoning", "Comparison", "Summarization"])
+    requires_gemini = (primary_service == "Gemini") or (primary_service in ["Hybrid RAG", "Website Knowledge", "Hybrid Strategy"])
+
     requires_navigation = (intent == "Navigation")
     requires_workspace = (intent in ["Student Workspace", "Student Dashboard"])
     requires_conversation_memory = (intent == "Conversation Follow-up")

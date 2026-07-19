@@ -4,69 +4,123 @@
     "name": "Artificial Intelligence and Machine Learning",
     "description": "Focuses on core AI methodologies, deep neural networks, natural language processing, cognitive robotics, and computer vision. Strong research programs in health informatics and autonomous navigation.",
     "building": "Research and Innovation Center, 2nd Floor",
-    "programs": ["B.Tech in Artificial Intelligence", "M.Tech in Intelligent Systems", "PhD in AI and Machine Learning"]
+    "programs": [
+      "B.Tech in Artificial Intelligence",
+      "M.Tech in Intelligent Systems",
+      "PhD in AI and Machine Learning"
+    ]
   },
   {
     "id": 2,
     "name": "Computer Science and Engineering",
     "description": "Covers theoretical computer science, computer networks, algorithms, databases, cybersecurity, and cloud computing. The department features active research publications and robust placement records.",
     "building": "Department of Computer Science and Engineering Building",
-    "programs": ["B.Tech in Computer Science and Engineering", "M.Tech in Computer Science", "MCA (Master of Computer Applications)", "PhD in Computer Science"]
+    "programs": [
+      "B.Tech in Computer Science and Engineering",
+      "M.Tech in Computer Science",
+      "MCA (Master of Computer Applications)",
+      "PhD in Computer Science"
+    ]
   },
   {
     "id": 3,
     "name": "Information Technology",
     "description": "Focuses on software engineering, web technologies, database management systems, data science, and cloud system administration. Research areas include internet of things (IoT) and big data analysis.",
     "building": "Department of Computer Science and Engineering Building, West Wing",
-    "programs": ["B.Tech in Information Technology", "M.Tech in Information Technology", "PhD in IT and Software Engineering"]
+    "programs": [
+      "B.Tech in Information Technology",
+      "M.Tech in Information Technology",
+      "PhD in IT and Software Engineering"
+    ]
   },
   {
     "id": 4,
     "name": "Electronics and Communication Engineering",
     "description": "Engages in microelectronics, semiconductor devices, VLSI systems, wireless communication, microwave engineering, and signal processing research. Collaborates with space agencies and defense labs.",
     "building": "Main Academic Block, East Wing",
-    "programs": ["B.Tech in Electronics and Communication Engineering", "M.Tech in VLSI Design", "M.Tech in Wireless Communication", "PhD in Electronics"]
+    "programs": [
+      "B.Tech in Electronics and Communication Engineering",
+      "M.Tech in VLSI Design",
+      "M.Tech in Wireless Communication",
+      "PhD in Electronics"
+    ]
   },
   {
     "id": 5,
     "name": "Electrical Engineering",
     "description": "Focuses on power electronics, electrical machines, smart grids, control engineering, and renewable energy integration. Active research in electric vehicle drivetrains and power quality analysis.",
     "building": "Main Academic Block, West Wing",
-    "programs": ["B.Tech in Electrical and Electronics Engineering", "M.Tech in Power Systems", "M.Tech in Control Systems", "PhD in Electrical Engineering"]
+    "programs": [
+      "B.Tech in Electrical and Electronics Engineering",
+      "M.Tech in Power Systems",
+      "M.Tech in Control Systems",
+      "PhD in Electrical Engineering"
+    ]
   },
   {
     "id": 6,
     "name": "Mechanical Engineering",
     "description": "Conducts training in fluid dynamics, solid mechanics, thermal engineering, thermodynamics, robotics, and product CAD design. High student participation in FSAE automotive competitions.",
     "building": "Mechanical Engineering Block, southern campus area",
-    "programs": ["B.Tech in Mechanical Engineering", "M.Tech in Design of Mechanical Systems", "M.Tech in Heat Power Engineering", "PhD in Mechanical Sciences"]
+    "programs": [
+      "B.Tech in Mechanical Engineering",
+      "M.Tech in Design of Mechanical Systems",
+      "M.Tech in Heat Power Engineering",
+      "PhD in Mechanical Sciences"
+    ]
   },
   {
     "id": 7,
     "name": "Civil Engineering",
     "description": "Focuses on structural engineering, environmental engineering, soil mechanics, GIS and remote sensing, and transportation systems. Serves regional state departments for consultation.",
     "building": "Civil Engineering Block, adjacent to the workshops",
-    "programs": ["B.Tech in Civil Engineering", "M.Tech in Structural Engineering", "M.Tech in Soil Mechanics", "PhD in Civil Engineering"]
+    "programs": [
+      "B.Tech in Civil Engineering",
+      "M.Tech in Structural Engineering",
+      "M.Tech in Soil Mechanics",
+      "PhD in Civil Engineering"
+    ]
   },
   {
     "id": 8,
     "name": "Biotechnology",
     "description": "Integrates biology and engineering, working on biosensors, plant tissue culture, molecular genetics, bioinformatics, bioreactor modeling, and drug design studies.",
     "building": "Research and Innovation Center, South Wing",
-    "programs": ["B.Tech in Biotechnology", "M.Sc in Biotechnology", "M.Tech in Biotechnology", "PhD in Bio-Engineering"]
+    "programs": [
+      "B.Tech in Biotechnology",
+      "M.Sc in Biotechnology",
+      "M.Tech in Biotechnology",
+      "PhD in Bio-Engineering"
+    ],
+    "latitude": 23.410076340855365,
+    "longitude": 85.44059385852306,
+    "Latitude": 23.410076340855365,
+    "Longitude": 85.44059385852306
   },
   {
     "id": 9,
     "name": "Chemical Engineering",
     "description": "Specializes in reaction engineering, transport phenomena, chemical process simulations, petroleum refining, and polymer science. Active in green fuel and recycling research.",
     "building": "Chemical Engineering Annex Block",
-    "programs": ["B.Tech in Chemical Engineering", "M.Tech in Chemical Engineering", "PhD in Chemical Sciences and Processing"]
+    "programs": [
+      "B.Tech in Chemical Engineering",
+      "M.Tech in Chemical Engineering",
+      "PhD in Chemical Sciences and Processing"
+    ],
+    "latitude": 23.41103689514296,
+    "longitude": 85.44052355070316,
+    "Latitude": 23.41103689514296,
+    "Longitude": 85.44052355070316
   },
   {
     "id": 10,
     "name": "Management Studies",
     "description": "Delivers business management concepts, marketing strategies, financial analytics, operations research, organizational behavior, and entrepreneurship skills training.",
     "building": "MBA Block, behind the Central Library",
-    "programs": ["MBA (Master of Business Administration)", "BBA (Bachelor of Business Administration)", "PhD in Management Studies"]
+    "programs": [
+      "MBA (Master of Business Administration)",
+      "BBA (Bachelor of Business Administration)",
+      "PhD in Management Studies"
+    ]
   }
 ]

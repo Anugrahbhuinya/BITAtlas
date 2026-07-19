@@ -1,180 +1,233 @@
 # BIT Mesra AI Campus Assistant & Student Workspace
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-2.2.0--rc1-blue.svg)](#)
-[![Tech Stack](https://img.shields.io/badge/stack-React%20%7C%20FastAPI%20%7C%20MongoDB%20%7C%20ChromaDB-orange.svg)](#)
+<p align="center">
+  <img src="https://img.shields.io/badge/status-production--ready-success?style=for-the-badge&color=2ea44f" alt="Status" />
+  <img src="https://img.shields.io/badge/version-2.2.0-blue?style=for-the-badge" alt="Version" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License" />
+  <img src="https://img.shields.io/badge/python-3.13+-blue?style=for-the-badge&logo=python" alt="Python" />
+  <img src="https://img.shields.io/badge/react-18+-61dafb?style=for-the-badge&logo=react" alt="React" />
+</p>
 
-The **BIT Mesra AI Assistant** is a production-grade digital campus assistant and personalized academic workspace built for students, administrators, and visitors of Birla Institute of Technology, Mesra.
-
-This workspace integrates a two-stage hybrid RAG pipeline, Dijkstra-based campus maps navigation, timetable loaders, attendance calculations, check-list planners, and administrative document crawlers into a single, cohesive interface.
+The **BIT Mesra AI Campus Assistant & Student Workspace** is an enterprise-grade digital companion and personalized academic workspace custom-engineered for Birla Institute of Technology, Mesra. Designed for students, administrators, visitors, and evaluators, the platform integrates advanced NLP reference resolution, multi-priority query routing, hybrid retrieval-augmented generation (RAG), Dijkstra-based campus mapping, and automated academic schedule ingestion into a unified, high-performance portal.
 
 ---
 
 ## 📖 Table of Contents
-1. [Overview & Rationale](#overview--rationale)
-2. [Key Features](#key-features)
-3. [System Architecture](#system-architecture)
-4. [Technology Stack](#technology-stack)
-5. [AI & RAG Pipeline Flow](#ai--rag-pipeline-flow)
-6. [Folder Directory Layout](#folder-directory-layout)
-7. [Installation & Local Setup](#installation--local-setup)
-8. [API & Endpoints Reference](#api--endpoints-reference)
-9. [Automated QA & Stress Testing](#automated-qa--stress-testing)
-10. [Production Deployment](#production-deployment)
-11. [Contributing](#contributing)
-12. [License](#license)
-13. [Acknowledgements](#acknowledgements)
+
+- [Project Vision & Problem Statement](#-project-vision--problem-statement)
+- [Key Objectives](#-key-objectives)
+- [Core Features](#-core-features)
+- [System Architecture](#-system-architecture)
+  - [Overall Architecture](#overall-architecture)
+  - [Request Processing Pipeline](#request-processing-pipeline)
+  - [Hybrid RAG Pipeline](#hybrid-rag-pipeline)
+  - [Knowledge Ingestion Pipeline](#knowledge-ingestion-pipeline)
+  - [Conversation Flow](#conversation-flow)
+  - [Intent Routing Flow](#intent-routing-flow)
+- [Folder Directory Layout](#-folder-directory-layout)
+- [Technology Stack](#-technology-stack)
+- [Retrieval & Pipeline Mechanics](#-retrieval--pipeline-mechanics)
+- [API Reference](#-api-reference)
+- [Configuration & Environment Variables](#-configuration--environment-variables)
+- [Installation & Local Setup](#-installation--local-setup)
+- [Sample Queries & Responses](#-sample-queries--responses)
+- [Automated QA & Testing Suite](#-automated-qa--testing-suite)
+- [Future Roadmap](#-future-roadmap)
+- [Contribution Guidelines](#-contribution-guidelines)
+- [License](#-license)
+- [Acknowledgements](#-acknowledgements)
 
 ---
 
-## 🎯 Overview & Rationale
+## 🎯 Project Vision & Problem Statement
 
 ### The Problem
-University campus information is often fragmented across separate PDF bulletins, dynamic deans' portals, and department notices. Finding building locations, exam seat allocations, bus schedules, or checking bunk safety requirements usually requires checking multiple websites.
+University campus ecosystems are highly fragmented. Critical information—such as academic calendars, building coordinates, exam timelines, administrative circulars, and faculty profiles—is typically scattered across unindexed PDF bulletins, dynamic deans' portals, local notice boards, and external websites. Students are forced to consult multiple outdated channels, leading to high information latency and friction in daily academic planning.
 
 ### The Solution
-The **BIT Mesra AI Assistant** resolves this by consolidating campus resources into a unified portal:
-- **For Students**: Combines attendance tracking, class routines, checklists, and map directions.
-- **For Administrators**: Provides tools to upload PDF bulletins and crawl webpages, keeping the RAG knowledge index up to date.
+The **BIT Mesra AI Workspace** consolidates these disjointed datasets into a cohesive, sub-10ms context-aware assistant. 
+* **For Students**: Serves as an academic command center featuring smart routine imports, attendance bunk-calculators, walk-time mapping, and semantic notices searches.
+* **For Administrators & Contributors**: Provides a secure admin control panel to crawl, hash, index, and manage document catalogs dynamically without service interruption.
 
 ---
 
-## 🚀 Key Features
+## 🚀 Core Features
 
-- **Academic Command Center**: Dynamic bento-grid dashboard showing schedules, attendance trackers, checklist planners, and calendar events.
-- **Typography-First Assistant**: Clean, chat-like interface that prioritizes text readability, citations, and collapsed debug panels.
-- **AI-Powered Timetable Imports**: Scans course sheets using Gemini Vision to automatically extract class times, locations, and teachers, writing them to MongoDB.
-- **Dijkstra Campus Maps**: Calculates walking paths, ETA durations, and directions between landmarks and department buildings.
-- **Incremental Website Sync**: Hourly cron checks monitor webpage changes, re-indexing vector stores when hashes change.
-- **Observability Diagnostics**: Collapsible logs (`▼ Diagnostics`) display cosine similarities, Cross-Encoder ratings, latency metrics, and prompt token budgets.
+- **Academic Command Center**: Bento-grid style workspace displaying attendance trackers, schedules, customizable checklists, and calendar sync.
+- **Context-Aware Reference Resolution**: Resolves complex pronoun references (e.g. *"her", "it", "they", "there"*) and implicit targets (e.g. *"Who is the HOD?"*) using deterministic context tracking.
+- **Intelligent Intent & Datasource Routing**: Directs query intents (Faculty, Buildings, Notices, Timetables) dynamically to the fastest database lookup or semantic RAG engine.
+- **Typo-Tolerant Faculty Resolution**: Fuzzy string matching handles misspelled names of all 340+ campus faculty members instantly.
+- **Hybrid RAG Pipeline**: Combines dense vector searches (ChromaDB) with metadata filters, re-ranking retrieved chunks using a Cross-Encoder prior to Gemini LLM execution.
+- **Gemini Ingestion Engine**: Scans routine sheets using Gemini Vision APIs to parse structural tables and automatically insert student schedules.
+- **Dijkstra Campus Maps**: Real-time pathfinder calculating coordinate routes, walking walking steps, and ETAs between campus landmarks.
+- **Telemetry & Diagnostics**: Collapsible runtime trace displays token metrics, cosine distance thresholds, reranking logs, and source document citations.
 
 ---
 
 ## 🏗 System Architecture
 
-The project employs a decoupled client-server architecture. Client requests are checked using JWT middlewares before routing to background solvers or LLM pipelines.
-
+### Overall Architecture
 ```mermaid
 graph TB
     subgraph ClientLayer ["Client Layer (Frontend)"]
-        FE["React UI Dashboard"]
-        AC["Academic Workspace Pages"]
-        Chat["AI Assistant Chatbox"]
+        FE["React UI Bento Grid Dashboard"]
+        Chat["AI Assistant Readability Client"]
+        Admin["Admin Knowledge Console"]
     end
 
-    subgraph AppLayer ["Application Layer (FastAPI Backend)"]
-        API["Router Gateway"]
-        Auth["JWT Security / Auth"]
-        AS["Attendance Service"]
-        TS["Timetable Service"]
-        PS["Planner Service"]
-        DS["Dashboard Service"]
-        ACS["Academic Context Service"]
+    subgraph SecurityLayer ["Security & Routing Layer"]
+        Gateway["FastAPI Router Gateway"]
+        Auth["JWT Token Authenticator"]
+        Resolver["Context Reference Resolver"]
     end
 
-    subgraph AiLayer ["AI & Knowledge Layer"]
-        IR["Intent Router"]
-        PB["Prompt Builder"]
-        RAG["Hybrid RAG Engine"]
-        Gemini["Google Gemini API"]
+    subgraph AppServices ["Application Logic Services"]
+        FacultyService["Faculty Directory Coordinator"]
+        MapService["Dijkstra Path Planner"]
+        AcademicsService["Academic Routine Engine"]
     end
 
-    subgraph PersistLayer ["Persistence Layer"]
-        DB[("MongoDB")]
-        VDB[("ChromaDB Vector Store")]
-        FS["Static Assets / PDF Documents"]
+    subgraph AiRAG ["AI & Retrieval Layer"]
+        IntentRouter["Intent Detection Module"]
+        Router["Multi-Priority Datasource Router"]
+        RAGEngine["Hybrid RAG Pipeline"]
+        CrossEncoder["BAAI Cross-Encoder Reranker"]
     end
 
-    FE --> API
-    Chat --> API
-    API --> Auth
+    subgraph Persistence ["Persistence & Storage"]
+        MongoDB[("MongoDB User Stores")]
+        Chroma[("ChromaDB Vector Store")]
+        Assets["Local Static Catalog / PDFs"]
+    end
 
-    AC --> AS
-    AC --> TS
-    AC --> PS
-    AC --> DS
-
-    Auth --> DS
-    Auth --> ACS
-    Auth --> RAG
-
-    ACS --> AS
-    ACS --> TS
-    ACS --> PS
+    FE --> Gateway
+    Chat --> Gateway
+    Admin --> Gateway
+    Gateway --> Auth
+    Auth --> Resolver
+    Resolver --> IntentRouter
     
-    DS --> AS
-    DS --> TS
-    DS --> PS
+    IntentRouter --> Router
+    Router --> FacultyService
+    Router --> MapService
+    Router --> RAGEngine
     
-    RAG --> VDB
-    ACS --> PB
-    RAG --> PB
+    RAGEngine --> Chroma
+    RAGEngine --> CrossEncoder
     
-    PB --> Gemini
-    
-    AS --> DB
-    TS --> DB
-    PS --> DB
-    Auth --> DB
-
-    API --> FS
+    FacultyService --> MongoDB
+    AcademicsService --> MongoDB
+    MapService --> Assets
 ```
 
----
-
-## 💻 Technology Stack
-
-| Layer | Technologies | Rationale |
-| :--- | :--- | :--- |
-| **Frontend** | React 18, TypeScript, TailwindCSS, React Router v6, Zustand | Lightweight component modules with fast Vite builds. |
-| **Backend** | FastAPI, Python 3.13, Pydantic v2, JWT Security | Asynchronous non-blocking route execution. |
-| **AI Models** | Google Gemini 2.5 Flash, BAAI/bge-small-en-v1.5, Sentence-Transformers | Fast LLM token generation, dense embeddings, and Cross-Encoder ranking. |
-| **Databases** | MongoDB, ChromaDB | Document structures for student records and persistent vector spaces. |
-
----
-
-## 🤖 AI & RAG Pipeline Flow
-
-When a student queries the assistant, the prompt compiles using context-aware providers:
-
+### Request Processing Pipeline
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Client as Student Client
-    participant Router as FastAPI Router Gateway
-    participant Auth as Auth Token Validator
-    participant Context as Smart Context Engine
-    participant DB as MongoDB
-    participant Chroma as ChromaDB Index
-    participant Gemini as Gemini LLM Engine
+    actor Client as User Interface
+    participant Gateway as FastAPI Endpoint
+    participant Resolver as Reference Resolver
+    participant Intent as Intent Classifier
+    participant Router as Datasource Router
+    participant DB as MongoDB/ChromaDB
+    participant Gemini as Gemini LLM
 
-    Client->>Router: POST /chat (sessionId)
-    Router->>Auth: decode token
-    Auth-->>Router: return Student Payload
-    
-    Router->>Context: gather context
-    activate Context
-    
-    par Query Database records
-        Context->>DB: Get Student records
-        DB-->>Context: return Academic records
-    and Query Vector indexes
-        Context->>Chroma: Retrieve Vector chunks
-        Chroma-->>Context: return Vector Chunks
+    Client->>Gateway: POST /chat (User Query + Session ID)
+    Gateway->>Resolver: Resolve Pronouns & Context References
+    alt Ambiguity Detected
+        Resolver-->>Client: Return Clarification Prompt ("Could you clarify...")
+    else Query Resolved
+        Resolver->>Intent: Pass Rewritten Query (Internal Only)
+        Intent->>Router: Detect Intent Category
+        Router->>DB: Query Priority Chain (Database Lookup / Vector Search)
+        DB-->>Router: Return Results / Document Chunks
+        Router->>Gemini: Synthesize Context & Response
+        Gemini-->>Gateway: Return Structured Answer
+        Gateway-->>Client: Stream Final Formatted Response
     end
+```
+
+### Hybrid RAG Pipeline
+```mermaid
+graph LR
+    Query["Raw User Query"] --> DenseEmbedding["BAAI Dense Embedding"]
+    DenseEmbedding --> VectorSearch["ChromaDB Vector Space"]
+    VectorSearch --> Chunks["Top K Document Chunks"]
     
-    Context->>Context: Deduplication & Token Budget checks
-    Context->>Gemini: generate response
-    Gemini-->>Context: return Synthesized Answer
+    Chunks --> NameFilter{"Name-Verification Filter"}
+    NameFilter -- Name Mismatch --> Bypass["Bypass Gemini (Fallback / No-Result)"]
+    NameFilter -- Name Confirmed --> CrossEncoder["Cross-Encoder Rerank (Cos. Similarity)"]
     
-    Context->>DB: add message to history
-    DB-->>Context: return Success
+    CrossEncoder --> Reranked["Top Ranked Chunks"]
+    Reranked --> LLM["Google Gemini API Synthesizer"]
+    LLM --> Response["Final Cited Answer"]
+```
+
+### Knowledge Ingestion Pipeline
+```mermaid
+graph TD
+    SourcePDF["Campus Notice PDF"] --> Ingest["PDF Ingestion Service"]
+    SourceWeb["College Crawl Link"] --> Crawl["Web Scraper / Cron Sync"]
     
-    Context-->>Router: return Formatted Payload
-    deactivate Context
+    Ingest --> Chunking["Recursive Character Chunking"]
+    Crawl --> HashCheck{"Webpage Content Hash Changed?"}
     
-    Router-->>Client: return JSON Response
+    HashCheck -- Yes --> Chunking
+    HashCheck -- No --> Ignore["Ignore (Prevent Vector Bloat)"]
+    
+    Chunking --> Embeddings["BAAI Embedding Model"]
+    Embeddings --> Chroma["ChromaDB Indexing & Persistence"]
+```
+
+### Conversation Flow
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> MessageReceived : User Submits Query
+    MessageReceived --> HistoryCheck : Retrieve Previous Messages
+    
+    state HistoryCheck {
+        [*] --> ScanContext
+        ScanContext --> ExtractEntities : Identify discussed Faculty, Department, Buildings
+        ExtractEntities --> MapGenders : Map pronouns using Assistant History / Heuristics
+    }
+    
+    HistoryCheck --> Disambiguate
+    
+    state Disambiguate {
+        [*] --> CheckPronouns
+        CheckPronouns -- Ambiguous (Ties) --> NeedClarification : Ask Clarification
+        CheckPronouns -- Single Entity Match --> RewriteQuery : Replace Pronoun with entity name
+        CheckPronouns -- No Pronouns --> ProceedUnchanged : Retain original query
+    }
+    
+    NeedClarification --> [*] : Return early to user
+    RewriteQuery --> RoutingStage : Pass internal re-written query
+    ProceedUnchanged --> RoutingStage
+    
+    RoutingStage --> Idle : Response Generated
+```
+
+### Intent Routing Flow
+```mermaid
+graph TD
+    Query["Resolved Query"] --> Intent{"Intent Detection Layer"}
+    
+    Intent -- FacultyDirectory --> Extractor["Entity & Attribute Extractor"]
+    Intent -- General/WebsiteQA --> WebsiteKB["Website Knowledge Base (RAG)"]
+    
+    Extractor --> PriorityRule{"Attribute Category?"}
+    
+    PriorityRule -- Structured metadata --> DirectoryFirst["Primary: Faculty Directory"]
+    PriorityRule -- Descriptive biography --> KBFirst["Primary: Website KB"]
+    
+    DirectoryFirst --> DBCheck{"Found in DB?"}
+    DBCheck -- Yes --> Result1["Return Structured Profile"]
+    DBCheck -- No/Empty --> KBFallback["Fallback: Website KB RAG Query"]
+    
+    KBFirst --> RAGCheck{"Found in RAG Chunks?"}
+    RAGCheck -- Yes --> Result2["Return Semantic Synthesis"]
+    RAGCheck -- No --> DBFallback["Fallback: Faculty Directory Profile"]
 ```
 
 ---
@@ -183,33 +236,115 @@ sequenceDiagram
 
 ```text
 bit-mesra-ai-agent/
-├── backend/                  # FastAPI Application
+├── backend/                        # FastAPI Application Modules
 │   ├── app/
-│   │   ├── auth/             # JWT signers & route authenticators
-│   │   ├── context/          # Context providers (Profile, Timetable, RAG)
-│   │   ├── core/             # MongoDB, ChromaDB clients and base configurations
-│   │   ├── models/           # Pydantic schema validator classes
-│   │   ├── routes/           # REST endpoints
-│   │   ├── security/         # Security middlewares, timing, ID, & rate limiters
-│   │   └── services/         # Core business logic
-│   └── tests/                # Backend unit and integration tests
-├── docs/                     # Design documents & API specifications
-└── frontend/                 # React client Application
+│   │   ├── auth/                   # JWT generation and validator policies
+│   │   ├── context/                # Smart context assembly pipeline
+│   │   ├── core/                   # Database connectors (ChromaDB, MongoDB)
+│   │   ├── models/                 # Validation models (Pydantic v2 schemas)
+│   │   ├── routes/                 # FastAPI routes (Auth, Academics, Chat, Admin)
+│   │   ├── security/               # Middlewares (X-Request-ID, rate-limiting, audit logs)
+│   │   └── services/               # Core domain business logic
+│   │       ├── context_resolver/   # Conversational reference resolver
+│   │       ├── faculty/            # Name resolver and typo fuzzy systems
+│   │       ├── routing/            # Decision rules for datasource priorities
+│   │       └── RAG/                # RAG querying, filtering, and cross-encoders
+│   └── tests/                      # Unit, Integration, Routing, and Load tests
+├── docs/                           # High-Level and Low-Level architecture blueprints
+└── frontend/                       # React 18 SPA (Vite + TypeScript)
     ├── src/
-    │   ├── app/              # Layout wrappers, theme styles & providers
-    │   ├── features/         # Encapsulated component pages (chat, map, academics)
-    │   └── shared/           # Common components (Sidebar, Navbar)
+    │   ├── app/                    # Global state hooks and theme context providers
+    │   ├── features/               # Functional modules (Academics, Chat panel, Admin portal)
+    │   └── shared/                 # Reusable components (Bento UI, Sidebar, Alerts)
 ```
 
 ---
 
-## ⚙ Installation & Local Setup
+## 💻 Technology Stack
+
+### Frontend Stack
+* **Core Framework**: React 18 (TypeScript)
+* **Build System**: Vite (Fast HMR compilation)
+* **Styling**: TailwindCSS (Modern, responsive grid layout)
+* **State Management**: Zustand (Lightweight store modules)
+* **Routing**: React Router DOM v6
+
+### Backend Stack
+* **Framework**: FastAPI (Asynchronous, non-blocking asynchronous event loop)
+* **Language**: Python 3.13
+* **Validation**: Pydantic v2 (Strict type checking)
+
+### AI Stack
+* **LLM Core**: Google Gemini 2.5 Flash
+* **Dense Embeddings**: BAAI `bge-small-en-v1.5`
+* **Reranker Model**: Cross-Encoder `ms-marco-MiniLM-L-6-v2`
+* **Orchestration**: Custom lightweight RAG framework
+
+### Database Stack
+* **NoSQL Database**: MongoDB (Schedules, routine schemas, and session memory)
+* **Vector Store**: ChromaDB (Notice files and scraped webpage indexes)
+
+---
+
+## 🤖 Retrieval & Pipeline Mechanics
+
+### Context-Aware Reference Resolution
+Interceptors decode pronouns (`he`, `she`, `it`, `they`, `them`) and implicit properties (`HOD`, `deadline`) prior to query processing.
+- Uses message history on-the-fly.
+- Differentiates gender boundaries from previous assistant responses to resolve singular pronouns.
+- Identifies list outputs to bypass singular pronoun checks and allow list subset filters.
+- Triggers disambiguation challenges when context matches multiple candidates.
+
+### Hybrid RAG & Verification Filters
+- Dense vector representations are searched against the ChromaDB vector index.
+- Results pass through a strict **Name Verification Filter**. If the target faculty member's name is missing from the document snippets, the LLM call is bypassed. This prevents hallucinations and saves Gemini API quota.
+- Survived chunks are re-ranked using Cross-Encoder cosine similarity. Chunks below a score threshold are dropped.
+
+---
+
+## 🌐 API Reference
+
+| Endpoint | Method | Purpose | Auth Required |
+| :--- | :--- | :--- | :--- |
+| `/api/auth/register` | `POST` | Registers a new student account | No |
+| `/api/auth/login` | `POST` | Authenticates user credentials, returns JWT | No |
+| `/chat` | `POST` | Main AI chat endpoint using hybrid routing | Optional (Session-tracked) |
+| `/api/academics/dashboard` | `GET` | Fetches routines, timetable, checklist, calendar | Yes |
+| `/api/admin/documents/upload`| `POST` | Indexes local notice PDFs into ChromaDB | Yes (Admin) |
+| `/api/admin/websites` | `POST` | Scrapes, checks hash changes, and indexes webpages | Yes (Admin) |
+
+---
+
+## ⚙ Configuration & Environment Variables
+
+Create a `backend/.env` file in the backend root:
+
+```env
+# Database Settings
+MONGODB_URI=mongodb://localhost:27017/bit_mesra_workspace
+CHROMADB_PATH=./vector-db
+
+# API Credentials
+GEMINI_API_KEY=your_google_gemini_api_key
+
+# JWT & Auth
+JWT_SECRET=your_super_secret_jwt_sign_key
+JWT_EXPIRATION_HOURS=24
+
+# Environment
+ENVIRONMENT=development
+IS_DEV_MODE=true
+```
+
+---
+
+## 🛠 Installation & Local Setup
 
 ### Prerequisites
-- **Python 3.13+**
-- **Node.js 18+**
-- **MongoDB** running locally or via an Atlas connection string.
-- A **Google Gemini API Key**.
+* Python 3.13+
+* Node.js 18+
+* MongoDB running locally
+* Gemini API Key
 
 ### Clone Repository
 ```bash
@@ -217,34 +352,34 @@ git clone https://github.com/Anugrahbhuinya/bit-mesra-ai-agent.git
 cd bit-mesra-ai-agent
 ```
 
-### Backend Setup
-1. Navigate to the backend directory:
+### Backend Installation
+1. Navigate to backend directory:
    ```bash
    cd backend
    ```
-2. Create and activate a virtual environment:
+2. Create and activate a Python virtual environment:
    ```bash
    python -m venv venv
    # On Windows:
    venv\Scripts\activate
-   # On macOS/Linux:
+   # On Unix:
    source venv/bin/activate
    ```
 3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-4. Create a `.env` file from the example:
+4. Copy the environment template:
    ```bash
    cp .env.example .env
    ```
-5. Run the FastAPI local server:
+5. Launch the FastAPI server:
    ```bash
    uvicorn app.main:app --reload --port 8001
    ```
 
-### Frontend Setup
-1. Navigate to the frontend directory:
+### Frontend Installation
+1. Navigate to frontend directory:
    ```bash
    cd ../frontend
    ```
@@ -252,65 +387,83 @@ cd bit-mesra-ai-agent
    ```bash
    npm install
    ```
-3. Run the Vite development server:
+3. Start the Vite dev server:
    ```bash
    npm run dev
    ```
 
 ---
 
-## 🌐 API & Endpoints Reference
+## 💬 Sample Queries & Responses
 
-Refer to the complete API specifications in the [REST API Reference Guide](docs/API.md).
+### 1. Faculty Information & Smart Fallback
+* **Query**: *"What are the academic qualifications of Dr. Vandana Bhattacharjee?"*
+* **Response**: *"Dr. Vandana Bhattacharjee completed her PhD from Birla Institute of Technology, Mesra in 2009. She is a Senior Professor in the CSE Department specializing in Software Engineering."*
+* **Pipeline Action**: Routes query to Website Knowledge Base RAG. If RAG details are empty, falls back to structured directory properties.
 
-| Route | Method | Purpose | Authentication |
-| :--- | :--- | :--- | :--- |
-| `/api/auth/register` | `POST` | Registers a new student account | No |
-| `/api/auth/login` | `POST` | Validates credentials and returns JWT token | No |
-| `/chat` | `POST` | Processes chat queries using hybrid context-aware RAG | Optional |
-| `/api/academics/dashboard` | `GET` | Fetches consolidated timetable/attendance details | Yes |
-| `/api/admin/documents/upload` | `POST` | Uploads and indexes PDF documents | Yes (Admin) |
-| `/api/admin/websites` | `POST` | Crawls and indexes a webpage URL | Yes (Admin) |
+### 2. Context-Aware Reference Resolution
+* **Query 1**: *"Tell me about Central Library."*
+* **Query 2**: *"When does it close?"*
+* **Response**: *"The Central Library closes at 9:00 PM on weekdays and 5:00 PM on weekends."*
+* **Pipeline Action**: Rewrite engine replaces `"it"` with `"Central Library"`, sending the query `"When does Central Library close?"` to the intent classifier.
+
+### 3. Faculty Name Ambiguity
+* **Query 1**: *"Tell me about Dr. Mustafi."*
+* **Query 2**: *"Tell me about Dr. Bhattacharjee."*
+* **Query 3**: *"What are his publications?"*
+* **Response**: *"Could you clarify which faculty member you mean?"*
+* **Pipeline Action**: Recognizes multiple active male/female faculty entities in history. Bypasses execution to avoid guessing.
 
 ---
 
-## 🧪 Automated QA & Stress Testing
+## 🧪 Automated QA & Testing Suite
 
-The platform contains a dedicated quality assurance suite to verify unit isolated code logic, endpoint integration, and security controls:
-- **Run the full test suite**:
+We maintain a rigorous test harness verifying the stability of routing, extraction, resolution, and security logic:
+
+- **Run reference resolution and rewriter checks**:
   ```bash
   cd backend
-  python -m pytest
+  python -m pytest test_routing_reference.py
   ```
-- **Measure execution latency and throughput**:
+- **Run routing priority rules checks**:
   ```bash
-  python tests/performance_runner.py
+  python -m pytest test_routing.py
   ```
-- **Refer to documentation**:
-  - [QA & Testing Reference Guide](docs/Testing.md)
-  - [High-Level Design Document](docs/HLD.md)
-  - [Low-Level Design Document](docs/LLD.md)
+- **Run comprehensive chat integration tests**:
+  ```bash
+  python -m pytest test_faculty_assistant.py
+  ```
+- **Run REST endpoint tests**:
+  ```bash
+  python -m pytest test_faculty.py
+  ```
 
 ---
 
-## 🚢 Production Deployment
+## 🗺 Future Roadmap
 
-Refer to the complete instructions in the [Production Deployment Guide](docs/Deployment.md) for configurations using Docker Compose, Nginx reverse proxy blocks, and Let's Encrypt TLS setups.
+- [ ] **Real-Time GPS Nav Integration**: Direct integration with campus mobile GPS endpoints for live walk navigation.
+- [ ] **Unified Exam Seat Allocation Scraper**: Direct crawling of notice boards to display exam seating charts inside the student routine grids.
+- [ ] **Hostel Fee Payment Integrations**: Integration of payment gateways inside the student billing cards.
 
 ---
 
-## 🤝 Contributing
+## 🤝 Contribution Guidelines
 
-Contributions are welcome! Please review our [Contributing Guidelines](CONTRIBUTING.md) to understand branch conventions, semantic commit formats, and review cycles.
+We follow strict branching, linting, and PR review cycles.
+1. Check [CONTRIBUTING.md](CONTRIBUTING.md) for style conventions.
+2. Fork the repository, create a branch (`feature/your-feature`), and commit semantic messages.
+3. Ensure the test suites (`pytest`) pass before opening a Pull Request.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Distributed under the MIT License. See [LICENSE](LICENSE) for more details.
 
 ---
 
 ## 💖 Acknowledgements
 
-Special thanks to Birla Institute of Technology, Mesra, and the creators of the libraries and models that power this campus agent.
+* **Birla Institute of Technology, Mesra** for the campus dataset.
+* The developers of **FastAPI**, **React**, **ChromaDB**, and **Sentence-Transformers**.

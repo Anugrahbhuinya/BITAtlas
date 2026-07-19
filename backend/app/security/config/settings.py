@@ -37,8 +37,8 @@ class BaseSecuritySettings:
     
     # Gemini configurations
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
-    GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
-    GEMINI_TIMEOUT: float = float(os.getenv("GEMINI_TIMEOUT", "10.0"))
+    GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    GEMINI_TIMEOUT: float = float(os.getenv("GEMINI_TIMEOUT", "30.0"))
     GEMINI_MAX_RETRIES: int = int(os.getenv("GEMINI_MAX_RETRIES", "1"))
     GEMINI_RETRY_DELAY: float = float(os.getenv("GEMINI_RETRY_DELAY", "1.0"))
     
@@ -48,7 +48,7 @@ class BaseSecuritySettings:
     
     # Input Constraints & Resource Protection
     MAX_CONTENT_LENGTH: int = int(os.getenv("MAX_CONTENT_LENGTH", "5242880")) # 5MB payload limit
-    MAX_PROMPT_SIZE: int = int(os.getenv("MAX_PROMPT_SIZE", "5000"))
+    MAX_PROMPT_SIZE: int = int(os.getenv("MAX_PROMPT_SIZE", "50000"))
     ROUTING_CONFIDENCE_THRESHOLD: float = float(os.getenv("ROUTING_CONFIDENCE_THRESHOLD", "0.45"))
     DEBUG_RAG: bool = os.getenv("DEBUG_RAG", "False").lower() == "true"
     

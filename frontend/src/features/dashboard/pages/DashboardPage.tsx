@@ -5,6 +5,7 @@ import {
   Clock, ArrowRight, Sparkles, CalendarRange 
 } from "lucide-react";
 import { useAuth } from "../../auth/hooks/useAuth";
+import { ImportantContactsCard } from "../components/ImportantContactsCard";
 
 export const DashboardPage = () => {
   const { currentUser } = useAuth();
@@ -197,29 +198,8 @@ export const DashboardPage = () => {
             </div>
           </div>
 
-          {/* Upcoming Events (Image Banner Card) */}
-          <div className="md:col-span-3 border border-outline-variant/40 bg-surface-container-low rounded-2xl overflow-hidden group flex flex-col justify-between hover:border-outline transition-colors duration-200">
-            <div className="h-28 w-full bg-surface-container relative shrink-0 select-none">
-              <div 
-                className="absolute inset-0 bg-cover bg-center" 
-                style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6jyadCZR1GKdeUoRfOjlvm72Bk2GeRQOuF71hOSO8zMsn14XRRXhTSLG9YsNz3vZVYBwfmxSXPMXOhETm1Qi2HfQJ8ehYPi43gwKD0an1BSh6Jru28pQ4x9KkN1PYdpK141vLNLt3mxsG-kAW9gVrx5lKpGMF7Uyr9uaLK6LdR-nNJnmnI7Bg--dtZhW_9elaxs5Nw-4keF6xKRxlS9pIVtagOs6pBCtE4ltX57co2tbZfceZZ620')" }}
-              ></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#18181B] to-transparent"></div>
-            </div>
-            <div className="p-6 flex-1 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-1.5 mb-1.5 text-[9px] font-extrabold text-primary uppercase tracking-wider select-none">
-                  <Sparkles size={10} />
-                  <span>Bitotsav '24</span>
-                </div>
-                <h4 className="text-xs font-bold text-primary mb-1 leading-tight uppercase tracking-wide">Volunteer Meetup</h4>
-                <p className="text-[10px] text-on-surface-variant mb-4 font-mono-code">CAT Hall &bull; 05:30 PM</p>
-              </div>
-              <button className="w-full py-2 border border-outline-variant hover:border-primary rounded-lg text-[9px] font-extrabold text-primary uppercase tracking-wider hover:bg-surface-variant transition-colors cursor-pointer active:scale-[0.98]">
-                I'm Interested
-              </button>
-            </div>
-          </div>
+          {/* Important Contacts Widget */}
+          <ImportantContactsCard />
 
         </div>
       </div>

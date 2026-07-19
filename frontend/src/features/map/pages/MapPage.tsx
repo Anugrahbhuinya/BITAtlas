@@ -14,6 +14,7 @@ import { navigationApi } from "../../navigation/services/navigationApi";
 import { useBuildings, useLandmarks, useFacilities } from "../../navigation/hooks/useNavigation";
 import { useLiveNavigationStore } from "../../navigation/store/useLiveNavigationStore";
 import type { Building, Facility, Landmark, Room, NavigationSearchResult, GraphNode, Route } from "../../navigation/types";
+import { useMapStore } from "../store/useMapStore";
 
 export const MapPage: React.FC = () => {
   const navigateTo = useNavigate();
@@ -21,6 +22,11 @@ export const MapPage: React.FC = () => {
   const { buildings, loading: buildingsLoading } = useBuildings();
   const { landmarks, loading: landmarksLoading } = useLandmarks();
   const { facilities, loading: facilitiesLoading } = useFacilities();
+
+  // Read selected location from store
+  const selectedLocationName = useMapStore((state) => state.selectedLocation);
+  const setSelectedLocation = useMapStore((state) => state.setSelectedLocation);
+
 
   // 2. Map Layer Visibility State (persisted to localStorage)
   const [showBuildings, setShowBuildings] = useState(() => {
@@ -60,6 +66,47 @@ export const MapPage: React.FC = () => {
   // 3. Selection States
   const [selectedEntity, setSelectedEntity] = useState<any | null>(null);
   const [selectedEntityType, setSelectedEntityType] = useState<"building" | "room" | "facility" | "landmark" | null>(null);
+
+  // 9. Sync selectedLocationName from chat search / Open Map Button clicks
+  useEffect(() => {
+    if (selectedLocationName && buildings.length > 0 && facilities.length > 0 && landmarks.length > 0) {
+      const targetNameLower = selectedLocationName.toLowerCase().trim();
+      
+      // Look for a matching building
+      let found = buildings.find(b => 
+        b.building_name?.toLowerCase() === targetNameLower ||
+        b.name?.toLowerCase() === targetNameLower ||
+        b.aliases?.some((a: string) => a.toLowerCase() === targetNameLower)
+      );
+      let foundType: "building" | "facility" | "landmark" | null = found ? "building" : null;
+
+      // Look for a matching facility if not found
+      if (!found) {
+        found = facilities.find(f => 
+          f.name?.toLowerCase() === targetNameLower ||
+          f.aliases?.some((a: string) => a.toLowerCase() === targetNameLower)
+        );
+        foundType = found ? "facility" : null;
+      }
+
+      // Look for a matching landmark if not found
+      if (!found) {
+        found = landmarks.find(l => 
+          l.name?.toLowerCase() === targetNameLower ||
+          l.aliases?.some((a: string) => a.toLowerCase() === targetNameLower)
+        );
+        foundType = found ? "landmark" : null;
+      }
+
+      if (found && foundType) {
+        setSelectedEntity(found);
+        setSelectedEntityType(foundType);
+        // Clear selected location in store to avoid re-triggering on future mounts
+        setSelectedLocation("");
+      }
+    }
+  }, [selectedLocationName, buildings, facilities, landmarks, setSelectedLocation]);
+
 
   // 4. Hover States
   const [hoveredEntity, setHoveredEntity] = useState<any | null>(null);

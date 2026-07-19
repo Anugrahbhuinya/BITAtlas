@@ -101,6 +101,10 @@ class RAGProvider(BaseContextProvider):
                 )
 
             documents: List[str] = rag_result.get("documents", [])
+            from app.core.config import IS_DEV_MODE
+            if IS_DEV_MODE:
+                logger.info(f"[DEV DEBUG] RAG Trace: Chunks retrieved: {len(documents)} raw chunks found.")
+
             confidence: float = float(rag_result.get("confidence", 1.0))
 
             # Navigation: filter unrelated chunks
@@ -121,6 +125,8 @@ class RAGProvider(BaseContextProvider):
                 limit = MAX_RAG_CHUNKS_DEFAULT
 
             selected_docs = documents[:limit]
+            if IS_DEV_MODE:
+                logger.info(f"[DEV DEBUG] RAG Trace: Chunks selected: {len(selected_docs)} chunks after filtering/limits.")
 
             if not selected_docs:
                 return SkippedProviderResult(

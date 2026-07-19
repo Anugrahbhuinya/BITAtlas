@@ -75,7 +75,7 @@ export const AdminWebsitesPage = () => {
         sync_enabled: !currentVal
       });
       showToast(`Auto sync ${!currentVal ? "enabled" : "disabled"}`, "info");
-      setWebsites(prev => prev.map(w => w.id === siteId ? { ...w, sync_enabled: !currentVal } : w));
+      setWebsites(prev => prev.map(w => (w.id === siteId || w._id === siteId) ? { ...w, sync_enabled: !currentVal } : w));
       // Refresh stats
       const statsResponse = await adminApi.get("/api/admin/websites/stats");
       setStats(statsResponse.data);
@@ -216,11 +216,18 @@ export const AdminWebsitesPage = () => {
     }
   };
 
-  const handleDeleteConfirm = async () => {
+  const handleDelete = async (purge: boolean) => {
     if (!siteToDelete) return;
+    const siteId = siteToDelete.id || siteToDelete._id;
+    console.log("[DEV DEBUG] Delete Trace: Delete handler receives siteToDelete ID:", siteId, "purge:", purge);
+    console.log("[DEV DEBUG] Delete Trace: DELETE URL:", `/api/admin/websites/${siteId}?purge=${purge}`);
     try {
-      await adminApi.delete(`/api/admin/websites/${siteToDelete.id}`);
-      showToast(`Website "${siteToDelete.title}" and its vectors deleted successfully.`, "success");
+      await adminApi.delete(`/api/admin/websites/${siteId}?purge=${purge}`);
+      if (purge) {
+        showToast(`Website "${siteToDelete.title}" and its vectors purged successfully.`, "success");
+      } else {
+        showToast(`Website "${siteToDelete.title}" metadata deleted. Content preserved.`, "success");
+      }
       fetchWebsites();
     } catch (e: any) {
       console.error("Failed to delete website", e);
@@ -236,7 +243,8 @@ export const AdminWebsitesPage = () => {
     if (!siteToReindex) return;
     setReindexingState("loading");
     try {
-      const response = await adminApi.post(`/api/admin/websites/${siteToReindex.id}/reindex`);
+      const siteId = siteToReindex.id || siteToReindex?._id || (siteToReindex as any)._id;
+      const response = await adminApi.post(`/api/admin/websites/${siteId}/reindex`);
       if (response.data.status === "Duplicate") {
         showToast("Reindexing complete: Content has not changed.", "info");
       } else {
@@ -434,7 +442,7 @@ export const AdminWebsitesPage = () => {
                         <input
                           type="checkbox"
                           checked={site.sync_enabled !== false}
-                          onChange={() => handleToggleSync(site.id, site.sync_enabled !== false)}
+                          onChange={() => handleToggleSync(site.id || site._id, site.sync_enabled !== false)}
                           className="w-4 h-4 text-blue-600 bg-slate-950 border-slate-800 rounded focus:ring-blue-500 cursor-pointer"
                         />
                       </div>
@@ -476,11 +484,11 @@ export const AdminWebsitesPage = () => {
                       <div className="flex items-center justify-end gap-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
                         <button
                           disabled={syncingSiteId !== null}
-                          onClick={() => handleManualSync(site.id, site.url)}
+                          onClick={() => handleManualSync(site.id || site._id, site.url)}
                           title="Sync update check now"
                           className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-indigo-400 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <RefreshCw className={`w-4 h-4 ${syncingSiteId === site.id ? "animate-spin" : ""}`} />
+                          <RefreshCw className={`w-4 h-4 ${syncingSiteId === (site.id || site._id) ? "animate-spin" : ""}`} />
                         </button>
                         <button
                           onClick={() => {
@@ -504,6 +512,9 @@ export const AdminWebsitesPage = () => {
                         </button>
                         <button
                           onClick={() => {
+                            console.log("[DEV DEBUG] Delete Trace: Website selected:", site.title);
+                            console.log("[DEV DEBUG] Delete Trace: Website object:", JSON.stringify(site));
+                            console.log("[DEV DEBUG] Delete Trace: Website ID:", site.id || site._id);
                             setSiteToDelete(site);
                             setDeleteDialogOpen(true);
                           }}
@@ -754,18 +765,95 @@ export const AdminWebsitesPage = () => {
       </AnimatePresence>
 
       {/* Delete Confirmation Dialog */}
-      <ConfirmationDialog
-        isOpen={deleteDialogOpen}
-        title="Delete Website Ingestion"
-        message={`Are you sure you want to delete the indexed website memory for "${siteToDelete?.title || ""}"? This will delete the metadata from the database and permanently purge all associated ChromaDB vector chunks. This action is irreversible.`}
-        confirmLabel="Purge Content"
-        cancelLabel="Keep Content"
-        onConfirm={handleDeleteConfirm}
-        onCancel={() => {
-          setSiteToDelete(null);
-          setDeleteDialogOpen(false);
-        }}
-      />
+      <AnimatePresence>
+        {deleteDialogOpen && siteToDelete && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => {
+                setSiteToDelete(null);
+                setDeleteDialogOpen(false);
+              }}
+              className="fixed inset-0 bg-slate-950/60 backdrop-blur-md"
+            />
+
+            {/* Modal body */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ type: "spring", duration: 0.3 }}
+              className="relative w-full max-w-md glass-panel rounded-2xl overflow-hidden shadow-2xl p-6 z-10 border border-slate-700/30"
+            >
+              {(() => {
+                console.log("[DEV DEBUG] Delete Trace: Modal receives siteToDelete ID:", siteToDelete.id || siteToDelete._id);
+                return null;
+              })()}
+              {/* Header */}
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-rose-500/10 rounded-lg border border-rose-500/20">
+                    <Trash2 className="w-5 h-5 text-rose-500" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-100">Delete Website Ingestion</h3>
+                </div>
+                <button
+                  onClick={() => {
+                    setSiteToDelete(null);
+                    setDeleteDialogOpen(false);
+                  }}
+                  className="p-1.5 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Message */}
+              <div className="space-y-3 mb-6">
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  How do you want to delete the indexed website memory for <strong className="text-slate-150 font-semibold">"{siteToDelete.title}"</strong>?
+                </p>
+                <div className="text-[11px] space-y-2 bg-slate-950/40 p-3.5 rounded-xl border border-slate-800/60 leading-relaxed">
+                  <p className="text-slate-350">
+                    <span className="font-bold text-indigo-400">Keep Content:</span> Deletes only the metadata and admin listing. The chatbot can <strong>still answer questions</strong> using this website's knowledge.
+                  </p>
+                  <p className="text-slate-355">
+                    <span className="font-bold text-rose-400">Purge Content:</span> Deletes everything, including ChromaDB vectors. The website content will <strong>no longer be searchable</strong>.
+                  </p>
+                </div>
+              </div>
+
+              {/* Action buttons */}
+              <div className="flex flex-wrap justify-end gap-2.5">
+                <button
+                  onClick={() => {
+                    setSiteToDelete(null);
+                    setDeleteDialogOpen(false);
+                  }}
+                  className="px-4 py-2 text-sm font-medium text-slate-400 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => handleDelete(false)}
+                  className="px-4 py-2 text-sm font-medium text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700/50 rounded-lg transition-colors cursor-pointer"
+                >
+                  Keep Content
+                </button>
+                <button
+                  onClick={() => handleDelete(true)}
+                  className="px-4 py-2 text-sm font-medium text-white bg-rose-600 hover:bg-rose-500 rounded-lg shadow-lg hover:shadow-rose-500/20 transition-all cursor-pointer"
+                >
+                  Purge Content
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* Reindex Confirmation Dialog */}
       <ConfirmationDialog

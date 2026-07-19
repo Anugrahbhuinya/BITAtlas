@@ -74,10 +74,10 @@ class ContextOrchestrator:
                 "Workspace": "student_workspace",
                 "Greeting": "general",
                 "Conversation Follow-up": "general",
-                "Campus Information": "general",
+                "Campus Information": "rag" if requires_rag else "general",
                 "Notice Retrieval": "general",
-                "Uploaded Document QA": "general",
-                "Website QA": "general",
+                "Uploaded Document QA": "rag" if requires_rag else "general",
+                "Website QA": "rag" if requires_rag else "general",
                 "AI / ML Concept": "educational",
                 "AI / ML Concepts": "educational",
                 "Programming Help": "educational",
@@ -91,9 +91,10 @@ class ContextOrchestrator:
                 "Document Question": "general",
                 "Website Question": "general",
                 "Follow-up Question": "general",
-                "Unknown": "general"
+                "Unknown": "rag" if requires_rag else "general"
             }
             return mapping.get(intent_name, "general")
+
 
         legacy_intent = map_to_legacy_intent(intent)
 

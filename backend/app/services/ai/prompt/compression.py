@@ -1,6 +1,7 @@
 import re
 from typing import Dict, List, Set
 from app.core.config import MAX_PROMPT_SIZE
+from app.services.ai.prompt.builder import deduplicate_context
 
 class PromptCompressor:
     """
@@ -89,33 +90,7 @@ class PromptCompressor:
         """
         Identifies and removes duplicate or overlapping knowledge base documents.
         """
-        if not text:
-            return ""
-
-        # RAG documents are usually separated by double newlines or block indicators
-        blocks = text.split("\n\n")
-        seen_blocks: List[str] = []
-
-        for block in blocks:
-            cleaned_block = block.strip()
-            if not cleaned_block:
-                continue
-
-            # Check if this block is already a substring of a seen block, or vice-versa
-            is_dup = False
-            for seen in seen_blocks:
-                if cleaned_block in seen:
-                    is_dup = True
-                    break
-                elif seen in cleaned_block:
-                    # The new block is longer/more complete. Replace the old one.
-                    seen_blocks.remove(seen)
-                    break
-            
-            if not is_dup:
-                seen_blocks.append(cleaned_block)
-
-        return "\n\n".join(seen_blocks)
+        return deduplicate_context(text)
 
     def deduplicate_lines(self, text: str) -> str:
         """

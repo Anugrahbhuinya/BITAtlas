@@ -36,8 +36,21 @@ def get_client() -> genai.Client:
             logger.error("GEMINI_API_KEY is not set in configuration!")
             raise ValueError("GEMINI_API_KEY is missing from environment/config")
         logger.info("Initializing singleton Google GenAI client.")
-        _client = genai.Client(api_key=GEMINI_API_KEY)
+        import httpx
+        timeout_config = httpx.Timeout(
+            connect=15.0,
+            read=float(GEMINI_TIMEOUT),
+            write=float(GEMINI_TIMEOUT),
+            pool=30.0
+        )
+        httpx_client = httpx.Client(timeout=timeout_config)
+        _client = genai.Client(
+            api_key=GEMINI_API_KEY,
+            http_options=types.HttpOptions(httpxClient=httpx_client)
+        )
+
     return _client
+
 
 def get_circuit_breaker_status() -> str:
     """Returns 'CLOSED' or 'OPEN' depending on circuit status and cooldown."""
@@ -121,12 +134,13 @@ def generate_response(prompt: str) -> str:
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     temperature=0.2,
-                    max_output_tokens=800,
-                    http_options=types.HttpOptions(
-                        timeout=int(GEMINI_TIMEOUT * 1000 * 3)  # Convert seconds → ms, tripled for slow connections
-                    )
+                    max_output_tokens=1500,
+                    thinking_config=types.ThinkingConfig(thinking_budget=0)
                 )
             )
+
+
+
             
             print("Gemini Response Received")
             print("====================================\n")

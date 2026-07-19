@@ -72,7 +72,7 @@ def rerank_documents(query: str, candidates: List[Tuple[Document, float]], k: in
     model, tokenizer = load_reranker()
     if model is None or tokenizer is None:
         logger.info("Reranking: No Cross-Encoder model available, using original scores.")
-        return sorted(candidates, key=lambda x: x[1])[:k]
+        return [(doc, score, 0.0) for doc, score in sorted(candidates, key=lambda x: x[1])[:k]]
         
     try:
         import torch
@@ -130,8 +130,8 @@ def rerank_documents(query: str, candidates: List[Tuple[Document, float]], k: in
         reranked.sort(key=lambda x: x[1])
         
         logger.info(f"Cross-Encoder reranked {len(candidates)} candidates ({len(pairs_to_compute)} computed, {len(candidates) - len(pairs_to_compute)} cached) in {time.time() - t0:.4f}s")
-        return [(doc, score) for doc, score, _ in reranked[:k]]
+        return [(doc, score, raw_score) for doc, score, raw_score in reranked[:k]]
         
     except Exception as e:
         logger.error(f"Error during Cross-Encoder reranking: {e}", exc_info=True)
-        return sorted(candidates, key=lambda x: x[1])[:k]
+        return [(doc, score, 0.0) for doc, score in sorted(candidates, key=lambda x: x[1])[:k]]

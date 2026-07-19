@@ -35,7 +35,7 @@ async def run_pipeline(url: str, created_by: str = "admin", overwrite_id: str | 
     domain = urlparse(normalized_url).netloc
 
     # 2. Download HTML
-    html_content = await crawl_single_page(normalized_url)
+    html_content = await crawl_single_page(normalized_url, original_url=url)
     if not html_content or not html_content.strip():
         raise ValueError("Crawled website content is empty.")
 

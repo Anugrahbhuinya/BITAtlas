@@ -18,13 +18,16 @@ interface Props {
 
 const locationMapping: Record<string, string> = {
   "cat hall": "CAT Hall",
+  "academic lecture hall": "CAT Hall",
   "central lecture hall": "CAT Hall",
-  "central library": "Library",
-  library: "Library",
-  "administrative building": "Main Building",
-  "main building": "Main Building",
-  "administrative block": "Main Building",
-  "institute administration offices": "Main Building",
+  "central library": "Central Library",
+  library: "Central Library",
+  "administrative building": "Main Administrative Building",
+  "main building": "Main Administrative Building",
+  "administrative block": "Main Administrative Building",
+  "institute administration offices": "Main Administrative Building",
+  "sports complex": "Sports Complex",
+  "hostel 7": "New Girls Hostel",
 };
 
 const navPatterns = [
@@ -63,9 +66,24 @@ export const MessageBubble = ({
     message.text.toLowerCase().includes(key)
   );
 
-  const detectedLocation = detectedKey
+  let detectedLocation = detectedKey
     ? locationMapping[detectedKey]
     : undefined;
+
+  if (!detectedLocation && allNodes.length > 0) {
+    const textLower = message.text.toLowerCase();
+    const matchedNode = allNodes.find((node) => {
+      const nodeNameLower = node.name.toLowerCase();
+      if (nodeNameLower.length > 4 && textLower.includes(nodeNameLower)) {
+        return true;
+      }
+      return false;
+    });
+    if (matchedNode) {
+      detectedLocation = matchedNode.name;
+    }
+  }
+
 
   const detectedActions = !isUser
     ? navPatterns.filter((p) => p.pattern.test(message.text))
@@ -281,21 +299,25 @@ export const MessageBubble = ({
                         <tr className="border-b border-outline-variant/40 text-on-surface-variant/60 font-bold uppercase tracking-wider text-left">
                           <th className="py-1.5 px-2">Rank</th>
                           <th className="py-1.5 px-2">Source / Title</th>
-                          <th className="py-1.5 px-2 font-mono">Sim</th>
-                          <th className="py-1.5 px-2 font-mono">Final</th>
+                          <th className="py-1.5 px-2 font-mono">Vector</th>
+                          <th className="py-1.5 px-2 font-mono">Cross-Enc</th>
+                          <th className="py-1.5 px-2 font-mono">Hybrid</th>
+                          <th className="py-1.5 px-2">Selected</th>
                           <th className="py-1.5 px-2">Decision Reason / Explanation</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {message.diagnostics.debug_rag.candidates.slice(0, 5).map((cand: { rank: number; source_type: string; title: string; raw_score: number; combined_score: number; explanation: string }, idx: number) => (
+                        {message.diagnostics.debug_rag.candidates.slice(0, 5).map((cand: { rank: number; source_type: string; title: string; raw_score: number; combined_score: number; explanation: string; vector_score?: number; cross_encoder_score?: number; hybrid_score?: number; final_selected?: string }, idx: number) => (
                           <tr key={idx} className="border-b border-outline-variant/20 hover:bg-surface-container-high transition-colors">
                             <td className="py-2 px-2 font-bold text-primary">#{cand.rank}</td>
                             <td className="py-2 px-2 max-w-[150px] truncate">
                               <span className="px-1 py-0.5 text-[8px] font-bold uppercase tracking-wide rounded bg-primary/10 text-primary mr-1.5">{cand.source_type}</span>
                               <span className="font-semibold text-on-surface" title={cand.title}>{cand.title}</span>
                             </td>
-                            <td className="py-2 px-2 font-mono text-on-surface-variant/80">{cand.raw_score.toFixed(3)}</td>
-                            <td className="py-2 px-2 font-mono text-on-surface-variant/80">{cand.combined_score.toFixed(3)}</td>
+                            <td className="py-2 px-2 font-mono text-on-surface-variant/80">{(cand.vector_score ?? cand.raw_score).toFixed(3)}</td>
+                            <td className="py-2 px-2 font-mono text-on-surface-variant/80">{(cand.cross_encoder_score ?? 0.0).toFixed(3)}</td>
+                            <td className="py-2 px-2 font-mono text-on-surface-variant/80">{(cand.hybrid_score ?? cand.combined_score).toFixed(3)}</td>
+                            <td className="py-2 px-2 font-bold text-on-surface-variant/80">{cand.final_selected ?? (idx < 2 ? "Yes" : "No")}</td>
                             <td className="py-2 px-2 italic text-on-surface-variant/70 text-[9px] max-w-[200px] truncate" title={cand.explanation}>{cand.explanation}</td>
                           </tr>
                         ))}

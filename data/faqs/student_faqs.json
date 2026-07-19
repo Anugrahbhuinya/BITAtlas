@@ -498,5 +498,65 @@
     "id": 100,
     "question": "Where can I find student notices about events and club activities?",
     "answer": "Student-related announcements are posted on notice boards at the Student Activity Center, the Central Library, hostel entrances, and through official student communication channels and social media handles run by the clubs."
+  },
+  {
+    "id": 101,
+    "question": "What should I do if my library card gets lost or misplaced?",
+    "answer": "Don't panic. Your library card contains your registered phone number, so if someone finds and returns it, the library may contact you.\n\nIf the card is not recovered, you must apply for a new library card.\n\nSteps:\n• Visit the library.\n• Go to the help desk.\n• Tell the staff that you want to apply for a new library card.\n• Pay the replacement fee of ₹500.\n\nNote:\n• A library card is compulsory.\n• It is checked during examinations.\n• It is also scanned while entering the library."
+  },
+  {
+    "id": 102,
+    "question": "How do I apply for Back Papers or a Short Semester?",
+    "answer": "Registration starts after the semester results are announced.\n\nSteps:\n• Login to the ERP Portal.\n• Go to Academic Functions.\n• Register for Back Papers or Short Semester.\n\nFor hostel accommodation:\n\nBoys:\n• Hostel 6\n• Hostel 7\n\nGirls:\n• Hostel 9\n\nDocuments Required:\n• Xerox copy of Course Registration\n• Xerox copy of Student ID Card\n\nHostel Procedure:\n• Visit the hostel clerk.\n• Submit the required documents.\n• Get the documents signed.\n• A room will be allotted for the Short Semester or until your regular hostel allotment."
+  },
+  {
+    "id": 103,
+    "question": "How can I borrow sports equipment from the Sports Complex?",
+    "answer": "During non-class hours, only limited sports equipment is available.\n\nAvailable Equipment:\n• Basketball\n• Football\n• Volleyball\n\nProcedure:\n• Visit the Sports Complex.\n• Find the sports staff member (usually an older person wearing a cap).\n• Request the ball you want.\n\nYou may also bring your own sports equipment.\n\nNote:\nPlease ensure that no institute property is damaged while playing."
+  },
+  {
+    "id": 104,
+    "question": "How can I stop my mess bill if I need to go home for more than two weeks without leaving my hostel room?",
+    "answer": "If your absence is for two weeks or more, you can temporarily stop your mess bill without vacating your hostel room.\n\nProcedure:\n• Write an application addressed to the Dean of Student Affairs (DSA).\n• Mention the reason and duration.\n• Get the application signed by the DSA.\n• Submit the signed application to the hostel/mess clerk.\n• Sign out from the mess for the approved duration.\n\nNote:\nThe request will only be approved if the reason is considered valid."
+  },
+  {
+    "id": 105,
+    "question": "What happens if my attendance goes below 75%?",
+    "answer": "First of all, don't panic.\n\nIf your attendance falls below 75%, your professor may mark you for attendance shortage.\n\nConsequences:\n• You may receive an F* grade due to attendance shortage.\n• You will have to register for the Short Semester during the summer break.\n\nShort Semester Credit Limit:\nYou can register for a maximum of 12 credits.\n\nExample:\nIf you have four subjects of four credits each (16 credits total), you can register only three subjects (12 credits) in one Short Semester.\n\nMedical Leave:\nIf your attendance is 65% or above, you may apply for Medical Leave through ERP with valid medical documents.\n\nLast Option:\nYou may politely request your professor not to award an F* for attendance shortage. The final decision rests with the faculty member."
+  },
+  {
+    "id": 106,
+    "question": "Where do I submit medical certificates?",
+    "answer": "Currently, medical certificates should be uploaded through ERP.\n\nIf a professor asks for a physical copy:\n\nProcedure:\n• Buy a medical certificate form from any Xerox shop near the BIT campus.\n• Fill in the required details.\n• Visit the Institute Dispensary with a valid medical prescription.\n• Get the form signed by the Medical Officer.\n• Get it signed by your Head of Department (HoD).\n• Submit it if requested by the faculty.\n\nIf approved, attendance for the missed classes may be considered."
+  },
+  {
+    "id": 107,
+    "question": "Can I receive Amazon or Flipkart deliveries?",
+    "answer": "Yes.\n\nDelivery Rules:\n• Delivery partners can come only up to the hostel main gate.\n• They are not allowed to enter the hostel or deliver directly to your room.\n• You must come outside and collect your parcel.\n\nLate Night Deliveries:\nBoys Hostel:\n• After 10:00 PM, delivery personnel cannot enter the hostel gate.\n\nGirls Hostel:\n• After 8:00 PM, delivery personnel cannot enter the hostel gate.\n\nIf your parcel arrives after these timings, you must collect it from the BIT Main Gate."
+  },
+  {
+    "id": 108,
+    "question": "How do I reset my ERP password or change my phone number/email?",
+    "answer": "Option 1:\nVisit the ERP Cell and request the required changes.\n\nOption 2:\nUse the ERP User Portal.\n\nSteps:\n• Go to the Library or another administrative area.\n• Connect to the institute Wi-Fi.\n• Open the ERP page.\n• Click on \"Access User Portal\" below the Sign In/Sign Out options.\n• Update your password or account details.\n\nImportant:\nThe User Portal cannot be accessed from the hostel network.\nYou must be connected to the institute's administrative network, such as the Library."
+  },
+  {
+    "id": 109,
+    "question": "Where can I buy lab coats or workshop dresses?",
+    "answer": "Students can purchase:\n\n• Lab Coats\n• Workshop Dresses\n• Other academic essentials\n\nLocation:\nOC (Outer Co-operative) Stores near the G.P. Birla Auditorium."
+  },
+  {
+    "id": 110,
+    "question": "How do I join clubs?",
+    "answer": "Every club has its own recruitment schedule.\n\nYou can stay updated by:\n\n• Following the club's official Instagram page.\n• Checking the recruitment links shared by the club.\n• Visiting the Events section under the Notices tab.\n\nEach club may have its own selection process such as interviews, tasks or auditions."
+  },
+  {
+    "id": 111,
+    "question": "What are the guest meal charges?",
+    "answer": "Guest Meal Coupons are available in the mess.\n\nCharges:\n\n• ₹100 Coupon → One Meal\n• ₹200 Coupon → Full Day Meal\n\nPurchase the coupon from the mess office or designated counter before meal timings."
+  },
+  {
+    "id": 112,
+    "question": "Can I repeat a subject to improve my grade?",
+    "answer": "No.\n\nYou cannot repeat a subject simply to improve your grade.\n\nYou can repeat a subject only if:\n• You fail the course.\n• You do not obtain the passing marks.\n\nWays to Clear the Subject:\n\n1. Makeup Examination\n• Maximum grade possible: C\n\n2. Short Semester\n• Maximum grade possible: A+\n\nNote:\nAfter clearing the subject, your academic record will show \"Yes\" under the Ever Back section, indicating that you had a backlog at some point."
   }
 ]
