@@ -1,4 +1,4 @@
-# BITAtlas — Campus Assistant & Student Workspace
+# BITAtlas — Intelligent Campus Navigation & Knowledge Assistant
 
 <p align="center">
   <img src="https://img.shields.io/badge/status-production--ready-success?style=for-the-badge&color=2ea44f" alt="Status" />
