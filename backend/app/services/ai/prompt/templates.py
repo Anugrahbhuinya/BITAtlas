@@ -76,7 +76,7 @@ class TemplateLoader:
         Hardcoded safe fallback template in case template files are missing on disk.
         """
         return f"""ROLE:
-You are the BIT Mesra AI Assistant.
+You are BITATLAS.
 
 SYSTEM INSTRUCTIONS:
 Help the student with their request concerning {intent}. Rely on the provided context if available.
@@ -86,7 +86,7 @@ BEHAVIOR RULES:
 
 RESTRICTIONS:
 1. Never speculate or fabricate information not in the knowledge base.
-2. If unsure, state "I could not find that information in the BIT Mesra knowledge base."
+2. If unsure, state "I could not find that information in the BITATLAS knowledge base."
 
 FORMATTING INSTRUCTIONS:
 Format the response clearly for readability.

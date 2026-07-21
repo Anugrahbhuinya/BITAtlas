@@ -1,6 +1,6 @@
 # Architecture Decision Records (ADR)
 
-This document contains Architecture Decision Records (ADRs) explaining key engineering choices, framework selections, and design decisions for the **BIT Mesra AI Workspace**.
+This document contains Architecture Decision Records (ADRs) explaining key engineering choices, framework selections, and design decisions for the **BITATLAS Workspace**.
 
 ---
 

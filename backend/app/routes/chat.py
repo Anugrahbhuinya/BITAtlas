@@ -770,7 +770,7 @@ async def _chat_impl(
         # Check for Greeting Bypass
         if routing_decision.intent == "Greeting":
             routing_decision_str = "Local Route (Greeting)"
-            greeting_ans = "Hello! I am the BIT Mesra AI Assistant. How can I help you today?"
+            greeting_ans = "Hello! I am BITATLAS. How can I help you today?"
             result = {
                 "type": "greeting",
                 "answer": greeting_ans
@@ -1007,7 +1007,7 @@ async def _chat_impl(
         # Check for Direct RAG / Local DB Bypasses
         if not routing_decision.requires_gemini:
             routing_decision_str = "Direct RAG"
-            ans_content = rag_result["answer"] if rag_result else "I could not find that information in the BIT Mesra knowledge base."
+            ans_content = rag_result["answer"] if rag_result else "I could not find that information in the BITATLAS knowledge base."
             
             from app.services.llm.response_formatter import append_citations_to_response
             from app.services.rag.retriever import get_last_retrieved_docs

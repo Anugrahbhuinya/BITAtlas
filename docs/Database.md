@@ -1,6 +1,6 @@
 # Database Reference Documentation
 
-This document describes the schema designs, collection structures, vector schemas, index properties, and storage strategies for the **BIT Mesra AI Workspace**.
+This document describes the schema designs, collection structures, vector schemas, index properties, and storage strategies for the **BITATLAS Workspace**.
 
 ---
 

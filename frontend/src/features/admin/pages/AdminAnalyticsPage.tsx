@@ -1135,7 +1135,7 @@ export const AdminAnalyticsPage = () => {
           </div>
 
           <div className="mt-4 pt-4 border-t border-slate-900 text-[10px] text-slate-500 font-semibold font-mono">
-            System host: BIT Mesra Node-Worker Thread (Active)
+            System host: BITATLAS Node-Worker Thread (Active)
           </div>
         </div>
       </div>

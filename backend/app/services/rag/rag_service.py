@@ -101,7 +101,7 @@ def query_rag(question: str, intent: str | None = None, metadata_filters: dict |
 
     if not results:
         return {
-            "answer": "I could not find that information in the BIT Mesra knowledge base.",
+            "answer": "I could not find that information in the BITATLAS knowledge base.",
             "confidence": 1.0,
             "source": "rag",
             "documents": [],
@@ -337,7 +337,7 @@ def extract_fallback_answer(query: str, retrieved_docs: List[str]) -> str:
     Used as a high-quality fallback when the Gemini API is rate-limited or down.
     """
     if not retrieved_docs:
-        return "I could not find that information in the BIT Mesra knowledge base."
+        return "I could not find that information in the BITATLAS knowledge base."
         
     query_lower = query.lower()
     query_clean = re.sub(r'[^\w\s]', ' ', query_lower)

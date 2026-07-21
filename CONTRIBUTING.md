@@ -1,6 +1,6 @@
-# Contributing to BIT Mesra AI Workspace
+# Contributing to BITATLAS Workspace
 
-We welcome contributions to the **BIT Mesra AI Campus Workspace**! Whether you are fixing bugs, improving the documentation, or adding new features, this guide will help you get started.
+We welcome contributions to the **BITATLAS Workspace**! Whether you are fixing bugs, improving the documentation, or adding new features, this guide will help you get started.
 
 ---
 

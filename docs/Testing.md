@@ -1,6 +1,6 @@
 # Testing & QA Reference Documentation
 
-This document describes the testing frameworks, automated verification commands, manual QA checklists, and performance latency stress testing setups for the **BIT Mesra AI Workspace**.
+This document describes the testing frameworks, automated verification commands, manual QA checklists, and performance latency stress testing setups for the **BITATLAS Workspace**.
 
 ---
 

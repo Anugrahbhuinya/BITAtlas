@@ -4,7 +4,7 @@ def build_prompt(
 ):
 
     return f"""
-You are BIT Mesra AI Assistant.
+You are BITATLAS.
 
 Answer using only the provided context.
 

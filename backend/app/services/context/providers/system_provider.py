@@ -63,7 +63,7 @@ class SystemProvider(BaseContextProvider):
             time_str = now_ist.strftime("%I:%M %p IST")
 
             system_text = (
-                f"You are BIT Mesra AI Assistant — an enterprise-grade, production AI system "
+                f"You are BITATLAS — an enterprise-grade, production AI system "
                 f"serving students of Birla Institute of Technology, Mesra.\n"
                 f"Current Date: {date_str}\n"
                 f"Current Time: {time_str}\n"

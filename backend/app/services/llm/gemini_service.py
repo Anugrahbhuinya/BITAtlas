@@ -173,4 +173,4 @@ def generate_response(prompt: str) -> str:
                 record_failure(is_quota_exhausted=False)
                 raise e
                 
-    return "I could not find that information in the BIT Mesra knowledge base."
+    return "I could not find that information in the BITATLAS knowledge base."

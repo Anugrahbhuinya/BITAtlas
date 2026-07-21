@@ -1,6 +1,6 @@
 # Security Architecture & Best Practices
 
-This document describes the security controls, validation middlewares, encryption frameworks, and prompt injection mitigation strategies implemented in the **BIT Mesra AI Workspace**.
+This document describes the security controls, validation middlewares, encryption frameworks, and prompt injection mitigation strategies implemented in the **BITATLAS Workspace**.
 
 ---
 

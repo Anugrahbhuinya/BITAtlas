@@ -73,7 +73,7 @@ export const LocationDetailsDrawer: React.FC<LocationDetailsDrawerProps> = ({
     const name = (entity as any).building_name || (entity as any).name || "";
     const lat = entity.latitude || (entity as any).coordinates?.latitude || 0;
     const lng = entity.longitude || (entity as any).coordinates?.longitude || 0;
-    navigator.clipboard.writeText(`BIT Mesra Campus Navigation - ${name} (Lat: ${lat.toFixed(6)}, Lng: ${lng.toFixed(6)})`);
+    navigator.clipboard.writeText(`BITATLAS Campus Navigation - ${name} (Lat: ${lat.toFixed(6)}, Lng: ${lng.toFixed(6)})`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

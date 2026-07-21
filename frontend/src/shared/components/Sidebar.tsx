@@ -97,7 +97,7 @@ export const Sidebar = ({ isCollapsed, isMobileOpen, setIsMobileOpen, onToggleCo
               <GraduationCap size={20} className="fill-current text-background" />
             </div>
             <div className={`transition-all duration-300 ${isCollapsed ? "md:w-0 md:opacity-0 md:overflow-hidden" : "w-auto opacity-100"}`}>
-              <h1 className="text-sm font-bold text-primary leading-tight whitespace-nowrap">BIT Mesra AI</h1>
+              <h1 className="text-sm font-bold text-primary leading-tight whitespace-nowrap">BITATLAS</h1>
               <p className="text-[10px] text-on-surface-variant font-medium tracking-wider uppercase opacity-65 whitespace-nowrap">Campus Assistant</p>
             </div>
           </div>

@@ -73,10 +73,10 @@ export const MapPage: React.FC = () => {
       const targetNameLower = selectedLocationName.toLowerCase().trim();
       
       // Look for a matching building
-      let found = buildings.find(b => 
+      let found: any = buildings.find(b => 
         b.building_name?.toLowerCase() === targetNameLower ||
-        b.name?.toLowerCase() === targetNameLower ||
-        b.aliases?.some((a: string) => a.toLowerCase() === targetNameLower)
+        (b as any).name?.toLowerCase() === targetNameLower ||
+        (b as any).aliases?.some((a: string) => a.toLowerCase() === targetNameLower)
       );
       let foundType: "building" | "facility" | "landmark" | null = found ? "building" : null;
 
@@ -84,7 +84,7 @@ export const MapPage: React.FC = () => {
       if (!found) {
         found = facilities.find(f => 
           f.name?.toLowerCase() === targetNameLower ||
-          f.aliases?.some((a: string) => a.toLowerCase() === targetNameLower)
+          (f as any).aliases?.some((a: string) => a.toLowerCase() === targetNameLower)
         );
         foundType = found ? "facility" : null;
       }
@@ -93,7 +93,7 @@ export const MapPage: React.FC = () => {
       if (!found) {
         found = landmarks.find(l => 
           l.name?.toLowerCase() === targetNameLower ||
-          l.aliases?.some((a: string) => a.toLowerCase() === targetNameLower)
+          (l as any).aliases?.some((a: string) => a.toLowerCase() === targetNameLower)
         );
         foundType = found ? "landmark" : null;
       }

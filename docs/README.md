@@ -1,6 +1,6 @@
-# BIT Mesra AI Workspace — Documentation Index
+# BITATLAS Workspace — Documentation Index
 
-Welcome to the official documentation directory for the **BIT Mesra AI Workspace**. This directory contains comprehensive design specifications, system flow descriptions, API references, security standards, and deployment guides.
+Welcome to the official documentation directory for the **BITATLAS Workspace**. This directory contains comprehensive design specifications, system flow descriptions, API references, security standards, and deployment guides.
 
 ---
 

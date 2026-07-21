@@ -66,7 +66,7 @@ export const ChatInput = ({ onSend, onStopSpeaking }: ChatInputProps) => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder="Ask BIT AI anything..."
+        placeholder="Ask BITATLAS anything..."
         aria-label="Query input box"
         className="w-full bg-transparent border-none focus:outline-none focus:ring-0 text-on-surface text-xs md:text-sm py-1.5 px-3 resize-none min-h-[32px] max-h-[120px] placeholder:text-on-surface-variant/40"
       />

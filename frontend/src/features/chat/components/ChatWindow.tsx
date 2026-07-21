@@ -188,7 +188,7 @@ export const ChatWindow = () => {
             onStopSpeaking={stopSpeaking} 
           />
           <p className="text-[10px] text-center text-on-surface-variant/40 mt-3 font-mono-code uppercase tracking-wider">
-            BIT Mesra AI can make mistakes. Verify important academic notices via official portals.
+            BITATLAS can make mistakes. Verify important academic notices via official portals.
           </p>
         </div>
       </div>

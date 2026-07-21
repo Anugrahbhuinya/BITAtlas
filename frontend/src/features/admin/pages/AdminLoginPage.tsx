@@ -61,7 +61,7 @@ export const AdminLoginPage = () => {
             <Shield className="w-6 h-6 text-primary" />
           </div>
           <h2 className="text-xl font-bold uppercase tracking-wider text-primary">
-            BIT Operations Center
+            BITATLAS Operations Center
           </h2>
           <p className="text-on-surface-variant mt-1.5 text-xs">
             Sign in to manage knowledge base and assistant models

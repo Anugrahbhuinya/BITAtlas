@@ -78,7 +78,7 @@ def run_test(path, method, payload=None, expect_cors=True):
 
 def main():
     print("\n" + "="*80)
-    print("                 BIT MESRA AI AGENT - API VALIDATION SUITE")
+    print("                 BITATLAS - API VALIDATION SUITE")
     print("="*80)
     print(f"Targeting: {BASE_URL}\n")
     
@@ -92,9 +92,9 @@ def main():
         status_str = f"HTTP {res['status_code']}"
         cors_str = "CORS PASS" if res['cors_ok'] else "CORS FAIL"
         
-        indicator = "✓"
+        indicator = "[PASS]"
         if res['status_code'] == "ERR" or (expect_cors and not res['cors_ok']):
-            indicator = "✗"
+            indicator = "[FAIL]"
             success = False
             
         print(f"  {indicator} {method:<8} {path:<30} {status_str:<10} {cors_str:<12} Origin: {res['allow_origin']}")

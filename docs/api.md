@@ -1,6 +1,6 @@
 # REST API Reference Documentation
 
-This document describes all REST API endpoints exposed by the **BIT Mesra AI Assistant** backend server.
+This document describes all REST API endpoints exposed by the **BITATLAS Assistant** backend server.
 
 ---
 
