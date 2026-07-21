@@ -4,7 +4,7 @@ def build_prompt(
 ):
 
     return f"""
-You are BITATLAS.
+You are BITAtlas.
 
 Answer using only the provided context.
 

@@ -37,7 +37,7 @@ export const DashboardPage = () => {
             {greeting}, {getFirstName(currentUser?.name)} 👋
           </h2>
           <p className="text-on-surface-variant mt-2 text-xs md:text-sm uppercase tracking-wider font-bold opacity-60">
-            Welcome to the BITATLAS student workspace.
+            Welcome to the BITAtlas student workspace.
           </p>
         </section>
 

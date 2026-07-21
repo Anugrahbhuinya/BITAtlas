@@ -1,6 +1,6 @@
 # Performance Benchmarks & Latency Guidelines
 
-This document details the latency targets, concurrency models, model preloading strategies, and context trimming optimizations implemented in the **BITATLAS Workspace**.
+This document details the latency targets, concurrency models, model preloading strategies, and context trimming optimizations implemented in the **BITAtlas Workspace**.
 
 ---
 

@@ -78,7 +78,7 @@ def run_test(path, method, payload=None, expect_cors=True):
 
 def main():
     print("\n" + "="*80)
-    print("                 BITATLAS - API VALIDATION SUITE")
+    print("                 BITAtlas - API VALIDATION SUITE")
     print("="*80)
     print(f"Targeting: {BASE_URL}\n")
     

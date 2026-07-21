@@ -135,7 +135,7 @@ export const Sidebar = ({ onMobileClose }: SidebarProps) => {
               className="flex flex-col"
             >
               <span className="text-sm font-bold text-on-surface whitespace-nowrap">
-                BITATLAS Operations
+                BITAtlas Operations
               </span>
               <span className="text-[10px] text-primary font-semibold tracking-wider uppercase">
                 Admin Console

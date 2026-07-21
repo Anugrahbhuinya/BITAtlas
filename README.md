@@ -1,4 +1,4 @@
-# BITATLAS — Campus Assistant & Student Workspace
+# BITAtlas — Campus Assistant & Student Workspace
 
 <p align="center">
   <img src="https://img.shields.io/badge/status-production--ready-success?style=for-the-badge&color=2ea44f" alt="Status" />
@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/react-18+-61dafb?style=for-the-badge&logo=react" alt="React" />
 </p>
 
-The **BITATLAS Campus Assistant & Student Workspace** is an enterprise-grade digital companion and personalized academic workspace custom-engineered for Birla Institute of Technology, Mesra. Designed for students, administrators, visitors, and evaluators, the platform integrates advanced NLP reference resolution, multi-priority query routing, hybrid retrieval-augmented generation (RAG), Dijkstra-based campus mapping, and automated academic schedule ingestion into a unified, high-performance portal.
+The **BITAtlas Campus Assistant & Student Workspace** is an enterprise-grade digital companion and personalized academic workspace custom-engineered for Birla Institute of Technology, Mesra. Designed for students, administrators, visitors, and evaluators, the platform integrates advanced NLP reference resolution, multi-priority query routing, hybrid retrieval-augmented generation (RAG), Dijkstra-based campus mapping, and automated academic schedule ingestion into a unified, high-performance portal.
 
 ---
 
@@ -45,7 +45,7 @@ The **BITATLAS Campus Assistant & Student Workspace** is an enterprise-grade dig
 University campus ecosystems are highly fragmented. Critical information—such as academic calendars, building coordinates, exam timelines, administrative circulars, and faculty profiles—is typically scattered across unindexed PDF bulletins, dynamic deans' portals, local notice boards, and external websites. Students are forced to consult multiple outdated channels, leading to high information latency and friction in daily academic planning.
 
 ### The Solution
-The **BITATLAS Workspace** consolidates these disjointed datasets into a cohesive, sub-10ms context-aware assistant. 
+The **BITAtlas Workspace** consolidates these disjointed datasets into a cohesive, sub-10ms context-aware assistant. 
 * **For Students**: Serves as an academic command center featuring smart routine imports, attendance bunk-calculators, walk-time mapping, and semantic notices searches.
 * **For Administrators & Contributors**: Provides a secure admin control panel to crawl, hash, index, and manage document catalogs dynamically without service interruption.
 

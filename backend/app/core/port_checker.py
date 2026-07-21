@@ -17,7 +17,7 @@ def check_port_conflicts(ports=[8001, 5180]):
     print("\n" + "="*60)
     print(" CRITICAL ERROR: PORT CONFLICT DETECTED")
     print("="*60)
-    print("The following port(s) required by BITATLAS are occupied:\n")
+    print("The following port(s) required by BITAtlas are occupied:\n")
     
     for port in conflicts:
         print(f"  * Port {port} is currently IN USE.")

@@ -68,7 +68,7 @@ export const BackendStatusGuard: React.FC<BackendStatusGuardProps> = ({ children
                 Backend Connection Failed
               </h1>
               <p className="text-xs text-slate-400 mt-0.5">
-                The BITATLAS Operating System could not reach the backend server.
+                The BITAtlas Operating System could not reach the backend server.
               </p>
             </div>
           </div>

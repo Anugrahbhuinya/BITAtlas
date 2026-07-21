@@ -163,7 +163,7 @@ async def lifespan(app: FastAPI):
             chat_status = "Not Ready"
             
         print("\n" + "="*48, flush=True)
-        print("BITATLAS", flush=True)
+        print("BITAtlas", flush=True)
         print(f"Environment:     {settings.ENV.capitalize()}", flush=True)
         print(f"Backend:         http://{settings.HOST}:{settings.PORT}", flush=True)
         print(f"Allowed Origins: {', '.join(settings.CORS_ORIGINS)}", flush=True)
@@ -182,7 +182,7 @@ async def lifespan(app: FastAPI):
     await stop_scheduler()
 
 app = FastAPI(
-    title="BITATLAS",
+    title="BITAtlas",
     lifespan=lifespan
 )
 
@@ -234,5 +234,5 @@ app.include_router(faculty_router)
 @app.get("/")
 def root():
     return {
-        "message": "BITATLAS API Running"  # Reloaded config
+        "message": "BITAtlas API Running"  # Reloaded config
     }

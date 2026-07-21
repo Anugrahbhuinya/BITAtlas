@@ -1,6 +1,6 @@
 # Hybrid RAG & AI Pipeline
 
-This document describes the Retrieval-Augmented Generation (RAG) architecture, document chunking schemes, vector indexes, prompt builders, and telemetry tracing implementations in the **BITATLAS Workspace**.
+This document describes the Retrieval-Augmented Generation (RAG) architecture, document chunking schemes, vector indexes, prompt builders, and telemetry tracing implementations in the **BITAtlas Workspace**.
 
 ---
 

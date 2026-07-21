@@ -56,7 +56,7 @@ export const LoginPage = () => {
             Student Login
           </h2>
           <p className="text-on-surface-variant mt-1.5 text-xs">
-            Access the BITATLAS Campus Assistant
+            Access the BITAtlas Campus Assistant
           </p>
         </div>
 

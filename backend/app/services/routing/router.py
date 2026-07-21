@@ -287,7 +287,7 @@ class FacultyQueryRouter:
             from app.services.llm.gemini_service import generate_response
             context_str = "\n\n---\n\n".join(docs)
             prompt = (
-                "You are BITATLAS.\n"
+                "You are BITAtlas.\n"
                 "Use the following official website documents to answer the question about the faculty member.\n"
                 "If the requested information is not found in the documents, return 'I couldn't find that information in my knowledge base.'\n\n"
                 f"Context:\n{context_str}\n\n"

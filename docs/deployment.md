@@ -1,6 +1,6 @@
 # Production Deployment Guide
 
-This document describes environment configurations, Docker Compose orchestration models, reverse proxy configurations, and TLS/HTTPS setups to deploy the **BITATLAS Workspace** to production.
+This document describes environment configurations, Docker Compose orchestration models, reverse proxy configurations, and TLS/HTTPS setups to deploy the **BITAtlas Workspace** to production.
 
 ---
 

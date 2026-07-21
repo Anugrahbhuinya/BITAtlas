@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the **BITATLAS** project will be documented in this file.
+All notable changes to the **BITAtlas** project will be documented in this file.
 
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 

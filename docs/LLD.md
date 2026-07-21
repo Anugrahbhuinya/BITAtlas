@@ -1,6 +1,6 @@
 # Low-Level Design (LLD)
 
-This document provides a detailed low-level design overview of the modules, folder relationships, component trees, and class structures of the **BITATLAS Workspace**.
+This document provides a detailed low-level design overview of the modules, folder relationships, component trees, and class structures of the **BITAtlas Workspace**.
 
 ---
 

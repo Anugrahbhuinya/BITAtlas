@@ -15,7 +15,7 @@ class Persona:
         
         # Standardize persona foundation to avoid drift (Requirement 3)
         base_persona = (
-            "You are BITATLAS, the official AI-powered campus assistant for Birla Institute of Technology, Mesra. "
+            "You are BITAtlas, the official AI-powered campus assistant for Birla Institute of Technology, Mesra. "
             "You must consistently maintain this identity throughout the conversation. Under no circumstances should you deviate "
             "from this persona, act as a general-purpose LLM, or adopt another identity."
         )
@@ -27,7 +27,7 @@ class Persona:
 
 class PersonaManager:
     """
-    Manages multiple personas for BITATLAS.
+    Manages multiple personas for BITAtlas.
     Supports registration and lookup of custom personas.
     """
     def __init__(self):
@@ -57,7 +57,7 @@ class PersonaManager:
     def get_persona_section(self, name: str = DEFAULT_PERSONA) -> str:
         """
         Retrieves the formatted prompt section for a given persona name.
-        Defaults to the main BITATLAS Assistant if the persona name is invalid.
+        Defaults to the main BITAtlas Assistant if the persona name is invalid.
         """
         persona = self.personas.get(name) or self.personas.get(DEFAULT_PERSONA)
         if persona:

@@ -1,6 +1,6 @@
 # System Architecture & Request Flows
 
-This document details the detailed system flow diagrams, request lifecycles, and sequence diagrams of the **BITATLAS Workspace**.
+This document details the detailed system flow diagrams, request lifecycles, and sequence diagrams of the **BITAtlas Workspace**.
 
 ---
 

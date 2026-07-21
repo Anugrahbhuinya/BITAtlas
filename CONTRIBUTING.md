@@ -1,6 +1,6 @@
-# Contributing to BITATLAS Workspace
+# Contributing to BITAtlas Workspace
 
-We welcome contributions to the **BITATLAS Workspace**! Whether you are fixing bugs, improving the documentation, or adding new features, this guide will help you get started.
+We welcome contributions to the **BITAtlas Workspace**! Whether you are fixing bugs, improving the documentation, or adding new features, this guide will help you get started.
 
 ---
 

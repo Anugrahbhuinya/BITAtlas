@@ -1,12 +1,12 @@
 # High-Level Design (HLD)
 
-This document describes the high-level design, software boundaries, component architectures, and system properties of the **BITATLAS Workspace**.
+This document describes the high-level design, software boundaries, component architectures, and system properties of the **BITAtlas Workspace**.
 
 ---
 
 ## 1. System Overview
 
-The **BITATLAS Workspace** is an AI-powered digital campus assistant and academic dashboard. It provides:
+The **BITAtlas Workspace** is an AI-powered digital campus assistant and academic dashboard. It provides:
 1. **Student Command Center**: Dynamic schedules, attendance analytics, checklists, and calendar timelines.
 2. **AI Campus Assistant**: Citation-grounded answers based on hybrid RAG, campus maps navigation, and academic profile state.
 3. **Knowledge Ingestion Portal**: Document and website crawlers with synchronization check schedules for administrator use.

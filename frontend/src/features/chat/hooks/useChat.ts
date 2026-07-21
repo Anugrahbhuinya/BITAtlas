@@ -17,7 +17,7 @@ export const useChat = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       sender: "bot",
-      text: "Hey I am BITATLAS",
+      text: "Hey I am BITAtlas",
     },
   ]);
   const [loading, setLoading] = useState(false);
@@ -60,7 +60,7 @@ export const useChat = () => {
           setMessages([
             {
               sender: "bot",
-              text: "Hey I am BITATLAS",
+              text: "Hey I am BITAtlas",
             },
             ...deduped,
           ]);
@@ -68,7 +68,7 @@ export const useChat = () => {
           setMessages([
             {
               sender: "bot",
-              text: "Hey I am BITATLAS",
+              text: "Hey I am BITAtlas",
             },
           ]);
         }
@@ -78,7 +78,7 @@ export const useChat = () => {
         setMessages([
           {
             sender: "bot",
-            text: "Hey I am BITATLAS",
+            text: "Hey I am BITAtlas",
           },
         ]);
       } finally {
@@ -142,7 +142,7 @@ export const useChat = () => {
       setMessages([
         {
           sender: "bot",
-          text: "Hey I am BITATLAS",
+          text: "Hey I am BITAtlas",
         },
       ]);
     } catch (error) {

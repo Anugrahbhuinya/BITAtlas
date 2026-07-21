@@ -22,7 +22,7 @@ export function MainLayout() {
     if (path.startsWith("/academics")) return "Academics";
     if (path.startsWith("/map")) return "Campus Map";
     if (path.startsWith("/profile")) return "My Profile";
-    return "BITATLAS";
+    return "BITAtlas";
   };
 
   const title = getPageTitle(location.pathname);

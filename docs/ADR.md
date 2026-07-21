@@ -1,6 +1,6 @@
 # Architecture Decision Records (ADR)
 
-This document contains Architecture Decision Records (ADRs) explaining key engineering choices, framework selections, and design decisions for the **BITATLAS Workspace**.
+This document contains Architecture Decision Records (ADRs) explaining key engineering choices, framework selections, and design decisions for the **BITAtlas Workspace**.
 
 ---
 

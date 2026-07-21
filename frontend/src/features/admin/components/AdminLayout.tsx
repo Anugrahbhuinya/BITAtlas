@@ -96,7 +96,7 @@ export const AdminLayout = () => {
                     <Shield className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-sm font-bold">BITATLAS Operations</span>
+                    <span className="text-sm font-bold">BITAtlas Operations</span>
                     <span className="text-[10px] text-primary font-semibold uppercase tracking-wider">
                       Admin Console
                     </span>

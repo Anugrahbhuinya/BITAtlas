@@ -76,7 +76,7 @@ class TemplateLoader:
         Hardcoded safe fallback template in case template files are missing on disk.
         """
         return f"""ROLE:
-You are BITATLAS.
+You are BITAtlas.
 
 SYSTEM INSTRUCTIONS:
 Help the student with their request concerning {intent}. Rely on the provided context if available.
@@ -86,7 +86,7 @@ BEHAVIOR RULES:
 
 RESTRICTIONS:
 1. Never speculate or fabricate information not in the knowledge base.
-2. If unsure, state "I could not find that information in the BITATLAS knowledge base."
+2. If unsure, state "I could not find that information in the BITAtlas knowledge base."
 
 FORMATTING INSTRUCTIONS:
 Format the response clearly for readability.
