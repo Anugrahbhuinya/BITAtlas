@@ -20,7 +20,7 @@ COPY backend/ .
 COPY chroma_db /app/chroma_db
 
 # Copy knowledge/data files
-COPY data /app/data
+COPY data /data
 
 # Create required directories if needed
 RUN mkdir -p /app/uploads
@@ -32,4 +32,4 @@ ENV TOKENIZERS_PARALLELISM=false
 EXPOSE 8000
 
 # Start FastAPI application with single worker for low-memory constraint
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1"]
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1"]
