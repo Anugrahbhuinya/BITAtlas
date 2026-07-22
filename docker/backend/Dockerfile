@@ -1,34 +1,55 @@
+
+
 FROM python:3.11-slim
+
 
 WORKDIR /app
 
-# Install system dependencies
+
+# ==================================================
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy backend dependencies
+
+# ==================================================
+# Python Dependencies
+
 COPY backend/requirements.txt .
 
-# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy backend application
+
+# ==================================================
+# Backend Application
+# ==================================================
+
 COPY backend/ .
 
-# Copy RAG vector database and data files
-COPY chroma_db /app/chroma_db
-COPY data /app/data
-COPY data /data
 
-# Create required directories if needed
+
+# Chroma vector database
+COPY chroma_db /app/chroma_db
+
+# Knowledge documents
+COPY data /app/data
+
+
+
 RUN mkdir -p /app/uploads
 
-# Prevent HuggingFace tokenizer parallelism issues
+
+
+# Prevent HuggingFace tokenizer memory issues
 ENV TOKENIZERS_PARALLELISM=false
 
-# Expose default port
+# Python production settings
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+
 EXPOSE 8080
 
-# Start FastAPI application with single worker for cloud memory constraints
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1"]
+
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8080} --workers 1"]
