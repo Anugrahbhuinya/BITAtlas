@@ -6,16 +6,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy backend dependencies
 COPY backend/requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy backend application
 COPY backend/ .
 
-# Copy RAG database and data
 COPY chroma_db /app/chroma_db
+
 COPY data /app/data
 
 EXPOSE 8001
