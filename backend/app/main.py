@@ -48,6 +48,9 @@ from app.security.core.exceptions.handlers import (
 )
 from app.security.rate_limit.rate_limiter import RateLimitException
 
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+print("BITAtlas backend starting...", flush=True)
+
 # Initialize structured logging on startup configuration
 setup_structured_logging(settings.LOG_LEVEL)
 
@@ -57,12 +60,7 @@ async def lifespan(app: FastAPI):
     os.makedirs("uploads/profile_pictures", exist_ok=True)
     await seed_admin_user()
     
-    # Pre-load Cross-Encoder reranker model to avoid first-request lazy loading latency
-    try:
-        from app.services.rag.reranker import load_reranker
-        load_reranker()
-    except Exception as e:
-        print(f"Failed to pre-load Cross-Encoder reranker: {e}")
+    print("RAG embeddings configured for lazy loading", flush=True)
     
     # Initialize MongoDB Indexes to avoid collection scans
     try:
@@ -123,17 +121,19 @@ async def lifespan(app: FastAPI):
         except Exception as e:
             mongo_status = f"Failed ({str(e)})"
             
-        # 2. ChromaDB
+        # 2. ChromaDB (Lazy check to avoid loading PyTorch / Transformers on boot)
         try:
-            from app.services.rag.vector_store import get_vector_store
-            vs = get_vector_store()
-            count = vs._collection.count()
-            chroma_status = f"Connected ({count} vectors)"
+            from app.services.rag.vector_store import PERSIST_DIRECTORY
+            if os.path.exists(PERSIST_DIRECTORY):
+                chroma_status = "Ready (Lazy load on demand)"
+                print("Vector database directory ready", flush=True)
+            else:
+                chroma_status = "Warning (Directory missing)"
         except Exception as e:
             chroma_status = f"Failed ({str(e)})"
             
         # 3. Knowledge
-        if mongo_status.startswith("Connected") and not chroma_status.startswith("Failed"):
+        if mongo_status.startswith("Connected"):
             try:
                 doc_count = await db.knowledge_items.count_documents({})
                 knowledge_status = f"Ready ({doc_count} items)"

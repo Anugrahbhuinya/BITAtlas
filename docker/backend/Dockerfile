@@ -25,8 +25,11 @@ COPY data /app/data
 # Create required directories if needed
 RUN mkdir -p /app/uploads
 
+# Prevent HuggingFace tokenizer parallelism issues
+ENV TOKENIZERS_PARALLELISM=false
+
 # Render assigns PORT dynamically
 EXPOSE 8000
 
-# Start FastAPI application
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT"]
+# Start FastAPI application with single worker for low-memory constraint
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1"]

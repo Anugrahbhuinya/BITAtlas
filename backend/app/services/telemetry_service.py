@@ -5,7 +5,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, Any, List, Optional
 from bson import ObjectId
 from app.core.database import get_database
-from app.services.rag.vector_store import get_vector_store, embedding_model, PERSIST_DIRECTORY
+from app.services.rag.vector_store import get_vector_store, get_embedding_model, PERSIST_DIRECTORY
 from app.security.config.settings import settings
 
 async def log_ai_request(
@@ -226,7 +226,7 @@ async def get_system_health() -> List[Dict[str, Any]]:
     try:
         t_start = time.time()
         # Embed a simple word to check active runtime
-        embedding_model.embed_query("ping")
+        get_embedding_model().embed_query("ping")
         t_latency = (time.time() - t_start) * 1000.0
         health_data.append({
             "name": "Embedding Service",
