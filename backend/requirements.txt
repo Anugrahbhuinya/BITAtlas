@@ -4,15 +4,20 @@
 
 fastapi
 uvicorn
+python-multipart
 
 
 # ==================================================
-# UTILITIES
+# UTILITIES & SCRAPING
 # ==================================================
 
 rapidfuzz
 python-dotenv
 pydantic
+psutil
+beautifulsoup4
+requests
+httpx
 
 
 # ==================================================
@@ -20,6 +25,7 @@ pydantic
 # ==================================================
 
 google-genai
+
 
 # ==================================================
 # DATABASE

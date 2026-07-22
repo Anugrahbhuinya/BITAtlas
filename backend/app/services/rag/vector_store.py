@@ -1,15 +1,29 @@
 import os
 import logging
 import threading
+from pathlib import Path
 
 # Prevent HuggingFace tokenizer parallelism warnings / thread issues
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 logger = logging.getLogger("rag_vector_store")
 
-# Define PERSIST_DIRECTORY as an absolute path relative to the backend directory
-BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-PERSIST_DIRECTORY = os.path.join(BACKEND_DIR, "chroma_db")
+# Resolve base directories safely across Windows, Linux, and Docker
+BASE_DIR = Path(__file__).resolve().parents[4]
+
+def get_persist_directory() -> str:
+    candidates = [
+        BASE_DIR / "chroma_db",
+        BASE_DIR / "backend" / "chroma_db",
+        Path("/app/chroma_db"),
+        Path("/chroma_db"),
+    ]
+    for candidate in candidates:
+        if candidate.exists() and candidate.is_dir():
+            return str(candidate)
+    return str(BASE_DIR / "chroma_db")
+
+PERSIST_DIRECTORY = get_persist_directory()
 
 _embedding_model = None
 _vector_store = None
@@ -46,11 +60,12 @@ def get_vector_store():
         with _lock:
             if _vector_store is None:
                 from langchain_chroma import Chroma
+                persist_dir = get_persist_directory()
                 embedding_fn = get_embedding_model()
-                logger.info(f"Initializing Chroma vector store connection at {PERSIST_DIRECTORY}...")
+                logger.info(f"Initializing Chroma vector store connection at {persist_dir}...")
                 _vector_store = Chroma(
-                    persist_directory=PERSIST_DIRECTORY,
+                    persist_directory=persist_dir,
                     embedding_function=embedding_fn
                 )
                 logger.info("Vector database connection ready")
-    return _vector_store
+    return _vector_store

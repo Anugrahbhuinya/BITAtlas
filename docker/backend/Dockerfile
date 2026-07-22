@@ -16,10 +16,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy backend application
 COPY backend/ .
 
-# Copy RAG vector database
+# Copy RAG vector database and data files
 COPY chroma_db /app/chroma_db
-
-# Copy knowledge/data files
+COPY data /app/data
 COPY data /data
 
 # Create required directories if needed
@@ -28,8 +27,8 @@ RUN mkdir -p /app/uploads
 # Prevent HuggingFace tokenizer parallelism issues
 ENV TOKENIZERS_PARALLELISM=false
 
-# Render assigns PORT dynamically
+# Expose default port
 EXPOSE 8000
 
-# Start FastAPI application with single worker for low-memory constraint
+# Start FastAPI application with single worker for cloud memory constraints
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1"]

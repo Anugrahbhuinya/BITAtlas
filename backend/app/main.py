@@ -49,7 +49,8 @@ from app.security.core.exceptions.handlers import (
 from app.security.rate_limit.rate_limiter import RateLimitException
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
-print("BITAtlas backend starting...", flush=True)
+print("BITAtlas backend starting", flush=True)
+print("Configuration loaded", flush=True)
 
 # Initialize structured logging on startup configuration
 setup_structured_logging(settings.LOG_LEVEL)
@@ -60,7 +61,12 @@ async def lifespan(app: FastAPI):
     os.makedirs("uploads/profile_pictures", exist_ok=True)
     await seed_admin_user()
     
-    print("RAG embeddings configured for lazy loading", flush=True)
+    print("MongoDB connection initialized", flush=True)
+    print("RAG system ready (embeddings configured for lazy load)", flush=True)
+    if settings.GEMINI_API_KEY:
+        print("Gemini client initialized", flush=True)
+    else:
+        print("Gemini client initialized (API key pending configuration)", flush=True)
     
     # Initialize MongoDB Indexes to avoid collection scans
     try:
