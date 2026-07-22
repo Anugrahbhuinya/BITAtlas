@@ -28,7 +28,7 @@ RUN mkdir -p /app/uploads
 ENV TOKENIZERS_PARALLELISM=false
 
 # Expose default port
-EXPOSE 8000
+EXPOSE 8080
 
 # Start FastAPI application with single worker for cloud memory constraints
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1"]
